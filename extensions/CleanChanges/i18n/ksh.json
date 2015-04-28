@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"cleanchanges-changerightslink": "Jruppe aanpasse",
+	"cleanchanges-desc": "Määt en köötere [[Special:RecentChanges|Leß met de {{lcfirst:{{int:Recentchanges}}}}]].",
+	"cleanchanges-language": "Schprooch:",
+	"cleanchanges-language-na": "all",
+	"cleanchanges-users": "Metmaacher (donn | dozwesche, wann et zwei udder mieh sen):",
+	"cleanchanges-showuserlinks": "Links op Metmaacher zeije"
+}

@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Anakmalaysia",
+			"PhiLiP",
+			"Xiaomingyan",
+			"Yfdyh000"
+		]
+	},
+	"widgets-desc": "允许wiki的管理员编辑{{ns:widget}}名字空间页面以添加各种形式的小工具。您可以在[http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]中找到社区贡献的小工具",
+	"widgets-error": "[[{{ns:widget}}:$1|小工具$1]]出错",
+	"group-widgeteditor": "小工具编辑者",
+	"group-widgeteditor-member": "{{GENDER:$1|小工具编辑者}}",
+	"grouppage-widgeteditor": "{{ns:project}}:小工具编辑者",
+	"right-editwidgets": "在<tt>{{ns:widget}}</tt>名字空间中创建和编辑[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Widgets 小工具]"
+}

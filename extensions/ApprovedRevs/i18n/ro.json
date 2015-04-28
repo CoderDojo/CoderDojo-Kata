@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Firilacroco",
+			"Minisarm",
+			"Stelistcristi"
+		]
+	},
+	"approvedrevs-desc": "Setează o singură versiune a unei pagini ca aprobată",
+	"approvedrevs-logname": "Jurnal aprobare versiuni",
+	"approvedrevs-logdesc": "Acesta este jurnalul versiunilor care au fost aprobate.",
+	"approvedrevs-approve": "aprobă",
+	"approvedrevs-unapprove": "dezaprobă",
+	"approvedrevs-approvesuccess": "Această versiune a paginii a fost marcată ca versiunea aprobată.",
+	"approvedrevs-blankpageshown": "Nicio versiune nu a fost aprobată pentru această pagină.",
+	"approvedrevs": "Modificări aprobate",
+	"approvedrevs-approvedpages": "Toate paginile cu o revizuire aprobată",
+	"approvedrevs-unapprovedpages": "Pagini neaprobate",
+	"approvedrevs-view": "Vedeți:",
+	"approvedrevs-revisionnumber": "versiunea $1",
+	"approvedrevs-approvedby": "aprobat de {{GENDER:$3|$1}} pe $4 la $5",
+	"approvedrevs-difffromlatest": "diff de la ultima",
+	"approvedrevs-approvelatest": "aprobare ultima",
+	"approvedrevs-approvethisrev": "Aprobați această modificare.",
+	"approvedrevs-viewlatestrev": "Vizualizează versiunea cea mai recentă.",
+	"right-approverevisions": "Marchează o anumită versiune a unei pagini ca aprobată"
+}

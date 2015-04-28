@@ -1,0 +1,31 @@
+This file describes common fields in font.ini file. Use ';' to add any comments.
+
+languages
+---------
+list of language(s) to use for font. * in language code suggests it is default
+font for language.
+
+version
+-------
+Font version.
+
+license
+-------
+License in SPDX format. see licenses/README file for format and details.
+
+licensefile
+-----------
+Name of license file from licenses folder.
+
+request-url
+-----------
+URL of bug or request where font addition request was made. For more than 2
+languages, use URLs separated by comma in,
+
+request-url=url1, url2
+
+format.
+
+url
+---
+Upstream location of font to download.

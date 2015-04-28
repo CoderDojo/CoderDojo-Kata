@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Priviet",
+			"아라",
+			"Keysuck"
+		]
+	},
+	"approvedrevs-desc": "승인한 문서의 판 하나를 설정합니다",
+	"approvedrevs-logname": "판 승인 기록",
+	"approvedrevs-logdesc": "판을 승인한 기록입니다.",
+	"approvedrevs-approve": "승인",
+	"approvedrevs-unapprove": "미승인",
+	"approvedrevs-approvesuccess": "이 판을 승인한 판으로 설정했습니다.",
+	"approvedrevs-unapprovesuccess": "더 이상 이 문서에 대해 승인한 판이 없습니다.\n대신에 최신 판이 보입니다.",
+	"approvedrevs-unapprovesuccess2": "더 이상 이 문서에 대해 승인한 판이 없습니다.\n대신에 빈 문서가 보입니다.",
+	"approvedrevs-approveaction": "\"[[$1]]\"의 승인한 $2 판으로 설정",
+	"approvedrevs-unapproveaction": "\"[[$1]]\"의 승인한 판 설정 해제",
+	"approvedrevs-notlatest": "이 문서의 확인한 개정판은 최신 판이 아닙니다.",
+	"approvedrevs-approvedandlatest": "이 문서의 승인한 판은 최신 판입니다.",
+	"approvedrevs-blankpageshown": "이 문서의 승인한 판이 없습니다.",
+	"approvedrevs-noapprovedrevision": "이 문서의 최신 판입니다; 승인된 판이 없습니다.",
+	"approvedrevs-editwarning": "현재 편집하고 있는 문서는 이 문서의 최신 판이며, 기본으로 보이는 승인된 판과는 다름에 주의하세요.",
+	"approvedrevs": "승인한 판",
+	"approvedrevs-approvedpages": "승인한 판이 있는 모든 문서",
+	"approvedrevs-notlatestpages": "승인한 판의 문서는 최신 판이 아닙니다",
+	"approvedrevs-unapprovedpages": "승인하지 않은 문서",
+	"approvedrevs-view": "보기:",
+	"approvedrevs-revisionnumber": "$1 판",
+	"approvedrevs-approvedby": "{{GENDER:$3|$1}} 사용자가 $4 $5에 승인함",
+	"approvedrevs-difffromlatest": "최신판과의 차이",
+	"approvedrevs-approvelatest": "최신판 승인",
+	"approvedrevs-approvethisrev": "이 판을 승인합니다.",
+	"approvedrevs-viewlatestrev": "최신 판을 봅니다.",
+	"approvedrevs-approvedrevision": "승인된 개정",
+	"right-approverevisions": "승인한 위키 문서의 특정 판 설정",
+	"right-viewlinktolatest": "승인한 판이 있는 문서의 위에 설명 텍스트 보이기"
+}

@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Karthi.dr",
+			"TRYPPN"
+		]
+	},
+	"approvedrevs-approve": "அனுமதிக்கவும்",
+	"approvedrevs-unapprove": "அனுமதிக்க வேண்டாம்",
+	"approvedrevs": "ஏற்றுக்கொள்ளப்பட்ட திருத்தங்கள்",
+	"approvedrevs-approvedpages": "ஏற்றுக் கொள்ளப்பட்ட திருத்தங்கள் கொண்ட அனைத்துப் பக்கங்கள்",
+	"approvedrevs-unapprovedpages": "ஏற்றுக் கொள்ளப்படாத பக்கங்கள்",
+	"approvedrevs-view": "பார்வையிடு:",
+	"approvedrevs-revisionnumber": "திருத்தம் $1",
+	"right-approverevisions": "விக்கி பக்கத்தில் ஒரு சில மாற்றங்களை அனுமதிக்கப்பட்டதாக குறித்துக்கொள்ளவும்"
+}

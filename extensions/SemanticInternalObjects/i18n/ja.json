@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fryed-peach",
+			"Shirayuki"
+		]
+	},
+	"semanticinternalobjects-desc": "Semantic MediaWiki の内部オブジェクトの設定",
+	"semanticinternalobjects-internalproperty": "内部プロパティ",
+	"semanticinternalobjects-propnamewarning": "(このテンプレートが複数の実体を持つ可能性がある場合のみ使用すべきです)"
+}

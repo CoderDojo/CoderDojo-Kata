@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"EugeneZelenko",
+			"Jim-by",
+			"Wizardist",
+			"Red Winged Duck"
+		]
+	},
+	"datatransfer-desc": "Дазваляе імпартаваць і экспартаваць зьвесткі, якія ўтрымліваюцца ў выкліках шаблёнах",
+	"viewxml": "Паказаць XML",
+	"dt_viewxml_docu": "Калі ласка, выберыце што праглядаць у фармаце XML сярод наступных катэгорыяў і прастораў назваў.",
+	"dt_viewxml_categories": "Катэгорыі",
+	"dt_viewxml_namespaces": "Прасторы назваў",
+	"dt_viewxml_simplifiedformat": "Спрошчаны фармат",
+	"dt_xml_namespace": "Прастора назваў",
+	"dt_xml_pages": "Старонкі",
+	"dt_xml_page": "Старонка",
+	"dt_xml_template": "Шаблён",
+	"dt_xml_field": "Поле",
+	"dt_xml_name": "Назва",
+	"dt_xml_title": "Назва",
+	"dt_xml_id": "Ідэнтыфікатар",
+	"dt_xml_freetext": "Вольны тэкст",
+	"importxml": "Імпарт XML",
+	"dt_import_selectfile": "Калі ласка, выберыце файл у фармаце $1 для імпарту:",
+	"dt_import_encodingtype": "Тып кадыроўкі:",
+	"dt_import_forexisting": "Для старонак якія ўжо існуюць:",
+	"dt_import_overwriteexisting": "Перазапісваць існуючы зьмест",
+	"dt_import_mergeintoexisting": "Перазапісваць толькі палі, што ўтрымліваюцца ў файле",
+	"dt_import_skipexisting": "Прапускаць",
+	"dt_import_appendtoexisting": "Далучаць да існуючага зьместу",
+	"dt_import_summarydesc": "Кароткае апісаньне імпарту:",
+	"dt_import_editsummary": "імпарт з {{ucfirst:$1}}",
+	"dt_import_importing": "Імпартаваньне...",
+	"dt_import_success": "$1 {{PLURAL:$1|старонка будзе|старонкі будуць|старонак будзе}} створана з файла ў фармаце $2.",
+	"importcsv": "Імпарт CSV",
+	"dt_importcsv_badheader": "Памылка: загаловак слупка $1, '$2', павінен быць адным з '$3', '$4' альбо у форме 'назва_шаблёну[назва_поля]'",
+	"right-datatransferimport": "імпарт зьвестак"
+}

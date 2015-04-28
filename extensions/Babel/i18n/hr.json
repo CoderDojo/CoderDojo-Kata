@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ex13",
+			"Herr Mlinka"
+		]
+	},
+	"babel": "Babel suradničke informacije",
+	"babel-desc": "Dodaje <code>#babel</code> parser funkciju kako bi se omogućilo automatsko generiranje kolumne s babel suradničkim okvirićima s mogućnošću uključivanja vlastitih predložaka",
+	"babel-url": "Project:Babel",
+	"babel-footer-url": ":Kategorija:Babel - Suradnici prema jeziku",
+	"babel-autocreate-abort": "Suradničko ime koje ste naveli rabi se za samokreiranje kategorije [[$1|babel]] i ne može biti registrirano.",
+	"babel-autocreate-reason": "Automatsko stvaranje [[$1|babel]] stranice kategorije.",
+	"babel-autocreate-text-levels": "Suradnici u ovoj kategoriji ukazuju da su na razini vještine $1 za jezik $2.",
+	"babel-autocreate-text-main": "Suradnici u ovoj kategoriji ukazuju da imaju znanje jezika $1.",
+	"babel-0": "Ovaj suradnik [[$1|ne]] govori [[$2|$3]] (ili ga slabo poznaje).",
+	"babel-1": "Ovaj suradnik posjeduje [[$1|osnovno]] znanje [[$2|$3]].",
+	"babel-2": "Ovaj suradnik ima [[$1|osrednje]] znanje [[$2|$3]].",
+	"babel-3": "Ovaj suradnik [[$1|napredno]] poznaje [[$2|$3]].",
+	"babel-4": "Ovaj suradnik poznaje [[$2|$3]] [[$1|gotovo kao izvorni govornik]].",
+	"babel-5": "Ovaj suradnik posjeduje [[$1|profesionalno]] znanje [[$2|$3]].",
+	"babel-N": "Ovaj suradnik govori [[$2|$3]] kao [[$1|materinskim jezikom]].",
+	"babel-0-n": "Ovaj suradnik [[$1|ne]] govori [[$2|hrvatski jezik]] (ili ga slabo poznaje).",
+	"babel-1-n": "Ovaj suradnik posjeduje [[$1|osnovno]] znanje [[$2|hrvatskog jezika]].",
+	"babel-2-n": "Ovaj suradnik ima [[$1|osrednje]] znanje [[$2|hrvatskog jezika]].",
+	"babel-3-n": "Ovaj suradnik [[$1|napredno]] poznaje [[$2|hrvatski jezik]].",
+	"babel-4-n": "Ovaj suradnik poznaje [[$2|hrvatski jezik]] [[$1|gotovo kao izvorni govornik]].",
+	"babel-5-n": "Ovaj suradnik posjeduje [[$1|profesionalno]] znanje [[$2|hrvatskog jezika]].",
+	"babel-N-n": "Ovaj suradnik govori [[$2|hrvatskim]] kao [[$1|materinskim jezikom]].",
+	"babel-footer": "Suradnici prema jeziku"
+}

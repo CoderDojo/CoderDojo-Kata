@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"approvedrevs-desc": "Поставање на една единствена преработка на страницата како одобрена",
+	"approvedrevs-logname": "Дневник на одобрени преработки",
+	"approvedrevs-logdesc": "Ова е дневникот на одобрени преработки.",
+	"approvedrevs-approve": "одобри",
+	"approvedrevs-unapprove": "неодобрена",
+	"approvedrevs-approvesuccess": "Оваа преработка на страницата е поставена како одобрена.",
+	"approvedrevs-unapprovesuccess": "Оваа страница повеќе нема одобрена верзија.\nНаместо тоа ќе се прикажува најновата верзија.",
+	"approvedrevs-unapprovesuccess2": "Оваа страница повеќе нема одобрена верзија.\nНаместо тоа ќе се прикажува празна страница.",
+	"approvedrevs-approveaction": "постави ја $2 за одобрена верзија на „[[$1]]“",
+	"approvedrevs-unapproveaction": "отстрани одобрена верзија на „[[$1]]“",
+	"approvedrevs-notlatest": "Ова е одобрената преработка на страницава, но не е најновата.",
+	"approvedrevs-approvedandlatest": "Ова е одобрената преработка на страницава, а воедно и најновата.",
+	"approvedrevs-blankpageshown": "Нема одобрена преработка за страницава.",
+	"approvedrevs-noapprovedrevision": "Ова е најнова преработка на страницата; нема одобрена преработка.",
+	"approvedrevs-editwarning": "Имајте предвид дека сега ја уредувате најновата верзија на страницава, која не е одобрената што се прикажува по основно.",
+	"approvedrevs": "Одобрени преработки",
+	"approvedrevs-approvedpages": "Сите страници со одобрена преработка",
+	"approvedrevs-notlatestpages": "Страници чиишто одобрени преработки не се најновите",
+	"approvedrevs-unapprovedpages": "Неодобрени страници",
+	"approvedrevs-view": "Преглед:",
+	"approvedrevs-revisionnumber": "преработка $1",
+	"approvedrevs-approvedby": "одобрено од $1 на $2",
+	"approvedrevs-difffromlatest": "разл. од послед.",
+	"approvedrevs-approvelatest": "одобри најнова",
+	"approvedrevs-approvethisrev": "Одобри ја ревизијава.",
+	"approvedrevs-viewlatestrev": "Најнова преработка.",
+	"approvedrevs-approvedrevision": "Одобрена преработка",
+	"right-approverevisions": "Поставување на извесна преработка на викистраница како одобрена",
+	"right-viewlinktolatest": "Погледајте го образложението на врвот од страниците што имаат одобрена верзија"
+}

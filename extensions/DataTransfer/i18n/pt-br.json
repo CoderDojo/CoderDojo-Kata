@@ -1,0 +1,42 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardo.mps",
+			"Giro720",
+			"Jaideraf",
+			"555",
+			"Fabsouza1",
+			"Smmvinicius"
+		]
+	},
+	"datatransfer-desc": "Permite a importação e exportação de dados contidos em chamadas de predefinições",
+	"viewxml": "Ver XML",
+	"dt_viewxml_docu": "Selecione entre as categorias e espaços nominais a seguir para ver em formato XML.",
+	"dt_viewxml_categories": "Categorias",
+	"dt_viewxml_namespaces": "Namespaces",
+	"dt_viewxml_simplifiedformat": "Formato simplificado",
+	"dt_xml_namespace": "Namespace",
+	"dt_xml_pages": "Páginas",
+	"dt_xml_page": "Página",
+	"dt_xml_template": "Modelo",
+	"dt_xml_field": "Campo",
+	"dt_xml_name": "Name",
+	"dt_xml_title": "Title",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Free Text",
+	"importxml": "Importar XML",
+	"dt_import_selectfile": "Selecione o arquivo $1 para importar:",
+	"dt_import_encodingtype": "Codificação:",
+	"dt_import_forexisting": "Para páginas que já existem:",
+	"dt_import_overwriteexisting": "Sobrescrever o conteúdo existente",
+	"dt_import_mergeintoexisting": "Sobrescreva apenas campos contidos no arquivo",
+	"dt_import_skipexisting": "Pular",
+	"dt_import_appendtoexisting": "Adicionar ao conteúdo existente",
+	"dt_import_summarydesc": "Resumo da importação:",
+	"dt_import_editsummary": "Importação de $1",
+	"dt_import_importing": "Importando...",
+	"dt_import_success": "$1 {{PLURAL:$1|página será importada|páginas serão importadas}} do arquivo $2.",
+	"importcsv": "Importar CSV",
+	"dt_importcsv_badheader": "Erro: o cabeçalho da coluna $1, '$2', deve ser '$3', ou '$4' ou da forma 'nome_da_predefinição[nome_do_campo]'",
+	"right-datatransferimport": "Importar dados"
+}

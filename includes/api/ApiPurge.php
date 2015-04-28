@@ -25,73 +25,63 @@
  * @file
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	require_once( 'ApiBase.php' );
-}
-
 /**
  * API interface for page purging
  * @ingroup API
  */
 class ApiPurge extends ApiBase {
-
-	public function __construct( $main, $action ) {
-		parent::__construct( $main, $action );
-	}
+	private $mPageSet;
 
 	/**
 	 * Purges the cache of a page
 	 */
 	public function execute() {
-		global $wgUser;
 		$params = $this->extractRequestParams();
-		if ( !$wgUser->isAllowed( 'purge' ) && !$this->getMain()->isInternalMode() &&
-				!$this->getMain()->getRequest()->wasPosted() ) {
-			$this->dieUsageMsg( array( 'mustbeposted', $this->getModuleName() ) );
-		}
+
+		$this->getResult()->beginContinuation( $params['continue'], array(), array() );
 
 		$forceLinkUpdate = $params['forcelinkupdate'];
+		$forceRecursiveLinkUpdate = $params['forcerecursivelinkupdate'];
+		$pageSet = $this->getPageSet();
+		$pageSet->execute();
 
-		$result = array();
-		foreach ( $params['titles'] as $t ) {
+		$result = $pageSet->getInvalidTitlesAndRevisions();
+
+		foreach ( $pageSet->getGoodTitles() as $title ) {
 			$r = array();
-			$title = Title::newFromText( $t );
-			if ( !$title instanceof Title ) {
-				$r['title'] = $t;
-				$r['invalid'] = '';
-				$result[] = $r;
-				continue;
-			}
 			ApiQueryBase::addTitleInfo( $r, $title );
-			if ( !$title->exists() ) {
-				$r['missing'] = '';
-				$result[] = $r;
-				continue;
-			}
-			$context = $this->createContext();
-			$context->setTitle( $title );
-			$article = Article::newFromTitle( $title, $context );
-			$article->doPurge(); // Directly purge and skip the UI part of purge().
+			$page = WikiPage::factory( $title );
+			$page->doPurge(); // Directly purge and skip the UI part of purge().
 			$r['purged'] = '';
 
-			if( $forceLinkUpdate ) {
-				if ( !$wgUser->pingLimiter() ) {
-					global $wgParser, $wgEnableParserCache;
-					$popts = new ParserOptions();
-					$p_result = $wgParser->parse( $article->getContent(), $title, $popts );
+			if ( $forceLinkUpdate || $forceRecursiveLinkUpdate ) {
+				if ( !$this->getUser()->pingLimiter( 'linkpurge' ) ) {
+					$popts = $page->makeParserOptions( 'canonical' );
+
+					# Parse content; note that HTML generation is only needed if we want to cache the result.
+					$content = $page->getContent( Revision::RAW );
+					$enableParserCache = $this->getConfig()->get( 'EnableParserCache' );
+					$p_result = $content->getParserOutput(
+						$title,
+						$page->getLatest(),
+						$popts,
+						$enableParserCache
+					);
 
 					# Update the links tables
-					$u = new LinksUpdate( $title, $p_result );
-					$u->doUpdate();
+					$updates = $content->getSecondaryDataUpdates(
+						$title, null, $forceRecursiveLinkUpdate, $p_result );
+					DataUpdate::runUpdates( $updates );
 
 					$r['linkupdate'] = '';
 
-					if ( $wgEnableParserCache ) {
+					if ( $enableParserCache ) {
 						$pcache = ParserCache::singleton();
-						$pcache->save( $p_result, $article, $popts );
+						$pcache->save( $p_result, $page, $popts );
 					}
 				} else {
-					$this->setWarning( $this->parseMsg( array( 'actionthrottledtext' ) ) );
+					$error = $this->parseMsg( array( 'actionthrottledtext' ) );
+					$this->setWarning( $error['info'] );
 					$forceLinkUpdate = false;
 				}
 			}
@@ -101,27 +91,65 @@ class ApiPurge extends ApiBase {
 		$apiResult = $this->getResult();
 		$apiResult->setIndexedTagName( $result, 'page' );
 		$apiResult->addValue( null, $this->getModuleName(), $result );
+
+		$values = $pageSet->getNormalizedTitlesAsResult( $apiResult );
+		if ( $values ) {
+			$apiResult->addValue( null, 'normalized', $values );
+		}
+		$values = $pageSet->getConvertedTitlesAsResult( $apiResult );
+		if ( $values ) {
+			$apiResult->addValue( null, 'converted', $values );
+		}
+		$values = $pageSet->getRedirectTitlesAsResult( $apiResult );
+		if ( $values ) {
+			$apiResult->addValue( null, 'redirects', $values );
+		}
+
+		$apiResult->endContinuation();
+	}
+
+	/**
+	 * Get a cached instance of an ApiPageSet object
+	 * @return ApiPageSet
+	 */
+	private function getPageSet() {
+		if ( !isset( $this->mPageSet ) ) {
+			$this->mPageSet = new ApiPageSet( $this );
+		}
+
+		return $this->mPageSet;
 	}
 
 	public function isWriteMode() {
 		return true;
 	}
 
-	public function getAllowedParams() {
-		return array(
-			'titles' => array(
-				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_REQUIRED => true
-			),
+	public function mustBePosted() {
+		// Anonymous users are not allowed a non-POST request
+		return !$this->getUser()->isAllowed( 'purge' );
+	}
+
+	public function getAllowedParams( $flags = 0 ) {
+		$result = array(
 			'forcelinkupdate' => false,
+			'forcerecursivelinkupdate' => false,
+			'continue' => '',
 		);
+		if ( $flags ) {
+			$result += $this->getPageSet()->getFinalParams( $flags );
+		}
+
+		return $result;
 	}
 
 	public function getParamDescription() {
-		return array(
-			'titles' => 'A list of titles',
-			'forcelinkupdate' => 'Update the links tables',
-		);
+		return $this->getPageSet()->getFinalParamDescription()
+			+ array(
+				'forcelinkupdate' => 'Update the links tables',
+				'forcerecursivelinkupdate' => 'Update the links table, and update ' .
+					'the links tables for any page that uses this page as a template',
+				'continue' => 'When more results are available, use this to continue',
+			);
 	}
 
 	public function getDescription() {
@@ -130,23 +158,13 @@ class ApiPurge extends ApiBase {
 		);
 	}
 
-	public function getPossibleErrors() {
-		return array_merge( parent::getPossibleErrors(), array(
-			array( 'cantpurge' ),
-		) );
-	}
-
-	protected function getExamples() {
+	public function getExamples() {
 		return array(
-			'api.php?action=purge&titles=Main_Page|API'
+			'api.php?action=purge&titles=Main_Page|API' => 'Purge the "Main Page" and the "API" page',
 		);
 	}
 
 	public function getHelpUrls() {
 		return 'https://www.mediawiki.org/wiki/API:Purge';
-	}
-
-	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiPurge.php 104449 2011-11-28 15:52:04Z reedy $';
 	}
 }

@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mark85296341"
+		]
+	},
+	"semanticformsinputs-desc": "用於[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Semantic_Forms Semantic Forms]的附加輸入項類型",
+	"semanticformsinputs-wrongformat": "格式不正確。",
+	"semanticformsinputs-close": "關閉",
+	"semanticformsinputs-prev": "上一個",
+	"semanticformsinputs-next": "下一個",
+	"semanticformsinputs-today": "今天",
+	"semanticformsinputs-malformedregexp": "格式錯誤的正則表達式（$1）。",
+	"semanticformsinputs-datepicker-dateformat": "日期格式字符串。詳情請參見[https://www.mediawiki.org/w/index.php?title=Extension:Semantic_Forms_Inputs&fromsection=Date_picker#Parameters 在線文檔]。",
+	"semanticformsinputs-datepicker-weekstart": "一周的第一天（0-星期日，1-星期一 ……）。",
+	"semanticformsinputs-datepicker-firstdate": "可選擇的第一個日期（採用 dd/yyyy/mm 格式）。",
+	"semanticformsinputs-datepicker-lastdate": "可選擇的最後日期（採用 dd/yyyy/mm 格式）。",
+	"semanticformsinputs-datepicker-disabledaysofweek": "不可選擇的日子列表（比如，周末：6、 0）。",
+	"semanticformsinputs-datepicker-highlightdaysofweek": "應當高亮顯示的日子列表（比如，周末：6、 0）。",
+	"semanticformsinputs-datepicker-disabledates": "已禁用的逗號分隔型日期列表/日期範圍（日期採用yyyy/mm/dd格式，日期範圍採用yyyy/mm/dd-yyyy/mm/dd格式）。",
+	"semanticformsinputs-datepicker-highlightdates": "應當高亮顯示的逗號分隔型日期列表/日期範圍（日期採用yyyy/mm/dd格式，日期範圍採用yyyy/mm/dd-yyyy/mm/dd格式）。",
+	"semanticformsinputs-datepicker-showweeknumbers": "周數應當顯示在相應周的左側嗎？",
+	"semanticformsinputs-datepicker-enableinputfield": "用戶究竟應當能夠直接填寫輸入文本框，還是只能藉助於日期選取器？",
+	"semanticformsinputs-datepicker-showresetbutton": "是否應當顯示一個重置按鈕？如果禁止直接輸入，這將是用戶刪除輸入文本框的唯一方法。",
+	"semanticformsinputs-timepicker-mintime": "要顯示的最早時間。格式：hh:mm",
+	"semanticformsinputs-timepicker-maxtime": "要顯示的最晚時間。格式：hh:mm",
+	"semanticformsinputs-timepicker-interval": "分鐘之間的間隔。1 和 60 之間的數字。",
+	"semanticformsinputs-timepicker-enableinputfield": "用戶究竟應當能夠直接填寫輸入文本框，還是只能藉助於日期選取器？",
+	"semanticformsinputs-timepicker-showresetbutton": "是否應當顯示一個重置按鈕？如果禁止直接輸入，這將是用戶刪除輸入文本框的唯一方法。",
+	"semanticformsinputs-regexp-regexp": "輸入所必須匹配的正則表達式必須有效。給出時必須包括那些斜杠！默認值為\"/.*/\"，即任何取值。",
+	"semanticformsinputs-regexp-basetype": "所要使用的基本類型。可以是任何的輸入類型產生輸入、選擇（如文本框、 列表框、日期選取器）或別的類型的html表單元素。默認值為\"text\"。",
+	"semanticformsinputs-regexp-baseprefix": "基本類型參數的前綴。",
+	"semanticformsinputs-regexp-orchar": "正則表達式當中所要使用的邏輯或字符，而不是“|”。默認值為\"!\"。",
+	"semanticformsinputs-regexp-inverse": "如果加以設置，輸入要有效的話，不得與正則表達式相匹配。也就是說，正則表達式是倒轉的。",
+	"semanticformsinputs-regexp-message": "匹配失敗時所要顯示的錯誤信息。默認值為\"格式錯誤！\"（或者是當前區域的等效取值）。",
+	"semanticformsinputs-menuselect-structure": "作為無序列表的菜單結構。",
+	"semanticformsinputs-menuselect-enableinputfield": "用戶是否應該能夠直接填寫輸入文本框？"
+}

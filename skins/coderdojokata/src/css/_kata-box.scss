@@ -1,0 +1,13 @@
+@mixin kata-box() {
+	.kata-box {
+		margin-bottom: 2rem;
+		.kata-box-title {
+			background-color: $lightBg;
+			padding: 3rem 2% 1rem;
+		}
+		.kata-box-content {
+			background-color: $mediumBg;
+			padding: 3rem 2% 1rem;
+		}
+	}
+}

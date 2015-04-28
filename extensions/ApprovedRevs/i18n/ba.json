@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alfiya55",
+			"Assele",
+			"Comp1089",
+			"Haqmar",
+			"Sagan"
+		]
+	},
+	"approvedrevs-desc": "Биттең бер өлгөһөн раҫланған тип билдәләү",
+	"approvedrevs-logname": "Өлгөләрҙе раҫлау яҙмалары журналы",
+	"approvedrevs-logdesc": "Был — биттәрҙең раҫланған өлгөләре журналы.",
+	"approvedrevs-approve": "раҫларға",
+	"approvedrevs-unapprove": "раҫлауҙы алырға",
+	"approvedrevs-approvesuccess": "Биттең был өлгөһө раҫланған тип билдәләнде.",
+	"approvedrevs-unapprovesuccess": "Был биттең раҫланған өлгөһө юҡ.\nУның урынына һуңғы өлгө күрһәтеләсәк.",
+	"approvedrevs-unapprovesuccess2": "Был биттең башҡа раҫланған өлгөһө юҡ.\nУның урынына буш бит күрһәтеләсәк.",
+	"approvedrevs-approveaction": "$2 өлгөһөн \"[[$1]]\" битенең раҫланған өлгөһө тип билдәләргә",
+	"approvedrevs-unapproveaction": "\"[[$1]]\" битенең раҫланған өлгөһөнөң раҫланыуын алырға",
+	"approvedrevs-notlatest": "Был — биттең раҫланған өлгөһө. Яңыраҡ өлгөләр бар.",
+	"approvedrevs-approvedandlatest": "Был — биттең раҫланған өлгөһө, ул — шулай уҡ биттең яңы өлгөһө.",
+	"approvedrevs-blankpageshown": "Был бит өсөн раҫланған өлгөләр юҡ.",
+	"approvedrevs-noapprovedrevision": "Был ошо биттең һуңғы версияһы; уның раҫланған версияһы юҡ.",
+	"approvedrevs-editwarning": "Зинһар, иғтибар итегеҙ, һеҙ хәҙер был биттең һуңғы өлгөһөн мөхәррирләйһегеҙ, әммә ул күрһәтелмәй, сөнки ул раҫланмаған.",
+	"approvedrevs": "Раҫланған өлгөләр",
+	"approvedrevs-approvedpages": "Раҫланған верисиялары булған биттәр",
+	"approvedrevs-notlatestpages": "Был — биттең раҫланған өлгөһө. Яңыраҡ өлгөләр бар.",
+	"approvedrevs-unapprovedpages": "Раҫланмаған биттәр",
+	"approvedrevs-view": "Ҡарап сығыу:",
+	"approvedrevs-revisionnumber": "$1 өлгө",
+	"approvedrevs-approvedby": "$2 $1 тарафынан раҫланған",
+	"approvedrevs-difffromlatest": "һуңғы менән айырма",
+	"approvedrevs-approvelatest": "иң һуңғыһын раҫларға",
+	"approvedrevs-approvethisrev": "Был өлгөнө раҫларға.",
+	"approvedrevs-viewlatestrev": "Иң һуңғы өлгөнө ҡарау",
+	"right-approverevisions": "Вики-биттәрҙең ҡайһы бер өлгөләрен раҫланған тип билдәләү",
+	"right-viewlinktolatest": "Раҫланған өлгөләре булған биттәрҙең өҫкө өлөшөндә аңлатманы ҡарау"
+}

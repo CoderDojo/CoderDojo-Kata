@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sp5uhe"
+		]
+	},
+	"adminlinks": "Linki dla administratorów",
+	"adminlinks-desc": "Dodaje [[Special:AdminLinks|stronę specjalną]] z linkami użytecznymi dla administratorów",
+	"adminlinks_documentation": "Dokumentacja $1",
+	"adminlinks_general": "Ogólne",
+	"adminlinks_editsidebar": "Edycja menu bocznego",
+	"adminlinks_editcss": "Edycja pliku CSS",
+	"adminlinks_editmainpagename": "Zmiana nazwy strony głównej",
+	"adminlinks_users": "Użytkownicy",
+	"adminlinks_createuser": "Utwórz użytkownika",
+	"adminlinks_browsesearch": "Przeglądanie i wyszukiwanie",
+	"adminlinks_importexport": "Importowanie i eksportowanie",
+	"right-adminlinks": "Podgląd zawartości strony [[Special:AdminLinks|Linki dla administratorów]]"
+}

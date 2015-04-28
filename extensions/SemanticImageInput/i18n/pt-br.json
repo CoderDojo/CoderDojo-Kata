@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cainamarques",
+			"Jaideraf"
+		]
+	},
+	"sii-desc": "Adiciona uma entrada de imagem que copia as imagens da Wikipédia para um [https://www.mediawiki.org/wiki/Extension:Semantic_Forms formulário semântico]",
+	"sii-imageinput-loading": "Carregando imagem..."
+}

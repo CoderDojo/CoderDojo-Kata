@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras",
+			"Pastakhov",
+			"Александр Сигачёв"
+		]
+	},
+	"semanticinternalobjects-desc": "Установка внутренних объектов в Semantic MediaWiki",
+	"semanticinternalobjects-internalproperty": "Внутреннее свойство",
+	"semanticinternalobjects-mainpropertyname": "Имя свойства для подключения полей этого шаблона к остальной части страницы:",
+	"semanticinternalobjects-propnamewarning": "(должен использоваться, только если этот шаблон может иметь несколько экземпляров)"
+}

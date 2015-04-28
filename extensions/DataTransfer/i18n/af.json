@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Arnobarnard",
+			"Naudefj"
+		]
+	},
+	"datatransfer-desc": "Maak die laai en ontlaai van gestruktureerde gegewens in sjabloonaanroepe moontlik",
+	"viewxml": "Sien XML",
+	"dt_viewxml_docu": "Kies een van die volgende kategorieë en naamruimtes om in XML-formaat te sien.",
+	"dt_viewxml_categories": "Kategorieë",
+	"dt_viewxml_namespaces": "Naamruimtes",
+	"dt_viewxml_simplifiedformat": "Vereenvoudigde formaat",
+	"dt_xml_namespace": "Naamruimte",
+	"dt_xml_pages": "Bladsye",
+	"dt_xml_page": "Bladsy",
+	"dt_xml_template": "Sjabloon",
+	"dt_xml_field": "Veld",
+	"dt_xml_name": "Naam",
+	"dt_xml_title": "Titel",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Vrye teks",
+	"importxml": "Laai XML",
+	"dt_import_selectfile": "Kies die $1 lêer om te laai:",
+	"dt_import_encodingtype": "Enkoderingstipe:",
+	"dt_import_forexisting": "Vir bladsye wat reeds bestaan:",
+	"dt_import_overwriteexisting": "Oorskryf bestaande inhoud",
+	"dt_import_mergeintoexisting": "Oorskryf slegs velde wat in die lêer voorkom",
+	"dt_import_skipexisting": "Slaan oor",
+	"dt_import_appendtoexisting": "Voeg by bestaande inhoud",
+	"dt_import_summarydesc": "Samevatting van die import:",
+	"dt_import_editsummary": "$1-laai",
+	"dt_import_importing": "Besig om te laai...",
+	"dt_import_success": "$1 {{PLURAL:$1|bladsy|bladsye}} sal geskep word vanaf die lêer $2.",
+	"importcsv": "Laai CSV",
+	"dt_importcsv_badheader": "Fout: Die opskrif van kolom $1, \"$2\", moet \"$3\" of \"$4\" wees, of in die vorm \"sjabloonnaam[veldnaam]\" genoteer word.",
+	"right-datatransferimport": "Laai data"
+}

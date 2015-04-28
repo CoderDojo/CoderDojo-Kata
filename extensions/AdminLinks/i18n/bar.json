@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Man77",
+			"Mucalexx"
+		]
+	},
+	"adminlinks": "Links fyr Administraatorn",
+	"adminlinks-desc": "Ergänzd a [[Special:AdminLinks|Speziaalseiten]] mid hüfreiche Links fyr Administraatorn",
+	"adminlinks_documentation": "Dókumentazión voh „$1“",
+	"adminlinks_general": "Oigmoah",
+	"adminlinks_editsidebar": "dé Sidebar beorweiten",
+	"adminlinks_editcss": "CSS-Daatein beorweiten",
+	"adminlinks_editmainpagename": "an Nåm voh da Hauptseiten beorweiten",
+	"adminlinks_users": "Benutzer",
+	"adminlinks_createuser": "Benutzerkóntó erstön",
+	"adminlinks_browsesearch": "Durchschauh und suacher",
+	"adminlinks_importexport": "Importiern und Exportiern",
+	"right-adminlinks": "[[Special:AdminLinks|Links für Administraatoren]] hernemmer"
+}

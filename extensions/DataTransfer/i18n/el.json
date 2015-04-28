@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Consta",
+			"Crazymadlover",
+			"Glavkos",
+			"Omnipaedista",
+			"ZaDiak"
+		]
+	},
+	"viewxml": "Προβολή XML",
+	"dt_viewxml_categories": "Κατηγορίες",
+	"dt_viewxml_namespaces": "Περιοχές ονομάτων",
+	"dt_xml_namespace": "Ονοματοχώρος",
+	"dt_xml_pages": "Σελίδες",
+	"dt_xml_page": "Σελίδα",
+	"dt_xml_template": "Πρότυπο",
+	"dt_xml_field": "Πεδίο",
+	"dt_xml_name": "Όνομα",
+	"dt_xml_title": "Τίτλος",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Ελεύθερο Κείμενο",
+	"importxml": "Εισαγωγή σε XML",
+	"dt_import_encodingtype": "Τύπος κωδικοποίησης",
+	"dt_import_skipexisting": "Παράβλεψη",
+	"dt_import_editsummary": "Εισαγωγή $1",
+	"dt_import_importing": "Εισάγεται...",
+	"importcsv": "Εισαγωγή CSV",
+	"right-datatransferimport": "Εισαγωγή δεδομένων"
+}

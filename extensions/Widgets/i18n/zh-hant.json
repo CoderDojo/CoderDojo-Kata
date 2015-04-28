@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Anakmalaysia",
+			"Mark85296341",
+			"Yfdyh000"
+		]
+	},
+	"widgets-desc": "容許 wiki 管理員通過編輯 {{ns:widget}} 名子空間中加入自由形式的 widget 至 wiki 中。\n[http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org] 提供社群貢獻的 widget",
+	"widgets-error": "在 [[{{ns:widget}}:$1|widget $1]] 發生錯誤",
+	"group-widgeteditor": "Widget 編輯者",
+	"group-widgeteditor-member": "{{GENDER:$1|Widget 編輯者}}",
+	"grouppage-widgeteditor": "{{ns:project}}:Widget 編輯者",
+	"right-editwidgets": "建立並編輯 <tt>{{ns:widget}}</tt> 名子空間中的 [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Widgets Widgets]"
+}

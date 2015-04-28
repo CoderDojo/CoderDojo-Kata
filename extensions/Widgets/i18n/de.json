@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jan Luca",
+			"Kghbln",
+			"Pill",
+			"Sebastian Wallroth",
+			"The Evil IP address",
+			"Umherirrender"
+		]
+	},
+	"widgets-desc": "Ermöglicht das Hinzufügen von Widgets. Vorhandene Widgets werden auf der Website [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org] gesammelt",
+	"widgets-error": "Fehler beim [[{{ns:widget}}:$1|Widget $1]]",
+	"group-widgeteditor": "Widget-Bearbeiter",
+	"group-widgeteditor-member": "{{GENDER:$1|Widget-Bearbeiter|Widget-Bearbeiterin}}",
+	"grouppage-widgeteditor": "{{ns:project}}:Widget-Bearbeiter",
+	"right-editwidgets": "[https://www.mediawiki.org/wiki/Extension:Widgets Widgets] im <code>{{ns:widget}}</code>-Namensraum bearbeiten und erstellen"
+}

@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"semanticsignup": "Semantesch Aanmällde",
+	"ses-desc": "Ene Zohsaz för MediaWiki, dä op däm Zohsaz för semantesch Fomolaare opboud un et müjjelesch määt, enem neue Metmaacher sing Metmaachersigg tiräk beim Aanmälde met semantesche Daate ze fölle.",
+	"ses-nousername": "Et es kein Metmaachernaame aanjejovve.",
+	"ses-nopwdmatch": "Zweimohl et Paßwoot engerscheidlesch enjejovve.",
+	"ses-norealname": "Der ääschte Naame fählt. Dä moß ävver aanjejovve wääde.",
+	"ses-userexists": "Dä Metmaacher jidd_et ald!",
+	"ses-emailfailed": "En <i lang=\"en\">e-mail</i> zom Beschtääteje ze verschecke hät nit jeflupp.",
+	"ses-createforbidden": "Dä momäntan enjeloggte Metmaacher darf kein neue Metmaacher aanlääje.",
+	"ses-throttlehit": "De zohjelohße Aanzahl neue Metmaacher pro Daach för heh di <i lang=\"en\">IP</i>-Addräß es övverschredde."
+}

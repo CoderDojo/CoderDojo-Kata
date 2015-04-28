@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Milicevic01",
+			"Милан Јелисавчић"
+		]
+	},
+	"templatedata-doc-param-default": "Подразумевано",
+	"templatedata-doc-param-desc": "Опис",
+	"templatedata-doc-param-name": "Параметар",
+	"templatedata-doc-param-status": "Статус",
+	"templatedata-doc-param-type": "Врста",
+	"templatedata-doc-params": "Параметри шаблона",
+	"templatedata-invalid-missing": "Обавезно својство „$1“ није пронађено.",
+	"templatedata-invalid-parse": "Синтаксна грешка у JSON-у.",
+	"templatedata-invalid-type": "Својство „$1“ би требало да је од „$2“ врсте.",
+	"templatedata-invalid-unknown": "Неочекивано својство „$1“.",
+	"templatedata-invalid-value": "Неисправна вредност за својство „$1“.",
+	"templatedata-modal-button-delparam": "Уклони",
+	"templatedata-modal-table-param-default": "Подразумевано",
+	"templatedata-modal-table-param-type-date": "Датум",
+	"templatedata-modal-table-param-type-wiki-file-name": "Датотека",
+	"templatedata-modal-table-param-type-wiki-page-name": "Страница",
+	"templatedata-modal-table-param-type-wiki-user-name": "Корисник"
+}

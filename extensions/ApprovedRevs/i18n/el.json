@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aral",
+			"Glavkos",
+			"Περίεργος"
+		]
+	},
+	"approvedrevs-desc": "Καθορίζει μια ενιαία αναθεώρηση μιας σελίδας όπως έχει εγκριθεί",
+	"approvedrevs-logname": "Ημερολόγιο καταγραφής της αποδοχής των αναθεωρήσεων",
+	"approvedrevs-logdesc": "Αυτό είναι το ημερολόγιο των αναθεωρήσεων που έχουν εγκριθεί.",
+	"approvedrevs-approve": "έγκριση",
+	"approvedrevs-unapprove": "μη έγκριση",
+	"approvedrevs-approvesuccess": "Αυτή η αναθεώρηση της σελίδας έχει οριστεί ως η εγκεκριμένη έκδοση.",
+	"approvedrevs-unapprovesuccess": "Δεν υπάρχει πλέον μια εγκεκριμένη έκδοση για αυτή τη σελίδα.\nΣε αντικατάσταση, θα εμφανιστεί η πιο πρόσφατη αναθεώρηση.",
+	"approvedrevs-unapprovesuccess2": "Δεν υπάρχει πλέον εγκεκριμένη έκδοση για αυτή τη σελίδα.\nΑντί για αυτό, θα εμφανίζεται μια κενή σελίδα.",
+	"approvedrevs-approveaction": "Ορίστε  $2 ως την εγκεκριμένη αναθεώρηση για \"[[$1]]\"",
+	"approvedrevs-unapproveaction": "Ακυρώστε την εγκεκριμένη θεώρηση για [[$1]]",
+	"approvedrevs-notlatest": "Αυτή είναι η εγκεκριμένη αναθεώρηση αυτής της σελίδας· δεν είναι η πιο πρόσφατη.",
+	"approvedrevs-approvedandlatest": "Αυτή είναι η εγκεκριμένη αναθεώρηση αυτής της σελίδας, καθώς και η πιο πρόσφατη.",
+	"approvedrevs-blankpageshown": "Καμία αναθεώρηση δεν έχει εγκριθεί για αυτή τη σελίδα.",
+	"approvedrevs-editwarning": "Παρακαλώ λάβετε υπόχη σας ότι τώρα επεξεργάζεστε την τελευταία αναθεώρηση αυτή της σελίδας, η οποία δεν είναι η εγκεκριμένη να εμφανίζεται, από προεπιλογή.",
+	"approvedrevs": "Εγκεκριμένες αναθεωρήσεις",
+	"approvedrevs-approvedpages": "Όλες οι σελίδες με εγκεκριμένη αναθεώρηση",
+	"approvedrevs-notlatestpages": "Σελίδες των οποίων οι εγκεκριμένες αναθεωρήσεις δεν είναι οι πιο πρόσφατες",
+	"approvedrevs-unapprovedpages": "Μη εγκεκριμένες σελίδες",
+	"approvedrevs-view": "Προβολή",
+	"approvedrevs-revisionnumber": "αναθεώρηση $1",
+	"approvedrevs-approvedby": "εγκρίθηκε από $1 στη  $2",
+	"approvedrevs-difffromlatest": "diff από το τελευταίο",
+	"approvedrevs-approvelatest": "εγκρίνετε την πιο πρόσφατη",
+	"approvedrevs-approvethisrev": "Εγκρίνετε αυτή την αναθεώρηση.",
+	"approvedrevs-viewlatestrev": "Δείτε την πιο πρόσφατη αναθεώρηση.",
+	"right-approverevisions": "Ορίστε μια συγκεκριμένη αναθεώρηση μιας σελίδας wiki ως εγκεκριμένη",
+	"right-viewlinktolatest": "Προβολή επεξηγηματικού κειμένου στο επάνω μέρος των σελίδων που έχουν εγκεκριμένη αναθεώρηση"
+}

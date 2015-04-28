@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Meno25",
+			"OsamaK"
+		]
+	},
+	"adminlinks": "وصلات الإداريين",
+	"adminlinks-desc": "يضيف [[Special:AdminLinks|صفحة خاصة]] تحتوي وصلات مفيدة للإداريين.",
+	"adminlinks_documentation": "توثيق $1",
+	"adminlinks_general": "عام",
+	"adminlinks_editsidebar": "حرّر الشريط الجانبي",
+	"adminlinks_editcss": "حرّر ملف CSS",
+	"adminlinks_editmainpagename": "عدّل اسم الصفحة الرئيسية",
+	"adminlinks_users": "مستخدمون",
+	"adminlinks_createuser": "أنشئ مستخدمًا",
+	"adminlinks_browsesearch": "التصفح والبحث",
+	"adminlinks_importexport": "الاستيراد والتصدير",
+	"right-adminlinks": "انظر الوصلة إلى [[Special:AdminLinks|وصلات الإدارة]]"
+}

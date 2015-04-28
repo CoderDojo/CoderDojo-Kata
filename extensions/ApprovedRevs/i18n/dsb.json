@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Michawiki"
+		]
+	},
+	"approvedrevs-desc": "Wěstu wersiju boka ako pśizwólonu nastajiś",
+	"approvedrevs-logname": "Protokol pśizwólonych wersijow",
+	"approvedrevs-logdesc": "To jo protokol wersijow, kótarež su se pśizwólili.",
+	"approvedrevs-approve": "pśizwóliś",
+	"approvedrevs-unapprove": "zakazaś",
+	"approvedrevs-approvesuccess": "Toś ta wersija boka jo se ako pśizwólona wersija nastajiła.",
+	"approvedrevs-unapprovesuccess": "Njejo wěcej pśizwólona wersija za toś ten bok.\nMěsto togo nejnowša wersija se pokažo.",
+	"approvedrevs-unapprovesuccess2": "Njejo wěcej wobkšuśona wersija za toś ten bok.\nMěsto togo prozna wersija se pokažo.",
+	"approvedrevs-approveaction": "$2 ako pśizwólonu wersiju za \"[[$1]]\" nastajiś",
+	"approvedrevs-unapproveaction": "Pśizwólonu wersiju za \"[[$1]]\" anulěrowaś",
+	"approvedrevs-notlatest": "To jo pśizwólona wersija toś togo boka; njejo nejnowša.",
+	"approvedrevs-approvedandlatest": "To jo pśizwólona wersija toś togo boka a teke nejnowša.",
+	"approvedrevs-blankpageshown": "Za toś ten bok njejo se žedna wersija wobkšuśiła.",
+	"approvedrevs-noapprovedrevision": "To jo nejnowša wersija toś togo boka; njama wobkšuśonu wersiju.",
+	"approvedrevs-editwarning": "Pšosym źiwaj na to, až wobźěłujoš něnto nejnowšu wersiju toś togo boka, kótaraž njejo wobkšuśona, kotraž so pó standarźe pokazujo.",
+	"approvedrevs": "Wobkšuśone wersije",
+	"approvedrevs-approvedpages": "Wšykne boki z pśizwóloneju wersiju",
+	"approvedrevs-notlatestpages": "Boki, kótarychž pśizwólona wersija jo nejnowša",
+	"approvedrevs-unapprovedpages": "Njewobkšuśone boki",
+	"approvedrevs-view": "Naglěd:",
+	"approvedrevs-revisionnumber": "wersija $1",
+	"approvedrevs-approvedby": "wót $1 dnja $2 wobkšuśona",
+	"approvedrevs-difffromlatest": "Rozdźěl k nejnowšej wersiji",
+	"approvedrevs-approvelatest": "nejnowšu wersiju wobkšuśiś",
+	"approvedrevs-approvethisrev": "Toś tu wersiju wobkšuśiś.",
+	"approvedrevs-viewlatestrev": "Nejnowšu wersiju pokazaś.",
+	"right-approverevisions": "Wěstu wersiju wikiboka ako pśizwólonu nastajiś",
+	"right-viewlinktolatest": "Tekst wujasnjenja górjejce na bokach pokazaś, kótarež maju pśizwólonu wersiju"
+}

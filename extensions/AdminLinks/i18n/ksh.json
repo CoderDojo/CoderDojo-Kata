@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"adminlinks": "Lengks för Wiki-Köbesse",
+	"adminlinks-desc": "Deiht en [[Special:AdminLinks|Söndersigg]] en et Wiki met extra Lengks för Wiki-Köbesse.",
+	"adminlinks_documentation": "De Dokkemäntazjuhn vum $1",
+	"adminlinks_general": "Alljemein",
+	"adminlinks_editsidebar": "<code lang=\"en\">sidebar</code> Ändere",
+	"adminlinks_editcss": "<i lang=\"en\">CSS</i>-Datei ändere",
+	"adminlinks_editmainpagename": "Dä Houpsigk iere Name ändere",
+	"adminlinks_users": "Metmaacher",
+	"adminlinks_createuser": "Donn ene neuje Metmaacher aanlääje",
+	"adminlinks_browsesearch": "Bläddere un Söhke",
+	"adminlinks_importexport": "Empoteere un Äxpoteere",
+	"right-adminlinks": "Dä Lengk op de Sigg met [[Special:AdminLinks|Lengks för Köbeße]] jezeijsch krijje"
+}

@@ -1,6 +1,6 @@
 <?php
 /**
- * Communications protocol...
+ * Communications protocol.
  * This is used by dumpTextPass.php when the --spawn option is present.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -18,28 +18,34 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
+ * @file
  * @ingroup Maintenance
  */
 
-require_once( dirname( __FILE__ ) . '/Maintenance.php' );
+require_once __DIR__ . '/Maintenance.php';
 
+/**
+ * Maintenance script used to fetch page text in a subprocess.
+ *
+ * @ingroup Maintenance
+ */
 class FetchText extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Fetch the revision text from an old_id";
 	}
 
-	/*
+	/**
 	 * returns a string containing the following in order:
-	 *	 textid
-	 *	 \n
-	 *	 length of text (-1 on error = failure to retrieve/unserialize/gunzip/etc)
-	 *	 \n
-	 *	 text  (may be empty)
+	 *   textid
+	 *   \n
+	 *   length of text (-1 on error = failure to retrieve/unserialize/gunzip/etc)
+	 *   \n
+	 *   text  (may be empty)
 	 *
 	 * note that that the text string itself is *not* followed by newline
 	 */
-	 public function execute() {
+	public function execute() {
 		$db = wfGetDB( DB_SLAVE );
 		$stdin = $this->getStdin();
 		while ( !feof( $stdin ) ) {
@@ -50,12 +56,11 @@ class FetchText extends Maintenance {
 			}
 			$textId = intval( $line );
 			$text = $this->doGetText( $db, $textId );
-			if ($text === false) {
+			if ( $text === false ) {
 				# actual error, not zero-length text
 				$textLen = "-1";
-			}
-			else {
-				$textLen = strlen($text);
+			} else {
+				$textLen = strlen( $text );
 			}
 			$this->output( $textId . "\n" . $textLen . "\n" . $text );
 		}
@@ -63,9 +68,9 @@ class FetchText extends Maintenance {
 
 	/**
 	 * May throw a database error if, say, the server dies during query.
-	 * @param $db DatabaseBase object
-	 * @param $id int The old_id
-	 * @return String
+	 * @param DatabaseBase $db
+	 * @param int $id The old_id
+	 * @return string
 	 */
 	private function doGetText( $db, $id ) {
 		$id = intval( $id );
@@ -77,9 +82,10 @@ class FetchText extends Maintenance {
 		if ( $text === false ) {
 			return false;
 		}
+
 		return $text;
 	}
 }
 
 $maintClass = "FetchText";
-require_once( RUN_MAINTENANCE_IF_MAIN );
+require_once RUN_MAINTENANCE_IF_MAIN;

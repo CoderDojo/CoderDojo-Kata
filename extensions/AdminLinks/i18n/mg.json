@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jagwar"
+		]
+	},
+	"adminlinks": "rohy ny fandrindràna",
+	"adminlinks-desc": "Manampy [[Special:AdminLinks|special page]] misy ny rohy ilain'ny mpandrindra",
+	"adminlinks_documentation": "fanoroan'ny $1",
+	"adminlinks_general": "ankabiazany/jeneraly",
+	"adminlinks_editsidebar": "ovay ny bara sisiny",
+	"adminlinks_editcss": "Hanova ny rakitra CSS",
+	"adminlinks_editmainpagename": "ovay ny anaran'ny pejy fandraisana",
+	"adminlinks_users": "mpikambana",
+	"adminlinks_createuser": "hamorona mpikambana",
+	"adminlinks_browsesearch": "Fikarohana sy fitadiavina",
+	"adminlinks_importexport": "hampiditra sy hamoaka",
+	"right-adminlinks": "Hijery ny rohy any amin'ny [[Special:AdminLinks|rohy ampiasain'ny mpandrindra]]"
+}

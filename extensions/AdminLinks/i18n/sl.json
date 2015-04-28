@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dbc334"
+		]
+	},
+	"adminlinks": "Skrbniške povezave",
+	"adminlinks-desc": "Doda [[Special:AdminLinks|posebno stran]], ki vsebuje uporabne povezave za administratorje",
+	"adminlinks_documentation": "Dokumentacija $1",
+	"adminlinks_general": "Splošno",
+	"adminlinks_editsidebar": "Uredi stransko vrstico",
+	"adminlinks_editcss": "Uredi datoteko CSS",
+	"adminlinks_editmainpagename": "Uredi ime glavne strani",
+	"adminlinks_users": "Uporabniki",
+	"adminlinks_createuser": "Ustvari uporabnika",
+	"adminlinks_browsesearch": "Brskanje in iskanje",
+	"adminlinks_importexport": "Uvoz in izvoz",
+	"right-adminlinks": "Ogled povezav na [[Special:AdminLinks|Skrbniških povezavah]]"
+}

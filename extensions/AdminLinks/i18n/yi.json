@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"פוילישער"
+		]
+	},
+	"adminlinks": "סיסאפ לינקען",
+	"adminlinks-desc": "לייגט צו א [[Special:AdminLinks|באזונדערן בלאט]] מיט העלפיקע לינקען פאר סיסאפן",
+	"adminlinks_documentation": "$1 דאָקומענטאַציע",
+	"adminlinks_general": "אַלגעמיין",
+	"adminlinks_editsidebar": "רעדאַקטירן זײַטפאַס",
+	"adminlinks_editcss": "רעדאַקטירן CSS טעקע",
+	"adminlinks_editmainpagename": "רעדאַקטירן נאָמען פֿון הויפּט בלאַט",
+	"adminlinks_users": "באַניצער",
+	"adminlinks_createuser": "שאַפֿן אַ באַניצער",
+	"adminlinks_browsesearch": "בלעטערן און זוכן",
+	"adminlinks_importexport": "אימפארט און עקספארט",
+	"right-adminlinks": "זען לינק צו [[Special:AdminLinks|סיסאפן לינקען]]"
+}

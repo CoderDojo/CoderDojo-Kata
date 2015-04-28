@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"An13sa",
+			"Subi"
+		]
+	},
+	"adminlinks": "Administratzaile loturak",
+	"adminlinks_documentation": "$1 dokumentazioa",
+	"adminlinks_general": "Orokorra",
+	"adminlinks_editsidebar": "Ezkerreko barra aldatu",
+	"adminlinks_editcss": "CSS fitxategia aldatu",
+	"adminlinks_editmainpagename": "Azalaren izena aldatu",
+	"adminlinks_users": "Erabiltzaileak",
+	"adminlinks_createuser": "Lankidea sortu",
+	"adminlinks_browsesearch": "Arakatu eta bilatu",
+	"adminlinks_importexport": "Inportatu eta esportatu"
+}

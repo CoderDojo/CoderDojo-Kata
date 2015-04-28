@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Singhalawap",
+			"පසිඳු කාවින්ද"
+		]
+	},
+	"specialpages-group-sd_group": "අර්ථ විචාර විදුම්බූව",
+	"browsedata": "දත්ත විමසන්න",
+	"sd_browsedata_choosecategory": "ප්‍රවර්ගයක් තෝරාගන්න",
+	"sd_browsedata_viewcategory": "ප්‍රවර්ගය නරඹන්න",
+	"sd_browsedata_subcategory": "උපප්‍රවර්ගය",
+	"sd_browsedata_other": "වෙනත්",
+	"sd_browsedata_none": "කිසිවක් නොමැත",
+	"sd_browsedata_filterbyvalue": "මෙම අගය මත පෙරන්න",
+	"sd_browsedata_filterbysubcategory": "මෙම උපප්‍රවර්ගය මත පෙරන්න",
+	"sd_browsedata_or": "හෝ",
+	"sd_browsedata_removefilter": "මෙම පෙරහන ඉවත් කරන්න",
+	"sd_browsedata_removesubcategoryfilter": "මෙම උපප්‍රවර්ග පෙරහන ඉවත් කරන්න",
+	"sd_browsedata_resetfilters": "පෙරහන් නැවත සකසන්න",
+	"sd_browsedata_daterangestart": "ඇරඹුම:",
+	"sd_browsedata_daterangeend": "අවසානය:",
+	"sd_browsedata_novalues": "මෙම පෙරහන සඳහා අගයන් කිසිවක් නැත",
+	"filters": "පෙරහන්",
+	"sd_filters_docu": "{{SITENAME}} හී පහත පෙරහන් පවතී:",
+	"sd_formcreate": "ෆෝමය සමග තනන්න",
+	"sd_viewform": "ෆෝමය (form)බලන්න",
+	"createfilter": "පෙරහනක් තනන්න",
+	"sd-createfilter-with-name": "පෙරහන තනන්න: $1",
+	"sd_createfilter_name": "නම:",
+	"sd_createfilter_property": "මෙම පෙරහන ආරක්ෂා කරන වත්කම:",
+	"sd_createfilter_usecategoryvalues": "පෙරහන සඳහා අගයන් මෙම ප්‍රවර්ගයෙන් ලබා ගන්න:",
+	"sd_createfilter_label": "මෙම පෙරහන සඳහා ලේබලය (වෛකල්පික):",
+	"sd_blank_error": "හිස් නොවිය යුතුය",
+	"sd-pageschemas-filter": "පෙරහන",
+	"sd-pageschemas-values": "අගයන්",
+	"sd_filter_haslabel": "එය සතුව $1 ලේබලය ඇත."
+}

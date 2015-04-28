@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kolega2357"
+		]
+	},
+	"adminlinks": "Administratorski linkovi",
+	"adminlinks_users": "Korisnici",
+	"adminlinks_createuser": "Kreiraj novog korisnika",
+	"adminlinks_importexport": "Uvezi i izvezi"
+}

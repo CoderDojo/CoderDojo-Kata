@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"EugeneZelenko",
+			"Purodha",
+			"Shirayuki"
+		]
+	},
+	"headertabs-desc": "{{desc|name=Header Tabs|url=http://www.mediawiki.org/wiki/Extension:Header_Tabs}}",
+	"headertabs-edittab": "{{Identical|Edit}}",
+	"headertabs-edittab-hint": "This is about a tab being edited."
+}

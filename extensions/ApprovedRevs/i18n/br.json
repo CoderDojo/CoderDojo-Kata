@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fulup",
+			"Y-M D",
+			"Fohanno"
+		]
+	},
+	"approvedrevs-desc": "Na verkañ nemet un adweladenn eus ur bajenn evel aprouet",
+	"approvedrevs-logname": "Marilh aprouadennoù an adweladennoù",
+	"approvedrevs-logdesc": "Hemañ eo Marilh an adweladennoù bet aprouet.",
+	"approvedrevs-approve": "aprouiñ",
+	"approvedrevs-unapprove": "dizaprouiñ",
+	"approvedrevs-approvesuccess": "An adweladenn-mañ eus ar bajenn eo zo bet merket evel ar stumm aprouet.",
+	"approvedrevs-unapprovesuccess": "N'eus stumm aprouet ebet ken eus ar bajenn-mañ.\nEn e lec'h e vo lakaet an adweladenn nevesañ.",
+	"approvedrevs-unapprovesuccess2": "N'eus stumm aprouet ebet ken eus ar bajenn-mañ.\nEn e lec'h e vo lakaet ur bajenn wenn.",
+	"approvedrevs-approveaction": "en deus merket $2 evel adweladenn aprouet \"[[$1]]\"",
+	"approvedrevs-unapproveaction": "en deus nullet merkadur un adweladenn aprouet evit \"[[$1]]\"",
+	"approvedrevs-notlatest": "Homañ eo an adweladenn aprouet evit ar bajenn-mañ; n'eo ket ar stumm nevesañ.",
+	"approvedrevs-approvedandlatest": "Homañ eo an adweladenn aprouet evit ar bajenn-mañ; bez' eo ivez ar stumm nevesañ.",
+	"approvedrevs-blankpageshown": "N'eus bet aprouet adweladenn ebet evit ar bajenn-mañ.",
+	"approvedrevs-editwarning": "Taolit evezh emaoc'h o tegas kemmoù e stumm diwezhañ ar bajenn-mañ; n'eo ket hemañ ar stumm aprouet zo lakaet war wel dre ziouer.",
+	"approvedrevs": "Adweladennoù degemeret",
+	"approvedrevs-approvedpages": "An holl bajennoù bet aprouet",
+	"approvedrevs-notlatestpages": "Pajennoù n'eo ket an adweladennoù aprouet evito ar stumm nevesañ anezho.",
+	"approvedrevs-unapprovedpages": "Pajennoù n'int ket bet aprouet",
+	"approvedrevs-view": "Gwelet :",
+	"approvedrevs-revisionnumber": "Adweladenn $1",
+	"approvedrevs-approvedby": "aprouet gant $1 d'an $2",
+	"approvedrevs-difffromlatest": "diforc'h e-keñver ar stumm a-vremañ",
+	"approvedrevs-approvelatest": "Aprouiñ an hini diwezhañ",
+	"approvedrevs-approvethisrev": "Aprouiñ an adweladenn-mañ.",
+	"approvedrevs-viewlatestrev": "Gwelet an adweladenn ziwezhañ.",
+	"approvedrevs-approvedrevision": "Adweladenn aprouet",
+	"right-approverevisions": "Merkañ un adweladenn bennak eus ur bajenn wiki evel aprouet",
+	"right-viewlinktolatest": "Gwelet an destenn displegañ e penn uhelañ ar pajennoù zo bet aprouet un adweladenn anezho"
+}

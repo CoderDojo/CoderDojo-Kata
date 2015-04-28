@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Meno25",
+			"Mutarjem horr",
+			"OsamaK"
+		]
+	},
+	"datatransfer-desc": "يسمح باستيراد وتصدير بيانات محتواة في استدعاءات قالب",
+	"viewxml": "عرض XML",
+	"dt_viewxml_docu": "من فضلك اختر من بين التصنيفات والنطاقات التالية للعرض في صيغة XML.",
+	"dt_viewxml_categories": "تصنيفات",
+	"dt_viewxml_namespaces": "نطاقات",
+	"dt_viewxml_simplifiedformat": "صيغة مبسطة",
+	"dt_xml_namespace": "نطاق",
+	"dt_xml_pages": "صفحات",
+	"dt_xml_page": "الصفحة",
+	"dt_xml_template": "قالب",
+	"dt_xml_field": "حقل",
+	"dt_xml_name": "الاسم",
+	"dt_xml_title": "عنوان",
+	"dt_xml_id": "رقم",
+	"dt_xml_freetext": "نص حر",
+	"importxml": "استيراد XML",
+	"dt_import_selectfile": "من فضلك اختر ملف $1 للاستيراد:",
+	"dt_import_encodingtype": "نوع الترميز:",
+	"dt_import_forexisting": "لصفحات موجودة مسبقاّ :",
+	"dt_import_overwriteexisting": "أكتب على المحتوى الموجود",
+	"dt_import_skipexisting": "أقفز",
+	"dt_import_appendtoexisting": "إلحاق بالمحتوى الموجود",
+	"dt_import_summarydesc": "موجز الاستيراد :",
+	"dt_import_editsummary": "استيراد $1",
+	"dt_import_importing": "جاري الاستيراد...",
+	"dt_import_success": "سوف تُنشأ {{PLURAL:$1||صفحة واحدة|صفحتين|$1 صفحات|$1 صفحة}} من ملف $2.",
+	"importcsv": "استورد CSV",
+	"dt_importcsv_badheader": "خطأ: عنوان العامود $1، '$2'، يجب أن يكون إما '$3'، '$4' أو من الصيغة 'template_name[field_name]'",
+	"right-datatransferimport": "استورد بيانات"
+}

@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tocaibon"
+		]
+	},
+	"adminlinks": "Leams Admin",
+	"adminlinks-desc": "Zonte une [[Special:AdminLinks|pagjne speciâl]] cui leams pai aministratôrs",
+	"adminlinks_documentation": "$1 documentasion",
+	"adminlinks_general": "Gjenerâl",
+	"adminlinks_editsidebar": "Modifiche la bare laterâl",
+	"adminlinks_editcss": "Cambie il file CSS",
+	"adminlinks_editmainpagename": "Cambie il non de pagjne principâl",
+	"adminlinks_users": "Utens",
+	"adminlinks_createuser": "Cree un account",
+	"adminlinks_browsesearch": "Mostre e cîr",
+	"adminlinks_importexport": "Impuarte e espuarte",
+	"right-adminlinks": "Mostre il leam al [[Special:AdminLinks|panel dal Admin]]"
+}

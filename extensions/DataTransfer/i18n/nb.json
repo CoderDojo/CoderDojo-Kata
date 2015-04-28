@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Event",
+			"Nghtwlkr"
+		]
+	},
+	"datatransfer-desc": "Gjør det mulig å importere og eksportere data som finnes i maloppkallinger",
+	"viewxml": "Se XML",
+	"dt_viewxml_docu": "Velg blant følgende kategorier og navnerom for å se dem i XML-format",
+	"dt_viewxml_categories": "Kategorier",
+	"dt_viewxml_namespaces": "Navnerom",
+	"dt_viewxml_simplifiedformat": "Forenklet format",
+	"dt_xml_namespace": "Navnerom",
+	"dt_xml_pages": "Sider",
+	"dt_xml_page": "Side",
+	"dt_xml_template": "Mal",
+	"dt_xml_field": "Felt",
+	"dt_xml_name": "Navn",
+	"dt_xml_title": "Tittel",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Fritekst",
+	"importxml": "Importer XML",
+	"dt_import_selectfile": "Vennligst velg $1-filen som skal importeres:",
+	"dt_import_encodingtype": "Tegnkodingstype:",
+	"dt_import_forexisting": "For sider som allerede finnes:",
+	"dt_import_overwriteexisting": "Skriv over eksisterende innhold",
+	"dt_import_mergeintoexisting": "Overskriv bare felter som inngår i filen",
+	"dt_import_skipexisting": "Hopp over",
+	"dt_import_appendtoexisting": "Tilføy til eksisterende innhold",
+	"dt_import_summarydesc": "Importsammendrag:",
+	"dt_import_editsummary": "$1-importering",
+	"dt_import_importing": "Importerer...",
+	"dt_import_success": "{{PLURAL:$1|Én side|$1 sider}} vil bli importert fra $2-filen.",
+	"importcsv": "Importer CSV",
+	"dt_importcsv_badheader": "Feil: kolonneoverskriften $1, '$2', må være enten '$3', '$4' eller på formen 'malnavn[feltnavn]'",
+	"right-datatransferimport": "Importer data"
+}

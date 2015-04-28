@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"semanticformsinputs-desc": "Tipes d'entradas adicionalas per [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Semantic_Forms Formularis semantics]",
+	"semanticformsinputs-wrongformat": "Format erronèu.",
+	"semanticformsinputs-close": "Tampar",
+	"semanticformsinputs-prev": "Precedent",
+	"semanticformsinputs-next": "Seguent",
+	"semanticformsinputs-today": "Uèi",
+	"semanticformsinputs-malformedregexp": "Expression regulara mal formada ($1).",
+	"semanticformsinputs-datepicker-dateformat": "La cadena de format de data. Vejatz la [https://www.mediawiki.org/w/index.php?title=Extension:Semantic_Forms_Inputs&fromsection=Date_picker#Parameters documentacion en linha] per mai d'informacion.",
+	"semanticformsinputs-datepicker-weekstart": "Lo primièr jorn de la setmana (0 - dimenge, 1 - diluns, ...).",
+	"semanticformsinputs-datepicker-firstdate": "La primièra data que pòt èsser causida (al format aaaa/mm/jj).",
+	"semanticformsinputs-datepicker-lastdate": "La darrièra data que pòt èsser causida (al format aaaa/mm/jj).",
+	"semanticformsinputs-datepicker-disabledaysofweek": "Una lista de jorns que pòdon pas èsser seleccionats (per ex. week-end: 6, 0).",
+	"semanticformsinputs-datepicker-highlightdaysofweek": "Una lista de jorns que devon aparéisser en susbrilhança (per ex. week-end: 6, 0).",
+	"semanticformsinputs-datepicker-disabledates": "Una lista separada per de virgulas de plajas de data o datas desactivadas (datas al format aaaa/mm/jj, plajas al format aaaa/mm/jj-aaaa/mm/jj).",
+	"semanticformsinputs-datepicker-highlightdates": "Una lista separada per de virgulas de plajas de data o datas desactivadas (datas al format aaaa/mm/jj, plajas al format aaaa/mm/jj-aaaa/mm/jj).",
+	"semanticformsinputs-datepicker-showweeknumbers": "Los numèros de setmana devon èsser afichats a esquèrra de la setmana ?",
+	"semanticformsinputs-datepicker-enableinputfield": "L'utilizaire deu poder emplenar lo camp d'entrada dirèctament o solament per l'intermediari del selector de datas ?",
+	"semanticformsinputs-datepicker-showresetbutton": "Cal afichar un boton de reïnicializacion ? Es lo sol biais per l'utilizaire d'escafar lo camp d'entrada s'es desactivat per la picada dirècta.",
+	"semanticformsinputs-timepicker-mintime": "Lo primièr orari d'afichar. Format : hh:mm",
+	"semanticformsinputs-timepicker-maxtime": "Lo darrièr orari d'afichar. Format : hh:mm",
+	"semanticformsinputs-timepicker-interval": "Interval entre las minutas. Nombre entre 1 e 60.",
+	"semanticformsinputs-timepicker-enableinputfield": "L'utilizaire deu poder emplenar lo camp d'entrada dirèctament o solament per l'intermediari del selector de datas ?",
+	"semanticformsinputs-timepicker-showresetbutton": "Cal afichar un boton de reïnicializacion ? Es lo sol biais per l'utilizaire d'escafar lo camp d'entrada s'es desactivat per la picada dirècta.",
+	"semanticformsinputs-regexp-regexp": "L'expression regulara que l'entrada deu respectar per èsser valida. Aquò deu comprene las barras oblicas ! Per defaut, \"/.*/\", es a dire quina valor que siá.",
+	"semanticformsinputs-regexp-basetype": "Lo tipe de basa d'utilizar. Pòt èsser quina tipe d'entrada que siá que genèra un element de formulari html de tipe input o select (per ex., tèxte, lista desenrotlanta, selector de data) o una autra expression regulara. Per defaut, \"tèxte\".",
+	"semanticformsinputs-regexp-baseprefix": "Prefix pels paramètres del tipe de basa.",
+	"semanticformsinputs-regexp-orchar": "Lo caractèr O d'utilizar dins l'expression regulara al luòc de |. Per defaut, \"!\"",
+	"semanticformsinputs-regexp-inverse": "S'es activat, l'entrada deu PAS correspondre a l'expression regulara per èsser valida. Es a dire que l'expression regulara es inversada.",
+	"semanticformsinputs-regexp-message": "Lo messatge d'error d'afichar se la correspondéncia fracassa. Per defaut, «Format incorrècte !» (o l'equivalent dins la lenga locala)",
+	"semanticformsinputs-menuselect-structure": "L'estructura del menú jos la forma de lista pas ordenada.",
+	"semanticformsinputs-menuselect-enableinputfield": "L'utilizaire deu poder emplenar lo camp d'entrada dirèctament?"
+}

@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Objectivesea",
+			"Yekrats"
+		]
+	},
+	"approvedrevs-desc": "Marki solan revizion de paĝo kiel aprobita",
+	"approvedrevs-logname": "Protokolo pri aprobado de revizioj",
+	"approvedrevs-logdesc": "Jen protokolo de revizioj aprobitaj.",
+	"approvedrevs-approve": "aprobi",
+	"approvedrevs-unapprove": "malaprobi",
+	"approvedrevs-approvesuccess": "Ĉi tiu revizio de la paĝo estis aprobita kiel la aprobita versio.",
+	"approvedrevs-unapprovesuccess": "Ne plu estas aprobita versio por ĉi tiu paĝo.\nAnstataŭe, la plej lasta revizio estos montrita.",
+	"approvedrevs-unapprovesuccess2": "Ne plu estas aprobita verzio de ĉi tiu paĝo.\nAnstataŭe, nula paĝo estos montrita.",
+	"approvedrevs-approveaction": "Establi $2 kiel la aprobita revizio por \"[[$1]]\"",
+	"approvedrevs-unapproveaction": "malestabli apbrobitan revizion por \"[[$1]]\"",
+	"approvedrevs-notlatest": "Jen la aprobita revizio de ĉi tiu paĝo; ĝi ne estas la plej lastatempa.",
+	"approvedrevs-approvedandlatest": "Jen la aprobita revizio de ĉi tiu paĝo, kaj ankaŭ estis la plej lastatempa.",
+	"approvedrevs-blankpageshown": "Neniu revizio estis aprobita por ĉi tiu paĝo.",
+	"approvedrevs-editwarning": "Bonvolu noti ke vi nun redaktas la lastan revizion de ĉi tiu paĝo, kiu ne estas la aprobita revizio montrita defaŭlte.",
+	"approvedrevs": "Aprobitaj revizioj",
+	"approvedrevs-approvedpages": "Ĉiujn pagojn kun aprobitaj revizioj",
+	"approvedrevs-notlatestpages": "Paĝoj kies aprobita revizio ne estas la plej lasta.",
+	"approvedrevs-unapprovedpages": "Malaprobitaj paĝoj",
+	"approvedrevs-view": "Vidi:",
+	"approvedrevs-revisionnumber": "revizio $1",
+	"approvedrevs-approvedby": "aprobita de $1 je $2",
+	"approvedrevs-difffromlatest": "Diferenco de la lasta revizio",
+	"approvedrevs-approvelatest": "aprobi lastan revizion",
+	"approvedrevs-approvethisrev": "Aprobi ĉi tiun revizion.",
+	"approvedrevs-viewlatestrev": "Vidi la plej lastan revizion.",
+	"right-approverevisions": "Marki certan revizion de vikipaĝo kiel aprobita",
+	"right-viewlinktolatest": "Vidi eksplikantan tekston ĉe la paĝo-kapo kiu havas aprobitan revizion"
+}

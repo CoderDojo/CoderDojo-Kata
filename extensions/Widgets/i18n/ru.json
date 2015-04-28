@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"G0rn",
+			"Okras",
+			"Александр Сигачёв"
+		]
+	},
+	"widgets-desc": "Позволяет администраторам вики добавлять различные виджеты, посредством редактирования страниц пространства имён {{ns:widget}}. Поддерживаемые сообществом виджеты можно найти на [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org].",
+	"widgets-error": "Ошибка в [[{{ns:widget}}:$1|виджете $1]]",
+	"group-widgeteditor": "Редакторы виджетов",
+	"group-widgeteditor-member": "{{GENDER:$1|Редактор виджетов}}",
+	"grouppage-widgeteditor": "{{ns:project}}:Редакторы виджетов",
+	"right-editwidgets": "создавать и редактировать [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Widgets виджеты] страницы в пространстве имён <tt>{{ns:widget}}</tt>"
+}

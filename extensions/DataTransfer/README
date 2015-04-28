@@ -1,0 +1,31 @@
+== About ==
+
+Data Transfer is an extension to MediaWiki that both exports data,
+based on the current contents of pages in a wiki; and imports pages.
+In both cases, it uses template calls, and the fields within them,
+to define the data structure.
+
+The export is done in XML format, while the import can be done in
+either XML, CSV or spreadsheet (.xls, .ods etc.) formats.
+
+For the export, any text that is not within a template call gets
+placed into one or more "free text" fields.
+
+For more information on Data Transfer, see the extension
+homepage at
+http://www.mediawiki.org/wiki/Extension:Data_Transfer
+
+Notes on installing Data Transfer can be found in the file INSTALL.
+
+== Credits ==
+
+Data Transfer was mostly written by Yaron Koren. The spreadsheet import
+functionality was written by Stephan Gambke.
+
+The spreadsheet import functionality makes use of the PHPExcel
+library, if it is available.
+
+== Contact ==
+
+Comments, questions, suggestions and bug reports should be
+sent to Yaron at yaron57@gmail.com.

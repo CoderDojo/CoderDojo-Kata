@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Paul Beppler"
+		]
+	},
+	"adminlinks": "Links für Administratore",
+	"adminlinks_documentation": "Dokumentation zu \"$1\"",
+	"adminlinks_general": "Allgemein",
+	"adminlinks_editsidebar": "Seiteleist beoorbeite",
+	"adminlinks_editcss": "CSS beoorbeite",
+	"adminlinks_editmainpagename": "Noome von der Hauptseit beoorbeite",
+	"adminlinks_users": "Benutzer",
+	"adminlinks_createuser": "Benutzerkonto oonlehn",
+	"adminlinks_browsesearch": "Dorrichsiehn und Suche",
+	"adminlinks_importexport": "Importiere und Exportiere",
+	"right-adminlinks": "[[Special:AdminLinks|Links für Administratore]] nutze"
+}

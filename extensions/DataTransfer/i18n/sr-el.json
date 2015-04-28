@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Michaello",
+			"Жељко Тодоровић",
+			"Milicevic01"
+		]
+	},
+	"viewxml": "Vidi XML",
+	"dt_viewxml_categories": "Kategorije",
+	"dt_viewxml_namespaces": "Imenski prostori",
+	"dt_viewxml_simplifiedformat": "Pojednostavljeni format",
+	"dt_xml_namespace": "Imenski prostor",
+	"dt_xml_pages": "Članci",
+	"dt_xml_page": "Stranica",
+	"dt_xml_template": "Šablon",
+	"dt_xml_field": "Polje",
+	"dt_xml_name": "Ime",
+	"dt_xml_title": "Naslov",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Slobodan tekst",
+	"importxml": "Uvezi XML",
+	"dt_import_editsummary": "{{ucfirst:$1}} uvoz",
+	"dt_import_importing": "Uvoz u toku...",
+	"importcsv": "Uvezi CSV",
+	"right-datatransferimport": "Uvezi podatke"
+}

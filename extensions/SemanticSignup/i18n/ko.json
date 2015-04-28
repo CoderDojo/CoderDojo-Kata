@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Priviet"
+		]
+	},
+	"semanticsignup": "시맨틱 가입",
+	"ses-desc": "미디어위키 확장 기능은 가입 시에 시맨틱 데이터로 사용자 문서에 위치한 시맨틱 양식의 상단에 설치합니다.",
+	"ses-nousername": "사용자 이름은 특정되지 않았습니다.",
+	"ses-nopwdmatch": "비밀번호와 비밀번호 확인이 일치하지 않습니다.",
+	"ses-norealname": "실명은 필수지만 지정되지 않았습니다.",
+	"ses-userexists": "사용자기 이미 존재합니다.",
+	"ses-emailfailed": "확인 이메일을 보내는 데 실패했습니다.",
+	"ses-createforbidden": "현재 사용자는 계정을 만들 수 없습니다.",
+	"ses-throttlehit": "이 IP 주소로 작성할 수 있는 1일당 새로운 사용자 계정의 최대 개수를 넘었습니다."
+}

@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liuxinyu970226"
+		]
+	},
+	"parsoid-desc": "用于MediaWiki的Parsoid wiki运行时"
+}

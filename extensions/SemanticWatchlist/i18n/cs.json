@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vks"
+		]
+	},
+	"swl-group-name": "Jméno skupiny:",
+	"swl-group-properties": "Atributy této skupiny:",
+	"swl-group-page-selection": "Stránky v",
+	"swl-group-save": "Uložit",
+	"swl-group-saved": "Uložené",
+	"swl-group-saving": "Ukládá se",
+	"swl-group-category": "kategorie",
+	"swl-group-namespace": "jmenný prostor",
+	"swl-group-concept": "koncept",
+	"swl-group-add-new-group": "Přidat novou skupinu",
+	"swl-group-add-group": "Přidat skupinu",
+	"swl-watchlist-insertions": "Nové:",
+	"swl-watchlist-deletions": "Staré:",
+	"swl-watchlist-pagincontrol": "Ukázat ($1) ($2)",
+	"swl-watchlist-firstn": "první $1"
+}

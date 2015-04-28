@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sasan700",
+			"Умар"
+		]
+	},
+	"adminlinks": "Хьажоргаш куьйгалхошна",
+	"adminlinks-desc": "ТӀе туху [[Special:AdminLinks|белхан агӀо]], йолуш пайде хьажоргаш куьйгалхошна",
+	"adminlinks_documentation": "хааманбаххаш $1",
+	"adminlinks_general": "Еригге",
+	"adminlinks_editsidebar": "Нисъе агӀон тӀийра чоь",
+	"adminlinks_editcss": "Нисъе CSS файл",
+	"adminlinks_editmainpagename": "Нисъе коьрта агӀон цӀе",
+	"adminlinks_users": "Декъашхой",
+	"adminlinks_createuser": "Кхолла дlавазвалар",
+	"adminlinks_browsesearch": "Гуш а лахар",
+	"adminlinks_importexport": "Чуйахар а арайахар",
+	"right-adminlinks": "гарна [[Special:AdminLinks|хьажоргаш куьйгалхошна]]"
+}

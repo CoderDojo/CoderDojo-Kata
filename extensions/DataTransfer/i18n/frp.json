@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31",
+			"ChrisPtDe"
+		]
+	},
+	"viewxml": "Vêre XML",
+	"dt_viewxml_categories": "Catègories",
+	"dt_viewxml_namespaces": "Èspâços de noms",
+	"dt_viewxml_simplifiedformat": "Format simplifiâ",
+	"dt_xml_namespace": "Èspâço de noms",
+	"dt_xml_pages": "Pâges",
+	"dt_xml_page": "Pâge",
+	"dt_xml_template": "Modèlo",
+	"dt_xml_field": "Champ",
+	"dt_xml_name": "Nom",
+	"dt_xml_title": "Titro",
+	"dt_xml_id": "Numerô",
+	"dt_xml_freetext": "Tèxto libro",
+	"importxml": "Importar un XML",
+	"dt_import_selectfile": "Volyéd chouèsir lo fichiér $1 a importar :",
+	"dt_import_encodingtype": "Tipo d’encodâjo :",
+	"dt_import_forexisting": "Por les pâges qu’ègzistont ja :",
+	"dt_import_overwriteexisting": "Ècllafar lo contegnu ègzistent",
+	"dt_import_skipexisting": "Passar",
+	"dt_import_appendtoexisting": "Apondre u contegnu ègzistent",
+	"dt_import_summarydesc": "Rèsumâ de l’importacion :",
+	"dt_import_editsummary": "Importacion de $1",
+	"dt_import_importing": "Importacion en cors...",
+	"dt_import_success": "$1 {{PLURAL:$1|pâge serat fêta|pâges seront fêtes}} dês lo fichiér $2.",
+	"importcsv": "Importar des balyês CSV",
+	"right-datatransferimport": "Importar des balyês"
+}

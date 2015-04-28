@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Farras",
+			"IvanLanin",
+			"Rv77ax",
+			"Kenrick95"
+		]
+	},
+	"approvedrevs-desc": "Tetapkan revisi tunggal halaman ini sebagai disetujui",
+	"approvedrevs-logname": "Log penyetujuan revisi",
+	"approvedrevs-logdesc": "Ini adalah log revisi yang telah disetujui.",
+	"approvedrevs-approve": "setujui",
+	"approvedrevs-unapprove": "tidak setujui",
+	"approvedrevs-approvesuccess": "Revisi halaman ini telah ditetapkan sebagai revisi disetujui.",
+	"approvedrevs-unapprovesuccess": "Tidak ada lagi versi disetujui untuk halaman ini.\nRevisi terkini akan ditampilkan.",
+	"approvedrevs-unapprovesuccess2": "Tidak ada lagi versi disetujui untuk halaman ini.\nHalaman kosong akan ditampilkan.",
+	"approvedrevs-approveaction": "tetapkan $2 sebagai revisi disetujui untuk \"[[$1]]\"",
+	"approvedrevs-unapproveaction": "jangan tetapkan revisi disetujui untuk \"[[$1]]\"",
+	"approvedrevs-notlatest": "Ini adalah revisi disetujui dari halaman ini; bukan revisi terkini.",
+	"approvedrevs-approvedandlatest": "Ini adalah revisi disetujui dari halaman ini, juga revisi terkini.",
+	"approvedrevs-blankpageshown": "Tidak ada revisi yang disetujui untuk halaman ini.",
+	"approvedrevs-noapprovedrevision": "Ini adalah revisi terbaru dari Halaman ini; revisi yang disetujui belum ada.",
+	"approvedrevs-editwarning": "Harap perhatikan bahwa Anda sekarang menyunting revisi terbaru halaman ini, yang secara bawaan bukan merupakan revisi yang disetujui.",
+	"approvedrevs": "Revisi yang disetujui",
+	"approvedrevs-approvedpages": "Semua halaman dengan revisi yang disetujui",
+	"approvedrevs-notlatestpages": "Halaman yang revisi disetujuinya bukanlah revisi terakhir",
+	"approvedrevs-unapprovedpages": "Halaman tidak disetujui",
+	"approvedrevs-view": "Lihat:",
+	"approvedrevs-revisionnumber": "revisi $1",
+	"approvedrevs-approvedby": "disetujui oleh $1 pada $2",
+	"approvedrevs-difffromlatest": "perbedaan dengan yang terbaru",
+	"approvedrevs-approvelatest": "setujui yang terbaru",
+	"approvedrevs-approvethisrev": "Setujui revisi ini.",
+	"approvedrevs-viewlatestrev": "Lihat revisi terbaru.",
+	"approvedrevs-approvedrevision": "Revisi yang disetujui",
+	"right-approverevisions": "Tetapkan revisi tertentu dari halaman wiki sebagai disetujui",
+	"right-viewlinktolatest": "Lihat penjelasan di atas halaman yang memiliki revisi disetujui"
+}

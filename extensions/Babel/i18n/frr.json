@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Murma174",
+			"Purodha",
+			"Pyt"
+		]
+	},
+	"babel": "Babel brüker-informatjuun",
+	"babel-desc": "Saat det <code>#babel</code>-funktjuun diartu. Diarmä kön \"Babel\"-brükerfialen maaget, an uk aanj föörlaagen iinbünjen wurd.",
+	"babel-url": "Project:Babel",
+	"babel-footer-url": ":Category:Babel - Brükern efter spriak",
+	"babel-autocreate-abort": "Didiar nööm woort för [[$1|Babel]]-kategoriin brükt an koon ei üs brükernööm nimen wurd.",
+	"babel-autocreate-reason": "Automaatisch mååged [[$1|Babel]]-kategorii.",
+	"babel-autocreate-text-levels": "Brükern uun detdiar kategorii haa weden üüb di peegel $1 faan det spriak $2.",
+	"babel-autocreate-text-main": "Brükern uun detdiar kategorii haa weden faan det spriak $1.",
+	"babel-0": "Dideere brüker reet [[$1|ai]] ouer [[$2|$3]] (unti ferstoont dåt mån ma duuchti swiirihäide).",
+	"babel-1": "Dideere brüker koon [[$1|lait]] [[$2|$3]] snååke en leese.",
+	"babel-2": "Dideere brüker heet [[$1|ordi]] waasen foon [[$2|$3]].",
+	"babel-3": "Dideere brüker reet ham ma [[$2|$3]] aw [[$1|huuge]] schuchte.",
+	"babel-4": "Dideere brüker reet ham ma [[$2|$3]] aw [[$1|mamenspräklike]] schuchte.",
+	"babel-5": "Dideere brüker reet ham ma [[$2|$3]] aw [[$1|profäsjonäle]] schuchte.",
+	"babel-N": "Dideere brüker snååket [[$2|$3]] as [[$1|mamenspräke]].",
+	"babel-0-n": "Dideere brüker reet ham [[$1|ai]] ma [[$2|Nordfriisk]] (unti ferstoont dåt mån ma duuchti swiirihäide).",
+	"babel-1-n": "Dideere brüker koon [[$1|lait]] [[$2|Nordfriisk]] snååke en leese.",
+	"babel-2-n": "Dideere brüker heet [[$1|ordi]] waasen foon [[$2|Nordfriisk]].",
+	"babel-3-n": "Dideere brüker reet ham ma [[$2|Nordfriisk]] aw [[$1|huuge]] schuchte.",
+	"babel-4-n": "Dideere brüker reet ham ma [[$2|Nordfriisk]] aw [[$1|mamenspräklike]] schuchte.",
+	"babel-5-n": "Dideere brüker reet ham ma [[$2|Nordfriisk]] aw [[$1|profäsjonäle]] schuchte.",
+	"babel-N-n": "Dideere brüker snååket [[$2|Nordfriisk]] as [[$1|mamenspräke]].",
+	"babel-footer": "Brükern efter spriak"
+}

@@ -1,0 +1,37 @@
+{
+    "@metadata": {
+        "authors": [
+            "Yaron Koren"
+        ]
+    },
+    "approvedrevs-desc": "Set a single revision of a page as approved",
+    "approvedrevs-logname": "Revision approval log",
+    "approvedrevs-logdesc": "This is the log of revisions that have been approved.",
+    "approvedrevs-approve": "approve",
+    "approvedrevs-unapprove": "unapprove",
+    "approvedrevs-approvesuccess": "This revision of the page has been set as the approved version.",
+    "approvedrevs-unapprovesuccess": "There is no longer an approved version for this page.\nInstead, the most recent revision will be shown.",
+    "approvedrevs-unapprovesuccess2": "There is no longer an approved version for this page.\nInstead, a blank page will be shown.",
+    "approvedrevs-approveaction": "set $2 as the approved revision for \"[[$1]]\"",
+    "approvedrevs-unapproveaction": "unset approved revision for \"[[$1]]\"",
+    "approvedrevs-notlatest": "This is the approved revision of this page; it is not the most recent.",
+    "approvedrevs-approvedandlatest": "This is the approved revision of this page, as well as being the most recent.",
+    "approvedrevs-blankpageshown": "No revision has been approved for this page.",
+    "approvedrevs-noapprovedrevision": "This is the latest revision of this page; it has no approved revision.",
+    "approvedrevs-editwarning": "Please note that you are now editing the latest revision of this page, which is not the approved one shown by default.",
+    "approvedrevs": "Approved revisions",
+    "approvedrevs-approvedpages": "All pages with an approved revision",
+    "approvedrevs-notlatestpages": "Pages whose approved revision is not their latest",
+    "approvedrevs-unapprovedpages": "Unapproved pages",
+    "approvedrevs-view": "View:",
+    "approvedrevs-revisionnumber": "revision $1",
+    "approvedrevs-approvedby": "approved by {{GENDER:$3|$1}} on $4 at $5",
+    "approvedrevs-difffromlatest": "diff from latest",
+    "approvedrevs-approvelatest": "approve latest",
+    "approvedrevs-approvethisrev": "Approve this revision.",
+    "approvedrevs-viewlatestrev": "View the most recent revision.",
+    "approvedrevs-revision-nav": "($1) $2{{int:pipe-separator}}$3 ($4){{int:pipe-separator}}$5 ($6){{int:pipe-separator}}$7 ($8)",
+    "approvedrevs-approvedrevision": "Approved revision",
+    "right-approverevisions": "Set a certain revision of a wiki page as approved",
+    "right-viewlinktolatest": "View explanatory text at the top of pages that have an approved revision"
+}

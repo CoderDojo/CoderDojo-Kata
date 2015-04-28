@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"approvedrevs-desc": "Marcar como aprobada unha única revisión dunha páxina",
+	"approvedrevs-logname": "Rexistro de aprobación de revisións",
+	"approvedrevs-logdesc": "Este é o rexistro das revisións aprobadas.",
+	"approvedrevs-approve": "aprobar",
+	"approvedrevs-unapprove": "desaprobar",
+	"approvedrevs-approvesuccess": "Esta é a revisión aprobada da páxina.",
+	"approvedrevs-unapprovesuccess": "Esta páxina xa non ten ningunha versión aprobada.\nNo canto dela, móstrase a revisión máis recente.",
+	"approvedrevs-unapprovesuccess2": "Esta páxina xa non ten ningunha versión aprobada.\nNo canto dela, móstrase unha páxina en branco.",
+	"approvedrevs-approveaction": "marcou $2 como a revisión aprobada de \"[[$1]]\"",
+	"approvedrevs-unapproveaction": "anulou unha revisión aprobada de \"[[$1]]\"",
+	"approvedrevs-notlatest": "Esta é a revisión aprobada da páxina, pero non é a máis recente.",
+	"approvedrevs-approvedandlatest": "Esta é a revisión aprobada da páxina, e tamén a máis recente.",
+	"approvedrevs-blankpageshown": "Esta páxina non ten ningunha revisión aprobada.",
+	"approvedrevs-noapprovedrevision": "Esta é a última revisión da páxina; non hai ningunha revisión aprobada.",
+	"approvedrevs-editwarning": "Teña en conta que está a editar a última revisión desta páxina, e non a aprobada que se mostra por defecto.",
+	"approvedrevs": "Revisións aprobadas",
+	"approvedrevs-approvedpages": "Todas as páxinas cunha revisión aprobada",
+	"approvedrevs-notlatestpages": "Páxinas cuxa revisión aprobada non é a máis recente",
+	"approvedrevs-unapprovedpages": "Páxinas suspendidas",
+	"approvedrevs-view": "Ver:",
+	"approvedrevs-revisionnumber": "revisión $1",
+	"approvedrevs-approvedby": "aprobada por $1 o $2",
+	"approvedrevs-difffromlatest": "diferenzas coa última",
+	"approvedrevs-approvelatest": "aprobar a última",
+	"approvedrevs-approvethisrev": "Aprobar esta revisión.",
+	"approvedrevs-viewlatestrev": "Ollar a última revisión.",
+	"approvedrevs-approvedrevision": "Revisión aprobada",
+	"right-approverevisions": "Marcar como aprobada unha revisión específica dunha páxina do wiki",
+	"right-viewlinktolatest": "Ollar o texto explicativo ao comezo das páxinas que posúen unha revisión aprobada"
+}

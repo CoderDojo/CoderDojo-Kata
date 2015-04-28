@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Christian List",
+			"Masz"
+		]
+	},
+	"adminlinks": "Administrationslinks",
+	"adminlinks-desc": "Tilføjer en [[Special:AdminLinks|specialside]], som indeholder nyttige links for administratorer.",
+	"adminlinks_documentation": "dokumentation for $1",
+	"adminlinks_general": "Generelt",
+	"adminlinks_editsidebar": "Redigér sidemenuen",
+	"adminlinks_editcss": "Redigér CSS-fil",
+	"adminlinks_editmainpagename": "Redigér navnet på forsiden",
+	"adminlinks_users": "Brugere",
+	"adminlinks_createuser": "Opret en bruger",
+	"adminlinks_browsesearch": "Navigering og søgning",
+	"adminlinks_importexport": "Importering og eksportering",
+	"right-adminlinks": "Se linket til [[Special:AdminLinks|administrationslinkene]]"
+}

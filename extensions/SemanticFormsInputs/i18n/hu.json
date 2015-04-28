@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dani"
+		]
+	},
+	"semanticformsinputs-wrongformat": "Hibás formátum.",
+	"semanticformsinputs-close": "Bezárás",
+	"semanticformsinputs-prev": "Előző",
+	"semanticformsinputs-next": "Következő",
+	"semanticformsinputs-today": "Ma"
+}

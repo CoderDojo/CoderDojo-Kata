@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"StefanusRA"
+		]
+	},
+	"adminlinks": "Pranala admin",
+	"adminlinks-desc": "Nambaih [[Special:AdminLinks|kaca astamiwa]] sing isine pranala-pranala sing migunani kanggo admin",
+	"adminlinks_documentation": "Dokumentasi $1",
+	"adminlinks_general": "Umum",
+	"adminlinks_editsidebar": "Sunting kotak samping",
+	"adminlinks_editcss": "Sunting berkas CSS",
+	"adminlinks_editmainpagename": "Sunting jeneng kaca utama",
+	"adminlinks_users": "Panganggo",
+	"adminlinks_createuser": "Nggawe panganggo",
+	"adminlinks_browsesearch": "Njelajaih lan nggoleti",
+	"adminlinks_importexport": "Ngimpor lang ngekspor",
+	"right-adminlinks": "Deleng pranala ming [[Special:AdminLinks|Pranala admin]]"
+}

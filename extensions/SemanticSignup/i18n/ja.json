@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"semanticsignup": "意味的利用者登録",
+	"ses-nousername": "利用者名が指定されていません。",
+	"ses-nopwdmatch": "パスワードとその確認が一致しません。",
+	"ses-norealname": "本名は必須ですが指定されていません。",
+	"ses-userexists": "利用者は既に存在します。",
+	"ses-emailfailed": "確認メールの送信に失敗しました。",
+	"ses-createforbidden": "現在の利用者はアカウント作成を許可されていません。",
+	"ses-throttlehit": "この IP アドレスから作成できる利用者アカウントの 1 日あたりの最大数を超えました。"
+}

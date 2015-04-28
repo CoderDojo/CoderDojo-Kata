@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Meno25",
+			"Moemin05",
+			"روخو"
+		]
+	},
+	"approvedrevs-logname": "سجل موافقة المراجعات",
+	"approvedrevs-approve": "موافقة",
+	"approvedrevs-unapprove": "إزالة موافقة",
+	"approvedrevs-blankpageshown": "لا مراجعة تمت الموافقة عليها لهذه الصفحة.",
+	"approvedrevs": "أقر المراجعات",
+	"approvedrevs-approvedpages": "صفحات تمّت الموافقة عليها",
+	"approvedrevs-unapprovedpages": "صفحات لم تتم الموافقة عليها",
+	"approvedrevs-view": "عرض:",
+	"approvedrevs-revisionnumber": "تنقيح $1",
+	"approvedrevs-approvedby": "وافق لكل $1 على $2",
+	"approvedrevs-difffromlatest": "الفرق من الأحدث",
+	"approvedrevs-approvelatest": "الموافقة على الأحدث",
+	"approvedrevs-approvethisrev": "الموافقة على هذه المراجعة.",
+	"approvedrevs-viewlatestrev": "عرض أحدث مراجعة"
+}

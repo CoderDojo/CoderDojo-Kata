@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chaduvari",
+			"Ravichandra",
+			"Veeven",
+			"Kiranmayee"
+		]
+	},
+	"approvedrevs-desc": "ఓ పేజీ యొక్క ఫలానా కూర్పును ఆమోదించబడినదిగా సెట్ చెయ్యి",
+	"approvedrevs-logname": "కూర్పుల అనుమతులు చిట్టా",
+	"approvedrevs-logdesc": "ఇది ఆమోదం పొందని కూర్పుల లాగ్.",
+	"approvedrevs-approve": "అనుమతించు",
+	"approvedrevs-unapprove": "ఆమోదించవద్దు",
+	"approvedrevs-approvesuccess": "ఈ పేజీ యొక్క ఈ కూర్పు ఆమోదింపబడిన కూర్పుగా సెట్ చేసి ఉంది.",
+	"approvedrevs-unapprovesuccess": "ఇక ఈ పేజీకి ఆమోదించబడిన కూర్పేదీ లేదు.\nదాని బదులు, ఇట్టీవలి కూర్పును చూపిస్తాం.",
+	"approvedrevs-unapprovesuccess2": "ఇక ఈ పేజీకి ఆమోదించబడిన కూర్పేదీ లేదు.\nదాని బదులు, ఖాళీ పేజీని చూపిస్తాం.",
+	"approvedrevs-approveaction": "\"[[$1]]\" కోసం $2  ను ఆమోదించబడిన కూర్పుగా చూపించు",
+	"approvedrevs-unapproveaction": "\"[[$1]]\" కోసం సెట్ చేసిన ఆమోదించబడిన కూర్పును తీసెయ్యి",
+	"approvedrevs-notlatest": "ఇది ఈ పేజీ యొక్క ఆమోదించబడిన కూర్పు; ఇది అన్నిటి కంటే కొత్త కూర్పు కాదు.",
+	"approvedrevs-approvedandlatest": "ఇది ఈ పేజీ యొక్క ఆమోదించబడిన కూర్పు, అన్నిటి కంటే కొత్త కూర్పు కూడా.",
+	"approvedrevs-blankpageshown": "ఈ పేజీ కూర్పుల్లో ఏది కూడా ఆమోదించబడి లేదు.",
+	"approvedrevs-noapprovedrevision": "ఇది ఈ పేజీ యొక్క అట్టీవలి కూర్పు; దీనికి ఆమోదించబడిన కూర్పు లేదు.",
+	"approvedrevs-editwarning": "మీరు మారుస్తున్నది ఈ పేజీ యొక్క ఇట్టీవలి కూర్పునని గమనించండి. డిఫాల్టుగా ఆమోదించబడినట్లు చూపించినది ఈ కూర్పు కాదు.",
+	"approvedrevs": "ఆమోదించబడిన కూర్పులు",
+	"approvedrevs-approvedpages": "ఆమోదించబడిన కూర్పులు కలిగిన పేజీలు",
+	"approvedrevs-notlatestpages": "పేజీలు - ఆమోదించబడిన కూర్పులు ఇట్టీవలివి కానివి",
+	"approvedrevs-unapprovedpages": "ఆమోదించబడని పేజీలు",
+	"approvedrevs-view": "చూపు:",
+	"approvedrevs-revisionnumber": "కూర్పు $1",
+	"approvedrevs-approvedby": "$2 న, $1 ఆమోదించినది",
+	"approvedrevs-difffromlatest": "ఇట్టీవలి కూర్పుతో తేడాలు",
+	"approvedrevs-approvelatest": "ఇట్టీవలి దాన్ని ఆమోదించు",
+	"approvedrevs-approvethisrev": "ఈ కూర్పును ఆమోదించు.",
+	"approvedrevs-viewlatestrev": "అన్నిటికంటే ఇటీవలి కూర్పును చూపించు.",
+	"approvedrevs-approvedrevision": "ఆమోదించబడిన కూర్పు",
+	"right-approverevisions": "ఓ వికీ పేజీ యొక్క ఫలానా కూర్పును ఆమోదించబడినదిగా సెట్ చెయ్యి"
+}

@@ -1,0 +1,11 @@
+{
+	"name": "mediawiki/cleanchanges",
+	"type": "mediawiki-extension",
+	"description": "More compact display of recent changes lists",
+	"homepage": "https://www.mediawiki.org/wiki/Extension:CleanChanges",
+	"license": "GPL-2.0+",
+
+	"require": {
+		"composer/installers": "*"
+	}
+}

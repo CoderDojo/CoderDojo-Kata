@@ -1,0 +1,42 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hydra",
+			"Liangent",
+			"Liuxinyu970226",
+			"PhiLiP",
+			"Xiaomingyan",
+			"Mywood",
+			"Impersonator 1"
+		]
+	},
+	"approvedrevs-desc": "设定单个页面版本为已认可",
+	"approvedrevs-logname": "版本认可日志",
+	"approvedrevs-logdesc": "这是已经被认可的版本的日志。",
+	"approvedrevs-approve": "认可",
+	"approvedrevs-unapprove": "不认可",
+	"approvedrevs-approvesuccess": "本页面的该版本已经被设为已认可版本。",
+	"approvedrevs-unapprovesuccess": "此页不再有一个批准的版本。\n相反，将显示最新的版本。",
+	"approvedrevs-unapprovesuccess2": "此页不再是一个批准的版本。\n相反，将显示一个空白页。",
+	"approvedrevs-approveaction": "将把 $2 作为\"[[$1]]\"批准版本",
+	"approvedrevs-unapproveaction": "取消\"[[$1]]\"的设置批准的版本",
+	"approvedrevs-notlatest": "这是此页面已获批准的版本；它不是最新的。",
+	"approvedrevs-approvedandlatest": "这是此页面已获批准并且最新的版本。",
+	"approvedrevs-blankpageshown": "此页面没有版本获批准。",
+	"approvedrevs-noapprovedrevision": "这是此页面的最后版本；它存在未被批准的版本。",
+	"approvedrevs-editwarning": "请注意现在正在编辑的此页，不是核准的最新版本默认情况下显示的其中一个。",
+	"approvedrevs": "已认可版本",
+	"approvedrevs-approvedpages": "所有有被批准的版本的页面",
+	"approvedrevs-notlatestpages": "已认可版本不是最后版本的页面",
+	"approvedrevs-unapprovedpages": "未认可页面",
+	"approvedrevs-view": "查看：",
+	"approvedrevs-revisionnumber": "版本$1",
+	"approvedrevs-approvedby": "被{{GENDER:$3|$1}}于$4 $5认可",
+	"approvedrevs-difffromlatest": "与最后版本的差异",
+	"approvedrevs-approvelatest": "认可最后版本",
+	"approvedrevs-approvethisrev": "认可该版本。",
+	"approvedrevs-viewlatestrev": "查看最后版本",
+	"approvedrevs-approvedrevision": "已认可版本",
+	"right-approverevisions": "通过wiki页面的单个版本",
+	"right-viewlinktolatest": "视图中的解释性文本在具有一个已批准的版本页面的顶部"
+}

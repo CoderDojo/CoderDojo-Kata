@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Horacewai2",
+			"Mark85296341",
+			"Oapbtommy",
+			"Waihorace",
+			"Cwlin0416"
+		]
+	},
+	"adminlinks": "管理連結",
+	"adminlinks-desc": "加入提供管理員常用的連結的 [[Special:AdminLinks|特殊頁面]]",
+	"adminlinks_documentation": "$1 說明文件",
+	"adminlinks_general": "一般",
+	"adminlinks_editsidebar": "編輯側邊欄",
+	"adminlinks_editcss": "編輯 CSS 檔案",
+	"adminlinks_editmainpagename": "編輯首頁名稱",
+	"adminlinks_users": "使用者",
+	"adminlinks_createuser": "建立使用者",
+	"adminlinks_browsesearch": "瀏覽與搜尋",
+	"adminlinks_importexport": "匯入與匯出",
+	"right-adminlinks": "檢視 [[Special:AdminLinks|管理連結]] 頁面"
+}

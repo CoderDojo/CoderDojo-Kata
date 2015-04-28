@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"IAlex"
+		]
+	},
+	"semanticcompoundqueries-desc": "Une fonction du parseur qui affiche plusieurs requêtes sémantiques en même temps"
+}

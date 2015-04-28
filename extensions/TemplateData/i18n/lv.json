@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Papuass"
+		]
+	},
+	"templatedata-doc-param-default-empty": "tukšs",
+	"templatedata-doc-param-status-deprecated": "novecojis",
+	"templatedata-modal-button-addparam": "Pievienot parametru",
+	"templatedata-modal-button-cancel": "Atcelt",
+	"templatedata-modal-button-delparam": "Dzēst parametru",
+	"templatedata-modal-button-importParams": "Importēt parametrus",
+	"templatedata-modal-table-param-actions": "Darbības",
+	"templatedata-modal-table-param-desc": "Apraksts",
+	"templatedata-modal-table-param-type-page": "Lapa",
+	"templatedata-modal-table-param-type-undefined": "Nav definēts",
+	"templatedata-modal-table-param-type-user": "Lietotājs",
+	"templatedata-modal-title-templatedesc": "Veidnes apraksts",
+	"templatedata-modal-title-templateparams": "Veidnes parametri"
+}

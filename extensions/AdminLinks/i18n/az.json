@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cekli829",
+			"Khan27",
+			"Vago"
+		]
+	},
+	"adminlinks": "İdarəçilər üçün istinadlar",
+	"adminlinks_documentation": "$1 sənədləşməsi",
+	"adminlinks_general": "Ümumi",
+	"adminlinks_editsidebar": "Yan paneli redaktə et",
+	"adminlinks_editcss": "CSS faylını redaktə et",
+	"adminlinks_editmainpagename": "Baş səhifənin adını dəyişdir",
+	"adminlinks_users": "İstifadəçilər",
+	"adminlinks_createuser": "Hesab yarat",
+	"adminlinks_browsesearch": "Gəzinmə və axtarış",
+	"adminlinks_importexport": "İdxal və ixrac",
+	"right-adminlinks": "[[Special:AdminLinks|Admin keçidləri]] linkinə bax"
+}

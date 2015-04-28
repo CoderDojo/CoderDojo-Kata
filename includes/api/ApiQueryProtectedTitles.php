@@ -4,7 +4,7 @@
  *
  * Created on Feb 13, 2009
  *
- * Copyright © 2009 Roan Kattouw <Firstname>.<Lastname>@gmail.com
+ * Copyright © 2009 Roan Kattouw "<Firstname>.<Lastname>@gmail.com"
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,11 +24,6 @@
  * @file
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	// Eclipse helper - will be ignored in production
-	require_once( 'ApiQueryBase.php' );
-}
-
 /**
  * Query module to enumerate all create-protected pages.
  *
@@ -36,7 +31,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 
-	public function __construct( $query, $moduleName ) {
+	public function __construct( ApiQuery $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'pt' );
 	}
 
@@ -49,7 +44,7 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 	}
 
 	/**
-	 * @param $resultPageSet ApiPageSet
+	 * @param ApiPageSet $resultPageSet
 	 * @return void
 	 */
 	private function run( $resultPageSet = null ) {
@@ -68,6 +63,27 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 		$this->addWhereFld( 'pt_namespace', $params['namespace'] );
 		$this->addWhereFld( 'pt_create_perm', $params['level'] );
 
+		// Include in ORDER BY for uniqueness
+		$this->addWhereRange( 'pt_namespace', $params['dir'], null, null );
+		$this->addWhereRange( 'pt_title', $params['dir'], null, null );
+
+		if ( !is_null( $params['continue'] ) ) {
+			$cont = explode( '|', $params['continue'] );
+			$this->dieContinueUsageIf( count( $cont ) != 3 );
+			$op = ( $params['dir'] === 'newer' ? '>' : '<' );
+			$db = $this->getDB();
+			$continueTimestamp = $db->addQuotes( $db->timestamp( $cont[0] ) );
+			$continueNs = (int)$cont[1];
+			$this->dieContinueUsageIf( $continueNs != $cont[1] );
+			$continueTitle = $db->addQuotes( $cont[2] );
+			$this->addWhere( "pt_timestamp $op $continueTimestamp OR " .
+				"(pt_timestamp = $continueTimestamp AND " .
+				"(pt_namespace $op $continueNs OR " .
+				"(pt_namespace = $continueNs AND " .
+				"pt_title $op= $continueTitle)))"
+			);
+		}
+
 		if ( isset( $prop['user'] ) ) {
 			$this->addTables( 'user' );
 			$this->addFields( 'user_name' );
@@ -85,9 +101,12 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 		$titles = array();
 
 		foreach ( $res as $row ) {
-			if ( ++ $count > $params['limit'] ) {
-				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
-				$this->setContinueEnumParameter( 'start', wfTimestamp( TS_ISO_8601, $row->pt_timestamp ) );
+			if ( ++$count > $params['limit'] ) {
+				// We've reached the one extra which shows that there are
+				// additional pages to be had. Stop here...
+				$this->setContinueEnumParameter( 'continue',
+					"$row->pt_timestamp|$row->pt_namespace|$row->pt_title"
+				);
 				break;
 			}
 
@@ -103,7 +122,7 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 					$vals['user'] = $row->user_name;
 				}
 
-				if ( isset( $prop['user'] ) ) {
+				if ( isset( $prop['userid'] ) || /*B/C*/isset( $prop['user'] ) ) {
 					$vals['userid'] = $row->pt_user;
 				}
 
@@ -112,8 +131,7 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 				}
 
 				if ( isset( $prop['parsedcomment'] ) ) {
-					global $wgUser;
-					$vals['parsedcomment'] = $wgUser->getSkin()->formatComment( $row->pt_reason, $title );
+					$vals['parsedcomment'] = Linker::formatComment( $row->pt_reason, $title );
 				}
 
 				if ( isset( $prop['expiry'] ) ) {
@@ -127,8 +145,9 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 
 				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $vals );
 				if ( !$fit ) {
-					$this->setContinueEnumParameter( 'start',
-						wfTimestamp( TS_ISO_8601, $row->pt_timestamp ) );
+					$this->setContinueEnumParameter( 'continue',
+						"$row->pt_timestamp|$row->pt_namespace|$row->pt_title"
+					);
 					break;
 				}
 			} else {
@@ -137,7 +156,10 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 		}
 
 		if ( is_null( $resultPageSet ) ) {
-			$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), $this->getModulePrefix() );
+			$result->setIndexedTagName_internal(
+				array( 'query', $this->getModuleName() ),
+				$this->getModulePrefix()
+			);
 		} else {
 			$resultPageSet->populateFromTitles( $titles );
 		}
@@ -145,7 +167,7 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 
 	public function getCacheMode( $params ) {
 		if ( !is_null( $params['prop'] ) && in_array( 'parsedcomment', $params['prop'] ) ) {
-			// formatComment() calls wfMsg() among other things
+			// formatComment() calls wfMessage() among other things
 			return 'anon-public-user-private';
 		} else {
 			return 'public';
@@ -153,7 +175,6 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 	}
 
 	public function getAllowedParams() {
-		global $wgRestrictionLevels;
 		return array(
 			'namespace' => array(
 				ApiBase::PARAM_ISMULTI => true,
@@ -161,9 +182,9 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 			),
 			'level' => array(
 				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_TYPE => array_diff( $wgRestrictionLevels, array( '' ) )
+				ApiBase::PARAM_TYPE => array_diff( $this->getConfig()->get( 'RestrictionLevels' ), array( '' ) )
 			),
-			'limit' => array (
+			'limit' => array(
 				ApiBase::PARAM_DFLT => 10,
 				ApiBase::PARAM_TYPE => 'limit',
 				ApiBase::PARAM_MIN => 1,
@@ -196,6 +217,7 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 					'level'
 				)
 			),
+			'continue' => null,
 		);
 	}
 
@@ -217,14 +239,15 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 				' level          - Adds the protection level',
 			),
 			'level' => 'Only list titles with these protection levels',
+			'continue' => 'When more results are available, use this to continue',
 		);
 	}
 
 	public function getDescription() {
-		return 'List all titles protected from creation';
+		return 'List all titles protected from creation.';
 	}
 
-	protected function getExamples() {
+	public function getExamples() {
 		return array(
 			'api.php?action=query&list=protectedtitles',
 		);
@@ -232,9 +255,5 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 
 	public function getHelpUrls() {
 		return 'https://www.mediawiki.org/wiki/API:Protectedtitles';
-	}
-
-	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryProtectedTitles.php 104449 2011-11-28 15:52:04Z reedy $';
 	}
 }

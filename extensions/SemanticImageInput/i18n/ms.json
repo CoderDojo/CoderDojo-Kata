@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Anakmalaysia"
+		]
+	},
+	"sii-desc": "Menambahkan input imej yang menarik imej dari Wikipedia ke [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]",
+	"sii-imageinput-loading": "Imej sedang dimuatkan..."
+}

@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Metalhead64",
+			"Kghbln"
+		]
+	},
+	"parsoid-desc": "Stellt die Laufzeitumgebung Parsoid bereit"
+}

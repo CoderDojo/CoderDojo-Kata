@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			";Hiba;1",
+			"DRIHEM",
+			"OsamaK",
+			"زكريا"
+		]
+	},
+	"widgets-desc": "يتيح لإداريي الويكي إضافة ودجات حرة الشكل إلى الويكي عن طريق تعديل صفحات نطاق {{ns:widget}}.\nالودجات التي يساهم بها المجتمع توجد في [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]",
+	"widgets-error": "خطأ في [[{{ns:widget}}:$1|الودجة $1]]",
+	"group-widgeteditor": "محررو الودجات",
+	"group-widgeteditor-member": "{{GENDER:$1|محرر ودجات}}",
+	"grouppage-widgeteditor": "{{ns:project}}:محررو الودجات",
+	"right-editwidgets": "إنشاء وتحرير [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Widgets widgets] في الــ <tt>{{ns:widget}}</tt> مكان الاسم"
+}

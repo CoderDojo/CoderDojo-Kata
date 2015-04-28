@@ -1,0 +1,24 @@
+/**
+ * Style Parsoid HTML output consistent with wikitext from PHP parser.
+ */
+
+/**
+ * References
+ *
+ * Parser and Extension:Cite output reference numbers for <sup>[1]</sup> for <ref> tags.
+ *
+ * Markup:
+ * Cake is good<sup>[2]
+ * The cake is a lie<span class="reference">[1]</span>
+ *
+ * Styleguide 1.1.
+ */
+
+span.reference {
+	font-size: smaller;
+	line-height: normal;
+	vertical-align: super;
+	unicode-bidi: -moz-isolate;
+	unicode-bidi: -webkit-isolate;
+	unicode-bidi: isolate;
+}

@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Als-Holder",
+			"J. 'mach' wust"
+		]
+	},
+	"datatransfer-desc": "Macht dr Import un dr Export vu strukturierte Date megli, wu in Ufrief vu Vorlage bruucht wäre.",
+	"viewxml": "XML aaluege",
+	"dt_viewxml_docu": "Bitte wehl uus, weli Kategorien un Namensryym im XML-Format solle aazeigt wäre.",
+	"dt_viewxml_categories": "Kategorie",
+	"dt_viewxml_namespaces": "Namensryym",
+	"dt_viewxml_simplifiedformat": "Vereifacht Format",
+	"dt_xml_namespace": "Namensruum",
+	"dt_xml_pages": "Syte",
+	"dt_xml_page": "Syte",
+	"dt_xml_template": "Vorlag",
+	"dt_xml_field": "Fäld",
+	"dt_xml_name": "Name",
+	"dt_xml_title": "Titel",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Freje Täxt",
+	"importxml": "XML importiere",
+	"dt_import_selectfile": "Bitte wehl d $1-Datei zum importiere uus:",
+	"dt_import_encodingtype": "Verschlisseligstyp:",
+	"dt_import_forexisting": "Im Fall vu Syte, wu s scho git:",
+	"dt_import_overwriteexisting": "Vorhandene Inhalt iberschryybe",
+	"dt_import_skipexisting": "Ibergumpe",
+	"dt_import_appendtoexisting": "Vorhandene Inhalt ergänze",
+	"dt_import_summarydesc": "Zämmefassig vum Import:",
+	"dt_import_editsummary": "$1-Import",
+	"dt_import_importing": "Am Importiere ...",
+	"dt_import_success": "$1 {{PLURAL:$1|Syte|Syte}} wäre us dr $2-Datei aagleit.",
+	"importcsv": "CSV-Datei importiere",
+	"dt_importcsv_badheader": "Fähler: d Spalte $1 Iberschrift, '$2', muess entwäder '$3', '$4' syy oder us em Format  'template_name[field_name]'",
+	"right-datatransferimport": "Date importiere"
+}

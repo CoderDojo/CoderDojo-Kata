@@ -1,0 +1,154 @@
+@mixin kata-course {
+	$containerColor: #333333;
+	$selectionColor: #cf2a27;
+	
+	.kata-breadcrumbs{
+		$arrowWidth: 2rem;
+		.kata-breadcrumb {
+			background-color: $containerColor;
+			color: white;
+			float: left;
+			height: 4rem;
+			margin: 0 0 2rem 0;
+			padding: 0.9rem 2rem 1rem ($arrowWidth + 1);
+			position: relative;
+			text-align: center;
+			min-width: 10%;
+			white-space: nowrap;
+			&:first-child {
+				padding: 0.9rem 2rem 1rem 1rem;
+			}
+			&::after {
+				content: '';
+				display: block;
+				position: absolute;
+				width: 0;
+				height: 0;
+				top: 0;
+				right: -$arrowWidth;
+				border-style: solid;
+				border-width: 2rem 0 2rem $arrowWidth;
+				border-color: transparent transparent transparent #000;
+				z-index: 10;
+			}
+			&::before {
+				content: '';
+				display: block;
+				position: absolute;
+				width: 0;
+				height: 0;
+				top: 0.2rem;
+				right: -($arrowWidth - 0.2);
+				border-style: solid;
+				border-width: 1.8rem 0 1.8rem ($arrowWidth - 0.2);
+				border-color: transparent transparent transparent $containerColor;
+				z-index: 15;
+			}
+		}
+	
+		.kata-breadcrumb-selected{
+			background-color: $selectionColor;
+			&::before,
+			&::after {
+				border-color: transparent transparent transparent $selectionColor;
+			}
+		}
+	}
+
+	.kata-course {
+		
+		.kata-box {
+		    margin-top: 0;
+		}
+		
+		.kata-tutorial-step-title{
+			font-weight: bold;
+		}
+		
+		
+		.kata-tutorial-container{
+			width: 100%;
+			background-color: $containerColor;
+			border:1px solid $containerColor;
+			
+			td{
+				padding: 0px;
+			}
+		}
+		
+		.kata-tutorial-navigation-container{
+			width: 15%;
+		}
+		
+		.kata-tutorial-navigation{
+			width: 100%;
+			
+			.kata-tutorial-navigation-item{
+				height: 5rem;
+			    padding: 0.5rem 0.9rem;
+			    color: #FFFFFF;
+			    vertical-align: middle;
+			}
+			
+			.kata-tutorial-navigation-item a{
+				color: #FFFFFF;
+			}
+			
+			.kata-tutorial-navigation-item-selected{
+				background-color: $selectionColor;
+			}
+		}
+		
+		td.kata-tutorial-content-container{
+			width: 85%;
+			padding: 0.7rem 1.5rem;
+			background-color: #FFFFFF;
+		}
+		
+		.mw-templatedata-doc-wrap{
+			display:none;
+		}
+		
+		.kata-tutorial-rating{
+			font-size:11px;
+			line-height: 15px;
+			
+			.rating_box{
+				line-height: 18px;
+			}
+		}
+	}
+	
+	.organiser-resource {
+		.kata-breadcrumbs .kata-breadcrumb-selected,
+		.kata-tutorial-navigation .kata-tutorial-navigation-item-selected{
+			background-color: #61C93F;
+		}
+		.kata-breadcrumbs .kata-breadcrumb-selected::after,
+		.kata-breadcrumbs .kata-breadcrumb-selected::before {
+			border-color: transparent transparent transparent #61C93F;
+		}
+	}
+	
+	.technical-resource {
+		.kata-breadcrumbs .kata-breadcrumb-selected,
+		.kata-tutorial-navigation .kata-tutorial-navigation-item-selected{
+			background-color: #ED462F;
+		}
+		.kata-breadcrumbs .kata-breadcrumb-selected::after,
+		.kata-breadcrumbs .kata-breadcrumb-selected::before {
+			border-color: transparent transparent transparent #ED462F;
+		}
+	}
+	
+	.ninja-resource {
+		.kata-breadcrumbs .kata-breadcrumb-selected,
+		.kata-tutorial-navigation .kata-tutorial-navigation-item-selected{
+			background-color: #FBCC33;
+		}
+		.kata-breadcrumbs .kata-breadcrumb-selected::after,
+		.kata-breadcrumbs .kata-breadcrumb-selected::before {
+			border-color: transparent transparent transparent #FBCC33;
+		}
+	}
+}

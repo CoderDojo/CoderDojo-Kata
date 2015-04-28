@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"McMonster",
+			"Sp5uhe",
+			"Wpedzich",
+			"Chrumps"
+		]
+	},
+	"datatransfer-desc": "Pozwala na importowanie i eksportowanie danych zawartych w wywołaniach szablonu",
+	"viewxml": "Podgląd XML",
+	"dt_viewxml_docu": "Wybierz, które spośród następujących kategorii i przestrzeni nazw chcesz podejrzeć w formacie XML.",
+	"dt_viewxml_categories": "Kategorie",
+	"dt_viewxml_namespaces": "Przestrzenie nazw",
+	"dt_viewxml_simplifiedformat": "Format uproszczony",
+	"dt_xml_namespace": "Przestrzeń nazw",
+	"dt_xml_pages": "Strony",
+	"dt_xml_page": "Strona",
+	"dt_xml_template": "Szablon",
+	"dt_xml_field": "Pole",
+	"dt_xml_name": "Nazwa",
+	"dt_xml_title": "Tytuł",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Dowolny tekst",
+	"importxml": "Import XML",
+	"dt_import_selectfile": "Wybierz plik $1 do zaimportowania",
+	"dt_import_encodingtype": "Typ kodowania",
+	"dt_import_forexisting": "Dla stron, które już istnieją:",
+	"dt_import_overwriteexisting": "Zastąp istniejącą zawartość",
+	"dt_import_skipexisting": "Pomiń",
+	"dt_import_appendtoexisting": "Dołącz do istniejącej zawartości",
+	"dt_import_summarydesc": "Podsumowanie importu",
+	"dt_import_editsummary": "Import {{ucfirst:$1}}",
+	"dt_import_importing": "Importowanie...",
+	"dt_import_success": "$1 {{PLURAL:$1|strona zostanie utworzona|strony zostaną utworzone|stron zostanie utworzonych}} z pliku $2.",
+	"importcsv": "Import CSV",
+	"dt_importcsv_badheader": "Błąd – w kolumnie $1 nagłówka jest „$2”, a powinno być: „$3”, „$4” lub „nazwa_szablonu[nazwa_pola]”",
+	"right-datatransferimport": "Importowanie danych"
+}

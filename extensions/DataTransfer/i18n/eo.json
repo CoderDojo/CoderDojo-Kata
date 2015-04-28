@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Michawiki",
+			"Yekrats"
+		]
+	},
+	"datatransfer-desc": "Permesas importadon kaj eksportadon de datumoj enhave en ŝablonaj vokoj",
+	"viewxml": "Rigardu XML-on",
+	"dt_viewxml_docu": "Bonvolu elekti inter la subaj kategorioj kaj nomspacoj por rigardi en XML-formato.",
+	"dt_viewxml_categories": "Kategorioj",
+	"dt_viewxml_namespaces": "Nomspacoj",
+	"dt_viewxml_simplifiedformat": "Simpligita formato",
+	"dt_xml_namespace": "Nomspaco",
+	"dt_xml_pages": "Paĝoj",
+	"dt_xml_page": "Paĝo",
+	"dt_xml_template": "Ŝablono",
+	"dt_xml_field": "Kampo",
+	"dt_xml_name": "Nomo",
+	"dt_xml_title": "Titolo",
+	"dt_xml_id": "identigo",
+	"dt_xml_freetext": "Libera Teksto",
+	"importxml": "Importi XML",
+	"dt_import_editsummary": "$1 importo",
+	"dt_import_importing": "Importante...",
+	"importcsv": "Importi CSV",
+	"right-datatransferimport": "Importi datenojn"
+}

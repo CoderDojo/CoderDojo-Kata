@@ -1,0 +1,33 @@
+2.1.2 (2011-05-21)
+Security:
+- added an option to display the name of the page being voted on if it's not the same as the page where the
+	bar is being displayed: $wgW4GRB_Settings['show-mismatching-bar'] (default: true)
+Optimization:
+- javascript now compacted using http://closure-compiler.appspot.com/home
+Features:
+- votes by anonymous users can now be displayed in toplists, provided that a "user zero" (with user_id=0) is
+	created in the "user" database
+- possibility to hide average rating in the toppages top list (argument "hideavgrating")
+
+2.1.1 (2011-03-20)
+- fixed some display bugs related to anonymous voting
+
+2.1.0 (2011-03-06)
+Security:
+- dealt with an XSS problem
+Features:
+- added back anonymous voting: $wgW4GRB_Settings['anonymous-voting-enabled']
+- added an option to (somewhat) deal with multivoting: $wgW4GRB_Settings['multivote-cooldown']
+Bugfixes:
+- PHP notice about Userlogin and Listgrouprights (wrong case)
+Other:
+- if no idpage is provided, rating toplist now defaults to current page (used to generate an error)
+
+2.0.1 (2010-12-26):
+Bugfixes:
+- problem when in read-only
+- bar not showing on a newly created page
+Other:
+- increased default number of items on toplists (+ made it configurable)
+
+2.0 (2010-10-17): first stable release

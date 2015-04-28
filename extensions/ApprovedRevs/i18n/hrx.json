@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Paul Beppler"
+		]
+	},
+	"approvedrevs-desc": "Ermöchlicht es, stets en bestimmte Version von en Seit wie en bestätichte Version oonzuzeiche",
+	"approvedrevs-logname": "Versionsbestätichungs-Logbuch",
+	"approvedrevs-approve": "bestätiche (approviere)",
+	"approvedrevs-unapprove": "ablehne (net approviere)",
+	"approvedrevs-unapproveaction": "nahm die bestätichte Version für \"[[$1]]\" zurück",
+	"approvedrevs": "Bestätichte Versione",
+	"approvedrevs-unapprovedpages": "All Seite mit unbestätichte Versione",
+	"approvedrevs-view": "Oonsiehn:",
+	"approvedrevs-revisionnumber": "Version $1",
+	"approvedrevs-approvedby": "von $1 am $2 bestäticht",
+	"approvedrevs-difffromlatest": "Unnerschied zur neieste Version",
+	"approvedrevs-approvelatest": "neieste Version bestätiche",
+	"approvedrevs-approvethisrev": "Die Version bestätiche.",
+	"approvedrevs-viewlatestrev": "Die neieste Version ansiehn.",
+	"approvedrevs-approvedrevision": "Bestätichte Version"
+}

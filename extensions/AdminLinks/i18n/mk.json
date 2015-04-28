@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"adminlinks": "администраторски врски",
+	"adminlinks-desc": "Додава [[Special:AdminLinks|службена страница]] која содржи корисни врски за администратори.",
+	"adminlinks_documentation": "Документација за $1",
+	"adminlinks_general": "Општо",
+	"adminlinks_editsidebar": "Уреди странична лента",
+	"adminlinks_editcss": "Уреди ја CSS податотеката",
+	"adminlinks_editmainpagename": "Уредување на името на главната страница",
+	"adminlinks_users": "Корисници",
+	"adminlinks_createuser": "Создај корисник",
+	"adminlinks_browsesearch": "Прелистување и пребарување",
+	"adminlinks_importexport": "Увоз и извоз",
+	"right-adminlinks": "Приказ на врската до [[Special:AdminLinks|Администраторските врски]]"
+}

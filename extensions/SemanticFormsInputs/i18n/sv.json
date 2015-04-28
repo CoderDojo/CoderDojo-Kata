@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Martinwiss"
+		]
+	},
+	"semanticformsinputs-desc": "Ännu mer indata-typer för [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Semantic_Forms Semantic Forms]",
+	"semanticformsinputs-wrongformat": "Fel format.",
+	"semanticformsinputs-close": "Stäng",
+	"semanticformsinputs-prev": "Föregående",
+	"semanticformsinputs-next": "Nästa",
+	"semanticformsinputs-today": "Idag",
+	"semanticformsinputs-malformedregexp": "Felaktig regexp ($1)",
+	"semanticformsinputs-datepicker-dateformat": "Format för datum. Se [https://www.mediawiki.org/w/index.php?title=Extension:Semantic_Forms_Inputs&fromsection=Date_picker#Parameters online documentation] för ytterligare information.",
+	"semanticformsinputs-datepicker-weekstart": "Första dagen i veckan (0 - söndag, 1 - måndag, ...).",
+	"semanticformsinputs-datepicker-firstdate": "Första datum som kan väljas (i formatet åååå/mm/dd).",
+	"semanticformsinputs-datepicker-lastdate": "Sista datum som kan väljas (i formatet åååå/mm/dd).",
+	"semanticformsinputs-datepicker-disabledaysofweek": "En lista med dagar som inte kan väljas (t.ex. helgen: 6, 0).",
+	"semanticformsinputs-datepicker-highlightdaysofweek": "En lista med dagar som ska framhävas (t.ex. helgen: 6, 0).",
+	"semanticformsinputs-datepicker-disabledates": "En kommaseparerad lista med obrukbara datum/datumintervall (datum i formatet åååå/mm/dd, datumintervall i formatet åååå/mm/dd-åååå/mm/dd).",
+	"semanticformsinputs-datepicker-highlightdates": "En kommaseparerad lista med datum/datumintervall som ska framhävas (datum i formatet åååå/mm/dd, datumintervall i formatet åååå/mm/dd-åååå/mm/dd).",
+	"semanticformsinputs-datepicker-showweeknumbers": "Ska veckonummer visas till vänster om veckan?",
+	"semanticformsinputs-datepicker-enableinputfield": "Ska användaren kunna fylla i indata-fältet direkt eller enbart via datumväljaren?",
+	"semanticformsinputs-datepicker-showresetbutton": "Ska det finnas en återställningsknapp? En sådan knapp är enda sättet att radera innehållet i indata-fältet om det inte är tillåtet att skriva i det.",
+	"semanticformsinputs-timepicker-mintime": "Den tidigaste tiden som visas. Formatet: tt:mm",
+	"semanticformsinputs-timepicker-maxtime": "Den senaste tiden som visas: Formatet: tt:mm",
+	"semanticformsinputs-timepicker-interval": "Intervall mellan minuter. Nummer mellan 1 och 60.",
+	"semanticformsinputs-timepicker-enableinputfield": "Ska användaren kunna fylla i indata-fältet direkt, eller enbart med hjälp av datumväljaren.",
+	"semanticformsinputs-timepicker-showresetbutton": "Ska en återställningsknapp visas? Det här är enda sättet att radera innehållet i indata-fältet om det inte är tillåtet att skriva i det.",
+	"semanticformsinputs-regexp-regexp": "Det reguljära uttryck som indatan måste motsvara för att godkännas. Även snedstreck måste anges! Förvalt innehåll är \"/.*/\", d.v.s. vilket värde som helst.",
+	"semanticformsinputs-regexp-basetype": "Bas-typen som ska användas. Måste vara någon indata-typ som skapar en \"HTML-form-tagg\", såsom \"input\" eller \"select\" (d.v.s. text, listbox, datepicker) eller ett annat reguljärt uttryck. Förvalt värde är \"text\".",
+	"semanticformsinputs-regexp-baseprefix": "Prefix för parametrar av bas-typen.",
+	"semanticformsinputs-regexp-orchar": "Det tecken som ska motsvara ELLER i det reguljära uttrycket istället för tecknet |. Förvalt tecken är \"!\".",
+	"semanticformsinputs-regexp-inverse": "Indata får INTE motsvara det reguljära uttrycket. D.v.s. det reguljära uttrycket är inverterat.",
+	"semanticformsinputs-regexp-message": "Felmeddelandet som ska visas om matchningen misslyckas. Förvalt värde är \"Fel format!\".",
+	"semanticformsinputs-menuselect-structure": "Menystrukturen är en onumrerad lista.",
+	"semanticformsinputs-menuselect-enableinputfield": "Ska användaren kunna fylla i indata-fältet direkt?"
+}

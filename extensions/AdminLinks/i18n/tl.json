@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"AnakngAraw",
+			"Sky Harbor"
+		]
+	},
+	"adminlinks": "Mga kawing pantagapangasiwa",
+	"adminlinks-desc": "Nagdaragdag ng isang [[Special:AdminLinks|natatanging pahina]]ng humahawak ng makakatulong na mga kawing para sa mga tagapangasiwa",
+	"adminlinks_documentation": "Dokumentasyon ng $1",
+	"adminlinks_general": "Pangkalahatan",
+	"adminlinks_editsidebar": "Baguhin ang baretang panggilid",
+	"adminlinks_editcss": "Baguhin ang talaksan ng CSS",
+	"adminlinks_editmainpagename": "Baguhin ang pangalan ng unang pahina",
+	"adminlinks_users": "Mga tagagamit",
+	"adminlinks_createuser": "Lumikha ng tagagamit",
+	"adminlinks_browsesearch": "Pagbabasa-basa at paghahanap",
+	"adminlinks_importexport": "Pag-aangkat at pagluluwas",
+	"right-adminlinks": "Tingnan ang kawing sa [[Special:AdminLinks|mga kawing pantagapangasiwa]]"
+}

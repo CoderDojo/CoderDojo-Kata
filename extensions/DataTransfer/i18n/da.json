@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby",
+			"Tjernobyl"
+		]
+	},
+	"viewxml": "Vis XML",
+	"dt_viewxml_categories": "Kategorier",
+	"dt_viewxml_namespaces": "Navnerum",
+	"dt_viewxml_simplifiedformat": "Forenklet format",
+	"dt_xml_namespace": "Navnerum",
+	"dt_xml_pages": "Sider",
+	"dt_xml_page": "Side",
+	"dt_xml_template": "Skabelon",
+	"dt_xml_field": "Felt",
+	"dt_xml_name": "Navn",
+	"dt_xml_title": "Titel",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Fritekst",
+	"importxml": "Importer XML",
+	"dt_import_overwriteexisting": "Overskriv eksisterende indhold",
+	"dt_import_skipexisting": "Spring over"
+}

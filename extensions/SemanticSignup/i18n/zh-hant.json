@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"LNDDYL"
+		]
+	},
+	"semanticsignup": "語義登記",
+	"ses-desc": "一個建立在Semantic Forms（語義表單）基礎之上的MediaWiki擴展，允許在註冊登記時採用語義數據充填用戶頁面",
+	"ses-nousername": "尚未指定用戶名。",
+	"ses-nopwdmatch": "密碼與確認密碼不匹配。",
+	"ses-norealname": "真實姓名是必需的但尚未指定。",
+	"ses-userexists": "用戶已存在。",
+	"ses-emailfailed": "用於確認的電子郵件發送失敗。",
+	"ses-createforbidden": "不允許當前用戶創建帳戶。",
+	"ses-throttlehit": "此IP位址已經超過了每天新使用者帳戶的最大數量。"
+}

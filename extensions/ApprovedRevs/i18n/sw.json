@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kwisha",
+			"Stephenwanjau"
+		]
+	},
+	"approvedrevs-approve": "idhinisha",
+	"approvedrevs-view": "Tazama:",
+	"approvedrevs-revisionnumber": "Pitio $1",
+	"approvedrevs-approvedby": "Imeidhinishwa na {{GENDER:$3|$1}} mnamo $4 saa $5",
+	"approvedrevs-approvelatest": "idhinisha ya hivi karibuni",
+	"approvedrevs-approvethisrev": "idhinisha toleo hili"
+}

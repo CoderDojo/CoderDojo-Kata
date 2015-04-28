@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"CERminator"
+		]
+	},
+	"adminlinks": "Linkovi za admine",
+	"adminlinks-desc": "Dodaje [[Special:AdminLinks|posebnu stranicu]] koja sadrži korisne linkove za administratore",
+	"adminlinks_documentation": "$1 dokumentacija",
+	"adminlinks_general": "Općenito",
+	"adminlinks_editsidebar": "Uredi bočnu alatnu traku",
+	"adminlinks_editcss": "Uređivanje CSS datoteke",
+	"adminlinks_editmainpagename": "Uredi naziv početne stranice",
+	"adminlinks_users": "Korisnici",
+	"adminlinks_createuser": "Napravi korisnika",
+	"adminlinks_browsesearch": "Pregledanje i pretraga",
+	"adminlinks_importexport": "Uvoz i izvoz",
+	"right-adminlinks": "Pregledavanje linkova u [[Special:AdminLinks|linkovima administratora]]"
+}

@@ -4,7 +4,7 @@
  *
  * Created on Jan 4, 2008
  *
- * Copyright © 2008 Yuri Astrakhan <Firstname><Lastname>@gmail.com,
+ * Copyright © 2008 Yuri Astrakhan "<Firstname><Lastname>@gmail.com",
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,11 +24,6 @@
  * @file
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	// Eclipse helper - will be ignored in production
-	require_once( 'ApiBase.php' );
-}
-
 /**
  * API module to allow users to log out of the wiki. API equivalent of
  * Special:Userlogout.
@@ -37,18 +32,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class ApiLogout extends ApiBase {
 
-	public function __construct( $main, $action ) {
-		parent::__construct( $main, $action );
-	}
-
 	public function execute() {
-		global $wgUser;
-		$oldName = $wgUser->getName();
-		$wgUser->logout();
+		$user = $this->getUser();
+		$oldName = $user->getName();
+		$user->logout();
 
 		// Give extensions to do something after user logout
 		$injected_html = '';
-		wfRunHooks( 'UserLogoutComplete', array( &$wgUser, &$injected_html, $oldName ) );
+		wfRunHooks( 'UserLogoutComplete', array( &$user, &$injected_html, $oldName ) );
 	}
 
 	public function isReadMode() {
@@ -64,20 +55,16 @@ class ApiLogout extends ApiBase {
 	}
 
 	public function getDescription() {
-		return 'Log out and clear session data';
+		return 'Log out and clear session data.';
 	}
 
-	protected function getExamples() {
+	public function getExamples() {
 		return array(
-			'api.php?action=logout'
+			'api.php?action=logout' => 'Log the current user out',
 		);
 	}
 
 	public function getHelpUrls() {
 		return 'https://www.mediawiki.org/wiki/API:Logout';
-	}
-
-	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiLogout.php 104449 2011-11-28 15:52:04Z reedy $';
 	}
 }

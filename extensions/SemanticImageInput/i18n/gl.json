@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"sii-desc": "Engade unha entrada de imaxes que empurra as imaxes da Wikipedia a [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]",
+	"sii-imageinput-loading": "Cargando a imaxe..."
+}

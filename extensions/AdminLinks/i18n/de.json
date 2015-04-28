@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kghbln",
+			"Purodha",
+			"Umherirrender"
+		]
+	},
+	"adminlinks": "Links für Administratoren",
+	"adminlinks-desc": "Ergänzt eine [[Special:AdminLinks|Spezialseite]] mit hilfreichen Links für Administratoren",
+	"adminlinks_documentation": "Dokumentation zu „$1“",
+	"adminlinks_general": "Allgemein",
+	"adminlinks_editsidebar": "Seitenleiste bearbeiten",
+	"adminlinks_editcss": "CSS bearbeiten",
+	"adminlinks_editmainpagename": "Namen der Hauptseite bearbeiten",
+	"adminlinks_users": "Benutzer",
+	"adminlinks_createuser": "Benutzerkonto anlegen",
+	"adminlinks_browsesearch": "Durchsehen und Suchen",
+	"adminlinks_importexport": "Importieren und Exportieren",
+	"right-adminlinks": "[[Special:AdminLinks|Links für Administratoren]] nutzen"
+}

@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rancher"
+		]
+	},
+	"semanticformsinputs-dateformatlong": "d MM yy",
+	"semanticformsinputs-dateformatshort": "dd.mm.yy",
+	"semanticformsinputs-firstdayofweek": "1"
+}

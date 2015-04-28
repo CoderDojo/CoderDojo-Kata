@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eirik",
+			"Finnrind",
+			"Gunnernett",
+			"Harald Khan",
+			"Njardarlogar",
+			"Ranveig"
+		]
+	},
+	"babel": "Babelinformasjon",
+	"babel-desc": "Legg til parserfunksjonen <code>#babel</code> for å automatisk lage ein babelboks der ein kan bruka sjølvlaga malar",
+	"babel-url": "Project:Babel",
+	"babel-footer-url": ":Kategori:Babel/Brukarar etter språk",
+	"babel-autocreate-abort": "Brukarnamnet du valte er i bruk for automatisk oppretting av [[$1|Babel]]-kategoriar og kan difor ikkje verta registrert.",
+	"babel-autocreate-reason": "Oprettar automatisk ei [[$1|Babel]]-kategori-sida.",
+	"babel-autocreate-text-levels": "Brukarar i denne kategorien har eit språkdugleiksnivå på $1 for $2.",
+	"babel-autocreate-text-main": "Brukarar i denne kategorien kjenner til $1.",
+	"babel-0": "Denne brukaren har [[$1|små eller ingen]] kunnskapar i [[$2|$3]].",
+	"babel-1": "Denne brukaren har [[$1|litt]] kjennskap til [[$2|$3]].",
+	"babel-2": "Denne brukaren kan [[$1|ganske godt]] [[$2|$3]].",
+	"babel-3": "Denne brukaren kan [[$1|svært godt]] [[$2|$3]].",
+	"babel-4": "Denne brukaren kan [[$2|$3]] nesten på [[$1|morsmålnivå]]",
+	"babel-5": "Denne brukaren nyttar [[$2|$3]] [[$1|profesjonelt]].",
+	"babel-N": "Denne brukaren har [[$2|$3]] som [[$1|morsmål]].",
+	"babel-0-n": "Denne brukaren har [[$1|ingen]] kjennskap til [[$2|nynorsk]] (eller forstår det berre så vidt).",
+	"babel-1-n": "Denne brukaren kan [[$1|litt]] [[$2|nynorsk]].",
+	"babel-2-n": "Denne brukaren har [[$1|god kjennskap]] til [[$2|nynorsk]].",
+	"babel-3-n": "Denne brukaren meistrar [[$2|nynorsk]] [[$1|flytande]].",
+	"babel-4-n": "Denne brukaren snakkar og skriv [[$2|nynorsk]] om lag på [[$1|morsmålsnivå]].",
+	"babel-5-n": "Denne brukaren har [[$1|profesjonell]] kjennskap til [[$2|nynorsk]].",
+	"babel-N-n": "Denne brukaren har [[$2|norsk]] som [[$1|morsmål]] og meistrar nynorsk.",
+	"babel-footer": "Brukarar etter språk"
+}

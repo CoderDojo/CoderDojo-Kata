@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kobazulo",
+			"Theklan",
+			"පසිඳු කාවින්ද"
+		]
+	},
+	"viewxml": "XML ikusi",
+	"dt_viewxml_categories": "Kategoriak",
+	"dt_viewxml_namespaces": "Izen-tarteak",
+	"dt_viewxml_simplifiedformat": "Formatu sinplifikatua",
+	"dt_xml_namespace": "Izen-tartea",
+	"dt_xml_pages": "Orrialdeak",
+	"dt_xml_page": "Orrialdea",
+	"dt_xml_template": "Txantiloia",
+	"dt_xml_field": "Eremua",
+	"dt_xml_name": "Izena",
+	"dt_xml_title": "Izenburua",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Testu askea",
+	"importxml": "XML inportatu",
+	"dt_import_selectfile": "Mesedez, aukera ezazu inportatzeko $1 fitxategia:",
+	"dt_import_encodingtype": "Kodetze mota:",
+	"dt_import_forexisting": "Jada existitzen diren orrialdeak:",
+	"dt_import_overwriteexisting": "Jada existitzen den eduki bat gainidatzi",
+	"dt_import_mergeintoexisting": "Fitxategian dauden eremuak bakarrik gain-idatzi",
+	"dt_import_skipexisting": "Utzi",
+	"dt_import_appendtoexisting": "Jada baden edukiari gehitu",
+	"dt_import_summarydesc": "Inportatze laburpena:",
+	"dt_import_editsummary": "$1 inportatu",
+	"dt_import_importing": "Inportatzen...",
+	"dt_import_success": "{{PLURAL:$1|Orrialde $1 sortuko da|$1 orrialde sortuko dira}} $2 fitxategitik.",
+	"importcsv": "CSV inportatu",
+	"right-datatransferimport": "Datuak inportatu"
+}

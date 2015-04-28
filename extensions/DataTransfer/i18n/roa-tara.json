@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"datatransfer-desc": "Permètte de 'mbortà e esportà date strutturate ca stonne jndr'à le chiamate a le template",
+	"viewxml": "Vide l'XML",
+	"dt_viewxml_docu": "Pe piacere scacchie ìmbrà le categorije seguende e le namespace seguende pe vedè 'u formate XML.",
+	"dt_viewxml_categories": "Categorije",
+	"dt_viewxml_namespaces": "Namespace",
+	"dt_viewxml_simplifiedformat": "Formate semblifichete",
+	"dt_xml_namespace": "Namespace",
+	"dt_xml_pages": "Pàggene",
+	"dt_xml_page": "Pàgene",
+	"dt_xml_template": "Template",
+	"dt_xml_field": "Cambe",
+	"dt_xml_name": "Nome",
+	"dt_xml_title": "Titele",
+	"dt_xml_id": "Codece (ID)",
+	"dt_xml_freetext": "Teste libbere",
+	"importxml": "'Mborte XML",
+	"dt_import_selectfile": "Pe piacere scacchia 'u file $1 da 'mbortà:",
+	"dt_import_encodingtype": "Tipe de codifeche:",
+	"dt_import_forexisting": "Pe le pàggene ca ggià esistene:",
+	"dt_import_overwriteexisting": "Sovrascrive 'u condenute ca esiste",
+	"dt_import_mergeintoexisting": "Sovrascrive sulamende le cambe ca stonne jndr'à 'u file",
+	"dt_import_skipexisting": "Zumbe",
+	"dt_import_appendtoexisting": "'Nzicche a 'u condenute ca esiste",
+	"dt_import_summarydesc": "Ripeloghe de l'imbortazione:",
+	"dt_import_editsummary": "'Mborte $1",
+	"dt_import_importing": "Stoche a 'mborte...",
+	"dt_import_success": "$1 {{PLURAL:$1|pàgene|pàggene}} ca onna essere ccrejate da 'u file $2.",
+	"importcsv": "'Mborte CSV",
+	"dt_importcsv_badheader": "Errore: 'a testate d'a colonne $1, '$2', adda essere o '$3' o '$4' o une de le module 'template_name[field_name]'",
+	"right-datatransferimport": "'Mborte date"
+}

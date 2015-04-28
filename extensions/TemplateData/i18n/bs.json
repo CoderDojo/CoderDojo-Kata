@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"DzWiki"
+		]
+	},
+	"templatedata-doc-param-desc": "Opis",
+	"templatedata-doc-param-name": "Parametar",
+	"templatedata-doc-param-status": "Status",
+	"templatedata-doc-param-type": "Vrsta",
+	"templatedata-doc-params": "Parametri šablona",
+	"templatedata-invalid-parse": "Sintaksna greška u JSON-u.",
+	"templatedata-invalid-type": "Svojstvo \"$1\" bi trebalo da je od \"$2\" vrste.",
+	"templatedata-invalid-unknown": "Neočekivano svojstvo \"$1\".",
+	"templatedata-invalid-value": "Neispravna vrijednost za svojstvo \"$1\"",
+	"templatedata-modal-button-apply": "Primijeni",
+	"templatedata-modal-button-cancel": "Otkaži",
+	"templatedata-modal-table-param-name": "Ime",
+	"templatedata-modal-table-param-type": "Vrsta",
+	"templatedata-modal-table-param-type-date": "Datum",
+	"templatedata-modal-table-param-type-wiki-file-name": "Datoteka",
+	"templatedata-modal-table-param-type-wiki-page-name": "Stranica",
+	"templatedata-modal-table-param-type-wiki-user-name": "Korisnik",
+	"templatedata-modal-title-templateparams": "Parametri šablona"
+}

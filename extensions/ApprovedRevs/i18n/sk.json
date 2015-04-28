@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Helix84"
+		]
+	},
+	"approvedrevs-desc": "Stanoviť jedinú revíziu stránky ako schválenú",
+	"approvedrevs-logname": "Záznam schválení revízií",
+	"approvedrevs-logdesc": "Toto je záznam revízií, ktoré boli schválené.",
+	"approvedrevs-approve": "schváliť",
+	"approvedrevs-unapprove": "neschváliť",
+	"approvedrevs": "Schválené revízie",
+	"approvedrevs-unapprovedpages": "Neschválené stránky",
+	"approvedrevs-view": "Zobraziť:",
+	"approvedrevs-revisionnumber": "revízia $1",
+	"approvedrevs-approvedby": "schválil $1 $2",
+	"approvedrevs-difffromlatest": "rozdiel od najnovších",
+	"approvedrevs-approvelatest": "schváliť najnovšie",
+	"approvedrevs-approvethisrev": "Schváliť túto revíziu.",
+	"approvedrevs-viewlatestrev": "Zobraziť najnovšiu revíziu."
+}

@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"datatransfer-desc": "Permite importar y esportar los datos que contienen les llamaes de les plantíes",
+	"viewxml": "Ver XML",
+	"dt_viewxml_docu": "Por favor, esbilla entre les siguientes categoríes y espacios de nome pa ver en formatu XML.",
+	"dt_viewxml_categories": "Categoríes",
+	"dt_viewxml_namespaces": "Espacios de nome",
+	"dt_viewxml_simplifiedformat": "Formatu simplificáu",
+	"dt_xml_namespace": "Espaciu de nomes",
+	"dt_xml_pages": "Páxines",
+	"dt_xml_page": "Páxina",
+	"dt_xml_template": "Plantía",
+	"dt_xml_field": "Campu",
+	"dt_xml_name": "Nome",
+	"dt_xml_title": "Títulu",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Testu llibre",
+	"importxml": "Importar XML",
+	"dt_import_selectfile": "Por favor, seleiciona el ficheru $1 a importar:",
+	"dt_import_encodingtype": "Triba de codificación:",
+	"dt_import_forexisting": "Pa páxines que yá esisten:",
+	"dt_import_overwriteexisting": "Sobreescribir el conteníu esistente",
+	"dt_import_mergeintoexisting": "Sobrescribir sólo los campos conteníos nel ficheru",
+	"dt_import_skipexisting": "Saltar",
+	"dt_import_appendtoexisting": "Amestar al conteníu esistente",
+	"dt_import_summarydesc": "Resume de la importación:",
+	"dt_import_editsummary": "Importación {{ucfirst:$1}}",
+	"dt_import_importing": "Importando...",
+	"dt_import_success": "Se {{PLURAL:$1|creará|crearán}} $1 {{PLURAL:$1|páxina|páxines}} del ficheru $2.",
+	"importcsv": "Importar CSV",
+	"importspreadsheet": "Importar fueya de cálculu",
+	"dt_importcsv_badheader": "Error : la testera de columna $1, \"$2\", tien de ser o \"$3\", \"$4\" o de la forma 'nome_de_plantía[nome_de_campu]'",
+	"right-datatransferimport": "Importar datos",
+	"dt_filetype_spreadsheet": "Fueya de cálculu"
+}

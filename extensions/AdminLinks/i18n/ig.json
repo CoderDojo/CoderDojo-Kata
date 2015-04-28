@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ukabia"
+		]
+	},
+	"adminlinks": "Jikodo ndi íshí",
+	"adminlinks-desc": "Né tinyé [[Special:AdminLinks|ihü mkpa]] né jidé jikodo nke ne nyé nkwado maka ndi íshí",
+	"adminlinks_documentation": "akwukwo $1",
+	"adminlinks_general": "Nke níle",
+	"adminlinks_editsidebar": "Rüwá na ngwa di na ákùkù",
+	"adminlinks_editcss": "Rüwá na akwukwo orúnotu nke CSS",
+	"adminlinks_editmainpagename": "Rüwá na áhà ihü íshí",
+	"adminlinks_users": "Ọ'bànifé",
+	"adminlinks_createuser": "Ké onye na banife",
+	"adminlinks_browsesearch": "Nlearia na Í tú",
+	"adminlinks_importexport": "I tinyé na Í kpata",
+	"right-adminlinks": "Zi jikodo na ga [[Special:AdminLinks|Jikodo ndi íshí]]"
+}

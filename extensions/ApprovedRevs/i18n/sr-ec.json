@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rancher"
+		]
+	},
+	"approvedrevs": "Одобрене измене",
+	"approvedrevs-approvedpages": "Све странице са одобреном изменом",
+	"approvedrevs-notlatestpages": "Странице чија одобрена измена није најновија",
+	"approvedrevs-unapprovedpages": "Неодобрене странице",
+	"approvedrevs-view": "Преглед:",
+	"approvedrevs-revisionnumber": "измена $1",
+	"approvedrevs-approvedby": "{{GENDER:$3|одобрио|одобрила|одобрио}} $1 дана $4 у $5",
+	"approvedrevs-difffromlatest": "разлика од последње",
+	"approvedrevs-approvelatest": "одобри последњу",
+	"approvedrevs-approvethisrev": "Одобри ову измену.",
+	"approvedrevs-viewlatestrev": "Погледајте последњу измену.",
+	"right-approverevisions": "постављање одређене измене на вики страници као одобрене",
+	"right-viewlinktolatest": "преглед образложења на врху страница које имају одобрену измену"
+}

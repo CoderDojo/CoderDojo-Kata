@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"semanticinternalobjects-desc": "Configuracións de obxectos internos en Semantic MediaWiki",
+	"semanticinternalobjects-internalproperty": "Propiedade interna",
+	"semanticinternalobjects-mainpropertyname": "Nome da propiedade para conectar os campos deste modelo co resto da páxina:",
+	"semanticinternalobjects-propnamewarning": "(debería empregarse unicamente se este modelo pode ter numerosas instancias)"
+}

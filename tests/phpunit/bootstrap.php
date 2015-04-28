@@ -11,22 +11,26 @@ if ( !defined( 'MW_PHPUNIT_TEST' ) ) {
 You are running these tests directly from phpunit. You may not have all globals correctly set.
 Running phpunit.php instead is recommended.
 EOF;
-	require_once ( dirname( __FILE__ ) . "/phpunit.php" );
+	require_once __DIR__ . "/phpunit.php";
 }
 
-// Output a notice when running with older versions of PHPUnit
-if ( !version_compare( PHPUnit_Runner_Version::id(), "3.4.1", ">" ) ) {
-  echo <<<EOF
-********************************************************************************
+class MediaWikiPHPUnitBootstrap {
 
-These tests run best with version PHPUnit 3.4.2 or better. Earlier versions may
-show failures because earlier versions of PHPUnit do not properly implement
-dependencies.
+	public function __construct() {
+		wfProfileIn( __CLASS__ );
+	}
 
-********************************************************************************
+	public function __destruct() {
+		wfProfileOut( __CLASS__ );
 
-EOF;
+		// Return to real wiki db, so profiling data is preserved
+		MediaWikiTestCase::teardownTestDB();
+
+		// Log profiling data, e.g. in the database or UDP
+		wfLogProfilingData();
+	}
+
 }
 
-/** @todo Check if this is really needed */
-MessageCache::destroyInstance();
+// This will be destructed after all tests have been run
+$mediawikiPHPUnitBootstrap = new MediaWikiPHPUnitBootstrap();

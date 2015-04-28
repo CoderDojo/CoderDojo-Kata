@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"MacTire02"
+		]
+	},
+	"adminlinks": "Kianglaghyn reirey",
+	"adminlinks-desc": "Cur [[Special:AdminLinks|duillag er lheh]] rish as ee goaill kianglaghyn coonee da reireyderyn stiagh",
+	"adminlinks_documentation": "Docamadys $1",
+	"adminlinks_general": "Cadjin",
+	"adminlinks_editsidebar": "Reaghey yn çheu-vaidjey",
+	"adminlinks_editcss": "Reaghey yn coadan CSS",
+	"adminlinks_editmainpagename": "Reaghey ennym ny preeu-duillag",
+	"adminlinks_users": "Ymmydeyryn",
+	"adminlinks_createuser": "Croo ymmydeyr",
+	"adminlinks_browsesearch": "Femblal as ronsaghey",
+	"adminlinks_importexport": "Ymmyrkey stiagh as assphurtal",
+	"right-adminlinks": "Jeeagh er y chiangley dys [[Special:AdminLinks|kianglaghyn reirey]]"
+}

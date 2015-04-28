@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200",
+			"Homo",
+			"Ignas693",
+			"Perkunas",
+			"Vpovilaitis"
+		]
+	},
+	"adminlinks": "Administravimo nuorodos",
+	"adminlinks-desc": "Prideda [[Special:AdminLinks|Specialųjį puslapį]], kuriame yra naudingos nuorodos administratoriams",
+	"adminlinks_documentation": "$1 dokumentacija",
+	"adminlinks_general": "Bendrosios",
+	"adminlinks_editsidebar": "Redaguoti šoninės juostos",
+	"adminlinks_editcss": "Redaguoti CSS failą",
+	"adminlinks_editmainpagename": "Redaguoti pagrindinio puslapio pavadinimą",
+	"adminlinks_users": "Vartotojai",
+	"adminlinks_createuser": "Sukurti naudotoją",
+	"adminlinks_browsesearch": "Naršyti ir ieškoti",
+	"adminlinks_importexport": "Importas ir eksportas",
+	"right-adminlinks": "Žr. nuorodą į [[Special:AdminLinks|Administravimo priemonės]]"
+}

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrisportelli"
+		]
+	},
+	"adminlinks_general": "Ġenerali",
+	"adminlinks_createuser": "Oħloq kont",
+	"adminlinks_browsesearch": "Esplora u fittex",
+	"adminlinks_importexport": "Importa u esporta",
+	"right-adminlinks": "Jara l-ħolqa lejn [[Special:AdminLinks|ħoloq tal-amministratur]]"
+}

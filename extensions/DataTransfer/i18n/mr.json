@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kaustubh",
+			"V.narsikar"
+		]
+	},
+	"datatransfer-desc": "साचा कॉल मध्ये असणार्‍या डाटाची आयात निर्यात करण्याची परवानगी देतो",
+	"viewxml": "XML पहा",
+	"dt_viewxml_docu": "कॄपया XML मध्ये पाहण्यासाठी खालीलपैकी वर्ग व नामविश्वे निवडा.",
+	"dt_viewxml_categories": "वर्ग",
+	"dt_viewxml_namespaces": "नामविश्वे",
+	"dt_viewxml_simplifiedformat": "सोपे प्रारुप",
+	"dt_xml_namespace": "नामविश्व",
+	"dt_xml_pages": "पाने",
+	"dt_xml_page": "पान",
+	"dt_xml_template": "साचा",
+	"dt_xml_field": "रकाना",
+	"dt_xml_name": "नाव",
+	"dt_xml_title": "शीर्षक",
+	"dt_xml_id": "आयडी",
+	"dt_xml_freetext": "मुक्त मजकूर",
+	"importxml": "एक्सएमएल आयात करा",
+	"dt_import_selectfile": "आयात करावयाची $1 संचिका निवडा:"
+}

@@ -1,0 +1,41 @@
+@mixin kata-commandbar() {
+
+	/*
+	############################################################################
+		COMMANDBAR
+	############################################################################
+	*/
+
+	#CommandBar {
+		margin-bottom: 0px;
+		* {
+			background-color: #2E7AC7;
+			color: #FFFFFF;
+			&:hover {
+				color: #ddd;
+			}
+		}
+	}
+
+	.organiser-resource #CommandBar *
+	{
+		background-color: #61C93F;
+	}
+
+	.technical-resource #CommandBar *
+	{
+		background-color: #ED462F;
+	}
+
+	.ninja-resource #CommandBar *
+	{
+		background-color: #FBCC33;
+	}
+
+	/*
+	############################################################################
+		END COMMANDBAR
+	############################################################################
+	*/
+
+}

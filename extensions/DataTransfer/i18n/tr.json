@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joseph",
+			"Karduelis",
+			"Mach",
+			"Manco Capac",
+			"Srhat",
+			"Vito Genovese"
+		]
+	},
+	"datatransfer-desc": "Şablon çağrılarında içerilen verilerin içe ve dışa aktarımına izin verir",
+	"viewxml": "XML'i gör",
+	"dt_viewxml_docu": "Lütfen, XML formatında görüntülemek için aşağıdaki kategori ve ad alanları arasından seçin.",
+	"dt_viewxml_categories": "Kategoriler",
+	"dt_viewxml_namespaces": "İsim alanları",
+	"dt_viewxml_simplifiedformat": "Basitleştirilmiş format",
+	"dt_xml_namespace": "Ad alanı",
+	"dt_xml_pages": "Sayfalar",
+	"dt_xml_page": "Sayfa",
+	"dt_xml_template": "Şablon",
+	"dt_xml_field": "Alan",
+	"dt_xml_name": "İsim",
+	"dt_xml_title": "Başlık",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Özgür Metin",
+	"importxml": "XML içe aktar",
+	"dt_import_selectfile": "Lütfen içe aktarmak için $1 dosyasını seçin:",
+	"dt_import_encodingtype": "Kodlama türü:",
+	"dt_import_summarydesc": "İçe aktarma özeti:",
+	"dt_import_editsummary": "$1 içe aktarımı",
+	"dt_import_importing": "İçe aktarıyor...",
+	"dt_import_success": "$2 dosyasından $1 {{PLURAL:$1|sayfa|sayfa}} oluşturulacak.",
+	"importcsv": "CSV'yi içe aktar",
+	"dt_importcsv_badheader": "Hata: $1 kolonunun başlığı olan '$2', '$3', '$4' ya da 'şablon_adı[alan_adı]' şeklinde olmalıdır",
+	"right-datatransferimport": "Verileri içe aktarır"
+}

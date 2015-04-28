@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"BeginaFelicysym",
+			"Chrumps",
+			"Sp5uhe",
+			"Woytecr"
+		]
+	},
+	"approvedrevs-desc": "Pozwala na zatwierdzenie pojedynczej wersji strony",
+	"approvedrevs-logname": "Rejestr zatwierdzonych wersji",
+	"approvedrevs-logdesc": "To jest rejestr wersji, które zostały zatwierdzone.",
+	"approvedrevs-approve": "zatwierdź",
+	"approvedrevs-unapprove": "cofnij zatwierdzenie",
+	"approvedrevs-approvesuccess": "Ta wersja strony została zatwierdzona.",
+	"approvedrevs-unapprovesuccess": "Dla tej strony brak jest wersji zatwierdzonej.\nW zamian prezentowana będzie ostatnia wersja.",
+	"approvedrevs-unapprovesuccess2": "Nie ma już zatwierdzonej wersji tej strony.\nW zamian zostanie wyświetlona pusta strona.",
+	"approvedrevs-approveaction": "zatwierdził wersję $2 strony „[[$1]]”",
+	"approvedrevs-unapproveaction": "usunął zatwierdzenie strony „[[$1]]”",
+	"approvedrevs-notlatest": "To jest zatwierdzona wersja strony. To nie jest ostatnia jej wersja.",
+	"approvedrevs-approvedandlatest": "To jest nie tylko zatwierdzona wersja strony, ale również ostatnia jej wersja.",
+	"approvedrevs-blankpageshown": "Żadna wersja tej strony nie została zatwierdzona.",
+	"approvedrevs-noapprovedrevision": "To jest najnowsza wersja tej strony; nie ma przejrzanej wersji.",
+	"approvedrevs-editwarning": "Zauważ, że edytujesz ostatnią wersję strony. Wersję, która nie została zatwierdzona i nie jest pokazywana domyślnie.",
+	"approvedrevs": "Zatwierdzone wersje",
+	"approvedrevs-approvedpages": "Wszystkie strony z zatwierdzoną wersją",
+	"approvedrevs-notlatestpages": "Strony, których zatwierdzona wersja nie jest ich ostatnią",
+	"approvedrevs-unapprovedpages": "Niezatwierdzone strony",
+	"approvedrevs-view": "Widok",
+	"approvedrevs-revisionnumber": "wersja $1",
+	"approvedrevs-approvedby": "zatwierdzone $2 przez $1",
+	"approvedrevs-difffromlatest": "porównaj z najnowszą",
+	"approvedrevs-approvelatest": "zatwierdź ostatnią",
+	"approvedrevs-approvethisrev": "Zatwierdź te zmiany.",
+	"approvedrevs-viewlatestrev": "Zobacz najnowszą wersję.",
+	"approvedrevs-approvedrevision": "Zatwierdzona wersja",
+	"right-approverevisions": "Zatwierdzenie wybranych wersji stron wiki",
+	"right-viewlinktolatest": "Pokazuj tekst wyjaśniający w górnej części tych stron, które mają zatwierdzoną wersję"
+}

@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Daisy2002",
+			"Yjs5497",
+			"아라"
+		]
+	},
+	"datatransfer-desc": "틀 호출에 포함된 데이터를 가져오기와 내보내기를 할 수 있습니다",
+	"viewxml": "XML 보기",
+	"dt_viewxml_docu": "XML 형식으로 보려면 다음 분류와 이름공간 중에서 선택하세요.",
+	"dt_viewxml_categories": "분류",
+	"dt_viewxml_namespaces": "이름공간",
+	"dt_viewxml_simplifiedformat": "단순화된 형식",
+	"dt_xml_namespace": "이름공간",
+	"dt_xml_pages": "문서",
+	"dt_xml_page": "문서",
+	"dt_xml_template": "틀",
+	"dt_xml_field": "필드",
+	"dt_xml_name": "이름",
+	"dt_xml_title": "제목",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "자유 텍스트",
+	"importxml": "XML 가져오기",
+	"dt_import_selectfile": "가져오려면 $1 파일을 선택하세요:",
+	"dt_import_encodingtype": "인코딩 유형:",
+	"dt_import_forexisting": "이미 존재하는 문서이면:",
+	"dt_import_overwriteexisting": "기존 내용을 덮어쓰기",
+	"dt_import_mergeintoexisting": "파일에 포함된 필드만 덮어쓰기",
+	"dt_import_skipexisting": "건너뛰기",
+	"dt_import_appendtoexisting": "기존 내용에 추가",
+	"dt_import_summarydesc": "가져오기의 요약:",
+	"dt_import_editsummary": "$1 가져오기",
+	"dt_import_importing": "가져오는 중...",
+	"dt_import_success": "{{PLURAL:$1|문서}} $1개가 $2 파일에서 만들어집니다.",
+	"importcsv": "CSV 가져오기",
+	"dt_importcsv_badheader": "오류: $1열의 머리인, '$2'(은)는, '$3', '$4'나 '틀_이름[필드_이름]' 형식 중 하나여야 합니다",
+	"right-datatransferimport": "데이터 가져오기"
+}

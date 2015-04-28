@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bresta"
+		]
+	},
+	"adminlinks": "Vegzat e administrimit",
+	"adminlinks-desc": "Shton nji [[Special:AdminLinks|faqe speciale]] që i mban vegzat e nevojshme për administrues",
+	"adminlinks_documentation": "$1 dokumentimi",
+	"adminlinks_general": "Të përgjithshme",
+	"adminlinks_editsidebar": "Redakto shtyllën anësore",
+	"adminlinks_editcss": "Redakto CSSin",
+	"adminlinks_editmainpagename": "Redakto emnin e faqes kryesore",
+	"adminlinks_users": "Përdoruesit",
+	"adminlinks_createuser": "Krijo përdorues",
+	"adminlinks_browsesearch": "Shfletimi dhe kërkimi",
+	"adminlinks_importexport": "Importimi dhe eksportimi",
+	"right-adminlinks": "Shih vegzën te [[Special:AdminLinks|Vegzat e administrimit]]"
+}

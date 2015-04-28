@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"V.narsikar"
+		]
+	},
+	"adminlinks": "प्रशासकीय दुवे",
+	"adminlinks-desc": "प्रशासकांसाठी हे [[Special:AdminLinks|विशेष पृष्ठ]] जोडते, ज्यात, प्रशासकांसाठी मदतपूर्ण दुवे आहेत",
+	"adminlinks_documentation": "$1 चे दस्ताएवजीकरण",
+	"adminlinks_general": "सर्वसामान्य",
+	"adminlinks_editsidebar": "कड-पट्टीका(साईडबार) संपादित करा",
+	"adminlinks_editcss": "सीएसएस संचिका संपादित करा",
+	"adminlinks_editmainpagename": "मुख्य पानाचे नाव संपादित करा",
+	"adminlinks_users": "सदस्य",
+	"adminlinks_createuser": "सदस्यत्व निर्माण करा",
+	"adminlinks_browsesearch": "न्याहाळा व शोधा",
+	"adminlinks_importexport": "आयात व निर्यात",
+	"right-adminlinks": "[[Special:AdminLinks|प्रशासकिय दुवे]] हा प्रशासकांसाठी असलेला दुवा बघा"
+}

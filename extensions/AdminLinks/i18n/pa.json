@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Babanwalia",
+			"Raj Singh",
+			"TariButtar"
+		]
+	},
+	"adminlinks_documentation": "$1 ਦਸਤਾਵੇਜ਼",
+	"adminlinks_general": "ਆਮ",
+	"adminlinks_editsidebar": "ਸਾਈਡਬਾਰ ਸੋਧੋ",
+	"adminlinks_users": "ਵਰਤੋਂਕਾਰ",
+	"adminlinks_createuser": "ਇੱਕ ਵਰਤੋਂਕਾਰ ਬਣਾਓ",
+	"adminlinks_browsesearch": "ਬ੍ਰਾਊਜ ਅਤੇ ਖੋਜੋ"
+}

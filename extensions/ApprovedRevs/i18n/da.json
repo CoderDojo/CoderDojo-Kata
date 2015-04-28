@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cgtdk",
+			"Christian List",
+			"Overlaet",
+			"Tjernobyl"
+		]
+	},
+	"approvedrevs-desc": "Angiv en enkelt version af en side som godkendt",
+	"approvedrevs-logname": "Revisionsgodkendelseslog",
+	"approvedrevs-logdesc": "Dette er en log over godkendte versioner.",
+	"approvedrevs-approve": "godkend",
+	"approvedrevs-unapprove": "afvis",
+	"approvedrevs-approvesuccess": "Denne version af siden er angivet som den godkendte version.",
+	"approvedrevs-unapprovesuccess": "Der er ikke længere en godkendt version for denne side.\nI stedet vil den seneste version blive vist.",
+	"approvedrevs-unapprovesuccess2": "Der er ikke længere en godkendt version for denne side.\nDer vil derfor blive vist en blank side.",
+	"approvedrevs-blankpageshown": "Ingen revision er blevet godkendt for denne side.",
+	"approvedrevs": "Godkendte revisioner",
+	"approvedrevs-unapprovedpages": "Afviste sider",
+	"approvedrevs-view": "Vis:",
+	"approvedrevs-revisionnumber": "version $1",
+	"approvedrevs-difffromlatest": "forskel fra seneste",
+	"approvedrevs-approvelatest": "godkend seneste",
+	"approvedrevs-approvethisrev": "Godkend denne version.",
+	"approvedrevs-viewlatestrev": "Vis den seneste revision."
+}

@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Helix84"
+		]
+	},
+	"datatransfer-desc": "Umožňuje import a export údajov obsiahnutých v bunkách šablón",
+	"viewxml": "Zobraziť XML",
+	"dt_viewxml_docu": "Prosím, vyberte ktorý spomedzi nasledovných kategórií a menných priestorov zobraziť vo formáte XML.",
+	"dt_viewxml_categories": "Kategórie",
+	"dt_viewxml_namespaces": "Menné priestory",
+	"dt_viewxml_simplifiedformat": "Zjednodušený formát",
+	"dt_xml_namespace": "Menný priestor",
+	"dt_xml_pages": "Stránky",
+	"dt_xml_page": "Stránka",
+	"dt_xml_template": "Šablóna",
+	"dt_xml_field": "Pole",
+	"dt_xml_name": "Názov",
+	"dt_xml_title": "Nadpis",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Voľný text",
+	"importxml": "Importovať XML",
+	"dt_import_selectfile": "Prosím, vyberte $1 súbor, ktorý chcete importovať:",
+	"dt_import_encodingtype": "Typ kódovania:",
+	"dt_import_editsummary": "Import $1",
+	"dt_import_importing": "Prebieha import...",
+	"dt_import_success": "Z $2 súboru sa {{PLURAL:$1|importuje $1 stránka|importujú $1 stránky|importuje $1 stránok}}.",
+	"importcsv": "Import CSV",
+	"dt_importcsv_badheader": "Chyba: stĺpec $1 hlavičky, „$2“ musí mať hodnotu buď „$3“, „$4“ alebo byť v tvare „názov_šablóny[názov_poľa]“",
+	"right-datatransferimport": "Importovať údaje"
+}

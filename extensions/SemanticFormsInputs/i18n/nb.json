@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Event",
+			"Nghtwlkr"
+		]
+	},
+	"semanticformsinputs-desc": "Ekstra inndatatyper for [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Semantic_Forms Semantic Forms]",
+	"semanticformsinputs-wrongformat": "Feil format.",
+	"semanticformsinputs-close": "Lukk",
+	"semanticformsinputs-prev": "Forrige",
+	"semanticformsinputs-next": "Neste",
+	"semanticformsinputs-today": "I dag",
+	"semanticformsinputs-malformedregexp": "Feilutformet regulæruttrykk: $1",
+	"semanticformsinputs-datepicker-dateformat": "Datoformatstreng. Se [https://www.mediawiki.org/w/index.php?title=Extension:Semantic_Forms_Inputs&fromsection=Date_picker#Parameters online documentation] for nærmere informasjon.",
+	"semanticformsinputs-datepicker-weekstart": "Første ukedag (0 - søndag, 1 - mandag, ...).",
+	"semanticformsinputs-datepicker-firstdate": "Første valgbare dato (med \"yyyy/mm/dd\"-format).",
+	"semanticformsinputs-datepicker-lastdate": "Siste valgbare dato (med \"yyyy/mm/dd\"-format).",
+	"semanticformsinputs-datepicker-disabledaysofweek": "Liste av dager som ikke kan velges (f. eks. helg: 6, 0).",
+	"semanticformsinputs-datepicker-highlightdaysofweek": "Liste av dager som skal fremheves (f. eks. helg: 6, 0).",
+	"semanticformsinputs-datepicker-disabledates": "Komma-separert liste av skjulte datoer/datobaserte tidsrom (datoer gitt i \"yyyy/mm/dd\"-format, tidsrom i \"yyyy/mm/dd-yyyy/mm/dd\"-format).",
+	"semanticformsinputs-datepicker-highlightdates": "En komma-separert liste av datoer eller tidsrom mellom datoer som skal vises uthevet (datoer i formatet yyyy/mm/dd, tidsrom i formatet yyyy/mm/dd-yyyy/mm/dd).",
+	"semanticformsinputs-datepicker-showweeknumbers": "Skal ukenumre vises til venstre for ukene?",
+	"semanticformsinputs-datepicker-enableinputfield": "Skal brukeren kunne fylle ut datofeltet direkte eller bare via datovelgeren?",
+	"semanticformsinputs-datepicker-showresetbutton": "Skal en tilbakestillingsknapp vises? Dette vil da være eneste muligheten for en bruker å kunne slette inndatafeltet hvis det er blokkert for direkte innskriving.",
+	"semanticformsinputs-timepicker-mintime": "Tidligste tidspunkt som vises. Format: hh:mm",
+	"semanticformsinputs-timepicker-maxtime": "Seneste tidspunkt som vises. Format: hh:mm",
+	"semanticformsinputs-timepicker-interval": "Intervall mellom minutter. Tall mellom 1 og 60.",
+	"semanticformsinputs-timepicker-enableinputfield": "Skal brukeren kunne fylle ut datofeltet direkte eller bare via datovelgeren?",
+	"semanticformsinputs-timepicker-showresetbutton": "Skal en tilbakestillingsknapp vises? Dette vil da være eneste muligheten for en bruker å kunne slette inndatafeltet hvis det er blokkert for direkte innskriving.",
+	"semanticformsinputs-regexp-regexp": "Regulæruttrykket som et inndatafelt må oppfylle for å være gyldig. Dette må angis inklusive skråstrek-tegnene! Standard er \"/.*/\", dvs. vilkårlig verdi.",
+	"semanticformsinputs-regexp-basetype": "Basistypen som skal brukes. Denne kan være en hvilken som helst type som genererer et HTML-skjemaelement av type \"input\" eller \"select\" (f. eks. tekst, listeboks, datavelger) eller annet regulæruttrykk. Standard er \"tekst\".",
+	"semanticformsinputs-regexp-baseprefix": "Prefiks for basistype-parametrene.",
+	"semanticformsinputs-regexp-orchar": "ELLER-tegnet som kan bruker i et regulæruttrykk istedenfor |. Standard er \"!\".",
+	"semanticformsinputs-regexp-inverse": "Hvis valgt, skal inndata IKKE oppfylle regulæruttrykket for å være gyldig. Dvs. regulæruttrykket er invertert.",
+	"semanticformsinputs-regexp-message": "Feilmeldingen som vises hvis betingelsen ikke oppfylles. Standardverdi er \"Feil format!\"",
+	"semanticformsinputs-menuselect-structure": "Menystrukturen som en unummerert liste.",
+	"semanticformsinputs-menuselect-enableinputfield": "Skal brukeren kunne fylle ut inndatafeltet direkte?"
+}

@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Trncmvsr",
+			"Mavrikant"
+		]
+	},
+	"templatedata-editbutton": "Şablon belgelerini yönetme",
+	"templatedata-modal-button-addparam": "Değişken ekle",
+	"templatedata-modal-button-apply": "Uygula",
+	"templatedata-modal-button-cancel": "İptal",
+	"templatedata-modal-button-importParams": "Değişkenleri içe aktar",
+	"templatedata-modal-errormsg-import-noparams": "İçe aktarma sırasında yeni öznitelikler bulunamadı.",
+	"templatedata-modal-table-param-actions": "Eylemler",
+	"templatedata-modal-table-param-default": "Varsayılan",
+	"templatedata-modal-table-param-desc": "Açıklama",
+	"templatedata-modal-table-param-label": "Etiket",
+	"templatedata-modal-table-param-name": "Ad",
+	"templatedata-modal-table-param-type": "Tür",
+	"templatedata-modal-table-param-type-number": "Sayı",
+	"templatedata-modal-table-param-type-date": "Tarih",
+	"templatedata-modal-table-param-type-page": "Sayfa",
+	"templatedata-modal-table-param-type-string": "Dize",
+	"templatedata-modal-table-param-type-user": "Kullanıcı",
+	"templatedata-modal-title": "Belge şablonu düzenleyicisi",
+	"templatedata-modal-title-templatedesc": "Şablon açıklaması"
+}

@@ -1,0 +1,148 @@
+div.input-settings-block {
+	/* @embed */
+	background: transparent url('../images/input.png') no-repeat left top;
+	/* @embed */
+	background-image: -webkit-linear-gradient(transparent, transparent), url('../images/input.svg');
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url('../images/input.svg');
+	background-size: 20px auto;
+	color: #252525;
+	padding-left: 26px;
+	cursor: pointer;
+}
+
+.imelabel {
+	display: block;
+	padding-bottom: 10px;
+	font-size: 10pt;
+	line-height: 16pt;
+}
+
+.imelabel span {
+	padding-left: 5px;
+}
+
+.imelabel input {
+	float: left;
+}
+
+.uls-ime-menu-settings-item {
+	background-color: #f0f0f0;
+	/* Workaround for bug https://bugzilla.wikimedia.org/49074 */
+	/* @noflip */
+	border-radius: 0 0 5px 5px;
+	border-top: 1px solid #ddd;
+	margin-top: 6px;
+	padding: 4px 2px;
+	color: #444;
+	position: relative;
+}
+
+.uls-ime-disable-link {
+	/* @embed */
+	background: transparent url('../images/remove-input.png') no-repeat left top;
+	/* @embed */
+	background-image: -webkit-linear-gradient(transparent, transparent), url('../images/remove-input.svg');
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url('../images/remove-input.svg');
+	background-size: auto 16px;
+	padding-left: 22px;
+	padding-right: 26px;
+	padding-bottom: 10px;
+	cursor: pointer;
+}
+
+.uls-ime-more-settings-link {
+	/* @embed */
+	background: transparent url('../images/cog.png') no-repeat center top;
+	/* @embed */
+	background-image: -webkit-linear-gradient(transparent, transparent), url('../images/cog.svg');
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url('../images/cog.svg');
+	background-size: auto 14px;
+	border-left: 1px solid #CCCCCC;
+	width: 22px;
+	height: 14px;
+	position: absolute;
+	right: 0;
+	cursor: pointer;
+}
+
+.uls-ime-menu-settings-item > a:hover {
+	background-color: #f0f0f0;
+	color: #000;
+}
+
+.ext-uls-input-settings-imes-title:empty {
+	display: none;
+}
+
+.uls-input-settings-disable-info,
+.uls-input-settings-no-inputmethods {
+	color: #565656;
+	padding-top: 10px;
+	padding-bottom: 15px;
+	font-size: 11pt;
+}
+
+.down+.uls-input-settings-caret {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-top: none;
+	border-right: 8px solid transparent;
+	border-left: 8px solid transparent;
+	border-bottom: 8px solid #f0f0f0;
+	content: "";
+	position: relative;
+	vertical-align: bottom;
+	top: 12px;
+	left: -16%;
+	margin: 0 -8px;
+}
+
+.uls-input-settings-toggle {
+	padding-top: 10px;
+}
+
+.uls-input-settings .uls-input-settings-inputmethods-list {
+	margin: 12px 0;
+	padding: 6px 10px;
+	background: #f0f0f0;
+}
+
+.uls-ime-notification-bubble .link {
+	color: #0645AD;
+	cursor: pointer;
+}
+
+.uls-input-settings .uls-ime-help {
+	margin-left: 10px;
+}
+
+/* Ime menu customizations */
+.ime-perime-help {
+	display: none;
+}
+
+.ime-checked .ime-perime-help {
+	display: inline-block;
+	width: 20px;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	opacity: 0.75;
+	padding: 0;
+	/* @embed */
+	background: transparent url('../images/help.png') left center no-repeat;
+	/* @embed */
+	background-image: -webkit-linear-gradient(transparent, transparent), url('../images/help.svg');
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url('../images/help.svg');
+}
+
+.ime-checked .ime-perime-help:hover {
+	opacity: 1;
+}

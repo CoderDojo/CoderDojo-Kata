@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Consta",
+			"Omnipaedista",
+			"Protnet",
+			"ZaDiak"
+		]
+	},
+	"adminlinks": "Σύνδεσμοι διαχειριστών",
+	"adminlinks-desc": "Προσθέτει μία [[Special:AdminLinks|ειδική σελίδα]] η οποία περιέχει χρήσιμους συνδέσμους για διαχειριστές",
+	"adminlinks_documentation": "Τεκμηρίωση για $1",
+	"adminlinks_general": "Γενικά",
+	"adminlinks_editsidebar": "Επεξεργασία πλαϊνής μπάρας",
+	"adminlinks_editcss": "Επεξεργασία αρχείου CSS",
+	"adminlinks_editmainpagename": "Επεξεργασία ονόματος κύριας σελίδας",
+	"adminlinks_users": "Χρήστες",
+	"adminlinks_createuser": "Δημιουργία χρήστη",
+	"adminlinks_browsesearch": "Πλοήγηση και αναζήτηση",
+	"adminlinks_importexport": "Εισαγωγή και εξαγωγή",
+	"right-adminlinks": "Δείτε τον σύνδεσμο στους [[Special:AdminLinks|Συνδέσμους διαχειριστών]]"
+}

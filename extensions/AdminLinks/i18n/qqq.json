@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bennylin",
+			"EugeneZelenko",
+			"Fryed-peach",
+			"Purodha",
+			"Shirayuki",
+			"Umherirrender"
+		]
+	},
+	"adminlinks": "{{doc-special|AdminLinks}}",
+	"adminlinks-desc": "{{desc|name=Admin Links|url=http://www.mediawiki.org/wiki/Extension:Admin_Links}}",
+	"adminlinks_documentation": "Unused at this time.\n\nThe label for a link to documentation for a certain extension. Parameters:\n* $1 - extension name\n{{Identical|Documentation}}",
+	"adminlinks_general": "Section name for general links for administrators.\n{{Identical|General}}",
+	"adminlinks_editsidebar": "Link description that will lead to the page where the site's sidebar can be edited.",
+	"adminlinks_editcss": "Link description that will lead to the page where a CSS page can be edited.",
+	"adminlinks_editmainpagename": "Link description that will lead to the page where the name of the main page can be edited.",
+	"adminlinks_users": "Section name for links for administrators.\n{{Identical|User}}",
+	"adminlinks_createuser": "Link description that will lead to the page where a user can be created.\n{{Identical|Create user}}",
+	"adminlinks_browsesearch": "Section name for links for administrators related to browsing and searching.",
+	"adminlinks_importexport": "Section name for links for administrators related to import and export of pages and data.",
+	"right-adminlinks": "{{doc-right|adminlinks}}"
+}

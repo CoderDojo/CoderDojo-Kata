@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"George Animal"
+		]
+	},
+	"babel-template": "Template:$1",
+	"babel-footer": "Bikarhêner li gorî ziman"
+}

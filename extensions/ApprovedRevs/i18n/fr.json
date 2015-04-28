@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko",
+			"IAlex",
+			"Peter17",
+			"Sherbrooke"
+		]
+	},
+	"approvedrevs-desc": "Marquer une seule révision d’une page comme approuvée",
+	"approvedrevs-logname": "Journal des approbations de révisions",
+	"approvedrevs-logdesc": "Ceci est le journal des révisions qui ont été marquées comme approuvées.",
+	"approvedrevs-approve": "approuver",
+	"approvedrevs-unapprove": "désapprouver",
+	"approvedrevs-approvesuccess": "Cette révision de la page a été marquée comme étant la version approuvée.",
+	"approvedrevs-unapprovesuccess": "Il n’y a plus de version approuvée de cette page.\nÀ la place, la révision la plus récente sera affichée.",
+	"approvedrevs-unapprovesuccess2": "Il n’y a plus de version approuvée de cette page.\nÀ la place, une page vide sera affichée.",
+	"approvedrevs-approveaction": "a marqué $2 comme la révision approuvée de « [[$1]] »",
+	"approvedrevs-unapproveaction": "a annulé le marquage d’une révision approuvée pour « [[$1]] »",
+	"approvedrevs-notlatest": "Ceci est la révision approuvée de cette page. Ce n’est pas la plus récente.",
+	"approvedrevs-approvedandlatest": "Ceci est la révision approuvée de la page, et aussi la plus récente.",
+	"approvedrevs-blankpageshown": "Aucune version n’a été approuvée pour cette page.",
+	"approvedrevs-noapprovedrevision": "Ceci est la dernière révision de cette page ; elle n’a pas de révision approuvée.",
+	"approvedrevs-editwarning": "Veuillez noter que vous modifiez actuellement la dernière version de cette page, qui n'est pas celle approuvée affichée par défaut.",
+	"approvedrevs": "Révisions approuvées",
+	"approvedrevs-approvedpages": "Toutes les pages avec une révision approuvée",
+	"approvedrevs-notlatestpages": "Pages dont la révision approuvée n’est pas la plus récente",
+	"approvedrevs-unapprovedpages": "Pages non approuvées",
+	"approvedrevs-view": "Voir :",
+	"approvedrevs-revisionnumber": "modification $1",
+	"approvedrevs-approvedby": "approuvé par $1 le $2",
+	"approvedrevs-difffromlatest": "diff par rapport à actuel",
+	"approvedrevs-approvelatest": "approuver la plus récente",
+	"approvedrevs-approvethisrev": "Approuver cette révision.",
+	"approvedrevs-viewlatestrev": "Voir la dernière révision.",
+	"approvedrevs-approvedrevision": "Accepter la révision",
+	"right-approverevisions": "Marquer une révision précise d’une page comme approuvée",
+	"right-viewlinktolatest": "Voir le texte explicatif en haut des pages qui ont une révision approuvée"
+}

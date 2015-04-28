@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrisportelli"
+		]
+	},
+	"approvedrevs-approve": "approva",
+	"approvedrevs-unapprove": "tapprovax",
+	"approvedrevs-approvesuccess": "Din ir-reviżjoni tal-paġna ġiet imposta bħala l-waħda approvata.",
+	"approvedrevs-unapprovedpages": "Paġni mhux approvati",
+	"approvedrevs-view": "Ara:",
+	"approvedrevs-revisionnumber": "reviżjoni $1"
+}

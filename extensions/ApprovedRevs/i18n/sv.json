@@ -1,0 +1,42 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ainali",
+			"Cohan",
+			"LittleGun",
+			"Lokal Profil",
+			"Martinwiss",
+			"Tobulos1",
+			"WikiPhoenix"
+		]
+	},
+	"approvedrevs-desc": "Sätt en enskild version av en sida till godkänd",
+	"approvedrevs-logname": "Godkänningslogg för versioner",
+	"approvedrevs-logdesc": "Detta är loggen över versioner som har godkänts.",
+	"approvedrevs-approve": "godkänn",
+	"approvedrevs-unapprove": "godkänn ej",
+	"approvedrevs-approvesuccess": "Denna version av sidan har ställts in som den godkända versionen.",
+	"approvedrevs-unapprovesuccess": "Det finns inte längre en godkänd version för den här sidan. \nIstället kommer den senaste versionen att visas.",
+	"approvedrevs-unapprovesuccess2": "Det finns inte längre en godkänd version av den här sidan. \nIstället kommer en tom sida att visas.",
+	"approvedrevs-approveaction": "sätt $2 som den godkända versionen av \"[[$1]]\"",
+	"approvedrevs-unapproveaction": "ångra godkänd version för  \"[[$1]]\"",
+	"approvedrevs-notlatest": "Detta är den godkända version av denna sida; det är inte den senaste.",
+	"approvedrevs-approvedandlatest": "Detta är den godkända version av denna sida, samt den senaste.",
+	"approvedrevs-blankpageshown": "Ingen version har godkänts för denna sida.",
+	"approvedrevs-noapprovedrevision": "Det här är sidans senaste version, det finns ingen godkänd version.",
+	"approvedrevs-editwarning": "Observera att du nu redigerar den senaste versionen av denna sida, vilket inte är den godkända vilken visas som standard.",
+	"approvedrevs": "Godkända versioner",
+	"approvedrevs-approvedpages": "Alla sidor med en godkänd version",
+	"approvedrevs-notlatestpages": "Sidor vars godkända version inte är den senaste.",
+	"approvedrevs-unapprovedpages": "Icke godkända sidor",
+	"approvedrevs-view": "Visa:",
+	"approvedrevs-revisionnumber": "version $1",
+	"approvedrevs-approvedby": "godkänd av $1, $2",
+	"approvedrevs-difffromlatest": "diff från senaste",
+	"approvedrevs-approvelatest": "godkänn senaste",
+	"approvedrevs-approvethisrev": "Godkänn denna versionen.",
+	"approvedrevs-viewlatestrev": "Visa den senaste versionen.",
+	"approvedrevs-approvedrevision": "Godkänd version",
+	"right-approverevisions": "Sätt en viss version av en wiki-sida som godkänd",
+	"right-viewlinktolatest": "Se förklarande text högst upp på sidor som har en godkänd version"
+}

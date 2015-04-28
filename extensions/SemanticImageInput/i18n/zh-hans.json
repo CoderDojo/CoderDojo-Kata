@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Linforest"
+		]
+	},
+	"sii-desc": "为[https://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]（语义表单）添加一个用于从Wikipedia获取图像的图像输入控件",
+	"sii-imageinput-loading": "加载图像..."
+}

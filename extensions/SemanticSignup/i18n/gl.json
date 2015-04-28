@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"semanticsignup": "Rexistro semántico",
+	"ses-desc": "Unha extensión MediaWiki construída a partir de formularios semánticos para encher unha páxina de usuario con datos semánticos á hora do rexistro",
+	"ses-nousername": "Non especificou o nome de usuario.",
+	"ses-nopwdmatch": "O contrasinal e a confirmación do contrasinal non coinciden.",
+	"ses-norealname": "O nome real é necesario, pero non o especificou.",
+	"ses-userexists": "O usuario xa existe.",
+	"ses-emailfailed": "Erro durante o envío do correo electrónico de confirmación.",
+	"ses-createforbidden": "O usuario actual non ten permiso para crear contas.",
+	"ses-throttlehit": "Este enderezo IP superou o número máximo de novas contas de usuario ao día."
+}

@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Michawiki"
+		]
+	},
+	"datatransfer-desc": "Zmóžnja importěrowanje a eksportěrowanje datow w zawołanjach pśedłogow",
+	"viewxml": "XML se woglědaś",
+	"dt_viewxml_docu": "Pšosym wubjeŕ, kótare slědujucych kategorijow a mjenjowych rumow maju se pokazaś w formaśe XML.",
+	"dt_viewxml_categories": "Kategorije",
+	"dt_viewxml_namespaces": "Mjenjowe rumy",
+	"dt_viewxml_simplifiedformat": "Zjadnorjony format",
+	"dt_xml_namespace": "Mjenjowy rum",
+	"dt_xml_pages": "Boki",
+	"dt_xml_page": "Bok",
+	"dt_xml_template": "Pśedłoga",
+	"dt_xml_field": "Pólo",
+	"dt_xml_name": "Mě",
+	"dt_xml_title": "Titel",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Lichy tekst",
+	"importxml": "XML importěrowaś",
+	"dt_import_selectfile": "Pšosym wubjeŕ dataju $1 za importěrowanje:",
+	"dt_import_encodingtype": "Typ znamuškowego koda:",
+	"dt_import_forexisting": "Za boki, kótarež južo ekistěruju:",
+	"dt_import_overwriteexisting": "Eksistěrujuce wopśimjeśe pśepisaś",
+	"dt_import_mergeintoexisting": "Jano póla pśepisaś, kótarež su w dataji wopśimjone.",
+	"dt_import_skipexisting": "Pśeskócyś",
+	"dt_import_appendtoexisting": "K eksistěrujucemu wopśimjeśoju pśipowjesyś",
+	"dt_import_summarydesc": "Zespominanje importa:",
+	"dt_import_editsummary": "Importěrowanje $1",
+	"dt_import_importing": "Importěrujo se...",
+	"dt_import_success": "$1 {{PLURAL:$1|bok twóri|boka twóritej|boki twórje|bokow twóri}} se z dataje $2.",
+	"importcsv": "Importěrowanje CSV",
+	"dt_importcsv_badheader": "Zmólka: głowa słupa $1, '$2', musy pak '$3', '$4' byś pak formu 'mě_pśedłogi[mě_póla]' měś",
+	"right-datatransferimport": "Daty importěrowaś"
+}

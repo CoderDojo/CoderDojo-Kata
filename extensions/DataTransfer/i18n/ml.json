@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Junaidpv",
+			"Praveenp",
+			"Shijualex"
+		]
+	},
+	"viewxml": "XML കാണുക",
+	"dt_viewxml_categories": "വർഗ്ഗങ്ങൾ",
+	"dt_viewxml_namespaces": "നാമമേഖലകൾ",
+	"dt_viewxml_simplifiedformat": "ലളിതവത്ക്കരിക്കപ്പെട്ട ഫോർമാറ്റ്",
+	"dt_xml_namespace": "നാമമേഖല",
+	"dt_xml_pages": "താളുകൾ",
+	"dt_xml_page": "താൾ",
+	"dt_xml_template": "ഫലകം",
+	"dt_xml_field": "ഫീൽഡ്",
+	"dt_xml_name": "പേര്",
+	"dt_xml_title": "ശീർഷകം",
+	"dt_xml_id": "ഐ.ഡി.",
+	"dt_xml_freetext": "സ്വതന്ത്ര എഴുത്ത്",
+	"importxml": "എക്സ്.എം.എൽ. ഇറക്കുമതി",
+	"dt_import_selectfile": "ദയവായി ഇറക്കുമതിക്കായി $1 പ്രമാണം തിരഞ്ഞെടുക്കുക:",
+	"dt_import_encodingtype": "എൻ‌കോഡിങ് തരം:",
+	"dt_import_forexisting": "നിലവിലുള്ള താളുകൾക്ക് വേണ്ടി:",
+	"dt_import_appendtoexisting": "നിലവിലുള്ള ഉള്ളടക്കത്തോട് കൂട്ടിച്ചേർക്കുക",
+	"dt_import_summarydesc": "ഇറക്കുമതിയുടെ സംഗ്രഹം:",
+	"dt_import_editsummary": "$1 ഇറക്കുമതി",
+	"dt_import_importing": "ഇറക്കുമതി ചെയ്യുന്നു...",
+	"importcsv": "സി.എസ്.വി. ഇറക്കുമതി"
+}

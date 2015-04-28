@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Michawiki"
+		]
+	},
+	"approvedrevs-desc": "Jednotliwu wersiju strony jako schwalenu stajić",
+	"approvedrevs-logname": "Protokol schwalenja wersijow",
+	"approvedrevs-logdesc": "To je protokol wersije, kotrež buchu schwalene.",
+	"approvedrevs-approve": "schwalić",
+	"approvedrevs-unapprove": "zakazać",
+	"approvedrevs-approvesuccess": "Tuta wersija strony je so jako schwalena wersija stajiła.",
+	"approvedrevs-unapprovesuccess": "Schwalena wersija za tutu stronu wjace njeje.\nMěsto toho so najnowša wersija pokaza.",
+	"approvedrevs-unapprovesuccess2": "Schwalena wersija za tutu stronu wjace njeje.\nMěsto toho so prózdna strona pokaza.",
+	"approvedrevs-approveaction": "je $2 jako schwalenu wersiju za \"[[$1]]\" nastajił",
+	"approvedrevs-unapproveaction": "je status schwalena wersija za \"[[$1]]\" wotstronił",
+	"approvedrevs-notlatest": "To je schwalena wersija tuteje strony; njeje najnowša.",
+	"approvedrevs-approvedandlatest": "To je schwalena wersija tuteje strony, kotraž je tež najnowša.",
+	"approvedrevs-blankpageshown": "Za tutu stronu njeje so žana wersija schwaliła.",
+	"approvedrevs-noapprovedrevision": "To je najnowša wersija tuteje strony; nima wobkrućenu wersiju.",
+	"approvedrevs-editwarning": "Prošu dźiwaj na to, zo nětko wobdźěłuješ najnowšu wersiju strony, kotraž schwalenej, kotraž so jako standard pokazuje, njewotpowěduje.",
+	"approvedrevs": "Schwalene wersije",
+	"approvedrevs-approvedpages": "Wšě strony ze schwalenej wersiju",
+	"approvedrevs-notlatestpages": "Strony, kotrychž wersija njeje jich najnowša",
+	"approvedrevs-unapprovedpages": "Njeschwalene strony",
+	"approvedrevs-view": "Wobhladać sej",
+	"approvedrevs-revisionnumber": "wersija $1",
+	"approvedrevs-approvedby": "wot $1 dnja $2 schwalena",
+	"approvedrevs-difffromlatest": "rozdźěl k najnowšej wersiji",
+	"approvedrevs-approvelatest": "najnowšu wersiju schwalić",
+	"approvedrevs-approvethisrev": "Tutu wersiju schwalić.",
+	"approvedrevs-viewlatestrev": "Najnowšu wersiju pokazać.",
+	"approvedrevs-approvedrevision": "Schwalena wersija",
+	"right-approverevisions": "Wěstu wersiju wikistrony jako schwalenu nastajić",
+	"right-viewlinktolatest": "Rozłožowacy tekst horjeka na stronach pokazać, kotrež maja schwalenu wersiju."
+}

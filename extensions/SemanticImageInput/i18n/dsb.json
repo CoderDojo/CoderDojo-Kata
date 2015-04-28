@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Michawiki"
+		]
+	},
+	"sii-desc": "Zmóžnja zapódaśe wobrazow, kótarež śěgnjo wobraze z Wikipedije do [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]",
+	"sii-imageinput-loading": "Wobraz se zacytujo..."
+}

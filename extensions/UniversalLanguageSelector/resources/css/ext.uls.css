@@ -1,0 +1,46 @@
+.uls-menu a {
+	cursor: pointer;
+}
+
+.uls-menu.callout .caret-before {
+	border-top: 20px solid transparent;
+	border-right: 20px solid #C9C9C9;
+	border-bottom: 20px solid transparent;
+	display: inline-block;
+	left: -21px;
+	top: 30px;
+	position: absolute;
+}
+
+.uls-menu.callout .caret-after {
+	border-top: 20px solid transparent;
+	border-right: 20px solid #FCFCFC;
+	border-bottom: 20px solid transparent;
+	display: inline-block;
+	left: -20px;
+	top: 30px;
+	position: absolute;
+}
+
+.uls-ui-languages button {
+	width: 23%;
+	text-overflow: ellipsis;
+	margin-right: 4%;
+}
+
+button.uls-more-languages {
+	width: auto;
+}
+
+.settings-title {
+	font-size: 11pt;
+}
+
+.settings-text {
+	color: #555555;
+	font-size: 9pt;
+}
+
+div.display-settings-block:hover .settings-text {
+	color: #252525;
+}

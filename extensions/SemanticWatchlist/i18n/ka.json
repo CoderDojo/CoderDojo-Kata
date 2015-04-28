@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"David1010"
+		]
+	},
+	"right-semanticwatch": "სემანტიკური სიის გამოყენება",
+	"right-semanticwatchgroups": "სემანტიკური კონტროლის სიის ჯგუფების [[Special:WatchlistConditions|შეცვლა]]",
+	"special-semanticwatchlist": "სემანტიკური კონტროლის სია",
+	"special-watchlistconditions": "სემანტიკური კონტროლის სიის პირობები",
+	"swl-group-name": "ჯგუფის სახელი:",
+	"swl-group-legend": "ჯგუფი",
+	"swl-properties-list": "სახელების გაცალკევება „|“-ით",
+	"swl-group-page-selection": "სანახავად აირჩიეთ გვერდები:",
+	"swl-group-save": "შენახვა",
+	"swl-group-remove": "წაშლა",
+	"swl-group-saved": "კონფიგურაცია შენახულია.",
+	"swl-group-saving": "ინახება",
+	"swl-group-category": "კატეგორია",
+	"swl-group-namespace": "სახელთა სივრცე",
+	"swl-group-concept": "კონცეფცია",
+	"swl-group-add-new-group": "ახალი ჯგუფის დამატება",
+	"swl-group-add-group": "ჯგუფის დამატება",
+	"swl-custom-legend": "მომხმარებლის ტექსტი",
+	"swl-custom-remove-property": "წაშლა",
+	"swl-custom-text-add": "მომხმარების ტექსტის დამატება",
+	"swl-watchlist-insertions": "ახალი:",
+	"swl-watchlist-deletions": "ძველი:",
+	"swl-watchlist-pagincontrol": "ხილვა ($1) ($2)",
+	"swl-watchlist-firstn": "პირველი $1",
+	"swl-watchlist-firstn-title": "პირველი $1 {{PLURAL:$1|შედეგი|შედეგი}}"
+}

@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kghbln",
+			"Purodha"
+		]
+	},
+	"semanticcompoundqueries-desc": "Ergänzt eine Funktion, die das Ergebnis mehrerer semantischer Abfragen zugleich anzuzeigen erlaubt"
+}

@@ -1,6 +1,24 @@
 <?php
 /**
- * @defgroup HTTP HTTP
+ * Cookie for HTTP requests.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ * @ingroup HTTP
  */
 
 class Cookie {
@@ -22,14 +40,15 @@ class Cookie {
 
 	/**
 	 * Sets a cookie.  Used before a request to set up any individual
-	 * cookies.	 Used internally after a request to parse the
+	 * cookies. Used internally after a request to parse the
 	 * Set-Cookie headers.
 	 *
-	 * @param $value String: the value of the cookie
-	 * @param $attr Array: possible key/values:
-	 *		expires	 A date string
-	 *		path	 The path this cookie is used on
-	 *		domain	 Domain this cookie is used on
+	 * @param string $value The value of the cookie
+	 * @param array $attr Possible key/values:
+	 *        expires A date string
+	 *        path    The path this cookie is used on
+	 *        domain  Domain this cookie is used on
+	 * @throws MWException
 	 */
 	public function set( $value, $attr ) {
 		$this->value = $value;
@@ -62,20 +81,24 @@ class Cookie {
 	 * A better method might be to use a blacklist like
 	 * http://publicsuffix.org/
 	 *
-	 * @fixme fails to detect 3-letter top-level domains
-	 * @fixme fails to detect 2-letter top-level domains for single-domain use (probably not a big problem in practice, but there are test cases)
+	 * @todo fixme fails to detect 3-letter top-level domains
+	 * @todo fixme fails to detect 2-letter top-level domains for single-domain use (probably
+	 * not a big problem in practice, but there are test cases)
 	 *
-	 * @param $domain String: the domain to validate
-	 * @param $originDomain String: (optional) the domain the cookie originates from
-	 * @return Boolean
+	 * @param string $domain The domain to validate
+	 * @param string $originDomain (optional) the domain the cookie originates from
+	 * @return bool
 	 */
 	public static function validateCookieDomain( $domain, $originDomain = null ) {
-		// Don't allow a trailing dot
-		if ( substr( $domain, -1 ) == '.' ) {
+		$dc = explode( ".", $domain );
+
+		// Don't allow a trailing dot or addresses without a or just a leading dot
+		if ( substr( $domain, -1 ) == '.' ||
+			count( $dc ) <= 1 ||
+			count( $dc ) == 2 && $dc[0] === ''
+		) {
 			return false;
 		}
-
-		$dc = explode( ".", $domain );
 
 		// Only allow full, valid IP addresses
 		if ( preg_match( '/^[0-9.]+$/', $domain ) ) {
@@ -94,7 +117,7 @@ class Cookie {
 		}
 
 		// Don't allow cookies for "co.uk" or "gov.uk", etc, but allow "supermarket.uk"
-		if ( strrpos( $domain, "." ) - strlen( $domain )  == -3 ) {
+		if ( strrpos( $domain, "." ) - strlen( $domain ) == -3 ) {
 			if ( ( count( $dc ) == 2 && strlen( $dc[0] ) <= 2 )
 				|| ( count( $dc ) == 3 && strlen( $dc[0] ) == "" && strlen( $dc[1] ) <= 2 ) ) {
 				return false;
@@ -111,8 +134,14 @@ class Cookie {
 			}
 
 			if ( substr( $domain, 0, 1 ) == '.'
-				&& substr_compare( $originDomain, $domain, -strlen( $domain ),
-								   strlen( $domain ), true ) != 0 ) {
+				&& substr_compare(
+					$originDomain,
+					$domain,
+					-strlen( $domain ),
+					strlen( $domain ),
+					true
+				) != 0
+			) {
 				return false;
 			}
 		}
@@ -123,9 +152,9 @@ class Cookie {
 	/**
 	 * Serialize the cookie jar into a format useful for HTTP Request headers.
 	 *
-	 * @param $path String: the path that will be used. Required.
-	 * @param $domain String: the domain that will be used. Required.
-	 * @return String
+	 * @param string $path The path that will be used. Required.
+	 * @param string $domain The domain that will be used. Required.
+	 * @return string
 	 */
 	public function serializeToHttpRequest( $path, $domain ) {
 		$ret = '';
@@ -139,32 +168,42 @@ class Cookie {
 		return $ret;
 	}
 
+	/**
+	 * @param string $domain
+	 * @return bool
+	 */
 	protected function canServeDomain( $domain ) {
 		if ( $domain == $this->domain
 			|| ( strlen( $domain ) > strlen( $this->domain )
-				 && substr( $this->domain, 0, 1 ) == '.'
-				 && substr_compare( $domain, $this->domain, -strlen( $this->domain ),
-									strlen( $this->domain ), true ) == 0 ) ) {
+				&& substr( $this->domain, 0, 1 ) == '.'
+				&& substr_compare(
+					$domain,
+					$this->domain,
+					-strlen( $this->domain ),
+					strlen( $this->domain ),
+					true
+				) == 0
+			)
+		) {
 			return true;
 		}
 
 		return false;
 	}
 
+	/**
+	 * @param string $path
+	 * @return bool
+	 */
 	protected function canServePath( $path ) {
-		if ( $this->path && substr_compare( $this->path, $path, 0, strlen( $this->path ) ) == 0 ) {
-			return true;
-		}
-
-		return false;
+		return ( $this->path && substr_compare( $this->path, $path, 0, strlen( $this->path ) ) == 0 );
 	}
 
+	/**
+	 * @return bool
+	 */
 	protected function isUnExpired() {
-		if ( $this->isSessionKey || $this->expires > time() ) {
-			return true;
-		}
-
-		return false;
+		return $this->isSessionKey || $this->expires > time();
 	}
 }
 
@@ -172,10 +211,13 @@ class CookieJar {
 	private $cookie = array();
 
 	/**
-	 * Set a cookie in the cookie jar.	Make sure only one cookie per-name exists.
+	 * Set a cookie in the cookie jar. Make sure only one cookie per-name exists.
 	 * @see Cookie::set()
+	 * @param string $name
+	 * @param string $value
+	 * @param array $attr
 	 */
-	public function setCookie ( $name, $value, $attr ) {
+	public function setCookie( $name, $value, $attr ) {
 		/* cookies: case insensitive, so this should work.
 		 * We'll still send the cookies back in the same case we got them, though.
 		 */
@@ -190,6 +232,9 @@ class CookieJar {
 
 	/**
 	 * @see Cookie::serializeToHttpRequest
+	 * @param string $path
+	 * @param string $domain
+	 * @return string
 	 */
 	public function serializeToHttpRequest( $path, $domain ) {
 		$cookies = array();
@@ -208,10 +253,11 @@ class CookieJar {
 	/**
 	 * Parse the content of an Set-Cookie HTTP Response header.
 	 *
-	 * @param $cookie String
-	 * @param $domain String: cookie's domain
+	 * @param string $cookie
+	 * @param string $domain Cookie's domain
+	 * @return null
 	 */
-	public function parseCookieResponseHeader ( $cookie, $domain ) {
+	public function parseCookieResponseHeader( $cookie, $domain ) {
 		$len = strlen( 'Set-Cookie:' );
 
 		if ( substr_compare( 'Set-Cookie:', $cookie, 0, $len, true ) === 0 ) {

@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Geopoet"
+		]
+	},
+	"adminlinks": "Mga kasugpunan kan Admin",
+	"adminlinks-desc": "Nagdudugang nin sarong [[Special:AdminLinks|espesyal na pahina]] na nagkakapot nin nakakatabang na mga kasugpunan para sa mga administrador",
+	"adminlinks_documentation": "Dokumentasyon kan $1",
+	"adminlinks_general": "Pankagabsan",
+	"adminlinks_editsidebar": "Liwaton an gilid-huyagan",
+	"adminlinks_editcss": "Liwaton an CSS na sagunson",
+	"adminlinks_editmainpagename": "Liwaton an pangaran kan pangenot na pahina",
+	"adminlinks_users": "Mga Paragamit",
+	"adminlinks_createuser": "Magmukna nin sarong paragamit",
+	"adminlinks_browsesearch": "Magbuklat asin maghanap",
+	"adminlinks_importexport": "Importaron asin eksportaron",
+	"right-adminlinks": "Hilngon an kasugpunan sa [[Special:AdminLinks|Mga Kasugpunan kan Admin]]"
+}

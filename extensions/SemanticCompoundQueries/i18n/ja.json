@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fryed-peach",
+			"Shirayuki"
+		]
+	},
+	"semanticcompoundqueries-desc": "複数の意味的クエリを一度に表示するパーサー関数"
+}

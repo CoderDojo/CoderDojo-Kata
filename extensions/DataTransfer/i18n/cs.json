@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jkjk",
+			"Matěj Grabovský"
+		]
+	},
+	"datatransfer-desc": "Umožňuje import a export strukturovaných údajů v buňkách šablon.",
+	"viewxml": "Zobrazit XML",
+	"dt_viewxml_categories": "Kategorie",
+	"dt_viewxml_namespaces": "Jmenné prostory",
+	"dt_viewxml_simplifiedformat": "Zjednodušený formát",
+	"dt_xml_namespace": "Jmenný prostor",
+	"dt_xml_pages": "Stránky",
+	"dt_xml_page": "Stránka",
+	"dt_xml_template": "Šablona",
+	"dt_xml_field": "Pole",
+	"dt_xml_name": "Název",
+	"dt_xml_title": "Název",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Libovolný text",
+	"importxml": "Importovat XML",
+	"dt_import_selectfile": "Prosím vyberte $1 soubor k importu:",
+	"dt_import_encodingtype": "Typ kódování:",
+	"dt_import_overwriteexisting": "Přepsat stávající obsah",
+	"dt_import_skipexisting": "Přeskočit",
+	"dt_import_appendtoexisting": "Připojit ke stávajícímu obsahu",
+	"dt_import_summarydesc": "Shrnutí importu:",
+	"dt_import_editsummary": "import $1",
+	"dt_import_importing": "Probíhá import...",
+	"dt_import_success": " $1 {{PLURAL:$1|stránky|stránky|stránek}} bude vytvořeno z $2 souboru.",
+	"importcsv": "Import CSV",
+	"right-datatransferimport": "Importovat data"
+}

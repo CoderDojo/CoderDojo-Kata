@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrisportelli",
+			"Leli Forte"
+		]
+	},
+	"datatransfer-desc": "Tippermetti l-importazzjoni u l-esportazzjoni ta' dejta li tinsab f'sejħiet ta' mudelli",
+	"viewxml": "Ara XML",
+	"dt_viewxml_docu": "Jekk jogħġbok agħżel fost il-kategoriji u l-ispazji tal-isem segwenti sabiex tarahom f'format XML.",
+	"dt_viewxml_categories": "Kategoriji",
+	"dt_viewxml_namespaces": "Spazji tal-isem",
+	"dt_viewxml_simplifiedformat": "Format simplifikat",
+	"dt_xml_namespace": "Spazju tal-ismijiet",
+	"dt_xml_pages": "Paġni",
+	"dt_xml_page": "Paġna",
+	"dt_xml_template": "Mudell",
+	"dt_xml_field": "Qasam",
+	"dt_xml_name": "Isem",
+	"dt_xml_title": "Titlu",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Test ħieles",
+	"importxml": "Importa XML",
+	"dt_import_selectfile": "Jekk jogħġbok agħżel il-fajl $1 li tixtieq timporta:",
+	"dt_import_encodingtype": "Tip ta' kodifikar:",
+	"dt_import_forexisting": "Għal paġni li diġà jeżistu:",
+	"dt_import_overwriteexisting": "Erġa' ikteb fuq kontenut eżistenti",
+	"dt_import_skipexisting": "Aqbeż",
+	"dt_import_appendtoexisting": "Żid mal-kontenut eżistenti",
+	"dt_import_summarydesc": "Sommarju tal-importazzjoni:",
+	"dt_import_editsummary": "Importazzjoni $1",
+	"dt_import_importing": "Qiegħed timporta...",
+	"dt_import_success": "$1 {{PLURAL:$1|paġna|paġni}} se jinħolqu mill-fajl $2.",
+	"importcsv": "Importa CSV",
+	"dt_importcsv_badheader": "Żball: l-intestazzjoni tal-kolonna $1, \"$2\", trid tkun waħda minn dawn il-valuri: '$3', '$4' jew fil-format ta' 'isem_mudell[isem_qasam]'",
+	"right-datatransferimport": "Jimporta d-dejta"
+}

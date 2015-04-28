@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alchimista",
+			"Cainamarques",
+			"GoEThe",
+			"Hamilton Abreu",
+			"Fúlvio"
+		]
+	},
+	"approvedrevs-desc": "Marcar como aprovada uma das revisões de uma página",
+	"approvedrevs-logname": "Registo de revisões aprovadas",
+	"approvedrevs-logdesc": "Este é o registo das revisões que foram aprovadas.",
+	"approvedrevs-approve": "aprovar",
+	"approvedrevs-unapprove": "reprovar",
+	"approvedrevs-approvesuccess": "Esta revisão da página foi definida como a versão aprovada.",
+	"approvedrevs-unapprovesuccess": "Deixou de existir uma versão aprovada para esta página.\nEm vez dela, será apresentada a revisão mais recente.",
+	"approvedrevs-unapprovesuccess2": "Deixou de existir uma versão aprovada para esta página.\nEm vez dela, será apresentada uma página em branco.",
+	"approvedrevs-approveaction": "definir $2 como a revisão aprovada de \"[[$1]]\"",
+	"approvedrevs-unapproveaction": "desfazer a aprovação da revisão aprovada de \"[[$1]]\"",
+	"approvedrevs-notlatest": "Esta é a revisão aprovada desta página; não é a revisão mais recente.",
+	"approvedrevs-approvedandlatest": "Esta é a revisão aprovada desta página e também a revisão mais recente.",
+	"approvedrevs-blankpageshown": "Esta página não tem nenhuma revisão aprovada.",
+	"approvedrevs-noapprovedrevision": "Esta é a mais recente revisão desta página; não há revisões aprovadas.",
+	"approvedrevs-editwarning": "Note, por favor, que está agora a editar a revisão mais recente desta página e não a versão aprovada que é mostrada por omissão.",
+	"approvedrevs": "Revisões aprovadas",
+	"approvedrevs-approvedpages": "Todas as páginas com uma revisão aprovada",
+	"approvedrevs-notlatestpages": "Páginas cuja revisão aprovada não é a revisão mais recente",
+	"approvedrevs-unapprovedpages": "Páginas reprovadas",
+	"approvedrevs-view": "Ver:",
+	"approvedrevs-revisionnumber": "revisão $1",
+	"approvedrevs-approvedby": "aprovada por $1 a $2",
+	"approvedrevs-difffromlatest": "diferenças para a revisão mais recente",
+	"approvedrevs-approvelatest": "aprovar a mais recente",
+	"approvedrevs-approvethisrev": "Aprovar esta revisão.",
+	"approvedrevs-viewlatestrev": "Ver a revisão mais recente.",
+	"approvedrevs-approvedrevision": "Revisão aprovada",
+	"right-approverevisions": "Definir como aprovada uma revisão específica de uma página da wiki",
+	"right-viewlinktolatest": "Ver um texto explicativo no topo das páginas que tenham uma revisão aprovada"
+}

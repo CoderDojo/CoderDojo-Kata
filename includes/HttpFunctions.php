@@ -1,5 +1,27 @@
 <?php
 /**
+ * Various HTTP related functions.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ * @ingroup HTTP
+ */
+
+/**
  * @defgroup HTTP HTTP
  */
 
@@ -8,51 +30,64 @@
  * @ingroup HTTP
  */
 class Http {
-	static $httpEngine = false;
+	static public $httpEngine = false;
 
 	/**
 	 * Perform an HTTP request
 	 *
-	 * @param $method String: HTTP method. Usually GET/POST
-	 * @param $url String: full URL to act on. If protocol-relative, will be expanded to an http:// URL
-	 * @param $options Array: options to pass to MWHttpRequest object.
+	 * @param string $method HTTP method. Usually GET/POST
+	 * @param string $url Full URL to act on. If protocol-relative, will be expanded to an http:// URL
+	 * @param array $options Options to pass to MWHttpRequest object.
 	 *	Possible keys for the array:
 	 *    - timeout             Timeout length in seconds
+	 *    - connectTimeout      Timeout for connection, in seconds (curl only)
 	 *    - postData            An array of key-value pairs or a url-encoded form data
 	 *    - proxy               The proxy to use.
-	 *                          Will use $wgHTTPProxy (if set) otherwise.
-	 *    - noProxy             Override $wgHTTPProxy (if set) and don't use any proxy at all.
-	 *    - sslVerifyHost       (curl only) Verify hostname against certificate
-	 *    - sslVerifyCert       (curl only) Verify SSL certificate
-	 *    - caInfo              (curl only) Provide CA information
+	 *                          Otherwise it will use $wgHTTPProxy (if set)
+	 *                          Otherwise it will use the environment variable "http_proxy" (if set)
+	 *    - noProxy             Don't use any proxy at all. Takes precedence over proxy value(s).
+	 *    - sslVerifyHost       Verify hostname against certificate
+	 *    - sslVerifyCert       Verify SSL certificate
+	 *    - caInfo              Provide CA information
 	 *    - maxRedirects        Maximum number of redirects to follow (defaults to 5)
 	 *    - followRedirects     Whether to follow redirects (defaults to false).
 	 *		                    Note: this should only be used when the target URL is trusted,
 	 *		                    to avoid attacks on intranet services accessible by HTTP.
-	 * @return Mixed: (bool)false on failure or a string on success
+	 *    - userAgent           A user agent, if you want to override the default
+	 *                          MediaWiki/$wgVersion
+	 * @return string|bool (bool)false on failure or a string on success
 	 */
 	public static function request( $method, $url, $options = array() ) {
 		wfDebug( "HTTP: $method: $url\n" );
+		wfProfileIn( __METHOD__ . "-$method" );
+
 		$options['method'] = strtoupper( $method );
 
 		if ( !isset( $options['timeout'] ) ) {
 			$options['timeout'] = 'default';
 		}
+		if ( !isset( $options['connectTimeout'] ) ) {
+			$options['connectTimeout'] = 'default';
+		}
 
 		$req = MWHttpRequest::factory( $url, $options );
 		$status = $req->execute();
 
+		$content = false;
 		if ( $status->isOK() ) {
-			return $req->getContent();
-		} else {
-			return false;
+			$content = $req->getContent();
 		}
+		wfProfileOut( __METHOD__ . "-$method" );
+		return $content;
 	}
 
 	/**
 	 * Simple wrapper for Http::request( 'GET' )
 	 * @see Http::request()
 	 *
+	 * @param string $url
+	 * @param string $timeout
+	 * @param array $options
 	 * @return string
 	 */
 	public static function get( $url, $timeout = 'default', $options = array() ) {
@@ -64,6 +99,8 @@ class Http {
 	 * Simple wrapper for Http::request( 'POST' )
 	 * @see Http::request()
 	 *
+	 * @param string $url
+	 * @param array $options
 	 * @return string
 	 */
 	public static function post( $url, $options = array() ) {
@@ -73,8 +110,8 @@ class Http {
 	/**
 	 * Check if the URL can be served by localhost
 	 *
-	 * @param $url String: full url to check
-	 * @return Boolean
+	 * @param string $url Full url to check
+	 * @return bool
 	 */
 	public static function isLocalURL( $url ) {
 		global $wgCommandLineMode, $wgConf;
@@ -93,7 +130,8 @@ class Http {
 			$domainParts = array_reverse( $domainParts );
 
 			$domain = '';
-			for ( $i = 0; $i < count( $domainParts ); $i++ ) {
+			$countParts = count( $domainParts );
+			for ( $i = 0; $i < $countParts; $i++ ) {
 				$domainPart = $domainParts[$i];
 				if ( $i == 0 ) {
 					$domain = $domainPart;
@@ -112,7 +150,7 @@ class Http {
 
 	/**
 	 * A standard user-agent we can use for external requests.
-	 * @return String
+	 * @return string
 	 */
 	public static function userAgent() {
 		global $wgVersion;
@@ -124,10 +162,12 @@ class Http {
 	 * protocols, because we only want protocols that both cURL
 	 * and php support.
 	 *
-	 * @fixme this is wildly inaccurate and fails to actually check most stuff
+	 * file:// should not be allowed here for security purpose (r67684)
 	 *
-	 * @param $uri Mixed: URI to check for validity
-	 * @returns Boolean
+	 * @todo FIXME this is wildly inaccurate and fails to actually check most stuff
+	 *
+	 * @param string $uri URI to check for validity
+	 * @return bool
 	 */
 	public static function isValidURI( $uri ) {
 		return preg_match(
@@ -165,7 +205,7 @@ class MWHttpRequest {
 	protected $followRedirects = false;
 
 	/**
-	 * @var  CookieJar
+	 * @var CookieJar
 	 */
 	protected $cookieJar;
 
@@ -177,16 +217,16 @@ class MWHttpRequest {
 	public $status;
 
 	/**
-	 * @param $url String: url to use. If protocol-relative, will be expanded to an http:// URL
-	 * @param $options Array: (optional) extra params to pass (see Http::request())
+	 * @param string $url Url to use. If protocol-relative, will be expanded to an http:// URL
+	 * @param array $options (optional) extra params to pass (see Http::request())
 	 */
-	function __construct( $url, $options = array() ) {
-		global $wgHTTPTimeout;
+	protected function __construct( $url, $options = array() ) {
+		global $wgHTTPTimeout, $wgHTTPConnectTimeout;
 
 		$this->url = wfExpandUrl( $url, PROTO_HTTP );
-		$this->parsedUrl = parse_url( $this->url );
+		$this->parsedUrl = wfParseUrl( $this->url );
 
-		if ( !Http::isValidURI( $this->url ) ) {
+		if ( !$this->parsedUrl || !Http::isValidURI( $this->url ) ) {
 			$this->status = Status::newFatal( 'http-invalid-url' );
 		} else {
 			$this->status = Status::newGood( 100 ); // continue
@@ -197,14 +237,31 @@ class MWHttpRequest {
 		} else {
 			$this->timeout = $wgHTTPTimeout;
 		}
+		if ( isset( $options['connectTimeout'] ) && $options['connectTimeout'] != 'default' ) {
+			$this->connectTimeout = $options['connectTimeout'];
+		} else {
+			$this->connectTimeout = $wgHTTPConnectTimeout;
+		}
+		if ( isset( $options['userAgent'] ) ) {
+			$this->setUserAgent( $options['userAgent'] );
+		}
 
 		$members = array( "postData", "proxy", "noProxy", "sslVerifyHost", "caInfo",
-				  "method", "followRedirects", "maxRedirects", "sslVerifyCert", "callback" );
+				"method", "followRedirects", "maxRedirects", "sslVerifyCert", "callback" );
 
 		foreach ( $members as $o ) {
 			if ( isset( $options[$o] ) ) {
+				// ensure that MWHttpRequest::method is always
+				// uppercased. Bug 36137
+				if ( $o == 'method' ) {
+					$options[$o] = strtoupper( $options[$o] );
+				}
 				$this->$o = $options[$o];
 			}
+		}
+
+		if ( $this->noProxy ) {
+			$this->proxy = ''; // noProxy takes precedence
 		}
 	}
 
@@ -219,8 +276,10 @@ class MWHttpRequest {
 
 	/**
 	 * Generate a new request object
-	 * @param $url String: url to use
-	 * @param $options Array: (optional) extra params to pass (see Http::request())
+	 * @param string $url Url to use
+	 * @param array $options (optional) extra params to pass (see Http::request())
+	 * @throws MWException
+	 * @return CurlHttpRequest|PhpHttpRequest
 	 * @see MWHttpRequest::__construct
 	 */
 	public static function factory( $url, $options = null ) {
@@ -228,16 +287,19 @@ class MWHttpRequest {
 			Http::$httpEngine = function_exists( 'curl_init' ) ? 'curl' : 'php';
 		} elseif ( Http::$httpEngine == 'curl' && !function_exists( 'curl_init' ) ) {
 			throw new MWException( __METHOD__ . ': curl (http://php.net/curl) is not installed, but' .
-								   ' Http::$httpEngine is set to "curl"' );
+				' Http::$httpEngine is set to "curl"' );
 		}
 
-		switch( Http::$httpEngine ) {
+		switch ( Http::$httpEngine ) {
 			case 'curl':
 				return new CurlHttpRequest( $url, $options );
 			case 'php':
 				if ( !wfIniGetBool( 'allow_url_fopen' ) ) {
-					throw new MWException( __METHOD__ . ': allow_url_fopen needs to be enabled for pure PHP' .
-						' http requests to work. If possible, curl should be used instead. See http://php.net/curl.' );
+					throw new MWException( __METHOD__ . ': allow_url_fopen ' .
+						'needs to be enabled for pure PHP http requests to ' .
+						'work. If possible, curl should be used instead. See ' .
+						'http://php.net/curl.'
+					);
 				}
 				return new PhpHttpRequest( $url, $options );
 			default:
@@ -248,7 +310,7 @@ class MWHttpRequest {
 	/**
 	 * Get the body, or content, of the response to the request
 	 *
-	 * @return String
+	 * @return string
 	 */
 	public function getContent() {
 		return $this->content;
@@ -256,8 +318,8 @@ class MWHttpRequest {
 
 	/**
 	 * Set the parameters of the request
-
-	 * @param $args Array
+	 *
+	 * @param array $args
 	 * @todo overload the args param
 	 */
 	public function setData( $args ) {
@@ -265,36 +327,32 @@ class MWHttpRequest {
 	}
 
 	/**
-	 * Take care of setting up the proxy
-	 * (override in subclass)
+	 * Take care of setting up the proxy (do nothing if "noProxy" is set)
 	 *
-	 * @return String
+	 * @return void
 	 */
 	public function proxySetup() {
 		global $wgHTTPProxy;
 
-		if ( $this->proxy ) {
+		// If there is an explicit proxy set and proxies are not disabled, then use it
+		if ( $this->proxy && !$this->noProxy ) {
 			return;
 		}
 
-		if ( Http::isLocalURL( $this->url ) ) {
-			$this->proxy = 'http://localhost:80/';
+		// Otherwise, fallback to $wgHTTPProxy/http_proxy (when set) if this is not a machine
+		// local URL and proxies are not disabled
+		if ( Http::isLocalURL( $this->url ) || $this->noProxy ) {
+			$this->proxy = '';
 		} elseif ( $wgHTTPProxy ) {
-			$this->proxy = $wgHTTPProxy ;
+			$this->proxy = $wgHTTPProxy;
 		} elseif ( getenv( "http_proxy" ) ) {
 			$this->proxy = getenv( "http_proxy" );
 		}
 	}
 
 	/**
-	 * Set the refererer header
-	 */
-	public function setReferer( $url ) {
-		$this->setHeader( 'Referer', $url );
-	}
-
-	/**
 	 * Set the user agent
+	 * @param string $UA
 	 */
 	public function setUserAgent( $UA ) {
 		$this->setHeader( 'User-Agent', $UA );
@@ -302,6 +360,8 @@ class MWHttpRequest {
 
 	/**
 	 * Set an arbitrary header
+	 * @param string $name
+	 * @param string $value
 	 */
 	public function setHeader( $name, $value ) {
 		// I feel like I should normalize the case here...
@@ -310,6 +370,7 @@ class MWHttpRequest {
 
 	/**
 	 * Get an array of the headers
+	 * @return array
 	 */
 	public function getHeaderList() {
 		$list = array();
@@ -344,7 +405,8 @@ class MWHttpRequest {
 	 * bytes are reported handled than were passed to you, the HTTP fetch
 	 * will be aborted.
 	 *
-	 * @param $callback Callback
+	 * @param callable $callback
+	 * @throws MWException
 	 */
 	public function setCallback( $callback ) {
 		if ( !is_callable( $callback ) ) {
@@ -357,8 +419,9 @@ class MWHttpRequest {
 	 * A generic callback to read the body of the response from a remote
 	 * server.
 	 *
-	 * @param $fh handle
-	 * @param $content String
+	 * @param resource $fh
+	 * @param string $content
+	 * @return int
 	 */
 	public function read( $fh, $content ) {
 		$this->content .= $content;
@@ -371,7 +434,7 @@ class MWHttpRequest {
 	 * @return Status
 	 */
 	public function execute() {
-		global $wgTitle;
+		wfProfileIn( __METHOD__ );
 
 		$this->content = "";
 
@@ -379,13 +442,7 @@ class MWHttpRequest {
 			$this->headersOnly = true;
 		}
 
-		if ( is_object( $wgTitle ) && !isset( $this->reqHeaders['Referer'] ) ) {
-			$this->setReferer( wfExpandUrl( $wgTitle->getFullURL(), PROTO_CURRENT ) );
-		}
-
-		if ( !$this->noProxy ) {
-			$this->proxySetup();
-		}
+		$this->proxySetup(); // set up any proxy as needed
 
 		if ( !$this->callback ) {
 			$this->setCallback( array( $this, 'read' ) );
@@ -394,16 +451,18 @@ class MWHttpRequest {
 		if ( !isset( $this->reqHeaders['User-Agent'] ) ) {
 			$this->setUserAgent( Http::userAgent() );
 		}
+
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**
 	 * Parses the headers, including the HTTP status code and any
-	 * Set-Cookie headers.  This function expectes the headers to be
+	 * Set-Cookie headers.  This function expects the headers to be
 	 * found in an array in the member variable headerList.
-	 *
-	 * @return nothing
 	 */
 	protected function parseHeader() {
+		wfProfileIn( __METHOD__ );
+
 		$lastname = "";
 
 		foreach ( $this->headerList as $header ) {
@@ -420,6 +479,8 @@ class MWHttpRequest {
 		}
 
 		$this->parseCookies();
+
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**
@@ -429,8 +490,6 @@ class MWHttpRequest {
 	 * RFC2616, section 10,
 	 * http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html for a
 	 * list of status codes.)
-	 *
-	 * @return nothing
 	 */
 	protected function setStatus() {
 		if ( !$this->respHeaders ) {
@@ -448,7 +507,7 @@ class MWHttpRequest {
 	 * (see RFC2616, section 10, http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
 	 * for a list of status codes.)
 	 *
-	 * @return Integer
+	 * @return int
 	 */
 	public function getStatus() {
 		if ( !$this->respHeaders ) {
@@ -458,11 +517,10 @@ class MWHttpRequest {
 		return (int)$this->respStatus;
 	}
 
-
 	/**
 	 * Returns true if the last status code was a redirect.
 	 *
-	 * @return Boolean
+	 * @return bool
 	 */
 	public function isRedirect() {
 		if ( !$this->respHeaders ) {
@@ -484,7 +542,7 @@ class MWHttpRequest {
 	 * (e.g. Set-Cookie) can appear more than once the, each value of
 	 * the associative array is an array of the values given.
 	 *
-	 * @return Array
+	 * @return array
 	 */
 	public function getResponseHeaders() {
 		if ( !$this->respHeaders ) {
@@ -497,16 +555,16 @@ class MWHttpRequest {
 	/**
 	 * Returns the value of the given response header.
 	 *
-	 * @param $header String
-	 * @return String
+	 * @param string $header
+	 * @return string
 	 */
 	public function getResponseHeader( $header ) {
 		if ( !$this->respHeaders ) {
 			$this->parseHeader();
 		}
 
-		if ( isset( $this->respHeaders[strtolower ( $header ) ] ) ) {
-			$v = $this->respHeaders[strtolower ( $header ) ];
+		if ( isset( $this->respHeaders[strtolower( $header )] ) ) {
+			$v = $this->respHeaders[strtolower( $header )];
 			return $v[count( $v ) - 1];
 		}
 
@@ -516,7 +574,7 @@ class MWHttpRequest {
 	/**
 	 * Tells the MWHttpRequest object to use this pre-loaded CookieJar.
 	 *
-	 * @param $jar CookieJar
+	 * @param CookieJar $jar
 	 */
 	public function setCookieJar( $jar ) {
 		$this->cookieJar = $jar;
@@ -525,7 +583,7 @@ class MWHttpRequest {
 	/**
 	 * Returns the cookie jar in use.
 	 *
-	 * @returns CookieJar
+	 * @return CookieJar
 	 */
 	public function getCookieJar() {
 		if ( !$this->respHeaders ) {
@@ -536,10 +594,13 @@ class MWHttpRequest {
 	}
 
 	/**
-	 * Sets a cookie.  Used before a request to set up any individual
-	 * cookies.	 Used internally after a request to parse the
+	 * Sets a cookie. Used before a request to set up any individual
+	 * cookies. Used internally after a request to parse the
 	 * Set-Cookie headers.
 	 * @see Cookie::set
+	 * @param string $name
+	 * @param mixed $value
+	 * @param array $attr
 	 */
 	public function setCookie( $name, $value = null, $attr = null ) {
 		if ( !$this->cookieJar ) {
@@ -553,6 +614,8 @@ class MWHttpRequest {
 	 * Parse the cookies in the response headers and store them in the cookie jar.
 	 */
 	protected function parseCookies() {
+		wfProfileIn( __METHOD__ );
+
 		if ( !$this->cookieJar ) {
 			$this->cookieJar = new CookieJar;
 		}
@@ -563,18 +626,60 @@ class MWHttpRequest {
 				$this->cookieJar->parseCookieResponseHeader( $cookie, $url['host'] );
 			}
 		}
+
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**
 	 * Returns the final URL after all redirections.
 	 *
-	 * @return String
+	 * Relative values of the "Location" header are incorrect as
+	 * stated in RFC, however they do happen and modern browsers
+	 * support them.  This function loops backwards through all
+	 * locations in order to build the proper absolute URI - Marooned
+	 * at wikia-inc.com
+	 *
+	 * Note that the multiple Location: headers are an artifact of
+	 * CURL -- they shouldn't actually get returned this way. Rewrite
+	 * this when bug 29232 is taken care of (high-level redirect
+	 * handling rewrite).
+	 *
+	 * @return string
 	 */
 	public function getFinalUrl() {
-		$location = $this->getResponseHeader( "Location" );
+		$headers = $this->getResponseHeaders();
 
-		if ( $location ) {
-			return $location;
+		//return full url (fix for incorrect but handled relative location)
+		if ( isset( $headers['location'] ) ) {
+			$locations = $headers['location'];
+			$domain = '';
+			$foundRelativeURI = false;
+			$countLocations = count( $locations );
+
+			for ( $i = $countLocations - 1; $i >= 0; $i-- ) {
+				$url = parse_url( $locations[$i] );
+
+				if ( isset( $url['host'] ) ) {
+					$domain = $url['scheme'] . '://' . $url['host'];
+					break; //found correct URI (with host)
+				} else {
+					$foundRelativeURI = true;
+				}
+			}
+
+			if ( $foundRelativeURI ) {
+				if ( $domain ) {
+					return $domain . $locations[$countLocations - 1];
+				} else {
+					$url = parse_url( $this->url );
+					if ( isset( $url['host'] ) ) {
+						return $url['scheme'] . '://' . $url['host'] .
+							$locations[$countLocations - 1];
+					}
+				}
+			} else {
+				return $locations[$countLocations - 1];
+			}
 		}
 
 		return $this->url;
@@ -583,6 +688,7 @@ class MWHttpRequest {
 	/**
 	 * Returns true if the backend can follow redirects. Overridden by the
 	 * child classes.
+	 * @return bool
 	 */
 	public function canFollowRedirects() {
 		return true;
@@ -595,47 +701,47 @@ class MWHttpRequest {
 class CurlHttpRequest extends MWHttpRequest {
 	const SUPPORTS_FILE_POSTS = true;
 
-	static $curlMessageMap = array(
-		6 => 'http-host-unreachable',
-		28 => 'http-timed-out'
-	);
-
 	protected $curlOptions = array();
 	protected $headerText = "";
 
+	/**
+	 * @param resource $fh
+	 * @param string $content
+	 * @return int
+	 */
 	protected function readHeader( $fh, $content ) {
 		$this->headerText .= $content;
 		return strlen( $content );
 	}
 
 	public function execute() {
+		wfProfileIn( __METHOD__ );
+
 		parent::execute();
 
 		if ( !$this->status->isOK() ) {
+			wfProfileOut( __METHOD__ );
 			return $this->status;
 		}
 
 		$this->curlOptions[CURLOPT_PROXY] = $this->proxy;
 		$this->curlOptions[CURLOPT_TIMEOUT] = $this->timeout;
+
+		// Only supported in curl >= 7.16.2
+		if ( defined( 'CURLOPT_CONNECTTIMEOUT_MS' ) ) {
+			$this->curlOptions[CURLOPT_CONNECTTIMEOUT_MS] = $this->connectTimeout * 1000;
+		}
+
 		$this->curlOptions[CURLOPT_HTTP_VERSION] = CURL_HTTP_VERSION_1_0;
 		$this->curlOptions[CURLOPT_WRITEFUNCTION] = $this->callback;
 		$this->curlOptions[CURLOPT_HEADERFUNCTION] = array( $this, "readHeader" );
 		$this->curlOptions[CURLOPT_MAXREDIRS] = $this->maxRedirects;
 		$this->curlOptions[CURLOPT_ENCODING] = ""; # Enable compression
 
-		/* not sure these two are actually necessary */
-		if ( isset( $this->reqHeaders['Referer'] ) ) {
-			$this->curlOptions[CURLOPT_REFERER] = $this->reqHeaders['Referer'];
-		}
 		$this->curlOptions[CURLOPT_USERAGENT] = $this->reqHeaders['User-Agent'];
 
-		if ( isset( $this->sslVerifyHost ) ) {
-			$this->curlOptions[CURLOPT_SSL_VERIFYHOST] = $this->sslVerifyHost;
-		}
-
-		if ( isset( $this->sslVerifyCert ) ) {
-			$this->curlOptions[CURLOPT_SSL_VERIFYPEER] = $this->sslVerifyCert;
-		}
+		$this->curlOptions[CURLOPT_SSL_VERIFYHOST] = $this->sslVerifyHost ? 2 : 0;
+		$this->curlOptions[CURLOPT_SSL_VERIFYPEER] = $this->sslVerifyCert;
 
 		if ( $this->caInfo ) {
 			$this->curlOptions[CURLOPT_CAINFO] = $this->caInfo;
@@ -660,12 +766,13 @@ class CurlHttpRequest extends MWHttpRequest {
 		$curlHandle = curl_init( $this->url );
 
 		if ( !curl_setopt_array( $curlHandle, $this->curlOptions ) ) {
+			wfProfileOut( __METHOD__ );
 			throw new MWException( "Error setting curl options." );
 		}
 
 		if ( $this->followRedirects && $this->canFollowRedirects() ) {
 			wfSuppressWarnings();
-			if ( ! curl_setopt( $curlHandle, CURLOPT_FOLLOWLOCATION, true ) ) {
+			if ( !curl_setopt( $curlHandle, CURLOPT_FOLLOWLOCATION, true ) ) {
 				wfDebug( __METHOD__ . ": Couldn't set CURLOPT_FOLLOWLOCATION. " .
 					"Probably safe_mode or open_basedir is set.\n" );
 				// Continue the processing. If it were in curl_setopt_array,
@@ -674,14 +781,11 @@ class CurlHttpRequest extends MWHttpRequest {
 			wfRestoreWarnings();
 		}
 
-		if ( false === curl_exec( $curlHandle ) ) {
-			$code = curl_error( $curlHandle );
-
-			if ( isset( self::$curlMessageMap[$code] ) ) {
-				$this->status->fatal( self::$curlMessageMap[$code] );
-			} else {
-				$this->status->fatal( 'http-curl-error', curl_error( $curlHandle ) );
-			}
+		$curlRes = curl_exec( $curlHandle );
+		if ( curl_errno( $curlHandle ) == CURLE_OPERATION_TIMEOUTED ) {
+			$this->status->fatal( 'http-timed-out', $this->url );
+		} elseif ( $curlRes === false ) {
+			$this->status->fatal( 'http-curl-error', curl_error( $curlHandle ) );
 		} else {
 			$this->headerList = explode( "\r\n", $this->headerText );
 		}
@@ -691,16 +795,22 @@ class CurlHttpRequest extends MWHttpRequest {
 		$this->parseHeader();
 		$this->setStatus();
 
+		wfProfileOut( __METHOD__ );
+
 		return $this->status;
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function canFollowRedirects() {
 		if ( strval( ini_get( 'open_basedir' ) ) !== '' || wfIniGetBool( 'safe_mode' ) ) {
 			wfDebug( "Cannot follow redirects in safe mode\n" );
 			return false;
 		}
 
-		if ( !defined( 'CURLOPT_REDIR_PROTOCOLS' ) ) {
+		$curlVersionInfo = curl_version();
+		if ( $curlVersionInfo['version_number'] < 0x071304 ) {
 			wfDebug( "Cannot follow redirects with libcurl < 7.19.4 due to CVE-2009-0037\n" );
 			return false;
 		}
@@ -710,6 +820,11 @@ class CurlHttpRequest extends MWHttpRequest {
 }
 
 class PhpHttpRequest extends MWHttpRequest {
+
+	/**
+	 * @param string $url
+	 * @return string
+	 */
 	protected function urlToTcp( $url ) {
 		$parsedUrl = parse_url( $url );
 
@@ -717,54 +832,70 @@ class PhpHttpRequest extends MWHttpRequest {
 	}
 
 	public function execute() {
+		wfProfileIn( __METHOD__ );
+
 		parent::execute();
 
 		if ( is_array( $this->postData ) ) {
-			$this->postData = wfArrayToCGI( $this->postData );
+			$this->postData = wfArrayToCgi( $this->postData );
 		}
 
-		if ( $this->parsedUrl['scheme'] != 'http' &&
-			 $this->parsedUrl['scheme'] != 'https' ) {
+		if ( $this->parsedUrl['scheme'] != 'http'
+			&& $this->parsedUrl['scheme'] != 'https' ) {
 			$this->status->fatal( 'http-invalid-scheme', $this->parsedUrl['scheme'] );
 		}
 
 		$this->reqHeaders['Accept'] = "*/*";
+		$this->reqHeaders['Connection'] = 'Close';
 		if ( $this->method == 'POST' ) {
 			// Required for HTTP 1.0 POSTs
 			$this->reqHeaders['Content-Length'] = strlen( $this->postData );
-			$this->reqHeaders['Content-type'] = "application/x-www-form-urlencoded";
+			if ( !isset( $this->reqHeaders['Content-Type'] ) ) {
+				$this->reqHeaders['Content-Type'] = "application/x-www-form-urlencoded";
+			}
 		}
 
-		$options = array();
-		if ( $this->proxy && !$this->noProxy ) {
-			$options['proxy'] = $this->urlToTCP( $this->proxy );
-			$options['request_fulluri'] = true;
+		// Set up PHP stream context
+		$options = array(
+			'http' => array(
+				'method' => $this->method,
+				'header' => implode( "\r\n", $this->getHeaderList() ),
+				'protocol_version' => '1.1',
+				'max_redirects' => $this->followRedirects ? $this->maxRedirects : 0,
+				'ignore_errors' => true,
+				'timeout' => $this->timeout,
+				// Curl options in case curlwrappers are installed
+				'curl_verify_ssl_host' => $this->sslVerifyHost ? 2 : 0,
+				'curl_verify_ssl_peer' => $this->sslVerifyCert,
+			),
+			'ssl' => array(
+				'verify_peer' => $this->sslVerifyCert,
+				'SNI_enabled' => true,
+			),
+		);
+
+		if ( $this->proxy ) {
+			$options['http']['proxy'] = $this->urlToTCP( $this->proxy );
+			$options['http']['request_fulluri'] = true;
 		}
-
-		if ( !$this->followRedirects ) {
-			$options['max_redirects'] = 0;
-		} else {
-			$options['max_redirects'] = $this->maxRedirects;
-		}
-
-		$options['method'] = $this->method;
-		$options['header'] = implode( "\r\n", $this->getHeaderList() );
-		// Note that at some future point we may want to support
-		// HTTP/1.1, but we'd have to write support for chunking
-		// in version of PHP < 5.3.1
-		$options['protocol_version'] = "1.0";
-
-		// This is how we tell PHP we want to deal with 404s (for example) ourselves.
-		// Only works on 5.2.10+
-		$options['ignore_errors'] = true;
 
 		if ( $this->postData ) {
-			$options['content'] = $this->postData;
+			$options['http']['content'] = $this->postData;
 		}
 
-		$options['timeout'] = $this->timeout;
+		if ( $this->sslVerifyHost ) {
+			$options['ssl']['CN_match'] = $this->parsedUrl['host'];
+		}
 
-		$context = stream_context_create( array( 'http' => $options ) );
+		if ( is_dir( $this->caInfo ) ) {
+			$options['ssl']['capath'] = $this->caInfo;
+		} elseif ( is_file( $this->caInfo ) ) {
+			$options['ssl']['cafile'] = $this->caInfo;
+		} elseif ( $this->caInfo ) {
+			throw new MWException( "Invalid CA info passed: {$this->caInfo}" );
+		}
+
+		$context = stream_context_create( $options );
 
 		$this->headerList = array();
 		$reqCount = 0;
@@ -797,7 +928,7 @@ class PhpHttpRequest extends MWHttpRequest {
 			# Check security of URL
 			$url = $this->getResponseHeader( "Location" );
 
-			if ( substr( $url, 0, 7 ) !== 'http://' ) {
+			if ( !Http::isValidURI( $url ) ) {
 				wfDebug( __METHOD__ . ": insecure redirection\n" );
 				break;
 			}
@@ -807,18 +938,19 @@ class PhpHttpRequest extends MWHttpRequest {
 
 		if ( $fh === false ) {
 			$this->status->fatal( 'http-request-error' );
+			wfProfileOut( __METHOD__ );
 			return $this->status;
 		}
 
 		if ( $result['timed_out'] ) {
 			$this->status->fatal( 'http-timed-out', $this->url );
+			wfProfileOut( __METHOD__ );
 			return $this->status;
 		}
 
-		// If everything went OK, or we recieved some error code
+		// If everything went OK, or we received some error code
 		// get the response body content.
-		if ( $this->status->isOK()
-				|| (int)$this->respStatus >= 300) {
+		if ( $this->status->isOK() || (int)$this->respStatus >= 300 ) {
 			while ( !feof( $fh ) ) {
 				$buf = fread( $fh, 8192 );
 
@@ -833,6 +965,8 @@ class PhpHttpRequest extends MWHttpRequest {
 			}
 		}
 		fclose( $fh );
+
+		wfProfileOut( __METHOD__ );
 
 		return $this->status;
 	}

@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"HanV",
+			"Siebrand"
+		]
+	},
+	"semanticsignup": "Semantisch inschrijven",
+	"ses-desc": "Uitbreiding bovenop Semantic Forms om een gebruikerspagina aan te maken met semantische gegevens tijdens de registratie",
+	"ses-nousername": "De gebruikersnaam is niet opgegeven.",
+	"ses-nopwdmatch": "Het wachtwoord en de bevestiging komen niet overeen.",
+	"ses-norealname": "Een echte naam is vereist maar is niet opgegeven.",
+	"ses-userexists": "De gebruiker bestaat al.",
+	"ses-emailfailed": "Het e-mailen van de bevestiging is mislukt.",
+	"ses-createforbidden": "De huidige gebruiker mag geen nieuwe gebruikers aanmaken.",
+	"ses-throttlehit": "Het maximale aantal aan te maken gebruikers per dag is bereikt voor dit IP-adres."
+}

@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Les Meloures",
+			"Robby",
+			"Soued031"
+		]
+	},
+	"approvedrevs-desc": "Eng eenzel Versioun vun enger Säit als nogekuckt markéieren",
+	"approvedrevs-logname": "Logbuch vun den nogekuckte Säiten déi fräigi sinn",
+	"approvedrevs-logdesc": "Dëst ass d'Logbuch vun de Versiounen déi nogekuckt sinn.",
+	"approvedrevs-approve": "zoustëmmen",
+	"approvedrevs-unapprove": "Zoustëmmung zréckzéien",
+	"approvedrevs-approvesuccess": "Dës Versioun vun der Säit gouf als nogekuckte Versioun fräiginn.",
+	"approvedrevs-unapprovesuccess": "Et gëtt vun dëser Säit  keng nogekuckte Versioun méi.\nDofir gëtt déi rezentst Versioun gewisen.",
+	"approvedrevs-unapprovesuccess2": "Et gëtt vun dëser Säit keng nogekuckte Versioun méi.\nAplaz, gëtt eng eidel Säit gewisen.",
+	"approvedrevs-approveaction": "$2 als nogekuckt Versioun fir \"[[$1]]\" festleeën",
+	"approvedrevs-unapproveaction": "nogekuckt Versioun fir \"[[$1]]\" zréckzéien",
+	"approvedrevs-notlatest": "Dëst ass déi nogekuckt Versioun vun dëser Säit; et ass net déi rezentst.",
+	"approvedrevs-approvedandlatest": "Dëst ass souwuel déi nogekuckt wéi och déi rezentst Versioun vun dëser Säit.",
+	"approvedrevs-blankpageshown": "Keng Versioun vun dëser Säit gouf nogekuckt.",
+	"approvedrevs-noapprovedrevision": "Dëst ass déi lescht Versioun vun dëser Säit; et gëtt keng nogekuckte Versioun.",
+	"approvedrevs-editwarning": "Informatioun: Dir ännert déi lescht Versioun vun dëser Säit, déi net déi nogekuckten ass déi standardméisseg gewise gëtt.",
+	"approvedrevs": "Nogekuckte Versiounen",
+	"approvedrevs-approvedpages": "All Säite mat enger nogekuckter Versioun",
+	"approvedrevs-notlatestpages": "Säiten deenen hir nogekuckte Versioun net déi rezentst ass",
+	"approvedrevs-unapprovedpages": "Net nogekuckte Säiten",
+	"approvedrevs-view": "Weisen:",
+	"approvedrevs-revisionnumber": "Versioun $1",
+	"approvedrevs-approvedby": "confirméiert vum $1 de(n) $2",
+	"approvedrevs-difffromlatest": "Ënnerscheed vun der rezenster",
+	"approvedrevs-approvelatest": "lescht Versioun confirméieren",
+	"approvedrevs-approvethisrev": "Dës Versioun confirméieren.",
+	"approvedrevs-viewlatestrev": "Déi lescht Versioun weisen.",
+	"approvedrevs-approvedrevision": "Nogekuckte Versioun",
+	"right-approverevisions": "Eng bestëmmte Versioun vun enger Säit als nogekuckt markéieren",
+	"right-viewlinktolatest": "Kuckt den Erklärungstext uewen op de Säiten déi nogekuckt Versiounen hunn"
+}

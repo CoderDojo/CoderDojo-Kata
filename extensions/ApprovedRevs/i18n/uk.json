@@ -1,0 +1,42 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alex Khimich",
+			"Olvin",
+			"Sodmy",
+			"Vox",
+			"Ата",
+			"Тест",
+			"Andriykopanytsia"
+		]
+	},
+	"approvedrevs-desc": "Встановити єдиний перегляд сторінки як затверджуючий",
+	"approvedrevs-logname": "Журнал одобрень та переглядів",
+	"approvedrevs-logdesc": "Це протокол переглядів, які були затверджуючими.",
+	"approvedrevs-approve": "Затвердити",
+	"approvedrevs-unapprove": "Відхилити",
+	"approvedrevs-approvesuccess": "Цей перегляд сторінки був встановлений як затверджуючий.",
+	"approvedrevs-unapprovesuccess": "Існує не затверджений варіант для цієї сторінки. \nЗамість цього, самий останній затверджений варіант буде показаний.",
+	"approvedrevs-unapprovesuccess2": "Існує не затверджений варіант для цієї сторінки. \nЗамість цього буде показано порожню сторінку.",
+	"approvedrevs-approveaction": "встановити $2 як затверджену версію для «[[$1]]»",
+	"approvedrevs-unapproveaction": "відкликати стверджену версію для \"[[$1]]\"",
+	"approvedrevs-notlatest": "Це затверджена версія цієї сторінки; вона не є останньою.",
+	"approvedrevs-approvedandlatest": "Це затверджений перегляд цієї сторінки, вын э найновішим.",
+	"approvedrevs-blankpageshown": "Не було знайдено схвалювальних переглядів для цієї сторінки.",
+	"approvedrevs-noapprovedrevision": "Це остання версія цієї сторінки; у неї немає затверджених версій.",
+	"approvedrevs-editwarning": "Зверніть увагу, що в даний час ви редагуєте найновіший перегляд цієї сторінки, який не є схваленим і відображатися за замовчуванням.",
+	"approvedrevs": "Затверджені версії",
+	"approvedrevs-approvedpages": "Усі сторінки, що мають затверджені версії.",
+	"approvedrevs-notlatestpages": "Сторінки, чиї затверджені версії не є останніми",
+	"approvedrevs-unapprovedpages": "Несхвалені сторінки",
+	"approvedrevs-view": "Перегляд:",
+	"approvedrevs-revisionnumber": "версія $1",
+	"approvedrevs-approvedby": "затверджена $1 $2",
+	"approvedrevs-difffromlatest": "різниця з останньою",
+	"approvedrevs-approvelatest": "затвердити останній",
+	"approvedrevs-approvethisrev": "Затвердити цю версію.",
+	"approvedrevs-viewlatestrev": "Перегляд останньої версії.",
+	"approvedrevs-approvedrevision": "Затверджена версія",
+	"right-approverevisions": "Встановити єдиний перегляд сторінки як затверджуючий",
+	"right-viewlinktolatest": "Переглянути пояснювальний текст у верхній частині сторінки яка має схвалену версію."
+}

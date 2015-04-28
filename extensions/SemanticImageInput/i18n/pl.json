@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"BeginaFelicysym"
+		]
+	},
+	"sii-desc": "Dodaje pole wprowadzenia obrazka, pobierające obrazki z Wikipedii do [https://www.mediawiki.org/wiki/Extension:Semantic_Forms formularzy semantycznych]",
+	"sii-imageinput-loading": "Ładowanie obrazka..."
+}

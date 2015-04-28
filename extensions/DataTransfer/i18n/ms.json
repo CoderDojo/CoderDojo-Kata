@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Anakmalaysia"
+		]
+	},
+	"datatransfer-desc": "Membolehkan pengimportan dan pengeksportan data yang terkandung dalam panggilan tempat",
+	"viewxml": "Paparkan XML",
+	"dt_viewxml_docu": "Sila pilih antara kategori-kategori dan ruang-ruang nama yang berikut untuk dipaparkan dalam format XML.",
+	"dt_viewxml_categories": "Kategori",
+	"dt_viewxml_namespaces": "Ruang nama",
+	"dt_viewxml_simplifiedformat": "Format ringkas",
+	"dt_xml_namespace": "Ruang nama",
+	"dt_xml_pages": "Halaman",
+	"dt_xml_page": "Laman",
+	"dt_xml_template": "Templat",
+	"dt_xml_field": "Medan",
+	"dt_xml_name": "Nama",
+	"dt_xml_title": "Tajuk",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Teks Bebas",
+	"importxml": "Import XML",
+	"dt_import_selectfile": "Sila pilih fail $1 yang hendak diimport:",
+	"dt_import_encodingtype": "Jenis pengekodan:",
+	"dt_import_forexisting": "Untuk halaman-halaman yang sedia ada:",
+	"dt_import_overwriteexisting": "Tulis ganti kandungan sedia ada",
+	"dt_import_mergeintoexisting": "Hanya tulis ganti medan-medan yang terkandung dalam fail",
+	"dt_import_skipexisting": "Langkau",
+	"dt_import_appendtoexisting": "Tambah kandungan sedia ada",
+	"dt_import_summarydesc": "Ringkasan pengimportan:",
+	"dt_import_editsummary": "Pengimportan $1",
+	"dt_import_importing": "Sedang mengimport...",
+	"dt_import_success": "$1 halaman akan dibuat dari fail $2.",
+	"importcsv": "Import CSV",
+	"dt_importcsv_badheader": "Ralat: pengatas lajur $1, '$2', mestilah sama ada '$3', '$4' atau dalam bentuk 'nama_templat[nama_medan]'",
+	"right-datatransferimport": "Mengimport data"
+}

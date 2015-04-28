@@ -1,0 +1,120 @@
+/* import files here, then call defined mixin later */
+@import '_kata-header';
+@import '_kata-sidebar';
+@import '_kata-commandbar';
+@import '_kata-main-page';
+@import '_kata-box';
+@import '_kata-content';
+@import '_kata-tags';
+@import '_kata-footer';
+@import '_alpha-filter';
+/* section specific styles */
+@import '_kata-mentors';
+@import '_kata-ninjas';
+@import '_kata-course';
+@import '_kata-ratings';
+
+$lightBg: #E5E5E5;
+$mediumBg: #CCCCCC;
+$darkBg: #333333;
+$lightColor: #000;
+$mediumColor: #000;
+$darkColor: #fff;
+
+$sidebarBgColor: #2E7AC7;
+$sidebarColor: #fff;
+
+
+@include kata-sidebar();
+@include kata-commandbar();
+@include kata-header();
+#content:before {
+	width: 1px;
+	overflow: hidden;
+}
+
+
+/*
+############################################################################
+	MEDIAWIKI WIDGETS
+############################################################################
+*/
+#catlinks {
+	text-align: left;
+}
+
+.catlinks {
+	border: 1px solid #aaa;
+	background-color: #f9f9f9;
+	padding: 5px;
+	margin-top: 1em;
+	clear: both;
+}
+
+.catlinks-allhidden {
+	display: none;
+}
+
+.mw-content-ltr {
+	direction: ltr;
+}
+
+.mw-content-rtl {
+	direction: rtl;
+}
+
+#jump-to-nav {
+	margin-top: -1.4em;
+	margin-bottom: 1.4em;
+}
+
+.mw-jump, #jump-to-nav {
+	overflow: hidden;
+	height: 0;
+	zoom: 1;
+}
+
+.printfooter {
+	display: none;
+}
+
+#siteSub {
+	display: none;
+}
+
+.visualClear {
+	clear: both;
+}
+/*
+############################################################################
+	END MEDIAWIKI WIDGETS
+############################################################################
+*/
+
+.row
+{
+	margin: 0px;
+}
+.row.same-height {
+	margin-bottom: 2rem;
+}
+
+#PageContainer {
+	padding-left: 0px;
+	padding-right: 0px;
+	#content ul>li:after {
+		display: none;
+	}
+
+	/* call mixins defined in imported files, so they are specifically nested under this #PageContainer rule */
+	@include kata-content();
+	@include kata-box();
+	@include kata-tags();
+	@include alpha-filter();
+	@include kata-footer();
+	/* call section specific overrides */
+	@include kata-mentors();
+	@include kata-ninjas();
+	@include kata-course();
+	@include kata-ratings();
+}

@@ -1,0 +1,11 @@
+{
+	"name": "mediawiki/cldr",
+		"type": "mediawiki-extension",
+		"description": "CLDR extension contains local language names for different languages, countries, and currencies extracted from CLDR data",
+		"homepage": "http://www.mediawiki.org/wiki/Extension:CLDR",
+		"license" : "GPL-2.0",
+
+		"require": {
+			"composer/installers" : "*"
+		}
+}

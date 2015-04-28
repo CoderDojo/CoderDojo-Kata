@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bellayet",
+			"Wikitanvir",
+			"Aftab1995"
+		]
+	},
+	"approvedrevs-approve": "অনুমোদন",
+	"approvedrevs-unapprove": "অনুনমোদন",
+	"approvedrevs": "গ্রহণকৃত সংস্করণ",
+	"approvedrevs-approvedpages": "গ্রহণকৃত সংস্করণসহ সকল পাতা",
+	"approvedrevs-notlatestpages": "যেসকল পাতার গ্রহণকৃত সংস্করণসমূহ তাদের সাম্প্রতিকতম নয় সেই পাতাগুলি",
+	"approvedrevs-unapprovedpages": "অগ্রহণকৃত পাতাসমূহ",
+	"approvedrevs-view": "দেখাও:",
+	"approvedrevs-revisionnumber": "সংস্করণ $1",
+	"approvedrevs-approvedby": "$1 দ্বারা $2 তারিখে গৃহীত হয়েছে",
+	"approvedrevs-difffromlatest": "সাম্প্রতিকতম সংস্করণ থেকে পার্থক্য",
+	"approvedrevs-approvelatest": "সাম্প্রতিককালে গৃহীত",
+	"approvedrevs-approvethisrev": "এই সংস্করণটি গ্রহণ করো।",
+	"approvedrevs-viewlatestrev": "সবচেয়ে সাম্প্রতিকতম সংস্করণটি দেখাও।",
+	"approvedrevs-approvedrevision": "অনুমোদিত সংস্করণ"
+}

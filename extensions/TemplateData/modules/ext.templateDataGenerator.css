@@ -1,0 +1,89 @@
+.tdg-editscreen-main-button {
+	padding: 5px;
+	font-size: 120%;
+}
+
+.tdg-editscreen-main-helplink {
+	margin-left: 15px;
+}
+
+.tdg-parameters-table {
+	width: 100%;
+}
+
+.tdg-editTable th,
+.tdg-parameters-table td {
+	padding: 0;
+}
+
+.tdg-parameters-table th {
+	text-align: left;
+}
+
+.tdg-parameters-table > tbody > tr:hover > td {
+	background-color: #BECDD4;
+}
+
+.tdg-parameters-table input,
+.tdg-parameters-table select,
+.tdg-parameters-table textarea,
+.tdg-template-description {
+	background: transparent;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.tdg-parameters-table input:not([type="checkbox"]),
+.tdg-parameters-table select,
+.tdg-parameters-table textarea {
+	width: 100%;
+	border: 1px solid #999999;
+	padding: 5px;
+	height: 40px;
+}
+
+.tdg-editTable .tdg-title-delbutton,
+.tdg-title-required {
+	width: 80px;
+}
+.tdg-editTable  .tdg-attr-required {
+	text-align: center;
+}
+.tdg-editTable  .tdg-attr-required label {
+	display: block;
+}
+.tdg-attr-type select {
+	padding-top: 15px;
+}
+.tdg-attr-type {
+	width: 130px;
+	text-align: center;
+}
+
+.tdg-editTable .tdgerror {
+	background-color: #F2CBCB;
+}
+
+.tdg-not-in-template {
+	background: #E6E6FF;
+}
+
+/* Start small, grow on focus: */
+.tdg-table-head-delbutton {
+	width: 100px;
+}
+
+.tdg-table-head-suggested,
+.tdg-table-head-required {
+	width: 100px;
+}
+
+textarea.param-type-input:focus,
+input[type="text"].param-type-input:focus {
+	min-width: 200px;
+}
+
+textarea.param-type-input:focus {
+	height: 70px;
+}

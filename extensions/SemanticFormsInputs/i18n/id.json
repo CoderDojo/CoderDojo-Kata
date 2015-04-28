@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Farras",
+			"IvanLanin"
+		]
+	},
+	"semanticformsinputs-desc": "Jenis masukan tambahan untuk [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Semantic_Forms Semantic Forms]",
+	"semanticformsinputs-wrongformat": "Format salah.",
+	"semanticformsinputs-close": "Penutup",
+	"semanticformsinputs-prev": "Sebelumnya",
+	"semanticformsinputs-next": "Selanjutnya",
+	"semanticformsinputs-today": "Hari ini"
+}

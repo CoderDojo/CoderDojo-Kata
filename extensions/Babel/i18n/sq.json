@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dori",
+			"Eagleal",
+			"Olsi",
+			"Vinie007"
+		]
+	},
+	"babel": "Informacioni Babel i Përdoruesit",
+	"babel-desc": "Shton mundësinë <code>#babel</code> për të lejuar krijimin automatik të kutive babel me mundësinë për të shtuar stampa vetjake.",
+	"babel-url": "Project:Babel",
+	"babel-footer-url": ": Category: Babel - Përdorues sipas gjuhës",
+	"babel-autocreate-abort": "Emrin që ju specifikuar është përdorur për [[$1|Babel]] auto kategori per krijimit dhe nuk mund të regjistruar.",
+	"babel-autocreate-reason": "automatikisht per krijimin e [[$1|Babel]] faqe kategori.",
+	"babel-autocreate-text-levels": "Përdoruesit në këtë kategori tregojnë se ata kanë aftësi të nivelit $1 për gjuhën e $2 .",
+	"babel-autocreate-text-main": "Përdoruesit në këtë kategori tregojnë se ata kanë njohuri të gjuhës $1 .",
+	"babel-0": "Ky përdorues [[$1|nuk ka]] njohuri të [[$2|$3]] (ose e kupton me shumë vështirësi).",
+	"babel-1": "Ky përdorues ka njohuri [[$1|të kufizuar]] të [[$2|$3]].",
+	"babel-2": "Ky përdorues ka njohuri [[$1|thelbësore]] të [[$2|$3]].",
+	"babel-3": "Ky përdorues ka njohuri [[$1|të thellë]] të [[$2|$3]].",
+	"babel-4": "Ky përdorues ka njohuri [[$1|afërsisht amtare]] të [[$2|$3]].",
+	"babel-5": "Ky përdorues ka njohuri [[$1|profesionale]] të [[$2|$3]].",
+	"babel-N": "Ky përdorues ka njohuri [[$1|amtare]] të [[$2|$3]].",
+	"babel-0-n": "Ky përdorues [[$1|nuk ka]] njohuri të [[$2|anglishtes]] (ose e kupton me vështirësi të madhe).",
+	"babel-1-n": "Ky përdorues ka njohuri [[$1|të kufizuar]] të [[$2|gjuhës Shqipe]].",
+	"babel-2-n": "Ky përdorues ka njohuri [[$1|thelbësore]] të [[$2|gjuhës Shqipe]].",
+	"babel-3-n": "Ky përdorues ka njohuri [[$1|të thellë]] të [[$2|gjuhës Shqipe]].",
+	"babel-4-n": "Ky përdorues ka njohuri [[$1|afërsisht amtare]] të [[$2|gjuhës Shqipe]].",
+	"babel-5-n": "Ky përdorues ka njohuri [[$1|profesionale]] të [[$2|gjuhës Shqipe]].",
+	"babel-N-n": "Ky përdorues ka njohuri [[$1|amtare]] të [[$2|gjuhës Shqipe]].",
+	"babel-footer": "Përdorues sipas gjuhës"
+}

@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby",
+			"Soued031"
+		]
+	},
+	"datatransfer-desc": "Erlaabt et Daten déi an Opruffer vu Schabloune benotzt ginn z'importéieren an z'exportéieren",
+	"viewxml": "XML weisen",
+	"dt_viewxml_docu": "Wielt w.e.g. ënner dëse Kategorien an Nimmraim fir am XML-Format unzeweisen.",
+	"dt_viewxml_categories": "Kategorien",
+	"dt_viewxml_namespaces": "Nummraim",
+	"dt_viewxml_simplifiedformat": "Vereinfachte Format",
+	"dt_xml_namespace": "Nummraum",
+	"dt_xml_pages": "Säiten",
+	"dt_xml_page": "Säit",
+	"dt_xml_template": "Schabloun",
+	"dt_xml_field": "Feld",
+	"dt_xml_name": "Numm",
+	"dt_xml_title": "Titel",
+	"dt_xml_id": "Nummer",
+	"dt_xml_freetext": "Fräien Text",
+	"importxml": "XML importéieren",
+	"dt_import_selectfile": "Sicht de(n) $1-Fichier eraus fir z'importéieren:",
+	"dt_import_encodingtype": "Encoding-Typ:",
+	"dt_import_forexisting": "Fir Säiten déi et scho gëtt:",
+	"dt_import_overwriteexisting": "Den Inhalt den et gëtt iwwerschreiwen",
+	"dt_import_mergeintoexisting": "Nëmme Felder iwwerschreiwen déi am Fichier dra sinn",
+	"dt_import_skipexisting": "Iwwersprangen",
+	"dt_import_appendtoexisting": "Bei den Inhalt deen et gëtt derbäisetzen",
+	"dt_import_summarydesc": "Resumé vum Import:",
+	"dt_import_editsummary": "{{ucfirst:$1}}-Import",
+	"dt_import_importing": "Import am gaang ...",
+	"dt_import_success": "$1 {{PLURAL:$1|Säit gëtt|Säite ginn}} aus dem $2-Fichier ugeluecht.",
+	"importcsv": "CSV importéieren",
+	"importspreadsheet": "Tabelleberechnungsblad importéieren",
+	"dt_importcsv_badheader": "Feeler: D'Iwwerschrëft vun der Kolonn $1, '$2', muss entweder '$3', '$4' oder am Format 'Numm_vun_der_Schabloun(Numm_vum_Feld)' sinn",
+	"right-datatransferimport": "Donnéeën importéieren",
+	"dt_filetype_spreadsheet": "Tabelleberechnungsblad"
+}

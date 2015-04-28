@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Avjoska",
+			"Pikne"
+		]
+	},
+	"dt_viewxml_categories": "Kategooriad",
+	"dt_viewxml_namespaces": "Nimeruumid",
+	"dt_viewxml_simplifiedformat": "Lihtsustatud vorming",
+	"dt_xml_namespace": "Nimeruum",
+	"dt_xml_pages": "Leheküljed",
+	"dt_xml_page": "Lehekülg",
+	"dt_xml_template": "Mall",
+	"dt_xml_field": "Väli",
+	"dt_xml_name": "Nimi",
+	"dt_xml_title": "Pealkiri",
+	"dt_xml_id": "ID",
+	"dt_import_skipexisting": "Jäta vahele",
+	"dt_import_importing": "Importimine...",
+	"right-datatransferimport": "Impordiandmed"
+}

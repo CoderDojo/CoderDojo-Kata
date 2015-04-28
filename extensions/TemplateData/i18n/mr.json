@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"V.narsikar"
+		]
+	},
+	"templatedata-invalid-length": "माहिती जतन करण्यास बरीच मोठी आहे({{formatnum:$1}} {{PLURAL:$1|बाईट|बाईट्स}}, {{PLURAL:$2|मर्यादा}} {{formatnum:$2}} आहे)",
+	"templatedata-editbutton": "साचा दस्तऐवजीकरणाचे व्यवस्थापन",
+	"templatedata-errormsg-jsonbadformat": "वाईट JSON प्रारुप.एकतर ते सुधरवा किंवा सध्याची <templatedata> खूणपताका वगळून पुन्हा प्रयत्न करा.",
+	"templatedata-modal-button-addparam": "प्राचल (पॅरामीटर) जोडा",
+	"templatedata-modal-button-apply": "लागू करा",
+	"templatedata-modal-button-cancel": "रद्द करा",
+	"templatedata-modal-button-delparam": "प्राचल (पॅरामीटर) काढून टाका",
+	"templatedata-modal-button-importParams": "प्राचले (पॅरामिटर्स) आयात करा",
+	"templatedata-modal-errormsg": "त्रूटी आढळली. याची कृपया खात्री करा कि यात रिकामे अथवा द्विरुक्त प्राचल नावे नाहीत व प्राचल नावात \"$1\", \"$2\" किंवा \"$3\" याचा अंतर्भाव नाही.",
+	"templatedata-modal-errormsg-import-noparams": "आयाती दरम्यान काही नविन प्राचले(पॅरामिटर्स) सापडली नाहीत.",
+	"templatedata-modal-notice-import-numparams": "$1 नविन {{PLURAL:$1|प्राचल आयात केल्या गेले |आयात केल्या गेलीत}}.",
+	"templatedata-modal-table-param-actions": "क्रिया",
+	"templatedata-modal-table-param-aliases": "समधर्मी (स्वल्पविरामने वेगळे केलेले)",
+	"templatedata-modal-table-param-default": "मूळ (अविचल)",
+	"templatedata-modal-table-param-desc": "वर्णन",
+	"templatedata-modal-table-param-label": "लेबल",
+	"templatedata-modal-table-param-name": "नाव",
+	"templatedata-modal-table-param-required": "आवश्यक",
+	"templatedata-modal-table-param-type": "प्रकार",
+	"templatedata-modal-table-param-type-number": "आकडा",
+	"templatedata-modal-table-param-type-date": "दिनांक",
+	"templatedata-modal-table-param-type-page": "पान",
+	"templatedata-modal-table-param-type-string": "तंतू",
+	"templatedata-modal-table-param-type-undefined": "अव्यक्त",
+	"templatedata-modal-table-param-type-user": "सदस्य",
+	"templatedata-modal-table-param-uneditablefield": "संपादित न करता येणारे",
+	"templatedata-modal-title": "साचा दस्ताऐवजीकरण संपादक",
+	"templatedata-modal-title-templatedesc": "साचा वर्णन",
+	"templatedata-modal-title-templateparams": "साचा प्राचल (पॅरामिटर्स)"
+}

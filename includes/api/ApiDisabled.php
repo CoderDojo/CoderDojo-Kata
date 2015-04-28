@@ -4,7 +4,7 @@
  *
  * Created on Sep 25, 2008
  *
- * Copyright © 2008 Roan Kattouw <Firstname>.<Lastname>@gmail.com
+ * Copyright © 2008 Roan Kattouw "<Firstname>.<Lastname>@gmail.com"
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,11 +24,6 @@
  * @file
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	// Eclipse helper - will be ignored in production
-	require_once( "ApiBase.php" );
-}
-
 /**
  * API module that dies with an error immediately.
  *
@@ -41,12 +36,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class ApiDisabled extends ApiBase {
 
-	public function __construct( $main, $action ) {
-		parent::__construct( $main, $action );
-	}
-
 	public function execute() {
-		$this->dieUsage( "The ``{$this->getModuleName()}'' module has been disabled.", 'moduledisabled' );
+		$this->dieUsage( "The \"{$this->getModuleName()}\" module has been disabled.", 'moduledisabled' );
 	}
 
 	public function isReadMode() {
@@ -62,14 +53,10 @@ class ApiDisabled extends ApiBase {
 	}
 
 	public function getDescription() {
-		return 'This module has been disabled';
+		return 'This module has been disabled.';
 	}
 
-	protected function getExamples() {
+	public function getExamples() {
 		return array();
-	}
-
-	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiDisabled.php 79969 2011-01-10 22:36:26Z reedy $';
 	}
 }

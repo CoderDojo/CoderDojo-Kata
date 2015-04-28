@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Iwai.masaharu",
+			"Ohgi",
+			"Shirayuki",
+			"W.CC",
+			"青子守歌"
+		]
+	},
+	"approvedrevs-desc": "ページの版のうち 1 つを承認済みにする",
+	"approvedrevs-logname": "版の承認記録",
+	"approvedrevs-logdesc": "以下は、承認された版の記録です。",
+	"approvedrevs-approve": "承認",
+	"approvedrevs-unapprove": "非承認",
+	"approvedrevs-approvesuccess": "この版を承認済み版として指定しました。",
+	"approvedrevs-unapprovesuccess": "このページには承認済み版がなくなりました。\n代わりに、最新版を表示します。",
+	"approvedrevs-unapprovesuccess2": "このページには承認済み版がなくなりました。\n代わりに、白紙のページを表示します。",
+	"approvedrevs-approveaction": "「[[$1]]」の承認済み版として$2を指定",
+	"approvedrevs-unapproveaction": "「[[$1]]」の承認済み版の指定を解除",
+	"approvedrevs-notlatest": "これは、このページの承認済み版です。最新版ではありません。",
+	"approvedrevs-approvedandlatest": "これは、このページの承認済み版であり、最新版でもあります。",
+	"approvedrevs-blankpageshown": "このページには、承認済み版がありません。",
+	"approvedrevs-noapprovedrevision": "このページの最新版です。このページには承認済の版はありません。",
+	"approvedrevs-editwarning": "現在編集しているのはこのページの最新版であり、既定で表示される承認済み版とは異なることにご注意ください。",
+	"approvedrevs": "承認済み版",
+	"approvedrevs-approvedpages": "承認済の版があるすべてのページ",
+	"approvedrevs-notlatestpages": "承認済み版が、最新版ではないページ",
+	"approvedrevs-unapprovedpages": "未承認ページ",
+	"approvedrevs-view": "表示:",
+	"approvedrevs-revisionnumber": "版 $1",
+	"approvedrevs-approvedby": "{{GENDER:$3|$1}} が $4 $5 に承認",
+	"approvedrevs-difffromlatest": "最新版との差分",
+	"approvedrevs-approvelatest": "最新版を承認",
+	"approvedrevs-approvethisrev": "この版を承認",
+	"approvedrevs-viewlatestrev": "最新版を閲覧",
+	"right-approverevisions": "ウィキページの特定の版を承認済みに設定",
+	"right-viewlinktolatest": "承認済み版があるページの冒頭に説明文を表示"
+}

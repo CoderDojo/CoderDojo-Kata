@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"AnakngAraw"
+		]
+	},
+	"datatransfer-desc": "Nagpapahintulot sa pag-aangkat at pagluluwas ng mga datong nasa loob ng mga pagtawag sa suleras",
+	"viewxml": "Tingnan ang XML",
+	"dt_viewxml_docu": "Pumili po lamang mula sa sumusunod na mga kaurian at mga espasyo ng pangalan upang makita ang anyong XML.",
+	"dt_viewxml_categories": "Mga kaurian",
+	"dt_viewxml_namespaces": "Mga espasyo ng pangalan",
+	"dt_viewxml_simplifiedformat": "Pinapayak na anyo",
+	"dt_xml_namespace": "Espasyo ng pangalan",
+	"dt_xml_pages": "Mga pahina",
+	"dt_xml_page": "Pahina",
+	"dt_xml_template": "Suleras",
+	"dt_xml_field": "Hanay",
+	"dt_xml_name": "Pangalan",
+	"dt_xml_title": "Pamagat",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Malayang Teksto",
+	"importxml": "Angkatin ang XML",
+	"dt_import_selectfile": "Pakipili ang talaksang $1 na aangkatin:",
+	"dt_import_encodingtype": "Uri ng pagkokodigo:",
+	"dt_import_forexisting": "Para sa mga pahinang umiiral na:",
+	"dt_import_overwriteexisting": "Patungan ang umiiral na nilalaman",
+	"dt_import_skipexisting": "Laktawan",
+	"dt_import_appendtoexisting": "Isugpong sa umiiral na nilalaman",
+	"dt_import_summarydesc": "Buod ng pag-angkat:",
+	"dt_import_editsummary": "Pag-angkat ng $1",
+	"dt_import_importing": "Inaangkat...",
+	"dt_import_success": "$1 {{PLURAL:$1|pahina|mga pahina}} ang lilikhain mula sa talaksang $2.",
+	"importcsv": "Angkatin ang CSV",
+	"dt_importcsv_badheader": "Kamalian: ang patayong hanay ng paulong $1, '$2', ay dapat na '$3', '$4' o nasa pormang 'template_name[field_name]'",
+	"right-datatransferimport": "Angkatin ang dato"
+}

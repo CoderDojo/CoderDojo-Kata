@@ -1,0 +1,157 @@
+/*
+	Specification for the JSON descriptor as used in the
+	TemplateData extension for MediaWiki.
+
+	Author: Timo Tijhof
+	Author: Trevor Parscal
+	Author: James D. Forrester
+
+	Property names listed in brackets (e.g. [foo]) are optional. This means
+	they may be omitted from the object. If a null value is allowed, this will
+	be explicitly specified.
+
+@structure {Object} Root
+	@property {null|InterfaceText} [description]
+	@property {Object} params Contains all parameters.
+	 Keyed by parameter name, contains #Param objects.
+	@property {Array} [paramOrder] The logical order in which parameters should be
+	 displayed. The array contains each parameter key exactly once.
+	@property {Array} sets List of groups of parameters that should be used
+	 together. A parameter can be in multiple sets. Not every parameter has to be
+	 in a set. The array contains #Set objects.
+
+@structure {Object} Param
+	@property {null|InterfaceText} [label] Label of this parameter.
+	 To be shown as a clear identifier for human users of the template; should
+	 generally be unique amongst the parameters (e.g. "First author's name" and
+	 "Second author's name", not just "Name" and "Name"). Defaults to the key of
+	 the object in `Root.params`.
+	@property {boolean} [required=false] Required status of this parameter.
+	 Whether the parameter is required to have an explicit value for the template
+	 to function properly. For example, the ISBN parameter in a template about a
+	 book's ISBN might be required, whereas other parameters such as issue date
+	 might not be. Client tools SHOULD automatically prompt users to fill in these
+	 paramters, and MAY prevent them from adding a template invocation with a
+	 required parameter unset.
+	@property {boolean} [suggested=false] Suggested status of this parameter.
+	 Whether the parameter is suggested to be set to an explicit value for the
+	 template to be valuable. This status is a less strong indicator of inclusion
+	 than `required`, and the template should function correctly without a
+	 `suggested` parameter being set. For example, in a book template the author's
+	 name might be suggested, whereas the title might be required. Client tools
+	 MAY automatically prompt users to fill in these paramters, but SHOULD NOT
+	 prevent users from adding a template invocation with a suggested parameter
+	 unset.
+	@property {null|InterfaceText} [description] Description of this parameter.
+	 To be shown as an explanatory text for what the purpose of the parameter is
+	 and some minor hints as to how to the format the contents. For example, a
+	 template parameter about the author of a book might be "The name of the
+	 author of the book, to positively identify and attribute the claim. The name
+	 should be given as it would appear in the author's native language, script
+	 and culture." or similar.
+	@property {boolean|string} [deprecated=false] Deprecated status of this parameter.
+	 Description for why a parameter is deprecated, and what tasks instead should
+	 be set, or "true" if no description is wanted to be set.
+	@property {Array} [aliases] List of aliases.
+	 An alias is an alternative name for the parameter that may be used instead of
+	 (not in addition to) the primary name. Aliases are not documented in a
+	 separate Param object. If they need more information, they should be in their
+	 own property marked "deprecated".
+	@property {string} [default] The default value or description thereof.
+	@property {Type} [type] The type of the expected parameter value.
+	@property {string} [inherits] Key to another object in `Root.params`.
+	 The current Param object will inherit from that one, with local properties
+	 overriding the inherited ones.
+
+@structure {Object} Set
+	@property {InterfaceText} label Label of this set.
+	@property {Array} params One or more parameter keys.
+
+@structure {string} Type
+	One of the following:
+	- unknown
+	  When no type is specified.
+	- string
+	  Any textual value.
+	- number
+	  Any numerical value (without decimal points or thousand separators).
+	- boolean
+	  A boolean value ('1' for true, '0' for false, '' for unknown).
+	- date
+	  A date in ISO 8601 format, e.g. "2014-05-09" or "2014-05-09T16:01:12Z".
+	- wiki-page-name
+	  A valid MediaWiki page name for the current wiki. Doesn't have to exist,
+	  but if not, should be a valid page name to create.
+	- wiki-user-name
+	  A valid MediaWiki user name for the current wiki. Doesn't have to exist,
+	  but if not, should be a valid user name to create. Should not include any
+	  localised or standard namespace prefix ("Foo" not "User:Foo").
+	- wiki-file-name
+	  A valid MediaWiki file name for the current wiki. Doesn't have to exist,
+	  but if not, should be a valid file name to upload. Should not include any
+	  localised or standard namespace prefix ("Foo" not "File:Foo").
+	- content
+	  Page content (such as text style, links and images etc.).
+	- unbalanced-wikitext
+	  Raw wikitext that should not be treated as standalone content because it
+	  is unbalanced (eg. templates concatenating incomplete wikitext as a bigger
+	  whole such as {{echo|before=<u>|after=</u>}})
+	- line
+	  Short text field - use for names, labels, and other short-form fields.
+
+@structure {string|Object} InterfaceText
+	A free-form string (no wikitext) in the content-language of the wiki, or,
+	an object containing those strings keyed by language code.
+
+
+	Examples:
+ */
+
+/**
+ * [[Template:Unsigned]]
+ *
+ * Example usage:
+ *     {{unsigned|JohnDoe|2012-10-18}}
+ *     {{unsigned|user=JohnDoe|year=2012|month=10|day=18|comment=blabla}}
+ */
+{
+	"description": "Label unsigned comments in a conversation.",
+	"params": {
+		"user": {
+			"label": "User's name",
+			"type": "wiki-user-name",
+			"required": true,
+			"description": "User name of person who forgot to sign their comment.",
+			"aliases": ["1"]
+		},
+		"date": {
+			"label": "Date",
+			"suggested": true,
+			"description": {
+				"en": "Timestamp of when the comment was posted, in YYYY-MM-DD format."
+			},
+			"aliases": ["2"]
+		},
+		"year": {
+			"label": "Year",
+			"type": "number"
+		},
+		"month": {
+			"label": "Month",
+			"inherits": "year"
+		},
+		"day": {
+			"label": "Day",
+			"inherits": "year"
+		},
+		"comment": {
+			"required": false
+		}
+	},
+	"sets": [
+		{
+			"label": "Date",
+			"params": ["year", "month", "day"]
+		}
+	]
+}

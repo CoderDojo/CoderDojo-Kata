@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Crt",
+			"Nike",
+			"Pxos",
+			"Str4nd",
+			"Varusmies",
+			"ZeiP"
+		]
+	},
+	"adminlinks": "Ylläpidon linkit",
+	"adminlinks-desc": "Lisää [[Special:AdminLinks|toimintosivun]], joka sisältää hyödyllisiä linkkejä ylläpitäjille.",
+	"adminlinks_documentation": "$1 dokumentaatio",
+	"adminlinks_general": "Yleiset",
+	"adminlinks_editsidebar": "Muokkaa sivupalkkia",
+	"adminlinks_editcss": "Muokkaa CSS-tiedostoa",
+	"adminlinks_editmainpagename": "Muokkaa etusivun nimeä",
+	"adminlinks_users": "Käyttäjät",
+	"adminlinks_createuser": "Luo uusi käyttäjä",
+	"adminlinks_browsesearch": "Selaaminen ja hakeminen",
+	"adminlinks_importexport": "Tuonti ja vienti",
+	"right-adminlinks": "Nähdä linkki sivulle [[Special:AdminLinks|ylläpitäjien linkit]]"
+}

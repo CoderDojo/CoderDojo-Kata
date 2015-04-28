@@ -1,0 +1,2442 @@
+[
+    {
+        "name": "psr/log",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/php-fig/log.git",
+            "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/php-fig/log/zipball/fe0936ee26643249e916849d48e3a51d5f5e278b",
+            "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b",
+            "shasum": ""
+        },
+        "time": "2012-12-21 11:40:51",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Psr\\Log\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "PHP-FIG",
+                "homepage": "http://www.php-fig.org/"
+            }
+        ],
+        "description": "Common interface for logging libraries",
+        "keywords": [
+            "log",
+            "psr",
+            "psr-3"
+        ]
+    },
+    {
+        "name": "ruflin/elastica",
+        "version": "v1.3.0.0",
+        "version_normalized": "1.3.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ruflin/Elastica.git",
+            "reference": "92155a36c94ebe15b09661ae804acbe4bdd4ad6b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ruflin/Elastica/zipball/92155a36c94ebe15b09661ae804acbe4bdd4ad6b",
+            "reference": "92155a36c94ebe15b09661ae804acbe4bdd4ad6b",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "munkie/elasticsearch-thrift-php": "1.4.*",
+            "phpunit/phpunit": "4.1.*",
+            "psr/log": "~1.0",
+            "satooshi/php-coveralls": "dev-master"
+        },
+        "suggest": {
+            "guzzlehttp/guzzle": "Allow using guzzle 4.x as the http transport (requires php 5.4)",
+            "monolog/monolog": "Logging request",
+            "munkie/elasticsearch-thrift-php": "Allow using thrift transport",
+            "psr/log": "for logging"
+        },
+        "time": "2014-07-27 13:45:09",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Elastica": "lib/",
+                "Elastica\\Test": "test/lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache 2.0"
+        ],
+        "authors": [
+            {
+                "name": "Nicolas Ruflin",
+                "homepage": "http://ruflin.com/"
+            }
+        ],
+        "description": "Elasticsearch Client",
+        "homepage": "http://elastica.io/",
+        "keywords": [
+            "client",
+            "search"
+        ]
+    },
+    {
+        "name": "cssjanus/cssjanus",
+        "version": "v1.1.1",
+        "version_normalized": "1.1.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/cssjanus/php-cssjanus.git",
+            "reference": "62a9c32e6e140de09082b40a6e99d868ad14d4e0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/cssjanus/php-cssjanus/zipball/62a9c32e6e140de09082b40a6e99d868ad14d4e0",
+            "reference": "62a9c32e6e140de09082b40a6e99d868ad14d4e0",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "jakub-onderka/php-parallel-lint": "0.8.*",
+            "phpunit/phpunit": "3.7.*",
+            "squizlabs/php_codesniffer": "1.*"
+        },
+        "time": "2014-11-14 20:00:50",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "description": "Convert CSS stylesheets between left-to-right and right-to-left."
+    },
+    {
+        "name": "leafo/lessphp",
+        "version": "v0.5.0",
+        "version_normalized": "0.5.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/leafo/lessphp.git",
+            "reference": "0f5a7f5545d2bcf4e9fad9a228c8ad89cc9aa283"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/leafo/lessphp/zipball/0f5a7f5545d2bcf4e9fad9a228c8ad89cc9aa283",
+            "reference": "0f5a7f5545d2bcf4e9fad9a228c8ad89cc9aa283",
+            "shasum": ""
+        },
+        "time": "2014-11-24 18:39:20",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.4.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "lessc.inc.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Leaf Corcoran",
+                "email": "leafot@gmail.com",
+                "homepage": "http://leafo.net"
+            }
+        ],
+        "description": "lessphp is a compiler for LESS written in PHP.",
+        "homepage": "http://leafo.net/lessphp/"
+    },
+    {
+        "name": "wikimedia/cdb",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/wikimedia/cdb.git",
+            "reference": "3b7d5366c88eccf2517ebac57c59eb557c82f46c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/wikimedia/cdb/zipball/3b7d5366c88eccf2517ebac57c59eb557c82f46c",
+            "reference": "3b7d5366c88eccf2517ebac57c59eb557c82f46c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "*"
+        },
+        "time": "2014-12-08 19:26:44",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Tim Starling",
+                "email": "tstarling@wikimedia.org"
+            },
+            {
+                "name": "Chad Horohoe",
+                "email": "chad@wikimedia.org"
+            }
+        ],
+        "description": "Constant Database (CDB) wrapper library for PHP. Provides pure-PHP fallback when dba_* functions are absent.",
+        "homepage": "https://www.mediawiki.org/wiki/CDB"
+    },
+    {
+        "name": "zordius/lightncandy",
+        "version": "v0.18",
+        "version_normalized": "0.18.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/zordius/lightncandy.git",
+            "reference": "24be6909c37391f4648ce1fdf19036b11bd56d05"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/zordius/lightncandy/zipball/24be6909c37391f4648ce1fdf19036b11bd56d05",
+            "reference": "24be6909c37391f4648ce1fdf19036b11bd56d05",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.0.17"
+        },
+        "time": "2015-01-01 04:37:19",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/lightncandy.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Zordius Chen",
+                "email": "zordius@yahoo-inc.com"
+            }
+        ],
+        "description": "An extremely fast PHP implementation of handlebars ( http://handlebarsjs.com/ ) and mustache ( http://mustache.github.io/ ).",
+        "homepage": "https://github.com/zordius/lightncandy",
+        "keywords": [
+            "handlebars",
+            "logicless",
+            "mustache",
+            "php",
+            "template"
+        ]
+    },
+    {
+        "name": "monolog/monolog",
+        "version": "1.12.0",
+        "version_normalized": "1.12.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Seldaek/monolog.git",
+            "reference": "1fbe8c2641f2b163addf49cc5e18f144bec6b19f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1fbe8c2641f2b163addf49cc5e18f144bec6b19f",
+            "reference": "1fbe8c2641f2b163addf49cc5e18f144bec6b19f",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0",
+            "psr/log": "~1.0"
+        },
+        "provide": {
+            "psr/log-implementation": "1.0.0"
+        },
+        "require-dev": {
+            "aws/aws-sdk-php": "~2.4, >2.4.8",
+            "doctrine/couchdb": "~1.0@dev",
+            "graylog2/gelf-php": "~1.0",
+            "phpunit/phpunit": "~4.0",
+            "raven/raven": "~0.5",
+            "ruflin/elastica": "0.90.*",
+            "videlalvaro/php-amqplib": "~2.4"
+        },
+        "suggest": {
+            "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
+            "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
+            "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
+            "ext-mongo": "Allow sending log messages to a MongoDB server",
+            "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
+            "raven/raven": "Allow sending log messages to a Sentry server",
+            "rollbar/rollbar": "Allow sending log messages to Rollbar",
+            "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
+            "videlalvaro/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib"
+        },
+        "time": "2014-12-29 21:29:35",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.12.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Monolog\\": "src/Monolog"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jordi Boggiano",
+                "email": "j.boggiano@seld.be",
+                "homepage": "http://seld.be"
+            }
+        ],
+        "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
+        "homepage": "http://github.com/Seldaek/monolog",
+        "keywords": [
+            "log",
+            "logging",
+            "psr-3"
+        ]
+    },
+    {
+        "name": "wikimedia/composer-merge-plugin",
+        "version": "v1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/wikimedia/composer-merge-plugin.git",
+            "reference": "ed426b785f9f786b33be4fd78584e43f4e962356"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/wikimedia/composer-merge-plugin/zipball/ed426b785f9f786b33be4fd78584e43f4e962356",
+            "reference": "ed426b785f9f786b33be4fd78584e43f4e962356",
+            "shasum": ""
+        },
+        "require": {
+            "composer-plugin-api": "1.0.0",
+            "php": ">=5.3.2"
+        },
+        "require-dev": {
+            "composer/composer": "1.0.*@dev",
+            "jakub-onderka/php-parallel-lint": "~0.8",
+            "phpspec/prophecy-phpunit": "~1.0",
+            "phpunit/phpunit": "~4.0",
+            "squizlabs/php_codesniffer": "~2.1.0"
+        },
+        "time": "2015-02-21 00:57:13",
+        "type": "composer-plugin",
+        "extra": {
+            "class": "Wikimedia\\Composer\\MergePlugin"
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Wikimedia\\Composer\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "Composer plugin to merge multiple composer.json files"
+    },
+    {
+        "name": "liuggio/statsd-php-client",
+        "version": "v1.0.12",
+        "version_normalized": "1.0.12.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/liuggio/statsd-php-client.git",
+            "reference": "a8c9ccd2a3af6cc49c7fc4f5f689d7b148ab19d7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/liuggio/statsd-php-client/zipball/a8c9ccd2a3af6cc49c7fc4f5f689d7b148ab19d7",
+            "reference": "a8c9ccd2a3af6cc49c7fc4f5f689d7b148ab19d7",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2"
+        },
+        "require-dev": {
+            "monolog/monolog": ">=1.2.0"
+        },
+        "suggest": {
+            "monolog/monolog": "Monolog, in order to do generate statistic from log >=1.2.0)"
+        },
+        "time": "2014-09-17 21:37:49",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Liuggio": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Giulio De Donato",
+                "email": "liuggio@gmail.com"
+            }
+        ],
+        "description": "Statsd (Object Oriented) client library for PHP",
+        "homepage": "https://github.com/liuggio/statsd-php-client/",
+        "keywords": [
+            "etsy",
+            "monitoring",
+            "php",
+            "statsd"
+        ]
+    },
+    {
+        "name": "wikimedia/utfnormal",
+        "version": "v1.0.2",
+        "version_normalized": "1.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/wikimedia/utfnormal.git",
+            "reference": "bb892a53a76116ad0982445a849043687cb6e778"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/wikimedia/utfnormal/zipball/bb892a53a76116ad0982445a849043687cb6e778",
+            "reference": "bb892a53a76116ad0982445a849043687cb6e778",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "ext-mbstring": "*",
+            "jakub-onderka/php-parallel-lint": "0.8.*",
+            "mediawiki/mediawiki-codesniffer": "0.1.0",
+            "phpunit/phpunit": "4.4.*",
+            "squizlabs/php_codesniffer": "2.1.*"
+        },
+        "time": "2015-03-12 01:54:47",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Brion Vibber",
+                "email": "bvibber@wikimedia.org"
+            }
+        ],
+        "homepage": "https://www.mediawiki.org/wiki/utfnormal"
+    },
+    {
+        "name": "oojs/oojs-ui",
+        "version": "v0.10.1",
+        "version_normalized": "0.10.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/wikimedia/oojs-ui.git",
+            "reference": "4570d9b790d47dfd8be6fc95963ab8040360a7ea"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/wikimedia/oojs-ui/zipball/4570d9b790d47dfd8be6fc95963ab8040360a7ea",
+            "reference": "4570d9b790d47dfd8be6fc95963ab8040360a7ea",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "jakub-onderka/php-parallel-lint": "0.8.*",
+            "mediawiki/mediawiki-codesniffer": "0.1.0",
+            "squizlabs/php_codesniffer": "2.1.*"
+        },
+        "time": "2015-04-27 16:45:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "php/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "Provides library of common widgets, layouts, and windows.",
+        "homepage": "https://www.mediawiki.org/wiki/OOjs_UI"
+    },
+    {
+        "name": "composer/installers",
+        "version": "v1.0.21",
+        "version_normalized": "1.0.21.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/composer/installers.git",
+            "reference": "d64e23fce42a4063d63262b19b8e7c0f3b5e4c45"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/composer/installers/zipball/d64e23fce42a4063d63262b19b8e7c0f3b5e4c45",
+            "reference": "d64e23fce42a4063d63262b19b8e7c0f3b5e4c45",
+            "shasum": ""
+        },
+        "replace": {
+            "roundcube/plugin-installer": "*",
+            "shama/baton": "*"
+        },
+        "require-dev": {
+            "composer/composer": "1.0.*@dev",
+            "phpunit/phpunit": "4.1.*"
+        },
+        "time": "2015-02-18 17:17:01",
+        "type": "composer-installer",
+        "extra": {
+            "class": "Composer\\Installers\\Installer",
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Composer\\Installers\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Kyle Robinson Young",
+                "email": "kyle@dontkry.com",
+                "homepage": "https://github.com/shama"
+            }
+        ],
+        "description": "A multi-framework Composer library installer",
+        "homepage": "http://composer.github.com/installers/",
+        "keywords": [
+            "Craft",
+            "Dolibarr",
+            "Hurad",
+            "MODX Evo",
+            "OXID",
+            "SMF",
+            "Thelia",
+            "WolfCMS",
+            "agl",
+            "aimeos",
+            "annotatecms",
+            "bitrix",
+            "cakephp",
+            "chef",
+            "codeigniter",
+            "concrete5",
+            "croogo",
+            "dokuwiki",
+            "drupal",
+            "elgg",
+            "fuelphp",
+            "grav",
+            "installer",
+            "joomla",
+            "kohana",
+            "laravel",
+            "lithium",
+            "magento",
+            "mako",
+            "mediawiki",
+            "modulework",
+            "moodle",
+            "phpbb",
+            "piwik",
+            "ppi",
+            "puppet",
+            "roundcube",
+            "shopware",
+            "silverstripe",
+            "symfony",
+            "typo3",
+            "wordpress",
+            "zend",
+            "zikula"
+        ]
+    },
+    {
+        "name": "data-values/interfaces",
+        "version": "0.1.5",
+        "version_normalized": "0.1.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/DataValues/Interfaces.git",
+            "reference": "f563e6a55547046070e3d79b5662b620005558d8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/DataValues/Interfaces/zipball/f563e6a55547046070e3d79b5662b620005558d8",
+            "reference": "f563e6a55547046070e3d79b5662b620005558d8",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2015-02-14 02:37:02",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "Interfaces.php"
+            ],
+            "psr-0": {
+                "ValueFormatters\\": "src",
+                "ValueParsers\\": "src",
+                "ValueValidators\\": "src"
+            },
+            "classmap": [
+                "tests/ValueFormatters/ValueFormatterTestBase.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Jeroen De Dauw",
+                "email": "jeroendedauw@gmail.com",
+                "homepage": "http://jeroendedauw.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Defines interfaces for ValueParsers, ValueFormatters and ValueValidators",
+        "homepage": "https://github.com/DataValues/Interfaces",
+        "keywords": [
+            "datavalues",
+            "valueformatters",
+            "valueparsers",
+            "valuevalidators",
+            "wikidata"
+        ]
+    },
+    {
+        "name": "data-values/data-values",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/DataValues/DataValues.git",
+            "reference": "de2b9abdbc26c4c393b25aa621619dfe3fc10fdc"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/DataValues/DataValues/zipball/de2b9abdbc26c4c393b25aa621619dfe3fc10fdc",
+            "reference": "de2b9abdbc26c4c393b25aa621619dfe3fc10fdc",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "replace": {
+            "mediawiki/data-values": "*"
+        },
+        "time": "2014-09-26 07:02:27",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "DataValues.php"
+            ],
+            "classmap": [
+                "src/interfaces",
+                "tests/phpunit/DataValueTest.php"
+            ],
+            "psr-0": {
+                "DataValues\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Jeroen De Dauw",
+                "email": "jeroendedauw@gmail.com",
+                "homepage": "http://jeroendedauw.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Defines the DataValue interface and some trivial implementations",
+        "homepage": "https://github.com/DataValues/DataValues",
+        "keywords": [
+            "datavalues",
+            "wikibase",
+            "wikidata"
+        ]
+    },
+    {
+        "name": "data-values/validators",
+        "version": "0.1.2",
+        "version_normalized": "0.1.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/DataValues/Validators.git",
+            "reference": "726f54fdc6bf58aa4f5405ae3d9c3f2b0f916141"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/DataValues/Validators/zipball/726f54fdc6bf58aa4f5405ae3d9c3f2b0f916141",
+            "reference": "726f54fdc6bf58aa4f5405ae3d9c3f2b0f916141",
+            "shasum": ""
+        },
+        "require": {
+            "data-values/data-values": "~1.0|~0.1",
+            "data-values/interfaces": "~0.1",
+            "php": ">=5.3.0"
+        },
+        "time": "2014-10-09 19:10:23",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "Validators.php"
+            ],
+            "psr-4": {
+                "ValueValidators\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Jeroen De Dauw",
+                "email": "jeroendedauw@gmail.com",
+                "homepage": "http://jeroendedauw.com",
+                "role": "Developer"
+            },
+            {
+                "name": "The Wikidata team",
+                "role": "Developer"
+            }
+        ],
+        "description": "Common ValueValidator implementations",
+        "homepage": "https://github.com/DataValues/Validators",
+        "keywords": [
+            "datavalues",
+            "validation",
+            "validators",
+            "valueformatters",
+            "valueparsers",
+            "wikidata"
+        ]
+    },
+    {
+        "name": "data-values/common",
+        "version": "0.2.3",
+        "version_normalized": "0.2.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/DataValues/Common.git",
+            "reference": "c9f4dfd8af6337eb097d722b27fa76fa58dd441a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/DataValues/Common/zipball/c9f4dfd8af6337eb097d722b27fa76fa58dd441a",
+            "reference": "c9f4dfd8af6337eb097d722b27fa76fa58dd441a",
+            "shasum": ""
+        },
+        "require": {
+            "data-values/data-values": "~1.0|~0.1",
+            "data-values/interfaces": "~0.1.4",
+            "php": ">=5.3.0"
+        },
+        "time": "2014-10-09 18:21:19",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "Common.php"
+            ],
+            "psr-0": {
+                "DataValues\\": "src",
+                "ValueFormatters\\": "src",
+                "ValueParsers\\": "src"
+            },
+            "classmap": [
+                "tests/ValueParsers"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Jeroen De Dauw",
+                "email": "jeroendedauw@gmail.com",
+                "homepage": "http://jeroendedauw.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Contains common implementations of the interfaces defined by DataValuesInterfaces",
+        "homepage": "https://github.com/DataValues/Common",
+        "keywords": [
+            "datavalues",
+            "valueformatters",
+            "valueparsers",
+            "valuevalidators",
+            "wikidata"
+        ]
+    },
+    {
+        "name": "param-processor/param-processor",
+        "version": "1.2.2",
+        "version_normalized": "1.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/JeroenDeDauw/ParamProcessor.git",
+            "reference": "d046926ec7e3ef33e29c0ca3e4af3a92363376aa"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/JeroenDeDauw/ParamProcessor/zipball/d046926ec7e3ef33e29c0ca3e4af3a92363376aa",
+            "reference": "d046926ec7e3ef33e29c0ca3e4af3a92363376aa",
+            "shasum": ""
+        },
+        "require": {
+            "data-values/common": "~0.2.2",
+            "data-values/data-values": "~1.0|~0.1.1",
+            "data-values/interfaces": "~0.1.4",
+            "data-values/validators": "~0.1.1",
+            "php": ">=5.3.0"
+        },
+        "time": "2014-10-24 16:04:12",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "ParamProcessor\\": "src"
+            },
+            "classmap": [
+                "tests/phpunit/Definitions/ParamDefinitionTest.php",
+                "tests/phpunit/Definitions/NumericParamTest.php"
+            ],
+            "files": [
+                "DefaultConfig.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Jeroen De Dauw",
+                "email": "jeroendedauw@gmail.com",
+                "homepage": "http://jeroendedauw.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Parameter processing library",
+        "homepage": "https://github.com/JeroenDeDauw/ParamProcessor",
+        "keywords": [
+            "ParamProcessor",
+            "SMW",
+            "Semantic MediaWiki",
+            "mediawiki",
+            "validator"
+        ]
+    },
+    {
+        "name": "mediawiki/validator",
+        "version": "2.0.4",
+        "version_normalized": "2.0.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/JeroenDeDauw/Validator.git",
+            "reference": "57c6f20f8c0100865e4318b9e5277dd2c4331a0a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/JeroenDeDauw/Validator/zipball/57c6f20f8c0100865e4318b9e5277dd2c4331a0a",
+            "reference": "57c6f20f8c0100865e4318b9e5277dd2c4331a0a",
+            "shasum": ""
+        },
+        "require": {
+            "param-processor/param-processor": "~1.1",
+            "php": ">=5.3.0"
+        },
+        "time": "2014-06-25 21:40:08",
+        "type": "mediawiki-extension",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "Validator.php"
+            ],
+            "psr-4": {
+                "ParamProcessor\\": "src/ParamProcessor/"
+            },
+            "classmap": [
+                "src/legacy/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Jeroen De Dauw",
+                "email": "jeroendedauw@gmail.com",
+                "homepage": "http://jeroendedauw.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "MediaWiki wrapper for the ParamProcessor library",
+        "homepage": "https://github.com/JeroenDeDauw/Validator",
+        "keywords": [
+            "ParamProcessor",
+            "SMW",
+            "Semantic MediaWiki",
+            "mediawiki",
+            "validator"
+        ]
+    },
+    {
+        "name": "mediawiki/semantic-media-wiki",
+        "version": "2.1.3",
+        "version_normalized": "2.1.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/SemanticMediaWiki/SemanticMediaWiki.git",
+            "reference": "ad5516f54aca4829a9e9975facdc30a77c2f0119"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/SemanticMediaWiki/SemanticMediaWiki/zipball/ad5516f54aca4829a9e9975facdc30a77c2f0119",
+            "reference": "ad5516f54aca4829a9e9975facdc30a77c2f0119",
+            "shasum": ""
+        },
+        "require": {
+            "composer/installers": "1.*,>=1.0.1",
+            "mediawiki/validator": "~2.0,>=2.0.4",
+            "php": ">=5.3.0"
+        },
+        "replace": {
+            "mediawiki/semantic-mediawiki": "*"
+        },
+        "time": "2015-03-30 08:06:07",
+        "type": "mediawiki-extension",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "SemanticMediaWiki.php"
+            ],
+            "classmap": [
+                "SemanticMediaWiki.hooks.php",
+                "includes/",
+                "languages/SMW_Language.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Markus Krötzsch",
+                "homepage": "http://korrekt.org",
+                "role": "Original author"
+            },
+            {
+                "name": "Jeroen De Dauw",
+                "email": "jeroendedauw@gmail.com",
+                "homepage": "http://jeroendedauw.com",
+                "role": "Core developer"
+            },
+            {
+                "name": "James Hong Kong",
+                "homepage": "https://semantic-mediawiki.org/wiki/User:MWJames",
+                "role": "Core developer"
+            }
+        ],
+        "description": "MediaWiki extension that lets you store and query structured data within wiki pages",
+        "homepage": "https://semantic-mediawiki.org/wiki/",
+        "keywords": [
+            "SMW",
+            "Semantic MediaWiki",
+            "mediawiki",
+            "wiki"
+        ]
+    },
+    {
+        "name": "sebastian/version",
+        "version": "1.0.5",
+        "version_normalized": "1.0.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/version.git",
+            "reference": "ab931d46cd0d3204a91e1b9a40c4bc13032b58e4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/version/zipball/ab931d46cd0d3204a91e1b9a40c4bc13032b58e4",
+            "reference": "ab931d46cd0d3204a91e1b9a40c4bc13032b58e4",
+            "shasum": ""
+        },
+        "time": "2015-02-24 06:35:25",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "lead"
+            }
+        ],
+        "description": "Library that helps with managing the version number of Git-hosted PHP projects",
+        "homepage": "https://github.com/sebastianbergmann/version"
+    },
+    {
+        "name": "sebastian/global-state",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/global-state.git",
+            "reference": "c7428acdb62ece0a45e6306f1ae85e1c05b09c01"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/c7428acdb62ece0a45e6306f1ae85e1c05b09c01",
+            "reference": "c7428acdb62ece0a45e6306f1ae85e1c05b09c01",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.2"
+        },
+        "suggest": {
+            "ext-uopz": "*"
+        },
+        "time": "2014-10-06 09:23:50",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de"
+            }
+        ],
+        "description": "Snapshotting of global state",
+        "homepage": "http://www.github.com/sebastianbergmann/global-state",
+        "keywords": [
+            "global state"
+        ]
+    },
+    {
+        "name": "sebastian/recursion-context",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/recursion-context.git",
+            "reference": "3989662bbb30a29d20d9faa04a846af79b276252"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/recursion-context/zipball/3989662bbb30a29d20d9faa04a846af79b276252",
+            "reference": "3989662bbb30a29d20d9faa04a846af79b276252",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.4"
+        },
+        "time": "2015-01-24 09:48:32",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Jeff Welch",
+                "email": "whatthejeff@gmail.com"
+            },
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de"
+            },
+            {
+                "name": "Adam Harvey",
+                "email": "aharvey@php.net"
+            }
+        ],
+        "description": "Provides functionality to recursively process PHP variables",
+        "homepage": "http://www.github.com/sebastianbergmann/recursion-context"
+    },
+    {
+        "name": "sebastian/exporter",
+        "version": "1.2.0",
+        "version_normalized": "1.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/exporter.git",
+            "reference": "84839970d05254c73cde183a721c7af13aede943"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/exporter/zipball/84839970d05254c73cde183a721c7af13aede943",
+            "reference": "84839970d05254c73cde183a721c7af13aede943",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "sebastian/recursion-context": "~1.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.4"
+        },
+        "time": "2015-01-27 07:23:06",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Jeff Welch",
+                "email": "whatthejeff@gmail.com"
+            },
+            {
+                "name": "Volker Dusch",
+                "email": "github@wallbash.com"
+            },
+            {
+                "name": "Bernhard Schussek",
+                "email": "bschussek@2bepublished.at"
+            },
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de"
+            },
+            {
+                "name": "Adam Harvey",
+                "email": "aharvey@php.net"
+            }
+        ],
+        "description": "Provides the functionality to export PHP variables for visualization",
+        "homepage": "http://www.github.com/sebastianbergmann/exporter",
+        "keywords": [
+            "export",
+            "exporter"
+        ]
+    },
+    {
+        "name": "sebastian/environment",
+        "version": "1.2.2",
+        "version_normalized": "1.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/environment.git",
+            "reference": "5a8c7d31914337b69923db26c4221b81ff5a196e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/5a8c7d31914337b69923db26c4221b81ff5a196e",
+            "reference": "5a8c7d31914337b69923db26c4221b81ff5a196e",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.4"
+        },
+        "time": "2015-01-01 10:01:08",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.3.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de"
+            }
+        ],
+        "description": "Provides functionality to handle HHVM/PHP environments",
+        "homepage": "http://www.github.com/sebastianbergmann/environment",
+        "keywords": [
+            "Xdebug",
+            "environment",
+            "hhvm"
+        ]
+    },
+    {
+        "name": "sebastian/diff",
+        "version": "1.3.0",
+        "version_normalized": "1.3.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/diff.git",
+            "reference": "863df9687835c62aa423a22412d26fa2ebde3fd3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/863df9687835c62aa423a22412d26fa2ebde3fd3",
+            "reference": "863df9687835c62aa423a22412d26fa2ebde3fd3",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.2"
+        },
+        "time": "2015-02-22 15:13:53",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.3-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Kore Nordmann",
+                "email": "mail@kore-nordmann.de"
+            },
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de"
+            }
+        ],
+        "description": "Diff implementation",
+        "homepage": "http://www.github.com/sebastianbergmann/diff",
+        "keywords": [
+            "diff"
+        ]
+    },
+    {
+        "name": "sebastian/comparator",
+        "version": "1.1.1",
+        "version_normalized": "1.1.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/comparator.git",
+            "reference": "1dd8869519a225f7f2b9eb663e225298fade819e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/1dd8869519a225f7f2b9eb663e225298fade819e",
+            "reference": "1dd8869519a225f7f2b9eb663e225298fade819e",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "sebastian/diff": "~1.2",
+            "sebastian/exporter": "~1.2"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.4"
+        },
+        "time": "2015-01-29 16:28:08",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Jeff Welch",
+                "email": "whatthejeff@gmail.com"
+            },
+            {
+                "name": "Volker Dusch",
+                "email": "github@wallbash.com"
+            },
+            {
+                "name": "Bernhard Schussek",
+                "email": "bschussek@2bepublished.at"
+            },
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de"
+            }
+        ],
+        "description": "Provides the functionality to compare PHP values for equality",
+        "homepage": "http://www.github.com/sebastianbergmann/comparator",
+        "keywords": [
+            "comparator",
+            "compare",
+            "equality"
+        ]
+    },
+    {
+        "name": "symfony/yaml",
+        "version": "v2.6.6",
+        "version_normalized": "2.6.6.0",
+        "target-dir": "Symfony/Component/Yaml",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/Yaml.git",
+            "reference": "174f009ed36379a801109955fc5a71a49fe62dd4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/Yaml/zipball/174f009ed36379a801109955fc5a71a49fe62dd4",
+            "reference": "174f009ed36379a801109955fc5a71a49fe62dd4",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "symfony/phpunit-bridge": "~2.7"
+        },
+        "time": "2015-03-30 15:54:10",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.6-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Symfony\\Component\\Yaml\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            },
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "Symfony Yaml Component",
+        "homepage": "http://symfony.com"
+    },
+    {
+        "name": "doctrine/instantiator",
+        "version": "1.0.4",
+        "version_normalized": "1.0.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/instantiator.git",
+            "reference": "f976e5de371104877ebc89bd8fecb0019ed9c119"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/instantiator/zipball/f976e5de371104877ebc89bd8fecb0019ed9c119",
+            "reference": "f976e5de371104877ebc89bd8fecb0019ed9c119",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3,<8.0-DEV"
+        },
+        "require-dev": {
+            "athletic/athletic": "~0.1.8",
+            "ext-pdo": "*",
+            "ext-phar": "*",
+            "phpunit/phpunit": "~4.0",
+            "squizlabs/php_codesniffer": "2.0.*@ALPHA"
+        },
+        "time": "2014-10-13 12:58:55",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\Instantiator\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Marco Pivetta",
+                "email": "ocramius@gmail.com",
+                "homepage": "http://ocramius.github.com/"
+            }
+        ],
+        "description": "A small, lightweight utility to instantiate objects in PHP without invoking their constructors",
+        "homepage": "https://github.com/doctrine/instantiator",
+        "keywords": [
+            "constructor",
+            "instantiate"
+        ]
+    },
+    {
+        "name": "phpdocumentor/reflection-docblock",
+        "version": "2.0.4",
+        "version_normalized": "2.0.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
+            "reference": "d68dbdc53dc358a816f00b300704702b2eaff7b8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/d68dbdc53dc358a816f00b300704702b2eaff7b8",
+            "reference": "d68dbdc53dc358a816f00b300704702b2eaff7b8",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0"
+        },
+        "suggest": {
+            "dflydev/markdown": "~1.0",
+            "erusev/parsedown": "~1.0"
+        },
+        "time": "2015-02-03 12:10:50",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "phpDocumentor": [
+                    "src/"
+                ]
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Mike van Riel",
+                "email": "mike.vanriel@naenius.com"
+            }
+        ]
+    },
+    {
+        "name": "phpspec/prophecy",
+        "version": "v1.4.1",
+        "version_normalized": "1.4.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/phpspec/prophecy.git",
+            "reference": "3132b1f44c7bf2ec4c7eb2d3cb78fdeca760d373"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/phpspec/prophecy/zipball/3132b1f44c7bf2ec4c7eb2d3cb78fdeca760d373",
+            "reference": "3132b1f44c7bf2ec4c7eb2d3cb78fdeca760d373",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/instantiator": "^1.0.2",
+            "phpdocumentor/reflection-docblock": "~2.0",
+            "sebastian/comparator": "~1.1"
+        },
+        "require-dev": {
+            "phpspec/phpspec": "~2.0"
+        },
+        "time": "2015-04-27 22:15:08",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.4.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Prophecy\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Konstantin Kudryashov",
+                "email": "ever.zet@gmail.com",
+                "homepage": "http://everzet.com"
+            },
+            {
+                "name": "Marcello Duarte",
+                "email": "marcello.duarte@gmail.com"
+            }
+        ],
+        "description": "Highly opinionated mocking framework for PHP 5.3+",
+        "homepage": "https://github.com/phpspec/prophecy",
+        "keywords": [
+            "Double",
+            "Dummy",
+            "fake",
+            "mock",
+            "spy",
+            "stub"
+        ]
+    },
+    {
+        "name": "phpunit/php-text-template",
+        "version": "1.2.0",
+        "version_normalized": "1.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/php-text-template.git",
+            "reference": "206dfefc0ffe9cebf65c413e3d0e809c82fbf00a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-text-template/zipball/206dfefc0ffe9cebf65c413e3d0e809c82fbf00a",
+            "reference": "206dfefc0ffe9cebf65c413e3d0e809c82fbf00a",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "time": "2014-01-30 17:20:04",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "Text/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "include-path": [
+            ""
+        ],
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sb@sebastian-bergmann.de",
+                "role": "lead"
+            }
+        ],
+        "description": "Simple template engine.",
+        "homepage": "https://github.com/sebastianbergmann/php-text-template/",
+        "keywords": [
+            "template"
+        ]
+    },
+    {
+        "name": "phpunit/phpunit-mock-objects",
+        "version": "2.3.1",
+        "version_normalized": "2.3.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
+            "reference": "74ffb87f527f24616f72460e54b595f508dccb5c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/74ffb87f527f24616f72460e54b595f508dccb5c",
+            "reference": "74ffb87f527f24616f72460e54b595f508dccb5c",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/instantiator": "~1.0,>=1.0.2",
+            "php": ">=5.3.3",
+            "phpunit/php-text-template": "~1.2"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.4"
+        },
+        "suggest": {
+            "ext-soap": "*"
+        },
+        "time": "2015-04-02 05:36:41",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.3.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sb@sebastian-bergmann.de",
+                "role": "lead"
+            }
+        ],
+        "description": "Mock Object library for PHPUnit",
+        "homepage": "https://github.com/sebastianbergmann/phpunit-mock-objects/",
+        "keywords": [
+            "mock",
+            "xunit"
+        ]
+    },
+    {
+        "name": "phpunit/php-timer",
+        "version": "1.0.5",
+        "version_normalized": "1.0.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/php-timer.git",
+            "reference": "19689d4354b295ee3d8c54b4f42c3efb69cbc17c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/19689d4354b295ee3d8c54b4f42c3efb69cbc17c",
+            "reference": "19689d4354b295ee3d8c54b4f42c3efb69cbc17c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "time": "2013-08-02 07:42:54",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "PHP/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "include-path": [
+            ""
+        ],
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sb@sebastian-bergmann.de",
+                "role": "lead"
+            }
+        ],
+        "description": "Utility class for timing",
+        "homepage": "https://github.com/sebastianbergmann/php-timer/",
+        "keywords": [
+            "timer"
+        ]
+    },
+    {
+        "name": "phpunit/php-token-stream",
+        "version": "1.4.1",
+        "version_normalized": "1.4.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/php-token-stream.git",
+            "reference": "eab81d02569310739373308137284e0158424330"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/eab81d02569310739373308137284e0158424330",
+            "reference": "eab81d02569310739373308137284e0158424330",
+            "shasum": ""
+        },
+        "require": {
+            "ext-tokenizer": "*",
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.2"
+        },
+        "time": "2015-04-08 04:46:07",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de"
+            }
+        ],
+        "description": "Wrapper around PHP's tokenizer extension.",
+        "homepage": "https://github.com/sebastianbergmann/php-token-stream/",
+        "keywords": [
+            "tokenizer"
+        ]
+    },
+    {
+        "name": "phpunit/php-file-iterator",
+        "version": "1.4.0",
+        "version_normalized": "1.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
+            "reference": "a923bb15680d0089e2316f7a4af8f437046e96bb"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/a923bb15680d0089e2316f7a4af8f437046e96bb",
+            "reference": "a923bb15680d0089e2316f7a4af8f437046e96bb",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "time": "2015-04-02 05:19:05",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.4.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sb@sebastian-bergmann.de",
+                "role": "lead"
+            }
+        ],
+        "description": "FilterIterator implementation that filters files based on a list of suffixes.",
+        "homepage": "https://github.com/sebastianbergmann/php-file-iterator/",
+        "keywords": [
+            "filesystem",
+            "iterator"
+        ]
+    },
+    {
+        "name": "phpunit/php-code-coverage",
+        "version": "2.0.16",
+        "version_normalized": "2.0.16.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
+            "reference": "934fd03eb6840508231a7f73eb8940cf32c3b66c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/934fd03eb6840508231a7f73eb8940cf32c3b66c",
+            "reference": "934fd03eb6840508231a7f73eb8940cf32c3b66c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "phpunit/php-file-iterator": "~1.3",
+            "phpunit/php-text-template": "~1.2",
+            "phpunit/php-token-stream": "~1.3",
+            "sebastian/environment": "~1.0",
+            "sebastian/version": "~1.0"
+        },
+        "require-dev": {
+            "ext-xdebug": ">=2.1.4",
+            "phpunit/phpunit": "~4"
+        },
+        "suggest": {
+            "ext-dom": "*",
+            "ext-xdebug": ">=2.2.1",
+            "ext-xmlwriter": "*"
+        },
+        "time": "2015-04-11 04:35:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sb@sebastian-bergmann.de",
+                "role": "lead"
+            }
+        ],
+        "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
+        "homepage": "https://github.com/sebastianbergmann/php-code-coverage",
+        "keywords": [
+            "coverage",
+            "testing",
+            "xunit"
+        ]
+    },
+    {
+        "name": "phpunit/phpunit",
+        "version": "4.6.4",
+        "version_normalized": "4.6.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/phpunit.git",
+            "reference": "163232991e652e6efed2f8470326fffa61e848e2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/163232991e652e6efed2f8470326fffa61e848e2",
+            "reference": "163232991e652e6efed2f8470326fffa61e848e2",
+            "shasum": ""
+        },
+        "require": {
+            "ext-dom": "*",
+            "ext-json": "*",
+            "ext-pcre": "*",
+            "ext-reflection": "*",
+            "ext-spl": "*",
+            "php": ">=5.3.3",
+            "phpspec/prophecy": "~1.3,>=1.3.1",
+            "phpunit/php-code-coverage": "~2.0,>=2.0.11",
+            "phpunit/php-file-iterator": "~1.4",
+            "phpunit/php-text-template": "~1.2",
+            "phpunit/php-timer": "~1.0",
+            "phpunit/phpunit-mock-objects": "~2.3",
+            "sebastian/comparator": "~1.1",
+            "sebastian/diff": "~1.2",
+            "sebastian/environment": "~1.2",
+            "sebastian/exporter": "~1.2",
+            "sebastian/global-state": "~1.0",
+            "sebastian/version": "~1.0",
+            "symfony/yaml": "~2.1|~3.0"
+        },
+        "suggest": {
+            "phpunit/php-invoker": "~1.1"
+        },
+        "time": "2015-04-11 05:23:21",
+        "bin": [
+            "phpunit"
+        ],
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "4.6.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de",
+                "role": "lead"
+            }
+        ],
+        "description": "The PHP Unit Testing framework.",
+        "homepage": "https://phpunit.de/",
+        "keywords": [
+            "phpunit",
+            "testing",
+            "xunit"
+        ]
+    },
+    {
+        "name": "mediawiki/semantic-extra-special-properties",
+        "version": "1.2.2",
+        "version_normalized": "1.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/SemanticMediaWiki/SemanticExtraSpecialProperties.git",
+            "reference": "18a2c0f98d002f6d718b6da2ec9736deb4b98cf8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/SemanticMediaWiki/SemanticExtraSpecialProperties/zipball/18a2c0f98d002f6d718b6da2ec9736deb4b98cf8",
+            "reference": "18a2c0f98d002f6d718b6da2ec9736deb4b98cf8",
+            "shasum": ""
+        },
+        "require": {
+            "composer/installers": "1.*,>=1.0.1",
+            "mediawiki/semantic-media-wiki": "1.9.*|~2.0",
+            "php": ">=5.3.0"
+        },
+        "time": "2014-12-30 18:17:41",
+        "type": "mediawiki-extension",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "SemanticExtraSpecialProperties.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Leo Wallentin",
+                "homepage": "https://github.com/rotsee"
+            },
+            {
+                "name": "mwjames",
+                "homepage": "https://semantic-mediawiki.org/wiki/User:MWJames"
+            }
+        ],
+        "description": "Provides extra special properties for Semantic MediaWiki",
+        "homepage": "https://www.mediawiki.org/wiki/Extension:SemanticExtraSpecialProperties",
+        "keywords": [
+            "SMW",
+            "Semantic MediaWiki",
+            "mediawiki",
+            "properties",
+            "special properties",
+            "wiki"
+        ]
+    },
+    {
+        "name": "mediawiki/semantic-result-formats",
+        "version": "1.9.0.1",
+        "version_normalized": "1.9.0.1",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/SemanticMediaWiki/SemanticResultFormats.git",
+            "reference": "fc1fb9c37300a67643fb0d46042a55d431e7599a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/SemanticMediaWiki/SemanticResultFormats/zipball/fc1fb9c37300a67643fb0d46042a55d431e7599a",
+            "reference": "fc1fb9c37300a67643fb0d46042a55d431e7599a",
+            "shasum": ""
+        },
+        "require": {
+            "composer/installers": ">=1.0.1",
+            "mediawiki/semantic-media-wiki": "@dev",
+            "php": ">=5.3.0"
+        },
+        "time": "2014-01-16 21:25:41",
+        "type": "mediawiki-extension",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "SemanticResultFormats.php"
+            ],
+            "classmap": [
+                "formats/",
+                "SemanticResultFormats.hooks.php",
+                "SemanticResultFormats.parser.php",
+                "SemanticResultFormats.utils.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Jeroen De Dauw",
+                "email": "jeroendedauw@gmail.com",
+                "homepage": "http://jeroendedauw.com",
+                "role": "Developer"
+            },
+            {
+                "name": "James Hong Kong",
+                "homepage": "https://semantic-mediawiki.org/wiki/User:MWJames",
+                "role": "Developer"
+            },
+            {
+                "name": "Stephan Gambke",
+                "role": "Developer"
+            },
+            {
+                "name": "Yaron Koren",
+                "homepage": "http://www.yaronkoren.com/",
+                "role": "Developer"
+            }
+        ],
+        "description": "Additional result formats for Semantic MediaWiki queries",
+        "homepage": "https://www.semantic-mediawiki.org/wiki/Semantic_Result_Formats",
+        "keywords": [
+            "SMW",
+            "SRF",
+            "Semantic MediaWiki",
+            "Semantic Result Formats",
+            "mediawiki",
+            "wiki"
+        ]
+    },
+    {
+        "name": "data-values/geo",
+        "version": "1.1.4",
+        "version_normalized": "1.1.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/DataValues/Geo.git",
+            "reference": "e7222bc743ae05bfc5213cb1e20150aa772d8668"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/DataValues/Geo/zipball/e7222bc743ae05bfc5213cb1e20150aa772d8668",
+            "reference": "e7222bc743ae05bfc5213cb1e20150aa772d8668",
+            "shasum": ""
+        },
+        "require": {
+            "data-values/common": "~0.1",
+            "data-values/data-values": "~1.0|~0.1",
+            "data-values/interfaces": "~0.1",
+            "php": ">=5.3.0"
+        },
+        "time": "2014-11-25 16:48:57",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "Geo.php"
+            ],
+            "psr-4": {
+                "DataValues\\Geo\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Jeroen De Dauw",
+                "email": "jeroendedauw@gmail.com",
+                "homepage": "http://jeroendedauw.com",
+                "role": "Developer"
+            },
+            {
+                "name": "The Wikidata team",
+                "role": "Developer"
+            }
+        ],
+        "description": "Geographical value objects, parsers and formatters",
+        "homepage": "https://github.com/DataValues/Geo",
+        "keywords": [
+            "datavalues",
+            "formatters",
+            "geo",
+            "geographical",
+            "latlong",
+            "parsers",
+            "wikidata"
+        ]
+    },
+    {
+        "name": "mediawiki/maps",
+        "version": "3.2.3",
+        "version_normalized": "3.2.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/JeroenDeDauw/Maps.git",
+            "reference": "7a5073ffad64b9e78a6ae944cce170a02808ea66"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/JeroenDeDauw/Maps/zipball/7a5073ffad64b9e78a6ae944cce170a02808ea66",
+            "reference": "7a5073ffad64b9e78a6ae944cce170a02808ea66",
+            "shasum": ""
+        },
+        "require": {
+            "composer/installers": "1.*,>=1.0.1",
+            "data-values/geo": "~1.0",
+            "mediawiki/validator": "2.*,>=2.0.2",
+            "php": ">=5.3.2"
+        },
+        "time": "2015-03-23 17:22:35",
+        "type": "mediawiki-extension",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "Maps.php"
+            ],
+            "psr-4": {
+                "Maps\\": "src/Maps/"
+            },
+            "classmap": [
+                "includes/",
+                "Maps.hooks.php",
+                "tests/phpunit/elements/",
+                "tests/phpunit/parserhooks/ParserHookTest.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Jeroen De Dauw",
+                "email": "jeroendedauw@gmail.com",
+                "homepage": "http://jeroendedauw.com",
+                "role": "Creator and lead developer"
+            }
+        ],
+        "description": "Adds various mapping features to MediaWiki",
+        "homepage": "https://github.com/JeroenDeDauw/Maps",
+        "keywords": [
+            "OpenLayers",
+            "OpenStreetMap",
+            "Semantic MediaWiki",
+            "google maps",
+            "maps",
+            "mediawiki",
+            "osm"
+        ]
+    },
+    {
+        "name": "mediawiki/semantic-maps",
+        "version": "3.1.3",
+        "version_normalized": "3.1.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/SemanticMediaWiki/SemanticMaps.git",
+            "reference": "a0f1992ea46ea8b06093bc3bf83a20373274166e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/SemanticMediaWiki/SemanticMaps/zipball/a0f1992ea46ea8b06093bc3bf83a20373274166e",
+            "reference": "a0f1992ea46ea8b06093bc3bf83a20373274166e",
+            "shasum": ""
+        },
+        "require": {
+            "composer/installers": "1.*,>=1.0.1",
+            "data-values/geo": "~1.1",
+            "mediawiki/maps": "~3.2",
+            "mediawiki/semantic-media-wiki": "~2.0",
+            "mediawiki/validator": "~2.0",
+            "php": ">=5.3.0"
+        },
+        "suggest": {
+            "mediawiki/semantic-forms": "Allows entering coordinates via a form map input"
+        },
+        "time": "2014-11-11 11:25:11",
+        "type": "mediawiki-extension",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "SemanticMaps.php"
+            ],
+            "classmap": [
+                "src/",
+                "SemanticMaps.hooks.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Jeroen De Dauw",
+                "email": "jeroendedauw@gmail.com",
+                "homepage": "http://jeroendedauw.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Adds geographic capabilities to Semantic MediaWiki",
+        "homepage": "https://www.semantic-mediawiki.org/wiki/Semantic_Maps",
+        "keywords": [
+            "OpenLayers",
+            "SMW",
+            "Semantic Maps",
+            "Semantic MediaWiki",
+            "google maps",
+            "maps",
+            "mediawiki",
+            "wiki"
+        ]
+    },
+    {
+        "name": "mediawiki/semantic-watchlist",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/SemanticMediaWiki/SemanticWatchlist.git",
+            "reference": "de74a54baa586cc300152bc0ce304a89c059b932"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/SemanticMediaWiki/SemanticWatchlist/zipball/de74a54baa586cc300152bc0ce304a89c059b932",
+            "reference": "de74a54baa586cc300152bc0ce304a89c059b932",
+            "shasum": ""
+        },
+        "require": {
+            "composer/installers": "1.*,>=1.0.1",
+            "mediawiki/semantic-media-wiki": "~1.9|~2.0",
+            "php": ">=5.3.0"
+        },
+        "time": "2015-01-31 11:42:30",
+        "type": "mediawiki-extension",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "SemanticWatchlist.php"
+            ],
+            "psr-4": {
+                "SWL\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-3.0+"
+        ],
+        "authors": [
+            {
+                "name": "Jeroen De Dauw",
+                "email": "jeroendedauw@gmail.com"
+            }
+        ],
+        "description": "A Semantic MediaWiki extension that allows users to use a watchlist for semantic properties.",
+        "homepage": "https://semantic-mediawiki.org/wiki/Extension:SemanticWatchlist",
+        "keywords": [
+            "SMW",
+            "Semantic MediaWiki",
+            "mediawiki",
+            "wiki"
+        ]
+    }
+]

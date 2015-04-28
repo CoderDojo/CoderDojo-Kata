@@ -1,0 +1,25 @@
+/*!
+ * VisualEditor MediaWiki Initialization ViewPageTarget Monobook skin high-definition styles.
+ *
+ * @copyright 2011-2014 VisualEditor Team and others; see AUTHORS.txt
+ * @license The MIT License (MIT); see LICENSE.txt
+ */
+
+.ve-init-mw-viewPageTarget-toolbar {
+	margin: -0.6em -0.8em 1em -0.8em;
+}
+
+/* Correct for Monobook's small font in toolbars and contexts, but beware:
+ *   - Only apply this to the outer toolbar, not the inner toolbar (otherwise it multiplies)
+ *   - Only apply this to the main surface's context, not inside dialogs (they have their own
+ *     font size fixes)
+ */
+.ve-init-mw-viewPageTarget-toolbar,
+.ve-init-mw-viewPageTarget-surface .ve-ui-context {
+	font-size: 1.25em;
+	line-height: 1.5em;
+}
+
+.ve-ui-overlay {
+	z-index: 2;
+}

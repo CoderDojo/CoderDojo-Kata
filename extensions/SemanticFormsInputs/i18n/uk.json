@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Andriykopanytsia",
+			"Base",
+			"Тест"
+		]
+	},
+	"semanticformsinputs-desc": "Додаткові типи вводу для [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Semantic_Forms Семантичних форм]",
+	"semanticformsinputs-wrongformat": "Неправильний формат.",
+	"semanticformsinputs-close": "Закрити",
+	"semanticformsinputs-prev": "Попередня",
+	"semanticformsinputs-next": "Наступна",
+	"semanticformsinputs-today": "Сьогодні",
+	"semanticformsinputs-malformedregexp": "Неправильний регулярний вираз ($1).",
+	"semanticformsinputs-datepicker-dateformat": "Рядок формату дати. Див. [https://www.mediawiki.org/w/index.php?title=Extension:Semantic_Forms_Inputs&fromsection=Date_picker#Онлайн параметри] для отримання додаткової інформації.",
+	"semanticformsinputs-datepicker-weekstart": "Перший день тижня (0 - неділя, 1 - понеділок, ...).",
+	"semanticformsinputs-datepicker-firstdate": "Перша дата, яка може бути обрана (у форматі рррр/мм/дд).",
+	"semanticformsinputs-datepicker-lastdate": "Остання дата, яка може бути обрана (у форматі рррр/мм/дд).",
+	"semanticformsinputs-datepicker-disabledaysofweek": "Список днів, які не можуть бути обрані (наприклад, вихідні дні: 6, 0).",
+	"semanticformsinputs-datepicker-highlightdaysofweek": "Список днів, що буде виділено (наприклад, вихідні дні: 6, 0).",
+	"semanticformsinputs-datepicker-disabledates": "Розділений комами список вимкнених дат/діапазонів дат (дати у форматі рррр/мм/дд, діапазони у форматі рррр/мм/дд-рррр/мм/дд)",
+	"semanticformsinputs-datepicker-highlightdates": "Розділений комами список дат/діапазонів дат, який буде виділений (дати у форматі рррр/мм/дд, діапазони у форматі рррр/мм/дд-рррр/мм/дд)",
+	"semanticformsinputs-datepicker-showweeknumbers": "Показувати номери тижнів ліворуч від тижнів?",
+	"semanticformsinputs-datepicker-enableinputfield": "Користувач зможе заповнити поле введення безпосередньо або тільки за допомогою елемента вибору дати?",
+	"semanticformsinputs-datepicker-showresetbutton": "Слід показувати кнопку Очистити? Це єдиний спосіб для користувачів, щоб стерти поле введення, якщо вимкнено пряме введення даних.",
+	"semanticformsinputs-timepicker-mintime": "Найновіший час для відображення. Формат: гг:хх",
+	"semanticformsinputs-timepicker-maxtime": "Найпізніший час для відображення. Формат: гг:хх",
+	"semanticformsinputs-timepicker-interval": "Інтервал між хвилинами. Число від 1 до 60.",
+	"semanticformsinputs-timepicker-enableinputfield": "Користувач зможе заповнити поле введення безпосередньо або тільки за допомогою елемента вибору дати?",
+	"semanticformsinputs-timepicker-showresetbutton": "Слід показувати кнопку Очистити? Це єдиний спосіб для користувачів, щоб стерти поле введення, якщо вимкнено пряме введення даних.",
+	"semanticformsinputs-regexp-regexp": "Регулярний вираз, якому повинно відповідати значення поля вводу. Він повинен містити слеші! Типово \"/.*/\", тобто будь-яке значення.",
+	"semanticformsinputs-regexp-basetype": "Базовий тип, який буде використовуватися. Може бути будь-яким типом елемента input або select html-форми (наприклад: text, listbox, datepicker) або інший regexp. За замовчуванням \"text\".",
+	"semanticformsinputs-regexp-baseprefix": "Префікс для параметрів базового типу.",
+	"semanticformsinputs-regexp-orchar": "АБО-символ, використовуваний в регулярному виразі замість |. Типово \"!\"",
+	"semanticformsinputs-regexp-inverse": "Якщо задано, то вхідні дані не повинні відповідати регулярному виразу. Тобто регулярний вираз інвертується.",
+	"semanticformsinputs-regexp-message": "Коротке повідомлення про помилку, якщо зіставлення зазнає невдачі. Типово \"Wrong format!\" (або еквівалент для поточної мови)",
+	"semanticformsinputs-menuselect-structure": "Структура меню у вигляді невпорядкованого списку.",
+	"semanticformsinputs-menuselect-enableinputfield": "Дозволити безпосереднє заповнення поля вводу користувачем?"
+}

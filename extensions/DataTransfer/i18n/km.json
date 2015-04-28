@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chhorran",
+			"Lovekhmer",
+			"Thearith",
+			"គីមស៊្រុន",
+			"វ័ណថារិទ្ធ"
+		]
+	},
+	"viewxml": "មើល XML",
+	"dt_viewxml_docu": "ជ្រើសយកក្នុងចំណោមចំណាត់ថ្នាក់ក្រុមនិងលំហឈ្មោះដើម្បីមើលជាទម្រង់ XML ។",
+	"dt_viewxml_categories": "ចំណាត់ថ្នាក់ក្រុម",
+	"dt_viewxml_namespaces": "ប្រភេទ",
+	"dt_viewxml_simplifiedformat": "ទម្រង់សាមញ្ញ",
+	"dt_xml_namespace": "លំហឈ្មោះ",
+	"dt_xml_pages": "ទំព័រ",
+	"dt_xml_page": "ទំព័រ",
+	"dt_xml_template": "ទំព័រគំរូ",
+	"dt_xml_field": "ផ្នែក",
+	"dt_xml_name": "ឈ្មោះ",
+	"dt_xml_title": "ចំណងជើង",
+	"dt_xml_id": "អត្តសញ្ញាណ",
+	"dt_xml_freetext": "អត្ថបទសេរី",
+	"importxml": "នាំចូល XML",
+	"dt_import_selectfile": "សូម​ជ្រើស​រើស​ឯកសារ $1 ដើម្បី​នាំ​ចូល​៖",
+	"dt_import_encodingtype": "ប្រភេទនៃការធ្វើកូដ៖",
+	"dt_import_forexisting": "សំរាប់ទំព័រដែលមានរួចហើយ៖",
+	"dt_import_overwriteexisting": "សរសេរជាន់ពីលើខ្លឹមសារដែលមានហើយ",
+	"dt_import_skipexisting": "រំលង",
+	"dt_import_appendtoexisting": "សរសេរបន្ថែមទៅលើខ្លឹមសារដែលមានហើយ",
+	"dt_import_summarydesc": "ចំណារពន្យល់ស្ដីពីការនាំចូល៖",
+	"dt_import_editsummary": "$1 នាំចូល​",
+	"dt_import_importing": "កំពុងនាំចូល​...",
+	"dt_import_success": "ទំព័រចំនួន $1 នឹងត្រូវបានបង្កើតពីឯកសារ $2 នេះ។",
+	"importcsv": "នាំចូល CSV",
+	"right-datatransferimport": "នាំចូល​ទិន្នន័យ​"
+}

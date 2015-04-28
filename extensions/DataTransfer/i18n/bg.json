@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"DCLXVI",
+			"පසිඳු කාවින්ද"
+		]
+	},
+	"viewxml": "Преглед на XML",
+	"dt_viewxml_categories": "Категории",
+	"dt_viewxml_namespaces": "Именни пространства",
+	"dt_viewxml_simplifiedformat": "Опростен формат",
+	"dt_xml_namespace": "Именно пространство",
+	"dt_xml_pages": "Страници",
+	"dt_xml_page": "Страница",
+	"dt_xml_template": "Шаблон",
+	"dt_xml_field": "Поле",
+	"dt_xml_name": "Име",
+	"dt_xml_title": "Заглавие",
+	"dt_xml_id": "Номер",
+	"dt_xml_freetext": "Свободен текст",
+	"importxml": "Внасяне на XML",
+	"dt_import_skipexisting": "Пропусни",
+	"dt_import_importing": "Внасяне...",
+	"importcsv": "Внасяне на CSV",
+	"right-datatransferimport": "Внасяне на данни"
+}

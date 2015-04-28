@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Malafaya",
+			"Smeira"
+		]
+	},
+	"browsedata": "Padön da nünods",
+	"sd_browsedata_choosecategory": "Välön kladi",
+	"sd_browsedata_viewcategory": "logön kladi",
+	"sd_browsedata_subcategory": "Donaklad",
+	"sd_browsedata_other": "Votik",
+	"sd_browsedata_none": "Nonik",
+	"sd_browsedata_filterbyvalue": "Sulön ma völad at",
+	"sd_browsedata_filterbysubcategory": "Sulön ma donaklad at",
+	"sd_browsedata_otherfilter": "Jonön padis labü völadi votik tefü sul at",
+	"sd_browsedata_nonefilter": "Jonön padis labü völad nonik tefü sul at",
+	"sd_browsedata_or": "u",
+	"sd_browsedata_removefilter": "Moükön suli at",
+	"sd_browsedata_removesubcategoryfilter": "Moükön donakladasuli at",
+	"sd_browsedata_resetfilters": "Geükön sulis ad stad kösömik",
+	"sd_browsedata_addanothervalue": "Läükön völadi votik",
+	"sd_browsedata_daterangestart": "Prim:",
+	"sd_browsedata_daterangeend": "Fin:",
+	"filters": "Suls",
+	"sd_filters_docu": "Suls sököl dabinons in {{SITENAME}}:",
+	"sd_viewform": "Logön fometi",
+	"createfilter": "Jafön suli",
+	"sd_createfilter_name": "Nem:",
+	"sd_createfilter_property": "Patöf fa sul at pageböl:",
+	"sd_createfilter_usepropertyvalues": "Gebön völadis valik patöfa at pro sul.",
+	"sd_createfilter_usecategoryvalues": "Tuvön völadis pro sul in klad at:",
+	"sd_createfilter_requirefilter": "Flagön, das sul votik puvälon büä sul at pojonon:",
+	"sd_createfilter_label": "Nem sula at (no paflagöl):",
+	"sd_blank_error": "no dalon vagön",
+	"sd_filter_coversproperty": "Sul at tefon patöfi: $1.",
+	"sd_filter_getsvaluesfromcategory": "Tuvon völadis okik in klad: $1.",
+	"sd_filter_requiresfilter": "Flagon komi sula: $1.",
+	"sd_filter_haslabel": "Labon nemi: $1."
+}

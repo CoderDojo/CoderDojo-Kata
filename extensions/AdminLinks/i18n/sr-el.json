@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rancher"
+		]
+	},
+	"adminlinks": "Administrativne veze",
+	"adminlinks-desc": "Dodaje [[Special:AdminLinks|posebnu stranicu]] koja sadrži korisne veze za administratore",
+	"adminlinks_documentation": "$1 dokumentacija",
+	"adminlinks_general": "Opšte",
+	"adminlinks_editsidebar": "Uredi bočnu traku",
+	"adminlinks_editcss": "Uredi CSS datoteku",
+	"adminlinks_editmainpagename": "Izmeni naziv glavne stranice",
+	"adminlinks_users": "Korisnici",
+	"adminlinks_createuser": "Napravi korisnika",
+	"adminlinks_browsesearch": "Pretraživanje",
+	"adminlinks_importexport": "Uvoz i izvoz",
+	"right-adminlinks": "pregledanje veze do [[Special:AdminLinks|administratorskih veza]]"
+}

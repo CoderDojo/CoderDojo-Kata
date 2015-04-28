@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"EugeneZelenko",
+			"Jim-by",
+			"Wizardist"
+		]
+	},
+	"approvedrevs-desc": "Зацьвердзіць адну вэрсію старонкі",
+	"approvedrevs-logname": "Журнал зацьверджаньня вэрсіяў",
+	"approvedrevs-logdesc": "Гэта журнал зацьверджаных вэрсіяў.",
+	"approvedrevs-approve": "зацьвердзіць",
+	"approvedrevs-unapprove": "адхіліць",
+	"approvedrevs-approvesuccess": "Гэтая вэрсія старонкі была зацьверджаная.",
+	"approvedrevs-unapprovesuccess": "Болей не існуе зацьверджанай вэрсіі гэтай старонкі.\nЗамест яе будзе паказаная апошняя вэрсія.",
+	"approvedrevs-unapprovesuccess2": "Болей не існуе зацьверджанай вэрсіі гэтай старонкі.\nЗамест яе будзе паказаная пустая старонка.",
+	"approvedrevs-approveaction": "зацьвердзіць $2 як зацьверджаную вэрсію старонкі «[[$1]]»",
+	"approvedrevs-unapproveaction": "зьняць зацьверджаньне з вэрсіі старонкі «[[$1]]»",
+	"approvedrevs-notlatest": "Гэта зацьверджаная вэрсія гэтай старонкі; гэта не апошняя вэрсія.",
+	"approvedrevs-approvedandlatest": "Гэта зацьверджаная вэрсія гэтай старонкі, адначасова яна зьяўляецца апошняй вэрсіяй.",
+	"approvedrevs-blankpageshown": "Для гэтай старонкі няма зацьверджанай вэрсіі.",
+	"approvedrevs-noapprovedrevision": "Гэта апошняя вэрсія старонкі; яна ня мае зацьверджаных вэрсіяў.",
+	"approvedrevs-editwarning": "Калі ласка, памятайце, што зараз Вы рэдагуеце апошнюю вэрсію гэтай старонкі, якая яшчэ не зьяўляецца зацьверджанай і не паказваецца па змоўчваньні.",
+	"approvedrevs": "Зацьверджаныя вэрсіі",
+	"approvedrevs-approvedpages": "Усе старонкі з зацьверджанымі вэрсіямі",
+	"approvedrevs-notlatestpages": "Старонкі, зацьверджаныя вэрсіі якіх не зьяўляюцца апошнімі",
+	"approvedrevs-unapprovedpages": "Незацьверджаныя старонкі",
+	"approvedrevs-view": "Прагляд:",
+	"approvedrevs-revisionnumber": "вэрсія $1",
+	"approvedrevs-approvedby": "зацьверджаная $1 $2",
+	"approvedrevs-difffromlatest": "адрозьненьне з апошняй",
+	"approvedrevs-approvelatest": "зацьвердзіць апошнюю",
+	"approvedrevs-approvethisrev": "Зацьвердзіць гэтую вэрсію.",
+	"approvedrevs-viewlatestrev": "Паказаць апошнюю вэрсію.",
+	"right-approverevisions": "зацьверджаньне вызначаных вэрсіяў вікі-старонак",
+	"right-viewlinktolatest": "прагляд тлумачальнага тэксту ў версе старонак, якія маюць зацьверджаныя вэрсіі"
+}

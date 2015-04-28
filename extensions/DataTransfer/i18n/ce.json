@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sasan700",
+			"Умар"
+		]
+	},
+	"dt_viewxml_categories": "Категореш",
+	"dt_xml_pages": "АгӀонаш",
+	"dt_xml_page": "АгӀо",
+	"dt_xml_template": "Кеп",
+	"dt_xml_field": "Меттиг",
+	"dt_xml_name": "ЦӀе",
+	"dt_xml_title": "Корта",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Маьрша йоза",
+	"importxml": "Импорт XML",
+	"dt_import_summarydesc": "Импортах лаьцна:",
+	"dt_import_editsummary": "{{ucfirst:$1}} чура импорт",
+	"dt_import_importing": "Импорт яр...",
+	"dt_import_success": "$1 {{PLURAL:$1|агӀо кхоьллина|агӀонаш кхоьллина}} $2 файлах.",
+	"importcsv": "Импорт CSV",
+	"importspreadsheet": "Таблицам импорт",
+	"dt_filetype_spreadsheet": "таблица"
+}

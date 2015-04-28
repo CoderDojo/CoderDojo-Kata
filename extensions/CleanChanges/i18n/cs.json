@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Danny B.",
+			"Matěj Grabovský"
+		]
+	},
+	"cleanchanges-changerightslink": "změnit skupiny",
+	"cleanchanges-desc": "Kompaktnější zobrazení [[Special:RecentChanges|seznamu posledních změn]]",
+	"cleanchanges-language": "Jazyk:",
+	"cleanchanges-language-na": "Všechny",
+	"cleanchanges-users": "Uživatelé (oddělovač |):",
+	"cleanchanges-showuserlinks": "Ukázat uživatelské odkazy"
+}

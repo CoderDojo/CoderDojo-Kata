@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16",
+			"Darth Kule",
+			"Marco 27"
+		]
+	},
+	"adminlinks": "Pannello amministrazione",
+	"adminlinks-desc": "Aggiunge una [[Special:AdminLinks|pagina speciale]] che contiene link utili per gli amministratori",
+	"adminlinks_documentation": "documentazione di $1",
+	"adminlinks_general": "Generale",
+	"adminlinks_editsidebar": "Modifica sidebar",
+	"adminlinks_editcss": "Modifica file CSS",
+	"adminlinks_editmainpagename": "Modifica il nome della pagina principale",
+	"adminlinks_users": "Utenti",
+	"adminlinks_createuser": "Crea un utente",
+	"adminlinks_browsesearch": "Visualizza e ricerca",
+	"adminlinks_importexport": "Importa ed esporta",
+	"right-adminlinks": "Visualizza il collegamento al [[Special:AdminLinks|Pannello amministrazione]]"
+}

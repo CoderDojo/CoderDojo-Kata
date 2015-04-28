@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Michawiki"
+		]
+	},
+	"datatransfer-desc": "Dowola importowanje a eksportowanje datow, kotrež su we wołanjach předłohow wobsahowane",
+	"viewxml": "XML wobhladać",
+	"dt_viewxml_docu": "Prošu wubjer ze slědowacych kategorijow a mjenowych rumow, zo by w XML-formaće wobhladał.",
+	"dt_viewxml_categories": "Kategorije",
+	"dt_viewxml_namespaces": "Mjenowe rumy",
+	"dt_viewxml_simplifiedformat": "Zjednorjeny format",
+	"dt_xml_namespace": "Mjenowy rum",
+	"dt_xml_pages": "Strony",
+	"dt_xml_page": "Strona",
+	"dt_xml_template": "Předłoha",
+	"dt_xml_field": "Polo",
+	"dt_xml_name": "Mjeno",
+	"dt_xml_title": "Titul",
+	"dt_xml_id": "Id",
+	"dt_xml_freetext": "Swobodny tekst",
+	"importxml": "XML importować",
+	"dt_import_selectfile": "Prošu wubjer dataju $1 za importowanje:",
+	"dt_import_encodingtype": "Typ znamješkoweho koda:",
+	"dt_import_forexisting": "Za strony, kotrež hižo eksistuja:",
+	"dt_import_overwriteexisting": "Eksistowacy wobsah přepisać",
+	"dt_import_mergeintoexisting": "Jenož pola přepisać, kotrež su w dataji wobsahowane.",
+	"dt_import_skipexisting": "Přeskočić",
+	"dt_import_appendtoexisting": "K eksistowacemu wobsahej připowěsnyć",
+	"dt_import_summarydesc": "Zjeće importa:",
+	"dt_import_editsummary": "Importowanje $1",
+	"dt_import_importing": "Importuje so...",
+	"dt_import_success": "$1 {{PLURAL:$1|strona so z dataje $2 twori|stronje so z dataje $2 tworitej|strony so z dataje $2 tworja|stronow so z dataje $2 twori}}.",
+	"importcsv": "Importowanje CSV",
+	"dt_importcsv_badheader": "Zmylk: hłowa špalty $1, '$2', dyrbi pak '$3', '$4' być pak formu 'mjeno_předłohi[mjeno_pola]' měć",
+	"right-datatransferimport": "Daty importować"
+}

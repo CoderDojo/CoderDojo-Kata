@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Subi"
+		]
+	},
+	"swl-group-save": "Gorde",
+	"swl-group-remove": "Kendu",
+	"swl-group-saved": "Ezarpenak gorde dira.",
+	"swl-group-saving": "Gordetzen",
+	"swl-group-category": "kategoria",
+	"swl-group-add-new-group": "Gehitu talde berria",
+	"swl-group-add-group": "Gehitu taldea",
+	"swl-custom-remove-property": "Kendu",
+	"swl-watchlist-insertions": "Berria:",
+	"swl-watchlist-deletions": "Zaharra:",
+	"swl-new-item": "BERRIA",
+	"swl-watchlist-pagincontrol": "Ikusi ($1) ($2)"
+}

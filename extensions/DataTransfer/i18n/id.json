@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bennylin",
+			"Farras",
+			"Irwangatot",
+			"IvanLanin",
+			"Rex"
+		]
+	},
+	"datatransfer-desc": "Membolehkan untuk impor dan ekspor data diisikan pada pemangilan templat",
+	"viewxml": "Tilik XML",
+	"dt_viewxml_docu": "Silakan pilih di antara kategori dan ruang nama berikut untuk melihat dalam format XML",
+	"dt_viewxml_categories": "Kategori",
+	"dt_viewxml_namespaces": "Ruang nama",
+	"dt_viewxml_simplifiedformat": "Penyederhanaan format",
+	"dt_xml_namespace": "Ruang nama",
+	"dt_xml_pages": "Halaman",
+	"dt_xml_page": "Halaman",
+	"dt_xml_template": "Templat",
+	"dt_xml_field": "Ruas",
+	"dt_xml_name": "Nama",
+	"dt_xml_title": "Judul",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Teks Bebas",
+	"importxml": "Impor XML",
+	"dt_import_selectfile": "Pilih berkas $1 untuk di impor:",
+	"dt_import_encodingtype": "Tipe penyandian:",
+	"dt_import_forexisting": "Untuk halaman yang sudah ada:",
+	"dt_import_overwriteexisting": "Menimpa konten yang ada",
+	"dt_import_skipexisting": "Lewati",
+	"dt_import_appendtoexisting": "Tambahkan kepada konten yang ada",
+	"dt_import_summarydesc": "Ringkasan impor:",
+	"dt_import_editsummary": "$1 impor",
+	"dt_import_importing": "Mengimpor...",
+	"dt_import_success": "$1 {{PLURAL:$1|halaman|halaman}} akan di buat dari  berkas $2.",
+	"importcsv": "Impor CSV",
+	"dt_importcsv_badheader": "Kesalahan: kepala kolom $1, '$2', harus berupa '$3', '$4' atau bentuk 'template_name [field_name]'",
+	"right-datatransferimport": "Impor data"
+}

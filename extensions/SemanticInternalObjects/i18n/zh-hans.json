@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liangent",
+			"Linforest",
+			"Liuxinyu970226"
+		]
+	},
+	"semanticinternalobjects-desc": "在语义MediaWiki中设置内部对象",
+	"semanticinternalobjects-internalproperty": "内部属性",
+	"semanticinternalobjects-mainpropertyname": "连接此模板字段至剩余页面的属性名：",
+	"semanticinternalobjects-propnamewarning": "（只应在模板有多个实例时使用）"
+}

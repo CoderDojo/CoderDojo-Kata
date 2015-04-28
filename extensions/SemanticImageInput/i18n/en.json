@@ -1,0 +1,9 @@
+{
+    "@metadata": {
+        "authors": [
+            "Jeroen De Dauw"
+        ]
+    },
+    "sii-desc": "Adds an image input that pulls images from Wikipedia to [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]",
+    "sii-imageinput-loading": "Loading image..."
+}

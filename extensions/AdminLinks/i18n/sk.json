@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Helix84"
+		]
+	},
+	"adminlinks": "Odkazy správcu",
+	"adminlinks-desc": "Pridáva [[Special:AdminLinks|špeciálnu stránku]] s užitočnými odkazmi pre správcov",
+	"adminlinks_documentation": "Dokumentácia $1",
+	"adminlinks_general": "Všeobecné",
+	"adminlinks_editsidebar": "Upraviť bočný panel",
+	"adminlinks_editcss": "Upraviť CSS súbor",
+	"adminlinks_editmainpagename": "Upraviť názov hlavnej stránky",
+	"adminlinks_users": "Používatelia",
+	"adminlinks_createuser": "Vytvoriť používateľa",
+	"adminlinks_browsesearch": "Prehliadanie a vyhľadávanie",
+	"adminlinks_importexport": "Import a export",
+	"right-adminlinks": "Pozri odkaz na [[Special:AdminLinks|Odkazy správcu]]"
+}

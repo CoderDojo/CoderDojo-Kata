@@ -1,6 +1,118 @@
 <?php
 /**
- * This is a class used to hold configuration settings, particularly for multi-wiki sites.
+ * Configuration holder, particularly for multi-wiki sites.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ */
+
+/**
+ * This is a class for holding configuration settings, particularly for
+ * multi-wiki sites.
+ *
+ * A basic synopsis:
+ *
+ * Consider a wikifarm having three sites: two production sites, one in English
+ * and one in German, and one testing site. You can assign them easy-to-remember
+ * identifiers - ISO 639 codes 'en' and 'de' for language wikis, and 'beta' for
+ * the testing wiki.
+ *
+ * You would thus initialize the site configuration by specifying the wiki
+ * identifiers:
+ *
+ * @code
+ * $conf = new SiteConfiguration;
+ * $conf->wikis = array( 'de', 'en', 'beta' );
+ * @endcode
+ *
+ * When configuring the MediaWiki global settings (the $wg variables),
+ * the identifiers will be available to specify settings on a per wiki basis.
+ *
+ * @code
+ * $conf->settings = array(
+ *	'wgSomeSetting' => array(
+ *
+ *		# production:
+ *		'de'     => false,
+ *		'en'     => false,
+ *
+ *		# test:
+ *		'beta    => true,
+ *	),
+ * );
+ * @endcode
+ *
+ * With three wikis, that is easy to manage. But what about a farm with
+ * hundreds of wikis? Site configuration provides a special keyword named
+ * 'default' which is the value used when a wiki is not found. Hence
+ * the above code could be written:
+ *
+ * @code
+ * $conf->settings = array(
+ *	'wgSomeSetting' => array(
+ *
+ *		'default' => false,
+ *
+ *		# Enable feature on test
+ *		'beta'    => true,
+ *	),
+ * );
+ * @endcode
+ *
+ *
+ * Since settings can contain arrays, site configuration provides a way
+ * to merge an array with the default. This is very useful to avoid
+ * repeating settings again and again while still maintaining specific changes
+ * on a per wiki basis.
+ *
+ * @code
+ * $conf->settings = array(
+ *	'wgMergeSetting' = array(
+ *		# Value that will be shared among all wikis:
+ *		'default' => array( NS_USER => true ),
+ *
+ *		# Leading '+' means merging the array of value with the defaults
+ *		'+beta' => array( NS_HELP => true ),
+ *	),
+ * );
+ *
+ * # Get configuration for the German site:
+ * $conf->get( 'wgMergeSetting', 'de' );
+ * // --> array( NS_USER => true );
+ *
+ * # Get configuration for the testing site:
+ * $conf->get( 'wgMergeSetting', 'beta' );
+ * // --> array( NS_USER => true, NS_HELP => true );
+ * @endcode
+ *
+ * Finally, to load all configuration settings, extract them in global context:
+ *
+ * @code
+ * # Name / identifier of the wiki as set in $conf->wikis
+ * $wikiID = 'beta';
+ * $globals = $conf->getAll( $wikiID );
+ * extract( $globals );
+ * @endcode
+ *
+ * @todo Give examples for,
+ * suffixes:
+ * $conf->suffixes = array( 'wiki' );
+ * localVHosts
+ * callbacks!
  */
 class SiteConfiguration {
 
@@ -23,12 +135,13 @@ class SiteConfiguration {
 	 * Array of domains that are local and can be handled by the same server
 	 */
 	public $localVHosts = array();
-	
+
 	/**
 	 * Optional callback to load full configuration data.
+	 * @var string|array
 	 */
 	public $fullLoadCallback = null;
-	
+
 	/** Whether or not all data has been loaded */
 	public $fullLoadDone = false;
 
@@ -43,19 +156,29 @@ class SiteConfiguration {
 	 * argument and the wiki in the second one.
 	 * if suffix and lang are passed they will be used for the return value of
 	 * self::siteFromDB() and self::$suffixes will be ignored
+	 *
+	 * @var string|array
 	 */
 	public $siteParamsCallback = null;
 
 	/**
-	 * Retrieves a configuration setting for a given wiki.
-	 * @param $settingName String ID of the setting name to retrieve
-	 * @param $wiki String Wiki ID of the wiki in question.
-	 * @param $suffix String The suffix of the wiki in question.
-	 * @param $params Array List of parameters. $.'key' is replaced by $value in all returned data.
-	 * @param $wikiTags Array The tags assigned to the wiki.
-	 * @return Mixed the value of the setting requested.
+	 * Configuration cache for getConfig()
+	 * @var array
 	 */
-	public function get( $settingName, $wiki, $suffix = null, $params = array(), $wikiTags = array() ) {
+	protected $cfgCache = array();
+
+	/**
+	 * Retrieves a configuration setting for a given wiki.
+	 * @param string $settingName ID of the setting name to retrieve
+	 * @param string $wiki Wiki ID of the wiki in question.
+	 * @param string $suffix The suffix of the wiki in question.
+	 * @param array $params List of parameters. $.'key' is replaced by $value in all returned data.
+	 * @param array $wikiTags The tags assigned to the wiki.
+	 * @return mixed The value of the setting requested.
+	 */
+	public function get( $settingName, $wiki, $suffix = null, $params = array(),
+		$wikiTags = array()
+	) {
 		$params = $this->mergeParams( $wiki, $suffix, $params, $wikiTags );
 		return $this->getSetting( $settingName, $wiki, $params );
 	}
@@ -63,59 +186,63 @@ class SiteConfiguration {
 	/**
 	 * Really retrieves a configuration setting for a given wiki.
 	 *
-	 * @param $settingName String ID of the setting name to retrieve.
-	 * @param $wiki String Wiki ID of the wiki in question.
-	 * @param $params Array: array of parameters.
-	 * @return Mixed the value of the setting requested.
+	 * @param string $settingName ID of the setting name to retrieve.
+	 * @param string $wiki Wiki ID of the wiki in question.
+	 * @param array $params Array of parameters.
+	 * @return mixed The value of the setting requested.
 	 */
-	protected function getSetting( $settingName, $wiki, /*array*/ $params ){
+	protected function getSetting( $settingName, $wiki, array $params ) {
 		$retval = null;
-		if( array_key_exists( $settingName, $this->settings ) ) {
+		if ( array_key_exists( $settingName, $this->settings ) ) {
 			$thisSetting =& $this->settings[$settingName];
 			do {
 				// Do individual wiki settings
-				if( array_key_exists( $wiki, $thisSetting ) ) {
+				if ( array_key_exists( $wiki, $thisSetting ) ) {
 					$retval = $thisSetting[$wiki];
 					break;
-				} elseif( array_key_exists( "+$wiki", $thisSetting ) && is_array( $thisSetting["+$wiki"] ) ) {
+				} elseif ( array_key_exists( "+$wiki", $thisSetting ) && is_array( $thisSetting["+$wiki"] ) ) {
 					$retval = $thisSetting["+$wiki"];
 				}
 
 				// Do tag settings
-				foreach( $params['tags'] as $tag ) {
-					if( array_key_exists( $tag, $thisSetting ) ) {
-						if ( isset( $retval ) && is_array( $retval ) && is_array( $thisSetting[$tag] ) ) {
+				foreach ( $params['tags'] as $tag ) {
+					if ( array_key_exists( $tag, $thisSetting ) ) {
+						if ( is_array( $retval ) && is_array( $thisSetting[$tag] ) ) {
 							$retval = self::arrayMerge( $retval, $thisSetting[$tag] );
 						} else {
 							$retval = $thisSetting[$tag];
 						}
 						break 2;
-					} elseif( array_key_exists( "+$tag", $thisSetting ) && is_array($thisSetting["+$tag"]) ) {
-						if( !isset( $retval ) )
+					} elseif ( array_key_exists( "+$tag", $thisSetting ) && is_array( $thisSetting["+$tag"] ) ) {
+						if ( $retval === null ) {
 							$retval = array();
+						}
 						$retval = self::arrayMerge( $retval, $thisSetting["+$tag"] );
 					}
 				}
 				// Do suffix settings
 				$suffix = $params['suffix'];
-				if( !is_null( $suffix ) ) {
-					if( array_key_exists( $suffix, $thisSetting ) ) {
-						if ( isset($retval) && is_array($retval) && is_array($thisSetting[$suffix]) ) {
+				if ( !is_null( $suffix ) ) {
+					if ( array_key_exists( $suffix, $thisSetting ) ) {
+						if ( is_array( $retval ) && is_array( $thisSetting[$suffix] ) ) {
 							$retval = self::arrayMerge( $retval, $thisSetting[$suffix] );
 						} else {
 							$retval = $thisSetting[$suffix];
 						}
 						break;
-					} elseif( array_key_exists( "+$suffix", $thisSetting ) && is_array($thisSetting["+$suffix"]) ) {
-						if (!isset($retval))
+					} elseif ( array_key_exists( "+$suffix", $thisSetting )
+						&& is_array( $thisSetting["+$suffix"] )
+					) {
+						if ( $retval === null ) {
 							$retval = array();
+						}
 						$retval = self::arrayMerge( $retval, $thisSetting["+$suffix"] );
 					}
 				}
 
 				// Fall back to default.
-				if( array_key_exists( 'default', $thisSetting ) ) {
-					if( is_array( $retval ) && is_array( $thisSetting['default'] ) ) {
+				if ( array_key_exists( 'default', $thisSetting ) ) {
+					if ( is_array( $retval ) && is_array( $thisSetting['default'] ) ) {
 						$retval = self::arrayMerge( $retval, $thisSetting['default'] );
 					} else {
 						$retval = $thisSetting['default'];
@@ -125,7 +252,7 @@ class SiteConfiguration {
 			} while ( false );
 		}
 
-		if( !is_null( $retval ) && count( $params['params'] ) ) {
+		if ( !is_null( $retval ) && count( $params['params'] ) ) {
 			foreach ( $params['params'] as $key => $value ) {
 				$retval = $this->doReplace( '$' . $key, $value, $retval );
 			}
@@ -137,16 +264,16 @@ class SiteConfiguration {
 	 * Type-safe string replace; won't do replacements on non-strings
 	 * private?
 	 *
-	 * @param $from
-	 * @param $to
-	 * @param $in
+	 * @param string $from
+	 * @param string $to
+	 * @param string|array $in
 	 * @return string
 	 */
 	function doReplace( $from, $to, $in ) {
-		if( is_string( $in ) ) {
+		if ( is_string( $in ) ) {
 			return str_replace( $from, $to, $in );
-		} elseif( is_array( $in ) ) {
-			foreach( $in as $key => $val ) {
+		} elseif ( is_array( $in ) ) {
+			foreach ( $in as $key => $val ) {
 				$in[$key] = $this->doReplace( $from, $to, $val );
 			}
 			return $in;
@@ -157,16 +284,16 @@ class SiteConfiguration {
 
 	/**
 	 * Gets all settings for a wiki
-	 * @param $wiki String Wiki ID of the wiki in question.
-	 * @param $suffix String The suffix of the wiki in question.
-	 * @param $params Array List of parameters. $.'key' is replaced by $value in all returned data.
-	 * @param $wikiTags Array The tags assigned to the wiki.
-	 * @return Array Array of settings requested.
+	 * @param string $wiki Wiki ID of the wiki in question.
+	 * @param string $suffix The suffix of the wiki in question.
+	 * @param array $params List of parameters. $.'key' is replaced by $value in all returned data.
+	 * @param array $wikiTags The tags assigned to the wiki.
+	 * @return array Array of settings requested.
 	 */
 	public function getAll( $wiki, $suffix = null, $params = array(), $wikiTags = array() ) {
 		$params = $this->mergeParams( $wiki, $suffix, $params, $wikiTags );
 		$localSettings = array();
-		foreach( $this->settings as $varname => $stuff ) {
+		foreach ( $this->settings as $varname => $stuff ) {
 			$append = false;
 			$var = $varname;
 			if ( substr( $varname, 0, 1 ) == '+' ) {
@@ -175,8 +302,9 @@ class SiteConfiguration {
 			}
 
 			$value = $this->getSetting( $varname, $wiki, $params );
-			if ( $append && is_array( $value ) && is_array( $GLOBALS[$var] ) )
+			if ( $append && is_array( $value ) && is_array( $GLOBALS[$var] ) ) {
 				$value = self::arrayMerge( $value, $GLOBALS[$var] );
+			}
 			if ( !is_null( $value ) ) {
 				$localSettings[$var] = $value;
 			}
@@ -186,14 +314,14 @@ class SiteConfiguration {
 
 	/**
 	 * Retrieves a configuration setting for a given wiki, forced to a boolean.
-	 * @param $setting String ID of the setting name to retrieve
-	 * @param $wiki String Wiki ID of the wiki in question.
-	 * @param $suffix String The suffix of the wiki in question.
-	 * @param $wikiTags Array The tags assigned to the wiki.
+	 * @param string $setting ID of the setting name to retrieve
+	 * @param string $wiki Wiki ID of the wiki in question.
+	 * @param string $suffix The suffix of the wiki in question.
+	 * @param array $wikiTags The tags assigned to the wiki.
 	 * @return bool The value of the setting requested.
 	 */
 	public function getBool( $setting, $wiki, $suffix = null, $wikiTags = array() ) {
-		return (bool)($this->get( $setting, $wiki, $suffix, array(), $wikiTags ) );
+		return (bool)$this->get( $setting, $wiki, $suffix, array(), $wikiTags );
 	}
 
 	/**
@@ -205,20 +333,18 @@ class SiteConfiguration {
 		return $this->wikis;
 	}
 
-	/** A no-op */
-	function initialise() {
-	}
-
 	/**
 	 * Retrieves the value of a given setting, and places it in a variable passed by reference.
-	 * @param $setting String ID of the setting name to retrieve
-	 * @param $wiki String Wiki ID of the wiki in question.
-	 * @param $suffix String The suffix of the wiki in question.
-	 * @param $var Reference The variable to insert the value into.
-	 * @param $params Array List of parameters. $.'key' is replaced by $value in all returned data.
-	 * @param $wikiTags Array The tags assigned to the wiki.
+	 * @param string $setting ID of the setting name to retrieve
+	 * @param string $wiki Wiki ID of the wiki in question.
+	 * @param string $suffix The suffix of the wiki in question.
+	 * @param array $var Reference The variable to insert the value into.
+	 * @param array $params List of parameters. $.'key' is replaced by $value in all returned data.
+	 * @param array $wikiTags The tags assigned to the wiki.
 	 */
-	public function extractVar( $setting, $wiki, $suffix, &$var, $params = array(), $wikiTags = array() ) {
+	public function extractVar( $setting, $wiki, $suffix, &$var,
+		$params = array(), $wikiTags = array()
+	) {
 		$value = $this->get( $setting, $wiki, $suffix, $params, $wikiTags );
 		if ( !is_null( $value ) ) {
 			$var = $value;
@@ -227,28 +353,30 @@ class SiteConfiguration {
 
 	/**
 	 * Retrieves the value of a given setting, and places it in its corresponding global variable.
-	 * @param $setting String ID of the setting name to retrieve
-	 * @param $wiki String Wiki ID of the wiki in question.
-	 * @param $suffix String The suffix of the wiki in question.
-	 * @param $params Array List of parameters. $.'key' is replaced by $value in all returned data.
-	 * @param $wikiTags Array The tags assigned to the wiki.
+	 * @param string $setting ID of the setting name to retrieve
+	 * @param string $wiki Wiki ID of the wiki in question.
+	 * @param string $suffix The suffix of the wiki in question.
+	 * @param array $params List of parameters. $.'key' is replaced by $value in all returned data.
+	 * @param array $wikiTags The tags assigned to the wiki.
 	 */
-	public function extractGlobal( $setting, $wiki, $suffix = null, $params = array(), $wikiTags = array() ) {
+	public function extractGlobal( $setting, $wiki, $suffix = null,
+		$params = array(), $wikiTags = array()
+	) {
 		$params = $this->mergeParams( $wiki, $suffix, $params, $wikiTags );
 		$this->extractGlobalSetting( $setting, $wiki, $params );
 	}
 
 	/**
-	 * @param $setting string
-	 * @param $wiki string
-	 * @param $params array
+	 * @param string $setting
+	 * @param string $wiki
+	 * @param array $params
 	 */
 	public function extractGlobalSetting( $setting, $wiki, $params ) {
 		$value = $this->getSetting( $setting, $wiki, $params );
 		if ( !is_null( $value ) ) {
-			if (substr($setting,0,1) == '+' && is_array($value)) {
-				$setting = substr($setting,1);
-				if ( is_array($GLOBALS[$setting]) ) {
+			if ( substr( $setting, 0, 1 ) == '+' && is_array( $value ) ) {
+				$setting = substr( $setting, 1 );
+				if ( is_array( $GLOBALS[$setting] ) ) {
 					$GLOBALS[$setting] = self::arrayMerge( $GLOBALS[$setting], $value );
 				} else {
 					$GLOBALS[$setting] = $value;
@@ -261,12 +389,14 @@ class SiteConfiguration {
 
 	/**
 	 * Retrieves the values of all settings, and places them in their corresponding global variables.
-	 * @param $wiki String Wiki ID of the wiki in question.
-	 * @param $suffix String The suffix of the wiki in question.
-	 * @param $params Array List of parameters. $.'key' is replaced by $value in all returned data.
-	 * @param $wikiTags Array The tags assigned to the wiki.
+	 * @param string $wiki Wiki ID of the wiki in question.
+	 * @param string $suffix The suffix of the wiki in question.
+	 * @param array $params List of parameters. $.'key' is replaced by $value in all returned data.
+	 * @param array $wikiTags The tags assigned to the wiki.
 	 */
-	public function extractAllGlobals( $wiki, $suffix = null, $params = array(), $wikiTags = array() ) {
+	public function extractAllGlobals( $wiki, $suffix = null, $params = array(),
+		$wikiTags = array()
+	) {
 		$params = $this->mergeParams( $wiki, $suffix, $params, $wikiTags );
 		foreach ( $this->settings as $varName => $setting ) {
 			$this->extractGlobalSetting( $varName, $wiki, $params );
@@ -278,10 +408,10 @@ class SiteConfiguration {
 	 * See the documentation of self::$siteParamsCallback for more in-depth
 	 * documentation about this function
 	 *
-	 * @param $wiki String
+	 * @param string $wiki
 	 * @return array
 	 */
-	protected function getWikiParams( $wiki ){
+	protected function getWikiParams( $wiki ) {
 		static $default = array(
 			'suffix' => null,
 			'lang' => null,
@@ -289,76 +419,81 @@ class SiteConfiguration {
 			'params' => array(),
 		);
 
-		if( !is_callable( $this->siteParamsCallback ) ) {
+		if ( !is_callable( $this->siteParamsCallback ) ) {
 			return $default;
 		}
 
 		$ret = call_user_func_array( $this->siteParamsCallback, array( $this, $wiki ) );
 		# Validate the returned value
-		if( !is_array( $ret ) ) {
+		if ( !is_array( $ret ) ) {
 			return $default;
 		}
 
-		foreach( $default as $name => $def ){
-			if( !isset( $ret[$name] ) || ( is_array( $default[$name] ) && !is_array( $ret[$name] ) ) )
+		foreach ( $default as $name => $def ) {
+			if ( !isset( $ret[$name] ) || ( is_array( $default[$name] ) && !is_array( $ret[$name] ) ) ) {
 				$ret[$name] = $default[$name];
+			}
 		}
 
 		return $ret;
 	}
 
 	/**
-	 * Merge params beetween the ones passed to the function and the ones given
+	 * Merge params between the ones passed to the function and the ones given
 	 * by self::$siteParamsCallback for backward compatibility
 	 * Values returned by self::getWikiParams() have the priority.
 	 *
-	 * @param $wiki String Wiki ID of the wiki in question.
-	 * @param $suffix String The suffix of the wiki in question.
-	 * @param $params Array List of parameters. $.'key' is replaced by $value in
-	 *                all returned data.
-	 * @param $wikiTags Array The tags assigned to the wiki.
+	 * @param string $wiki Wiki ID of the wiki in question.
+	 * @param string $suffix The suffix of the wiki in question.
+	 * @param array $params List of parameters. $.'key' is replaced by $value in
+	 *   all returned data.
+	 * @param array $wikiTags The tags assigned to the wiki.
 	 * @return array
 	 */
-	protected function mergeParams( $wiki, $suffix, /*array*/ $params, /*array*/ $wikiTags ){
+	protected function mergeParams( $wiki, $suffix, array $params, array $wikiTags ) {
 		$ret = $this->getWikiParams( $wiki );
 
-		if( is_null( $ret['suffix'] ) )
+		if ( is_null( $ret['suffix'] ) ) {
 			$ret['suffix'] = $suffix;
+		}
 
 		$ret['tags'] = array_unique( array_merge( $ret['tags'], $wikiTags ) );
 
 		$ret['params'] += $params;
 
 		// Automatically fill that ones if needed
-		if( !isset( $ret['params']['lang'] ) && !is_null( $ret['lang'] ) )
+		if ( !isset( $ret['params']['lang'] ) && !is_null( $ret['lang'] ) ) {
 			$ret['params']['lang'] = $ret['lang'];
-		if( !isset( $ret['params']['site'] ) && !is_null( $ret['suffix'] ) )
+		}
+		if ( !isset( $ret['params']['site'] ) && !is_null( $ret['suffix'] ) ) {
 			$ret['params']['site'] = $ret['suffix'];
+		}
 
 		return $ret;
 	}
 
 	/**
 	 * Work out the site and language name from a database name
-	 * @param $db
+	 * @param string $db
 	 *
 	 * @return array
 	 */
 	public function siteFromDB( $db ) {
 		// Allow override
 		$def = $this->getWikiParams( $db );
-		if( !is_null( $def['suffix'] ) && !is_null( $def['lang'] ) )
+		if ( !is_null( $def['suffix'] ) && !is_null( $def['lang'] ) ) {
 			return array( $def['suffix'], $def['lang'] );
+		}
 
 		$site = null;
 		$lang = null;
-		foreach ( $this->suffixes as $suffix ) {
+		foreach ( $this->suffixes as $altSite => $suffix ) {
 			if ( $suffix === '' ) {
 				$site = '';
 				$lang = $db;
 				break;
 			} elseif ( substr( $db, -strlen( $suffix ) ) == $suffix ) {
-				$site = $suffix == 'wiki' ? 'wikipedia' : $suffix;
+				$site = is_numeric( $altSite ) ? $suffix : $altSite;
 				$lang = substr( $db, 0, strlen( $db ) - strlen( $suffix ) );
 				break;
 			}
@@ -368,8 +503,69 @@ class SiteConfiguration {
 	}
 
 	/**
+	 * Get the resolved (post-setup) configuration of a potentially foreign wiki.
+	 * For foreign wikis, this is expensive, and only works if maintenance
+	 * scripts are setup to handle the --wiki parameter such as in wiki farms.
+	 *
+	 * @param string $wiki
+	 * @param array|string $settings A setting name or array of setting names
+	 * @return mixed|mixed[] Array if $settings is an array, otherwise the value
+	 * @throws MWException
+	 * @since 1.21
+	 */
+	public function getConfig( $wiki, $settings ) {
+		global $IP;
+
+		$multi = is_array( $settings );
+		$settings = (array)$settings;
+		if ( $wiki === wfWikiID() ) { // $wiki is this wiki
+			$res = array();
+			foreach ( $settings as $name ) {
+				if ( !preg_match( '/^wg[A-Z]/', $name ) ) {
+					throw new MWException( "Variable '$name' does start with 'wg'." );
+				} elseif ( !isset( $GLOBALS[$name] ) ) {
+					throw new MWException( "Variable '$name' is not set." );
+				}
+				$res[$name] = $GLOBALS[$name];
+			}
+		} else { // $wiki is a foreign wiki
+			if ( isset( $this->cfgCache[$wiki] ) ) {
+				$res = array_intersect_key( $this->cfgCache[$wiki], array_flip( $settings ) );
+				if ( count( $res ) == count( $settings ) ) {
+					return $multi ? $res : current( $res ); // cache hit
+				}
+			} elseif ( !in_array( $wiki, $this->wikis ) ) {
+				throw new MWException( "No such wiki '$wiki'." );
+			} else {
+				$this->cfgCache[$wiki] = array();
+			}
+			$retVal = 1;
+			$cmd = wfShellWikiCmd(
+				"$IP/maintenance/getConfiguration.php",
+				array(
+					'--wiki', $wiki,
+					'--settings', implode( ' ', $settings ),
+					'--format', 'PHP'
+				)
+			);
+			// ulimit5.sh breaks this call
+			$data = trim( wfShellExec( $cmd, $retVal, array(), array( 'memory' => 0 ) ) );
+			if ( $retVal != 0 || !strlen( $data ) ) {
+				throw new MWException( "Failed to run getConfiguration.php." );
+			}
+			$res = unserialize( $data );
+			if ( !is_array( $res ) ) {
+				throw new MWException( "Failed to unserialize configuration array." );
+			}
+			$this->cfgCache[$wiki] = $this->cfgCache[$wiki] + $res;
+		}
+
+		return $multi ? $res : current( $res );
+	}
+
+	/**
 	 * Returns true if the given vhost is handled locally.
-	 * @param $vhost String
+	 * @param string $vhost
 	 * @return bool
 	 */
 	public function isLocalVHost( $vhost ) {
@@ -382,18 +578,20 @@ class SiteConfiguration {
 	 * PHP's array_merge_recursive() merges ANY duplicate values into arrays,
 	 * which is not fun
 	 *
-	 * @param $array1 array
+	 * @param array $array1
 	 *
 	 * @return array
 	 */
 	static function arrayMerge( $array1/* ... */ ) {
 		$out = $array1;
-		for( $i = 1; $i < func_num_args(); $i++ ) {
-			foreach( func_get_arg( $i ) as $key => $value ) {
-				if ( isset($out[$key]) && is_array($out[$key]) && is_array($value) ) {
+		$argsCount = func_num_args();
+		for ( $i = 1; $i < $argsCount; $i++ ) {
+			foreach ( func_get_arg( $i ) as $key => $value ) {
+				if ( isset( $out[$key] ) && is_array( $out[$key] ) && is_array( $value ) ) {
 					$out[$key] = self::arrayMerge( $out[$key], $value );
-				} elseif ( !isset($out[$key]) || !$out[$key] && !is_numeric($key) ) {
-					// Values that evaluate to true given precedence, for the primary purpose of merging permissions arrays.
+				} elseif ( !isset( $out[$key] ) || !$out[$key] && !is_numeric( $key ) ) {
+					// Values that evaluate to true given precedence, for the
+					// primary purpose of merging permissions arrays.
 					$out[$key] = $value;
 				} elseif ( is_numeric( $key ) ) {
 					$out[] = $value;
@@ -405,7 +603,7 @@ class SiteConfiguration {
 	}
 
 	public function loadFullData() {
-		if ($this->fullLoadCallback && !$this->fullLoadDone) {
+		if ( $this->fullLoadCallback && !$this->fullLoadDone ) {
 			call_user_func( $this->fullLoadCallback, $this );
 			$this->fullLoadDone = true;
 		}

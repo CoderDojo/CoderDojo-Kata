@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"Y-M D"
+		]
+	},
+	"templatedata-doc-desc-empty": "Deskrivadur ebet.",
+	"templatedata-doc-params": "Arventennoù ar patrom",
+	"templatedata-doc-param-name": "Arventenn",
+	"templatedata-doc-param-desc": "Deskrivadur",
+	"templatedata-doc-param-type": "Seurt",
+	"templatedata-doc-param-default": "Dre ziouer",
+	"templatedata-doc-param-default-empty": "goullo",
+	"templatedata-doc-param-status": "Statud",
+	"templatedata-doc-param-status-deprecated": "dispredet",
+	"templatedata-doc-param-status-optional": "diret",
+	"templatedata-doc-param-status-suggested": "kinniget",
+	"templatedata-doc-param-status-required": "rekis",
+	"templatedata-doc-param-desc-empty": "deskrivadur ebet",
+	"templatedata-invalid-parse": "Fazi ereadurezh e JSON.",
+	"templatedata-modal-button-addparam": "Ouzhpennañ un arventenn",
+	"templatedata-modal-button-apply": "Arloañ",
+	"templatedata-modal-button-cancel": "Nullañ",
+	"templatedata-modal-button-delparam": "Lemel an arvetenn",
+	"templatedata-modal-button-importParams": "Enporzhiañ arventennoù",
+	"templatedata-modal-notice-import-numparams": "Enporzhiet eo bet {{PLURAL:$1|Un|$1}} arventenn nevez.",
+	"templatedata-modal-table-param-actions": "Oberoù",
+	"templatedata-modal-table-param-default": "Dre ziouer",
+	"templatedata-modal-table-param-desc": "Deskrivadur",
+	"templatedata-modal-table-param-label": "Tikedenn",
+	"templatedata-modal-table-param-name": "Anv",
+	"templatedata-modal-table-param-required": "Rekis",
+	"templatedata-modal-table-param-suggested": "Kinniget",
+	"templatedata-modal-table-param-type": "Seurt",
+	"templatedata-modal-table-param-type-file": "Restr",
+	"templatedata-modal-table-param-type-number": "Niver",
+	"templatedata-modal-table-param-type-page": "Pajenn",
+	"templatedata-modal-table-param-type-string": "Neudennad",
+	"templatedata-modal-table-param-type-undefined": "Nann-termenet",
+	"templatedata-modal-table-param-type-user": "Implijer",
+	"templatedata-modal-title-templatedesc": "Deskrivadur ar patrom",
+	"templatedata-modal-title-templateparams": "arventennoù ar patrom"
+}

@@ -1,0 +1,8 @@
+{
+    "@metadata": {
+        "authors": [
+            "Gabriel Wicke"
+        ]
+    },
+    "parsoid-desc": "Parsoid wiki runtime for MediaWiki"
+}

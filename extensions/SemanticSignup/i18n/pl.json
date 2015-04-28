@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"BeginaFelicysym"
+		]
+	},
+	"ses-nousername": "Nie określono nazwy użytkownika.",
+	"ses-nopwdmatch": "Hasło i jego potwierdzenie nie są jednakowe.",
+	"ses-norealname": "Prawdziwe nazwisko jest wymagane, ale nie zostało określone.",
+	"ses-userexists": "Użytkownik już istnieje.",
+	"ses-emailfailed": "Wysyłanie wiadomości e-mail potwierdzenia nie powiodło się.",
+	"ses-createforbidden": "Bieżący użytkownik nie ma uprawnień do tworzenia kont.",
+	"ses-throttlehit": "Maksymalna dzienna liczba nowych kont użytkowników została przekroczona dla tego adresu IP."
+}

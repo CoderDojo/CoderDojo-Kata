@@ -1,0 +1,19 @@
+{
+    "@metadata": {
+        "authors": [
+            "Yaron Koren"
+        ]
+    },
+    "adminlinks": "Admin links",
+    "adminlinks-desc": "Adds a [[Special:AdminLinks|special page]] that holds helpful links for administrators",
+    "adminlinks_documentation": "$1 documentation",
+    "adminlinks_general": "General",
+    "adminlinks_editsidebar": "Edit sidebar",
+    "adminlinks_editcss": "Edit CSS file",
+    "adminlinks_editmainpagename": "Edit name of main page",
+    "adminlinks_users": "Users",
+    "adminlinks_createuser": "Create a user",
+    "adminlinks_browsesearch": "Browse and search",
+    "adminlinks_importexport": "Import and export",
+    "right-adminlinks": "See the link to [[Special:AdminLinks|Admin links]]"
+}

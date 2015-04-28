@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ahmed-Najib-Biabani-Ibrahimkhel"
+		]
+	},
+	"adminlinks": "د پازوال تړنې",
+	"adminlinks_documentation": "$1 لاسوند",
+	"adminlinks_general": "ټولگړی",
+	"adminlinks_editsidebar": "څنګپټه سمول",
+	"adminlinks_editcss": "د CSS دوتنه سمول",
+	"adminlinks_editmainpagename": "د اصلي مخ نوم سمول",
+	"adminlinks_users": "کارنان",
+	"adminlinks_createuser": "يو کارن جوړول",
+	"adminlinks_browsesearch": "سپړنه او پلټنه",
+	"adminlinks_importexport": "واردول او صادرول",
+	"right-adminlinks": "د [[Special:AdminLinks|پازوال تړنو]] ته ورسيخه شوې تړنه کتل"
+}

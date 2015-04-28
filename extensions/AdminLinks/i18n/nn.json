@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gunnernett"
+		]
+	},
+	"adminlinks": "Lenker for administratorar",
+	"adminlinks-desc": "Legg til ei [[Special:AdminLinks|spesialside]] som inneheld nyttige lenker for administratorar",
+	"adminlinks_documentation": "dokumentasjon for $1",
+	"adminlinks_general": "Generelt",
+	"adminlinks_editsidebar": "Endre sidespalta",
+	"adminlinks_editcss": "Endre CSS-fila",
+	"adminlinks_editmainpagename": "Endre namn på hovudsida",
+	"adminlinks_users": "Brukarar",
+	"adminlinks_createuser": "Opprett ein brukar",
+	"adminlinks_browsesearch": "Lesing og søking",
+	"adminlinks_importexport": "Importering og eksportering",
+	"right-adminlinks": "Sjå lenka til [[Special:AdminLinks|admin-lenker]]"
+}

@@ -1,0 +1,49 @@
+@mixin alpha-filter() {
+
+	.alpha-filter {
+		.letter {
+			$rotation: 1deg;
+			display: block;
+			width: 6rem;
+			background-color: #fff;
+			height: 6rem;
+			text-align: center;
+			padding-top: 1.6rem;
+			margin: 0 1rem 1rem 0;
+			float: left;
+			border: 3px solid $lightColor;
+			transform: rotate($rotation);
+			a {
+				transform: rotate(-$rotation);
+				display: block;
+			}
+			a, a:visited, a:link {
+				color: $lightColor;
+			}
+			a:hover, a:active {
+				color: $lightColor * 0.8;
+			}
+			&.disabled {
+				a, a:visited, a:link,
+				a:hover, a:active {
+					color: $darkColor * 0.6;
+				}
+			}
+			&:not(.disabled):hover,
+			&.selected {
+				background-color: $darkBg;
+				a:visited, a:link {
+					color: $darkColor;
+				}
+				a:hover, a:active {
+					color: $darkColor * 0.8;
+				}
+			}
+			@media screen and (min-width: 1280px) {
+				&:nth-of-type(14n) {
+					clear: left;
+				}
+			}
+		}
+	}
+}

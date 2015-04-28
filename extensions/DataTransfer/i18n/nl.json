@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Siebrand",
+			"Tvdm",
+			"Sjoerddebruin"
+		]
+	},
+	"datatransfer-desc": "Maakt het importeren en exporteren van gestructureerde gegevens in sjabloonaanroepen mogelijk",
+	"viewxml": "XML bekijken",
+	"dt_viewxml_docu": "Selecteer uit de volgende categorieën en naamruimten om in XML-formaat te bekijken.",
+	"dt_viewxml_categories": "Categorieën",
+	"dt_viewxml_namespaces": "Naamruimten",
+	"dt_viewxml_simplifiedformat": "Vereenvoudigd formaat",
+	"dt_xml_namespace": "Naamruimte",
+	"dt_xml_pages": "Pagina's",
+	"dt_xml_page": "Pagina",
+	"dt_xml_template": "Sjabloon",
+	"dt_xml_field": "Veld",
+	"dt_xml_name": "Naam",
+	"dt_xml_title": "Titel",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Vrije tekst",
+	"importxml": "XML importeren",
+	"dt_import_selectfile": "Selecteer het te importeren bestand van het type $1:",
+	"dt_import_encodingtype": "Coderingstype:",
+	"dt_import_forexisting": "Voor pagina's die al bestaan:",
+	"dt_import_overwriteexisting": "Bestaande inhoud overschrijven",
+	"dt_import_mergeintoexisting": "Alleen velden uit het bestand overschrijven",
+	"dt_import_skipexisting": "Overslaan",
+	"dt_import_appendtoexisting": "Toevoegen aan bestaande inhoud",
+	"dt_import_summarydesc": "Samenvatting van de import:",
+	"dt_import_editsummary": "{{ucfirst:$1}}-import",
+	"dt_import_importing": "Bezig met importeren…",
+	"dt_import_success": "Uit het $2-bestand {{PLURAL:$1|wordt één pagina|worden $1 pagina's}} geïmporteerd.",
+	"importcsv": "CSV importeren",
+	"dt_importcsv_badheader": "Fout: De kop van kolom $1, \"$2\", moet \"$3\" of \"$4\" zijn, of in de vorm \"sjabloonnaam[veldnaam]\" genoteerd worden.",
+	"right-datatransferimport": "Gegevens importeren"
+}

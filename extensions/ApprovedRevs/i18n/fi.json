@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beluga",
+			"Centerlink",
+			"Crt",
+			"Nike",
+			"Snidata",
+			"Stryn",
+			"VezonThunder"
+		]
+	},
+	"approvedrevs-desc": "Aseta yksittäinen sivuversio hyväksytyksi",
+	"approvedrevs-logname": "Versiohyväksynnän loki",
+	"approvedrevs-logdesc": "Tämä on hyväksyttyjen versioiden loki.",
+	"approvedrevs-approve": "hyväksy",
+	"approvedrevs-unapprove": "älä hyväksy",
+	"approvedrevs-approvesuccess": "Tämä sivuversio on asetettu hyväksytyksi versioksi.",
+	"approvedrevs-unapprovesuccess": "Tästä sivusta ei ole enää hyväksyttyä versiota.\nSen sijaan, viimeisin versio näytetään.",
+	"approvedrevs-unapprovesuccess2": "Tästä sivusta ei enää ole hyväksyttyä versiota.\nSellaisen sijaan esitetään tyhjä sivu.",
+	"approvedrevs-approveaction": "asetti version $2 sivun \"[[$1]]\" hyväksytyksi versioksi",
+	"approvedrevs-unapproveaction": "perui sivun \"[[$1]]\" hyväksytyn version",
+	"approvedrevs-notlatest": "Tämä on  tämän sivun hyväksytty versio; se ei ole viimeisin.",
+	"approvedrevs-approvedandlatest": "Tämä on tämän sivun hyväksytty ja samalla viimeisin versio.",
+	"approvedrevs-blankpageshown": "Tästä sivusta ei ole hyväksyttyä versiota.",
+	"approvedrevs-noapprovedrevision": "Tämä on sivun viimeisin versio. Hyväksyttyä versiota ei ole.",
+	"approvedrevs-editwarning": "Huomaa, että muokkaat nyt sivun viimeisintä versiota, joka ei ole oletuksena esitetty hyväksytty versio.",
+	"approvedrevs": "Hyväksytyt versiot",
+	"approvedrevs-approvedpages": "Kaikki sivut, joista on hyväksytyt versiot",
+	"approvedrevs-notlatestpages": "Sivut, joiden hyväksytty versio ei ole viimeisin",
+	"approvedrevs-unapprovedpages": "Hyväksymättömät sivut",
+	"approvedrevs-view": "Katso:",
+	"approvedrevs-revisionnumber": "versio $1",
+	"approvedrevs-approvedby": "hyväksynyt {{GENDER:$3|$1}} $4 kello $5",
+	"approvedrevs-difffromlatest": "ero nykyiseen",
+	"approvedrevs-approvelatest": "hyväksy viimeisin",
+	"approvedrevs-approvethisrev": "Hyväksy tämä versio.",
+	"approvedrevs-viewlatestrev": "Näytä viimeisin versio.",
+	"right-approverevisions": "Asettaa wikisivun tietty versio hyväksytyksi",
+	"right-viewlinktolatest": "Nähdä selittävä teksti niiden sivujen yläosassa, joilla on hyväksytty versio"
+}

@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Iwan Novirion",
+			"Si Gam Acèh"
+		]
+	},
+	"babel-autocreate-user": "Babel AutoCreate",
+	"babel-0": "Ureuëng nguy nyoë [[$1|hana]] muphôm [[$2|$3]] (atawa cit ngön payah that).",
+	"babel-N": "Ureuëng nguy nyoë nakeuh [[$1|geumarit aseuli]] lam bahsa [[$2|$3]].",
+	"babel-N-n": "Ureuëng nguy nyoë nakeuh [[$1|ureuëng marit aseuli]] lam [[$2|bahsa Aceh]].",
+	"babel-template": "Template:User $1"
+}

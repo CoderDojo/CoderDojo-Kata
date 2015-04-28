@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Veeven"
+		]
+	},
+	"swl-group-save": "భద్రపరచు",
+	"swl-group-category": "వర్గం",
+	"swl-group-namespace": "పేరుబరి",
+	"swl-watchlist-insertions": "కొత్త:",
+	"swl-watchlist-deletions": "పాతవి:",
+	"swl-watchlist-firstn-title": "మొదటి $1 {{PLURAL:$1|ఫలితం|ఫలితాలు}}"
+}

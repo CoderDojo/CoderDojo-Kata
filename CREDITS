@@ -1,14 +1,20 @@
-MediaWiki 1.18 is a collaborative project released under the
+{{int:version-credits-summary}}
+<!--
+MediaWiki 1.24 is a collaborative project released under the
 GNU General Public License v2. We would like to recognize the
 following names for their contribution to the product.
+-->
+<!-- Please notice that the following can be found parsed under Special:Version/Credits -->
 
 == Developers ==
 * Aaron Schulz
 * Alex Z.
+* Alexander Monk
 * Alexandre Emsenhuber
 * Andrew Garrett
+* Arthur Richards
 * Aryeh Gregor
-* Ashar Voultoiz
+* Antoine Musso
 * Brian Wolff
 * Bertrand Grondin
 * Brad Jorsch
@@ -19,10 +25,10 @@ following names for their contribution to the product.
 * church of emacs
 * Daniel Friesen
 * Daniel Kinzler
+* Daniel Renfro
 * Danny B.
 * David McCabe
 * Derk-Jan Hartman
-* DieBuche
 * Domas Mituzas
 * Emufarmers
 * Fran Rogers
@@ -30,16 +36,22 @@ following names for their contribution to the product.
 * Guy Van den Broeck
 * Happy-melon
 * Hojjat
+* Ian Baker
 * Ilmari Karonen
 * Jack D. Pond
 * Jack Phoenix
 * Jan Paul Posma
 * Jason Richey
+* Jeroen De Dauw
+* John Du Hart
 * Jon Harald Søby
 * Juliano F. Ravasi
+* Ryan Kaldari
+* Leo Koppelkamm
 * Leon Weber
 * Leslie Hoare
 * Marco Schuster
+* Marius Hoch
 * Matěj Grabovský
 * Matt Johnston
 * Max Semenik
@@ -47,8 +59,11 @@ following names for their contribution to the product.
 * MinuteElectron
 * Mohamed Magdy
 * Nathaniel Herman
+* Neil Kandalgaonkar
 * Nicolas Dumazet
 * Niklas Laxström
+* Ori Livneh
+* Patrick Reilly
 * Philip Tzou
 * Platonides
 * Purodha Blissenbach
@@ -65,22 +80,32 @@ following names for their contribution to the product.
 * Siebrand Mazeland
 * SQL
 * Soxred93
+* Szymon Świerkosz
 * Thomas Bleher
 * Tim Starling
 * Timo Tijhof
-* Tom Gries
+* Thomas Gries
 * Trevor Parscal
 * Victor Vasiliev
 * Yesid Carrillo
 * Yuri Astrakhan
 
 == Patch Contributors ==
+* Aaron Pramana
+* Aaron Ball
 * Agbad
 * Ahmad Sherif
 * Alejandro Mery
 * Amalthea
+* Amir E. Aharoni
+* Andrew Dunbar
 * Antonio Ospite
+* Asier Lostalé
 * Azliq7
+* Bagariavivek
+* Bartosz Dziewoński
+* Beau
+* Benny Situ
 * Bergi
 * Borislav Manolov
 * Brad Jorsch
@@ -88,85 +113,136 @@ following names for their contribution to the product.
 * Brianna Laugher
 * Carlin
 * Carsten Nielsen
+* Chris Steipp
+* Christian Neubauer
+* Christian Aistleitner
 * Conrad Irwin
+* cryptocoryne
 * Dan Barrett
 * Dan Collins
 * Dan Nessett
 * Daniel Arnold
+* Daniel Werner
+* David Baumgarten
 * Denny Vrandecic
+* Dévai Tamás
+* Ebrahim Byagowi
+* Edward Z. Yang
+* Elvis Stansvik
+* Eranroz
 * Erwin Dokter
+* Étienne Beaulé
+* Federico Leva
 * FunPika
 * fomafix
+* Gabriel Wicke
+* Gero Scholz
+* Gilles van den Hoven
 * Grunny
 * Harry Burt
 * Ireas
+* Jacob Block
+* Jan Gerber
+* Jan Luca Naumann
 * Jaska Zedlik
 * Jeremy Baron
 * Jidanni
 * Jimmy Xu
-* John Du Hart
 * Jonathan Wiltshire
-* Karun Dambietz
+* John N
+* JuneHyeon Bae
+* Jure Kajzer
+* Karun Dambiec
+* Katie Filbert
+* Kevin Israel
 * Kim Hyun-Joon
 * Lee Worden
 * Lejonel
+* Leon Liesener
 * liangent
 * Louperivois
 * Lucas Garczewski
 * Luigi Corsaro
 * Lupo
+* Madman
 * Manuel Menal
 * Marcin Cieślak
 * Marcus Buck
+* Marc-André Pelletier
+* Mark Hershberger
+* Mark Holmquist
 * Marooned
 * Mathias Ertl
+* Matthias Mullie
 * Matthew Britton
 * mati
+* Max
 * Max Sikström
+* merl
 * Michael Dale
 * Michael De La Rue
 * Michael M.
+* Michael Newton
 * Michael Walsh
 * Mike Horvath
 * Mormegil
+* moejoe0000
+* MrBlueSky
 * MrPete
 * MZMcBride
 * mybugs.mail
 * Nakon
 * Nathan Larson
 * nephele
+* Nik
+* Nx.devnull
+* Nikola Kovacs
 * Nikolaos S. Karastathis
+* Nischay Nahata
 * Olaf Lenz
+* Olivier Finlay Beaton
+* Patricio Molina
 * Paul Copperman
 * Paul Oranje
+* Peter Gehres
+* Petr Onderka
 * PieRRoMaN
 * quietust
 * René Kijewski
 * rgcjonas
+* Rob Moen
 * Robert Treat
 * RockMFR
+* Russell Blau
+* Rusty Burchfield
+* S Page
 * Salvatore Ingala
+* Santhosh Thottingal
 * Scott Colcord
+* se4598
+* Sébastien Santoro
 * Simon Walker
 * Solitarius
-* ST47
+* Søren Løvborg
+* Srikanth Lakshmanan
 * Stefano Codari
 * Str4nd
+* Subramanya Sastry
 * svip
 * The Evil IP address
+* Tim Landscheidt
 * Tisane
+* Tyler Anthony Romeo
 * Umherirrender
+* Van de Bugger
 * Ville Stadista
 * Vitaliy Filippov
+* Waldir Pimenta
 * William Demchick
+* Yusuke Matsubara
 * Yuvaraj Pandian T
 * Zachary Hauri
 
 == Translators ==
-* Anders Wegge Jakobsen
-* Hk kng
-* Hojjat
-* Meno25
-* Rotem Liss
-* Shinjiman
-* Translatewiki.net Translators http://translatewiki.net/wiki/Special:ListUsers/translator
+
+* [https://translatewiki.net/wiki/Translating:MediaWiki/Credits Translators on translatewiki.net and others]

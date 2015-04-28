@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hydra"
+		]
+	},
+	"semanticcompoundqueries-desc": "解析器的函数，同时显示多个语义查询"
+}

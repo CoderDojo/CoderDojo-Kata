@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"F.trott",
+			"Geitost",
+			"Kghbln"
+		]
+	},
+	"semanticformsinputs-desc": "Ermöglicht verschiedene zusätzliche Eingabearten für [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]",
+	"semanticformsinputs-wrongformat": "Falsches Format.",
+	"semanticformsinputs-close": "Schließen",
+	"semanticformsinputs-prev": "Voriger Monat",
+	"semanticformsinputs-next": "Nächster Monat",
+	"semanticformsinputs-today": "Heute",
+	"semanticformsinputs-dateformatlong": "d. MM yy",
+	"semanticformsinputs-dateformatshort": "dd.mm.yy",
+	"semanticformsinputs-firstdayofweek": "1",
+	"semanticformsinputs-malformedregexp": "Fehlerhafter regulärer Ausdruck ($1)",
+	"semanticformsinputs-datepicker-dateformat": "Die Zeichenfolge des Datumsformats. Weitere Informationen sind in der [https://www.mediawiki.org/w/index.php?title=Extension:Semantic_Forms_Inputs&fromsection=Date_picker#Parameters Online-Dokumentation] zu finden.",
+	"semanticformsinputs-datepicker-weekstart": "Der erste Tag der Woche (0 - Sonntag, 1 - Montag, usw.)",
+	"semanticformsinputs-datepicker-firstdate": "Das erste auswählbare Datum (im Format JJJJ/MM/TT).",
+	"semanticformsinputs-datepicker-lastdate": "Das letzte auswählbare Datum (im Format JJJJ/MM/TT).",
+	"semanticformsinputs-datepicker-disabledaysofweek": "Eine Liste der Tage, die nicht ausgewählt werden können (z. B. das Wochenende: 6,0).",
+	"semanticformsinputs-datepicker-highlightdaysofweek": "Eine Liste der Tage, die hervorgehoben angezeigt werden sollen (z. B. das Wochenende: 6,0).",
+	"semanticformsinputs-datepicker-disabledates": "Eine kommagetrennte Liste deaktivierter Tage/Zeiträume (Tage im Format JJJJ/MM/TT, Zeiträume im Format JJJJ/MM/TT-JJJJ/MM/TT).",
+	"semanticformsinputs-datepicker-highlightdates": "Eine kommagetrennte Liste von Tagen/Zeiträumen, die hervorgehoben angezeigt werden sollen (Tage im Format JJJJ/MM/TT, Zeiträume im Format JJJJ/MM/TT-JJJJ/MM/TT).",
+	"semanticformsinputs-datepicker-showweeknumbers": "Sollen die Wochennummern Links von der Woche angezeigt werden?",
+	"semanticformsinputs-datepicker-enableinputfield": "Sollen die Benutzer die Eingabefelder direkt bearbeiten können, oder nur über die Datumsauswahl?",
+	"semanticformsinputs-datepicker-showresetbutton": "Soll eine Schaltfläche zum Zurücksetzen angezeigt werden? Dies ist für die Benutzer die einzige Möglichkeit die Eingabe im Eingabefeld zu entfernen, sofern das direkte Bearbeiten deaktiviert wurde.",
+	"semanticformsinputs-timepicker-mintime": "Die früheste anzuzeigende Zeit (im Format hh:mm).",
+	"semanticformsinputs-timepicker-maxtime": "Die späteste anzuzeigende Zeit (im Format hh:mm).",
+	"semanticformsinputs-timepicker-interval": "Der Intervall zwischen den Minuten (Zahlen zwischen 1 und 60).",
+	"semanticformsinputs-timepicker-enableinputfield": "Sollen die Benutzer die Eingabefelder direkt bearbeiten können, oder nur über die Datumsauswahl?",
+	"semanticformsinputs-timepicker-showresetbutton": "Soll eine Schaltfläche zum Zurücksetzen angezeigt werden? Dies ist für die Benutzer die einzige Möglichkeit die Eingabe im Eingabefeld zu entfernen, sofern das direkte Bearbeiten deaktiviert wurde.",
+	"semanticformsinputs-regexp-regexp": "Der reguläre Ausdruck mit dem die Eingabe übereinstimmen muss, um gültig zu sein. Der Wert muss einschließlich der Schrägstriche angegeben werden. Der Standardwert ist „/.*/“ und bedeutet „alle Werte“.",
+	"semanticformsinputs-regexp-basetype": "Der Basiseingabetyp der verwendet werden soll. Dies kann jeder Eingabetyp sein, der ein HTML-Formularelement für die Typen Eingabe oder Auswahl generieren kann (z. B. „text“, „listbox“, „datepicker“), oder ein anderer regulärer Ausdruck. Der Standardwert ist „text“.",
+	"semanticformsinputs-regexp-baseprefix": "Das Präfix für die Parameter des Basiseingabetyps.",
+	"semanticformsinputs-regexp-orchar": "Das OR-Zeichen, das bei regulären Ausdrücken, anstatt von „|“ verwendet werden soll. Der Standardwert ist „!“.",
+	"semanticformsinputs-regexp-inverse": "Sofern festgelegt, darf die Eingabe nicht dem regulären Ausdruck entsprechen, um gültig zu sein. Dies bedeutet, dass der reguläre Ausdruck invertiert wird.",
+	"semanticformsinputs-regexp-message": "Die Fehlermeldung, die angezeigt werden soll, sofern der Vergleich scheitert. Der Standardwert ist „Das Format ist falsch.“, oder das Äquivalent der zutreffenden Übersetzung.",
+	"semanticformsinputs-menuselect-structure": "Die Menüstruktur als ungeordnete Liste.",
+	"semanticformsinputs-menuselect-enableinputfield": "Sollen die Benutzer die Eingabefelder direkt bearbeiten können?"
+}

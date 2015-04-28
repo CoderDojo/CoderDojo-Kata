@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Anakmalaysia",
+			"Zamwan",
+			"Pizza1016"
+		]
+	},
+	"adminlinks": "Pautan penyelia",
+	"adminlinks-desc": "Menambahkan sebuah [[Special:AdminLinks|laman khas]] yang menyediakan pautan-pautan yang berguna kepada penyelia",
+	"adminlinks_documentation": "Pendokumenan $1",
+	"adminlinks_general": "Umum",
+	"adminlinks_editsidebar": "Sunting bar sisi",
+	"adminlinks_editcss": "Sunting fail CSS",
+	"adminlinks_editmainpagename": "Sunting nama laman utama",
+	"adminlinks_users": "Pengguna",
+	"adminlinks_createuser": "Cipta pengguna",
+	"adminlinks_browsesearch": "Layari dan cari",
+	"adminlinks_importexport": "Import dan eksport",
+	"right-adminlinks": "Melihat pautan ke [[Special:AdminLinks|pautan penyelia]]"
+}

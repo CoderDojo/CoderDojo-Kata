@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gwendal",
+			"Y-M D"
+		]
+	},
+	"semanticformsinputs-desc": "Doareoù moned ouzhpenn evit [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Semantic_Forms Semantic Forms]",
+	"semanticformsinputs-wrongformat": "Furmad fall.",
+	"semanticformsinputs-close": "Serriñ",
+	"semanticformsinputs-prev": "Kent",
+	"semanticformsinputs-next": "War-lerc'h",
+	"semanticformsinputs-today": "Hiziv"
+}

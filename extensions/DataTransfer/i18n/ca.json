@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Arnaugir",
+			"Jordi Roqué",
+			"SMP",
+			"Solde",
+			"Toniher"
+		]
+	},
+	"datatransfer-desc": "Permet importar i exportar les dades que contenen les crides de les plantilles",
+	"viewxml": "Visualitza l'XML",
+	"dt_viewxml_docu": "Seleccioneu d'entre les següents categories i espais de noms per a veure'l en format XML.",
+	"dt_viewxml_categories": "Categories",
+	"dt_viewxml_namespaces": "Espais de noms",
+	"dt_viewxml_simplifiedformat": "Format simplificat",
+	"dt_xml_namespace": "Espai de noms",
+	"dt_xml_pages": "Pàgines",
+	"dt_xml_page": "Pàgina",
+	"dt_xml_template": "Plantilla",
+	"dt_xml_field": "Camp",
+	"dt_xml_name": "Nom",
+	"dt_xml_title": "Títol",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Text lliure",
+	"importxml": "Importa un XML",
+	"dt_import_selectfile": "Seleccioneu el fitxer $1 per importar:",
+	"dt_import_encodingtype": "Joc de caràcters:",
+	"dt_import_skipexisting": "Omet",
+	"dt_import_appendtoexisting": "Afegeix-ho al contingut existent",
+	"dt_import_summarydesc": "Resum de la importació:",
+	"dt_import_editsummary": "Importació $1",
+	"dt_import_importing": "S'està important...",
+	"dt_import_success": "$1 {{PLURAL:$1|pàgina|pàgines}} es crearan des del fitxer $2.",
+	"importcsv": "Importa un CSV",
+	"dt_importcsv_badheader": "Error: la capçalera de la columna $1, '$2', ha de ser o bé '$3', '$4' o bé de la forma 'template_name[field_name]'",
+	"right-datatransferimport": "Importar dades"
+}

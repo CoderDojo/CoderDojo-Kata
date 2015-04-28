@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bennylin"
+		]
+	},
+	"adminlinks": "Pranala admin",
+	"adminlinks-desc": "Menambahkan sebuah [[Special:AdminLinks|halaman istimewa]] yang berisi pranala-pranala yang berguna untuk admin",
+	"adminlinks_documentation": "Dokumentasi $1",
+	"adminlinks_general": "Umum",
+	"adminlinks_editsidebar": "Sunting kotak samping",
+	"adminlinks_editcss": "Sunting berkas CSS",
+	"adminlinks_editmainpagename": "Sunting nama halaman utama",
+	"adminlinks_users": "Pengguna",
+	"adminlinks_createuser": "Buat pengguna",
+	"adminlinks_browsesearch": "Menjelajah dan mencari",
+	"adminlinks_importexport": "Mengimpor dan ekspor",
+	"right-adminlinks": "Lihat pranala ke [[Special:AdminLinks|Pranala admin]]"
+}

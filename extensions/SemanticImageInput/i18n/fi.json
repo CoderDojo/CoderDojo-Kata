@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nedergard"
+		]
+	},
+	"sii-desc": "Lisää kuvien lataustavan, joka noutaa kuvan Wikipediasta [https://www.mediawiki.org/wiki/Extension:Semantic_Forms semanttisiin lomakkeisiin]",
+	"sii-imageinput-loading": "Ladataan kuvaa..."
+}

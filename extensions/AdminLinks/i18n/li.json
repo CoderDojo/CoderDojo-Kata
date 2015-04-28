@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pahles"
+		]
+	},
+	"adminlinks": "Verwiezinge veur systeemwèrkers",
+	"adminlinks-desc": "Deit 'n [[Special:AdminLinks|speciaal pagina]] bie mèt handige verwiezinge veur systeemwèrkers",
+	"adminlinks_documentation": "Dokkementatie veur $1",
+	"adminlinks_general": "Algemein",
+	"adminlinks_editsidebar": "Ziebalk bewirke",
+	"adminlinks_editcss": "CSS bewirke",
+	"adminlinks_editmainpagename": "Naam van de huidpagina bewirke",
+	"adminlinks_users": "Gebroekers",
+	"adminlinks_createuser": "Gebroeker aanmake",
+	"adminlinks_browsesearch": "Betrachte en zeuke",
+	"adminlinks_importexport": "Importere en exportere",
+	"right-adminlinks": "De verwiezing nao [[Special:AdminLinks|verwiezinge veur systeemwèrkers]] betrachte"
+}

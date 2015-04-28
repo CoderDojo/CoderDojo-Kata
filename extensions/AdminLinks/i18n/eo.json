@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jagwar",
+			"Yekrats"
+		]
+	},
+	"adminlinks": "Ligiloj por administrantoj",
+	"adminlinks-desc": "Aldonos [[Special:AdminLinks|specialan paĝon]] kiu enhavas helpemajn ligilojn por administrantoj",
+	"adminlinks_documentation": "$1 dokumentaro",
+	"adminlinks_general": "Ĝenerala",
+	"adminlinks_editsidebar": "eldoni iltrabon",
+	"adminlinks_editcss": "eldoni dosieron CSS",
+	"adminlinks_editmainpagename": "Redakti nomon de ĉefpaĝo",
+	"adminlinks_users": "uzantoj",
+	"adminlinks_createuser": "krei uzanton",
+	"adminlinks_browsesearch": "Tralego kaj Serĉo",
+	"adminlinks_importexport": "Importi kaj Eksporti",
+	"right-adminlinks": "Vidi ligilon al [[Special:AdminLinks|Administranto-ligilojn]]"
+}

@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ferrer",
+			"Innv",
+			"Lockal",
+			"Okras",
+			"Александр Сигачёв"
+		]
+	},
+	"datatransfer-desc": "Позволяет импортировать и экспортировать данные, содержащиеся в вызовах шаблонов",
+	"viewxml": "Просмотр XML",
+	"dt_viewxml_docu": "Пожалуйста, выберите категории и пространства имён для просмотра в формате XML.",
+	"dt_viewxml_categories": "Категории",
+	"dt_viewxml_namespaces": "Пространства имён",
+	"dt_viewxml_simplifiedformat": "Упрощённый формат",
+	"dt_xml_namespace": "Пространство имён",
+	"dt_xml_pages": "Страницы",
+	"dt_xml_page": "Страница",
+	"dt_xml_template": "Шаблон",
+	"dt_xml_field": "Поле",
+	"dt_xml_name": "Имя",
+	"dt_xml_title": "Заголовок",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Свободный текст",
+	"importxml": "Импорт XML",
+	"dt_import_selectfile": "Пожалуйста, выберите файл $1 для импорта:",
+	"dt_import_encodingtype": "Тип кодировки:",
+	"dt_import_forexisting": "Для страниц, которые уже существуют:",
+	"dt_import_overwriteexisting": "Переписать существующие данные",
+	"dt_import_mergeintoexisting": "Перезаписывать только поля, содержащиеся в файле",
+	"dt_import_skipexisting": "Пропустить",
+	"dt_import_appendtoexisting": "Добавить к существующим данным",
+	"dt_import_summarydesc": "Описание импорта:",
+	"dt_import_editsummary": "импорт из {{ucfirst:$1}}",
+	"dt_import_importing": "Импортирование...",
+	"dt_import_success": "$1 {{PLURAL:$1|страница была|страниц были|страницы были}} созданы из файла $2.",
+	"importcsv": "Импорт CSV",
+	"importspreadsheet": "Импорт таблицы",
+	"dt_importcsv_badheader": "Ошибка. Заголовок колонки №$1 «$2» должен быть или «$3», или «$4», или в форме «template_name[field_name]»",
+	"right-datatransferimport": "Импорт данных",
+	"dt_filetype_spreadsheet": "таблица"
+}

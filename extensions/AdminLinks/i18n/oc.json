@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"adminlinks": "Ligams d'administracion",
+	"adminlinks-desc": "Apond una [[Special:AdminLinks|pagina especiala]] que conten de ligams utils pels administrators",
+	"adminlinks_documentation": "documentacion de $1",
+	"adminlinks_general": "General",
+	"adminlinks_editsidebar": "Modificar la barra laterala",
+	"adminlinks_editcss": "Modificar lo fichièr CSS",
+	"adminlinks_editmainpagename": "Modificar lo nom de la pagina d'acuèlh",
+	"adminlinks_users": "Utilizaires",
+	"adminlinks_createuser": "Crear un utilizaire",
+	"adminlinks_browsesearch": "Navigacion e recèrca",
+	"adminlinks_importexport": "Importar e exportar",
+	"right-adminlinks": "Vejatz lo ligam cap als [[Special:AdminLinks|ligams d'administracion]]"
+}

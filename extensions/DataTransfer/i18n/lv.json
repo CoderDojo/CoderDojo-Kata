@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"GreenZeb"
+		]
+	},
+	"dt_viewxml_categories": "Kategorijas",
+	"dt_viewxml_namespaces": "Vārdtelpas",
+	"dt_viewxml_simplifiedformat": "Vienkāršots formāts",
+	"dt_xml_namespace": "Vārdtelpa",
+	"dt_xml_pages": "Lapas",
+	"dt_xml_page": "Lapa",
+	"dt_xml_template": "Veidne",
+	"dt_xml_field": "Lauks",
+	"dt_xml_name": "Vārds",
+	"dt_xml_title": "Nosaukums",
+	"dt_xml_id": "ID"
+}

@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno",
+			"Fulup",
+			"Gwendal",
+			"Y-M D"
+		]
+	},
+	"datatransfer-desc": "Aotreañ a ra da enporzhiañ hag ezporzhiañ roadennoù eus galvoù patromoù",
+	"viewxml": "Gwelet XML",
+	"dt_viewxml_docu": "Dibabit e-touez ar rummadoù hag an esaouennoù anv da heul evit gwelet er furmad XML.",
+	"dt_viewxml_categories": "Rummadoù",
+	"dt_viewxml_namespaces": "Esaouennoù anv",
+	"dt_viewxml_simplifiedformat": "Furmad eeunaet",
+	"dt_xml_namespace": "Esaouenn anv",
+	"dt_xml_pages": "Pajennoù",
+	"dt_xml_page": "Pajenn",
+	"dt_xml_template": "Patrom",
+	"dt_xml_field": "Maezienn",
+	"dt_xml_name": "Anv",
+	"dt_xml_title": "Titl",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Testenn dieub",
+	"importxml": "Enporzhiañ  XML",
+	"dt_import_selectfile": "Dibabit ar restr $1 da enporzhiañ :",
+	"dt_import_encodingtype": "Seurt enkodadur :",
+	"dt_import_forexisting": "Evit pajennoù zo anezho dija :",
+	"dt_import_overwriteexisting": "erlec'hiañ an endalc'had zo anezhañ dija",
+	"dt_import_skipexisting": "Lezel a-gostez",
+	"dt_import_appendtoexisting": "Ouzhpennañ d'an endalc'had zo anezhañ dija",
+	"dt_import_summarydesc": "Diverradenn an enporzh :",
+	"dt_import_editsummary": "Enporzhiadur {{ucfirst:$1}}",
+	"dt_import_importing": "Oc'h enporzhiañ...",
+	"dt_import_success": "$1 {{PLURAL:$1|bajenn|pajenn}} a vo krouet diwar ar restr $2.",
+	"importcsv": "Enporzh CSV",
+	"importspreadsheet": "Enporzhiañ ur follenn jediñ",
+	"dt_importcsv_badheader": "Fazi : titl ar bann $1, \"$2\", a rank bezañ \"$3\", \"$4\" pe gant ar stumm \"anv_ar_patrom[anv_ar_vaezienn]\"",
+	"right-datatransferimport": "Enporzhiañ roadennoù",
+	"dt_filetype_spreadsheet": "follenn jediñ"
+}

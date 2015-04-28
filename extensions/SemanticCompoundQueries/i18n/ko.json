@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"아라"
+		]
+	},
+	"semanticcompoundqueries-desc": "동시에 시맨틱 쿼리 여러 개를 보여주는 파서 함수"
+}

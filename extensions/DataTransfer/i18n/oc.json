@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"datatransfer-desc": "Permet l’impòrt e l’expòrt de donadas contengudas dins d'apèls de modèls",
+	"viewxml": "Veire XML",
+	"dt_viewxml_docu": "Seleccionatz demest las categorias e los espacis de nomenatges per visionar en format XML.",
+	"dt_viewxml_categories": "Categorias",
+	"dt_viewxml_namespaces": "Espacis de nomenatge",
+	"dt_viewxml_simplifiedformat": "Format simplificat",
+	"dt_xml_namespace": "Espaci de nom",
+	"dt_xml_pages": "Paginas",
+	"dt_xml_page": "Pagina",
+	"dt_xml_template": "Modèl",
+	"dt_xml_field": "Camp",
+	"dt_xml_name": "Nom",
+	"dt_xml_title": "Títol",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Tèxte Liure",
+	"importxml": "Impòrt en XML",
+	"dt_import_selectfile": "Seleccionatz lo fichièr $1 d'importar :",
+	"dt_import_encodingtype": "Tipe d’encodatge:",
+	"dt_import_skipexisting": "Passar",
+	"dt_import_summarydesc": "Resumit de l’impòrt :",
+	"dt_import_editsummary": "importar en {{ucfirst:$1}}",
+	"dt_import_importing": "Impòrt en cors...",
+	"dt_import_success": "$1 {{PLURAL:$1|pagina serà creada|paginas seràn creadas}} dempuèi lo fichièr $2.",
+	"importcsv": "Impòrt CSV",
+	"dt_importcsv_badheader": "Error : lo títol de colomna $1, « $2 », deu èsser siá « $3 », « $4 » o de la forma « nom_del_modèl[nom_del_camp] »",
+	"right-datatransferimport": "Importar de donadas"
+}

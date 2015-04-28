@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"CERminator",
+			"Palapa",
+			"KWiki"
+		]
+	},
+	"approvedrevs-desc": "Postavljanje jedne revizije stranice kao odobrene",
+	"approvedrevs-logname": "Zapisnik odobravanje revizija",
+	"approvedrevs-logdesc": "Ovo je zapis revizija koje su odobrene.",
+	"approvedrevs-approve": "odobri",
+	"approvedrevs-unapprove": "neodobreno",
+	"approvedrevs-approvesuccess": "Ova revizija stranice je postavljena kao odobrena verzija.",
+	"approvedrevs-unapprovesuccess": "Više ne postoji odobrena verzija ove stranice.\nUmjesto toga će biti prikazana posljednja revizija.",
+	"approvedrevs-unapprovesuccess2": "Više ne postoji odobrena verzija ove stranice.\nUmjesto toga, bit će prikazana prazna stranica.",
+	"approvedrevs-approveaction": "postavi $2 kao odobrenu reviziju za \"[[$1]]\"",
+	"approvedrevs-unapproveaction": "ukloni odobrenu reviziju za \"[[$1]]\"",
+	"approvedrevs-notlatest": "Ovo je odobrena verzija ove stranice; to nije najnovija verzija.",
+	"approvedrevs-approvedandlatest": "Ovo je odobrena verzija ove stranice, a ujedno i najnovija.",
+	"approvedrevs-blankpageshown": "Nijedna revizija nije odobrena za ovu stranicu.",
+	"approvedrevs-editwarning": "Molimo vas da imate u vidu da sada uređujete posljednju reviziju ove stranice, koja nije odobrena što je prikazano po postavkama.",
+	"approvedrevs": "Odobrene revizije",
+	"approvedrevs-approvedpages": "Odobrene stranice",
+	"approvedrevs-notlatestpages": "Stranice čija odobrena revizija nije njihova najnovija",
+	"approvedrevs-unapprovedpages": "Neodobrene stranice",
+	"approvedrevs-view": "Pregled:",
+	"approvedrevs-revisionnumber": "revizija $1",
+	"approvedrevs-approvedby": "odobreno od strane $1 dana $2",
+	"approvedrevs-difffromlatest": "razl od posljednje",
+	"approvedrevs-approvelatest": "odobri posljednju",
+	"approvedrevs-approvethisrev": "Odobri ovu reviziju",
+	"approvedrevs-viewlatestrev": "Pogledaj posljednju reviziju",
+	"right-approverevisions": "Postavi određenu reviziju wiki stranice kao odobrenu",
+	"right-viewlinktolatest": "Vidi tekst objašnjenja na vrhu stranica koje imaju odobrenu reviziju"
+}

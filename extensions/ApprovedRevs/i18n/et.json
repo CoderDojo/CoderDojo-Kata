@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pikne"
+		]
+	},
+	"approvedrevs-desc": "Võimaldab lehekülje üksiku redaktsiooni heaks kiita.",
+	"approvedrevs-logname": "Redaktsioonide heakskiidu logi",
+	"approvedrevs-logdesc": "Selles logis on heakskiidetud redaktsioonid.",
+	"approvedrevs-approve": "kiida heaks",
+	"approvedrevs-unapprove": "tühista heakskiit",
+	"approvedrevs-approvesuccess": "Lehekülje see redaktsioon on märgitud heakskiidetud versiooniks.",
+	"approvedrevs-unapprovesuccess": "Sellel leheküljel pole enam heakskiidetud versiooni.\nSelle asemel näidatakse viimast redaktsiooni.",
+	"approvedrevs-unapprovesuccess2": "Sellel leheküljel pole enam heakskiidetud versiooni.\nSelle asemel näidatakse tühja lehekülge.",
+	"approvedrevs-approveaction": "märkis lehekülje \"[[$1]]\" heakskiidetud redaktsiooniks $2",
+	"approvedrevs-unapproveaction": "tühistas lehekülje \"[[$1]]\" redaktsiooni heakskiidu",
+	"approvedrevs-notlatest": "See on selle lehekülje heakskiidetud redaktsioon, mitte kõige viimane.",
+	"approvedrevs-approvedandlatest": "See on selle lehekülje heakskiidetud redaktsioon, ühtlasi ka kõige viimane.",
+	"approvedrevs-blankpageshown": "Ühtki selle lehekülje redaktsiooni pole heaks kiidetud.",
+	"approvedrevs-editwarning": "Pane tähele, et redigeerid nüüd selle lehekülje viimast redaktsiooni, mitte heakskiidetud redaktsiooni, mida vaikimisi näidatakse.",
+	"approvedrevs": "Heakskiidetud redaktsioonid",
+	"approvedrevs-approvedpages": "Kõik heakskiidetud redaktsiooniga leheküljed",
+	"approvedrevs-notlatestpages": "Leheküljed, mille heakskiidetud redaktsioon pole ühtlasi viimane",
+	"approvedrevs-unapprovedpages": "Heakskiitmata leheküljed",
+	"approvedrevs-view": "Vaata:",
+	"approvedrevs-revisionnumber": "redaktsioon $1",
+	"approvedrevs-approvedby": "heaks kiitnud {{GENDER:$3|$1}} kuupäeval $4, kell $5",
+	"approvedrevs-difffromlatest": "erinevus viimasest"
+}

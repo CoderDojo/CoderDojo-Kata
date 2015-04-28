@@ -1,0 +1,41 @@
+{
+    "@metadata": {
+        "authors": [
+            "Yaron Koren"
+        ]
+    },
+    "datatransfer-desc": "Allows for importing and exporting data contained in template calls",
+    "viewxml": "View XML",
+    "dt_viewxml_docu": "Please select among the following categories and namespaces to view in XML format.",
+    "dt_viewxml_categories": "Categories",
+    "dt_viewxml_namespaces": "Namespaces",
+    "dt_viewxml_simplifiedformat": "Simplified format",
+    "dt_xml_namespace": "Namespace",
+    "dt_xml_pages": "Pages",
+    "dt_xml_page": "Page",
+    "dt_xml_template": "Template",
+    "dt_xml_field": "Field",
+    "dt_xml_name": "Name",
+    "dt_xml_title": "Title",
+    "dt_xml_id": "ID",
+    "dt_xml_freetext": "Free Text",
+    "importxml": "Import XML",
+    "dt_import_selectfile": "Please select the $1 file to import:",
+    "dt_import_encodingtype": "Encoding type:",
+    "dt_import_forexisting": "For pages that already exist:",
+    "dt_import_overwriteexisting": "Overwrite existing content",
+    "dt_import_mergeintoexisting": "Overwrite only fields contained in the file",
+    "dt_import_skipexisting": "Skip",
+    "dt_import_appendtoexisting": "Append to existing content",
+    "dt_import_summarydesc": "Summary of import:",
+    "dt_import_editsummary": "{{ucfirst:$1}} import",
+    "dt_import_importing": "Importing...",
+    "dt_import_success": "$1 {{PLURAL:$1|page|pages}} will be created from the $2 file.",
+    "importcsv": "Import CSV",
+    "importspreadsheet": "Import spreadsheet",
+    "dt_importcsv_badheader": "Error: the column $1 header, '$2', must be either '$3', '$4' or of the form 'template_name[field_name]'",
+    "right-datatransferimport": "Import data",
+    "dt_filetype_xml": "XML",
+    "dt_filetype_csv": "CSV",
+    "dt_filetype_spreadsheet": "spreadsheet"
+}

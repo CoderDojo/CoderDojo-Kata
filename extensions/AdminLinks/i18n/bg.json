@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"DCLXVI",
+			"Stanqo",
+			"StanProg"
+		]
+	},
+	"adminlinks": "Административни препратки",
+	"adminlinks-desc": "Добавя [[Special:AdminLinks|специална страница]], която съдържа полезни препратки за администраторите",
+	"adminlinks_documentation": "$1 документация",
+	"adminlinks_general": "Основни",
+	"adminlinks_editsidebar": "Редактиране на страничната лента",
+	"adminlinks_editcss": "Редактиране на CSS файл",
+	"adminlinks_editmainpagename": "Редактиране името на началната страница",
+	"adminlinks_users": "Потребители",
+	"adminlinks_createuser": "Създаване на потребител",
+	"adminlinks_browsesearch": "Разглеждане и търсене",
+	"adminlinks_importexport": "Внасяне и изнасяне",
+	"right-adminlinks": "Показване на препратката към [[Special:AdminLinks|Административни препратки]]"
+}

@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Centerlink",
+			"Crt",
+			"Nedergard",
+			"Nike",
+			"Str4nd",
+			"Vililikku"
+		]
+	},
+	"datatransfer-desc": "Mahdollistaa tuoda ja viedä dataa, joka on mallinekutsuissa.",
+	"viewxml": "Näytä XML",
+	"dt_viewxml_docu": "Valitse yksi seuraavista luokista ja nimiavaruuksista tarkasteltavaksi XML-muodossa.",
+	"dt_viewxml_categories": "Luokat",
+	"dt_viewxml_namespaces": "Nimiavaruudet",
+	"dt_viewxml_simplifiedformat": "Yksinkertaistettu muoto",
+	"dt_xml_namespace": "Nimiavaruus",
+	"dt_xml_pages": "Sivut",
+	"dt_xml_page": "Sivu",
+	"dt_xml_template": "Malline",
+	"dt_xml_field": "Kenttä",
+	"dt_xml_name": "Nimi",
+	"dt_xml_title": "Otsikko",
+	"dt_xml_id": "Tunniste",
+	"dt_xml_freetext": "Vapaa teksti",
+	"importxml": "XML-tuonti",
+	"dt_import_selectfile": "Valitse $1-tiedosto tuotavaksi:",
+	"dt_import_encodingtype": "Merkistötyyppi:",
+	"dt_import_forexisting": "Nykyisille sivuille:",
+	"dt_import_overwriteexisting": "Korvaa nykyinen sisältö",
+	"dt_import_skipexisting": "Ohita",
+	"dt_import_appendtoexisting": "Liitä nykyiseen sisältöön",
+	"dt_import_summarydesc": "Tuonnin yhteenveto",
+	"dt_import_editsummary": "$1-tuonti",
+	"dt_import_importing": "Tuodaan...",
+	"dt_import_success": "$1 {{PLURAL:$1|sivu|sivua}} luodaan $2-tiedostosta.",
+	"importcsv": "CSV-tuonti",
+	"dt_importcsv_badheader": "Virhe: sarake $1 otsake, '$2', on oltava joko '$3', '$4' tai muotoa 'mallinne_nimi[kenttä_nimi]'",
+	"right-datatransferimport": "Tuoda tiedot"
+}

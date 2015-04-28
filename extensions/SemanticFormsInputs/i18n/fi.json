@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beluga",
+			"Nedergard",
+			"Silvonen"
+		]
+	},
+	"semanticformsinputs-desc": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Semantic_Forms Semanttisten lomakkeiden] lisäsyötetyypit",
+	"semanticformsinputs-wrongformat": "Väärä muoto.",
+	"semanticformsinputs-close": "Sulje",
+	"semanticformsinputs-prev": "Edellinen",
+	"semanticformsinputs-next": "Seuraava",
+	"semanticformsinputs-today": "Tänään",
+	"semanticformsinputs-malformedregexp": "Virheellisesti muodostettu säännöllinen lauseke ($1).",
+	"semanticformsinputs-datepicker-dateformat": "Päivämäärän muotomerkkijono. Lisätietoja löytyy [https://www.mediawiki.org/w/index.php?title=Extension:Semantic_Forms_Inputs&fromsection=Date_picker#Parameters ohjeesta].",
+	"semanticformsinputs-datepicker-weekstart": "Viikon ensimmäinen päivä (0 - sunnuntai, 1 - maanantai...).",
+	"semanticformsinputs-datepicker-firstdate": "Ensimmäinen päivämäärä, joka voidaan valita (muodossa vvvv/kk/pp).",
+	"semanticformsinputs-datepicker-lastdate": "Viimeinen päivämäärä, joka voidaan valita (muodossa vvvv/kk/pp).",
+	"semanticformsinputs-datepicker-disabledaysofweek": "Luettelo päivistä, joita ei voi valita (esim. viikonloppu: 6, 0).",
+	"semanticformsinputs-datepicker-highlightdaysofweek": "Luettelo päivistä, jotka korostetaan (esim. viikonloppu: 6, 0).",
+	"semanticformsinputs-datepicker-disabledates": "Pilkuilla erottu luettelo kielletyistä päivämäristä/päivämääräalueista (päivämäärät muodossa vvvv/kk/pp, päivämääräalueet muodossa vvvv/kk/pp-vvvv/kk/pp).",
+	"semanticformsinputs-datepicker-highlightdates": "Pilkuilla erottu luettelo päivämäristä/päivämääräalueista, jotka korostetaan (päivämäärät muodossa vvvv/kk/pp, päivämääräalueet muodossa vvvv/kk/pp-vvvv/kk/pp).",
+	"semanticformsinputs-datepicker-showweeknumbers": "Näytetäänkö viikkonumerot viikon vasemmalla puolella?",
+	"semanticformsinputs-datepicker-enableinputfield": "Saako käyttäjä syöttää tiedon kirjoittamalla vai vain päimääräpoimijan avulla?",
+	"semanticformsinputs-datepicker-showresetbutton": "Näytetäänkö \"Tyhjennä\" -painike? Se on ainoa tapa tyhjentää kentät, jos käyttäjä ei saa kirjoittaa niihin.",
+	"semanticformsinputs-timepicker-mintime": "Ensimmäinen näytettävä aika. Muoto: hh:mm",
+	"semanticformsinputs-timepicker-maxtime": "Viimeinen näytettävä aika. Muoto: hh:mm",
+	"semanticformsinputs-timepicker-interval": "Väli minuutteina. Numerot 1 ja 60 välillä.",
+	"semanticformsinputs-timepicker-enableinputfield": "Saako käyttäjä syöttää tiedon kirjoittamalla vai vain päimääräpoimijan avulla?",
+	"semanticformsinputs-timepicker-showresetbutton": "Näytetäänkö \"Tyhjennä\" -painike? Se on ainoa tapa tyhjentää kentät, jos käyttäjä ei saa kirjoittaa niihin.",
+	"semanticformsinputs-regexp-baseprefix": "Perustyypin parametrien etuliite.",
+	"semanticformsinputs-regexp-orchar": "Säännöllisessä lausekkeessa |-merkin sijasta käytettävä TAI-merkki. Oletuksena ”!”.",
+	"semanticformsinputs-menuselect-structure": "Valikkorakenne numeroimattomana luettelona.",
+	"semanticformsinputs-menuselect-enableinputfield": "Saako käyttäjä kirjoittaa tiedon kenttään?"
+}

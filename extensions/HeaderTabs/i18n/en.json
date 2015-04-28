@@ -1,0 +1,9 @@
+{
+    "@metadata": {
+        "authors": []
+    },
+    "headertabs-desc": "Adds tabs to the page separating top-level sections",
+    "headertabs-edittab": "edit",
+    "headertabs-edittab-hint": "Edit tab",
+    "headertabs-edittab-key": "t"
+}

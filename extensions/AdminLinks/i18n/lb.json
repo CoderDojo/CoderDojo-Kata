@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Les Meloures",
+			"Robby",
+			"Soued031"
+		]
+	},
+	"adminlinks": "Linke fir Administrateuren",
+	"adminlinks-desc": "Setzt eng [[Special:AdminLinks|Spezialsäit]] derbäi mat nëtzleche Linke fir Administrateuren",
+	"adminlinks_documentation": "$1 Dokumentatioun",
+	"adminlinks_general": "Allgemeng",
+	"adminlinks_editsidebar": "De säitleche Menü änneren",
+	"adminlinks_editcss": "CSS-Fichier änneren",
+	"adminlinks_editmainpagename": "Den Numm vun der Haaptsäit änneren",
+	"adminlinks_users": "Benotzer",
+	"adminlinks_createuser": "E Benotzer uleeën",
+	"adminlinks_browsesearch": "Bliederen a sichen",
+	"adminlinks_importexport": "Importéieren an exportéieren",
+	"right-adminlinks": "Kuckt the Link op [[Special:AdminLinks|Like fir Administrateuren]]"
+}

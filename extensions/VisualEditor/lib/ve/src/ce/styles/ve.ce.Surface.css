@@ -1,0 +1,49 @@
+/*!
+ * VisualEditor ContentEditable Surface styles.
+ *
+ * @copyright 2011-2014 VisualEditor Team and others; see http://ve.mit-license.org
+ */
+
+.ve-ce-surface {
+	overflow: hidden;
+	/*
+	Remember, don't set font-size here.
+	Should be inherited from the VE target container.
+	*/
+}
+
+/* @noflip */
+.ve-ce-surface-highlights {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.ve-ce-surface-paste {
+	position: fixed;
+	top: 1em; /* Hack: Stop the viewport scrolling when the paste target is typed into */
+	left: 0;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+	overflow: hidden;
+}
+
+.ve-ce-surface-paste * {
+	width: 1px !important;
+	height: 1px !important;
+}
+
+/* MediaWiki PHP Parser does not wrap text inside image captions in <p> but we do (cause we have to).
+ * Let's make those <p> looks like they are not there by proper CSS styling.
+ */
+/*csslint overqualified-elements:false */
+.ve-ce-surface .thumbcaption p.ve-ce-generated-wrapper {
+	display: inline;
+	padding: 0;
+	line-height: inherit;
+}
+
+.ve-ce-surface .thumbcaption .ve-ce-branchNode-slug {
+	display: none;
+}

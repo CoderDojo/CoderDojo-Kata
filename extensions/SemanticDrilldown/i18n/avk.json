@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wikimistusik"
+		]
+	},
+	"browsedata": "Origwigara",
+	"sd_browsedata_choosecategory": "Kiblara va loma",
+	"sd_browsedata_viewcategory": "Wira va loma",
+	"sd_browsedata_subcategory": "Volveyloma",
+	"sd_browsedata_other": "Ar",
+	"sd_browsedata_none": "Mek",
+	"sd_browsedata_filterbyvalue": "Espara kan bata voda",
+	"sd_browsedata_filterbysubcategory": "Espara kan bata volveyloma",
+	"sd_browsedata_otherfilter": "Nedira va bueem vadjes va ara esparavoda",
+	"sd_browsedata_nonefilter": "Nedira va bueem mevadjes va bata espara",
+	"sd_browsedata_removefilter": "Tioltera va bata espara",
+	"sd_browsedata_removesubcategoryfilter": "Tioltera va bata volveylomafa espara",
+	"sd_browsedata_resetfilters": "Dimplekura va espara",
+	"filters": "Espasikieem",
+	"sd_filters_docu": "Bata espara se tid in {{SITENAME}} :",
+	"createfilter": "Redura va espara",
+	"sd_createfilter_name": "Yolt :",
+	"sd_createfilter_property": "Pilkaca espanon skuna :",
+	"sd_createfilter_usepropertyvalues": "Favera va vodeem ke bata esparapilkaca",
+	"sd_createfilter_usecategoryvalues": "Plekura va esparavoda mal bata loma :",
+	"sd_createfilter_label": "Kral tori bata espara (rotisa) :",
+	"sd_blank_error": "me rotir vlardafa",
+	"sd_filter_coversproperty": "Bata espara va $1 pilkaca skur.",
+	"sd_filter_getsvaluesfromcategory": "Mal $1 loma in va voda plekur.",
+	"sd_filter_requiresfilter": "Batcoba va tira ke $1 espasiki kucilar.",
+	"sd_filter_haslabel": "In tir dem $1 kral."
+}

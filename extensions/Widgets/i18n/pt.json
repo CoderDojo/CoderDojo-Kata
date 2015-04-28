@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hamilton Abreu",
+			"SandroHc"
+		]
+	},
+	"widgets-desc": "Permite que os administradores da wiki adicionem ''widgets free-form'' à wiki, editando páginas no espaço nominal {{ns:widget}}.\nWidgets fornecidos pela comunidade podem ser encontrados na [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]",
+	"widgets-error": "Erro no [[{{ns:widget}}:$1|''widget'' $1]]",
+	"group-widgeteditor": "Editores de ''widgets''",
+	"group-widgeteditor-member": "{{GENDER:$1|editor|editora}} de ''widgets''",
+	"grouppage-widgeteditor": "{{ns:project}}:Editores de ''widgets''",
+	"right-editwidgets": "Criar e editar [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Widgets widgets] no espaço nominal <tt>{{ns:widget}}</tt>"
+}

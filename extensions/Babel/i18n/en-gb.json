@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jdforrester",
+			"Pooja.srivastava"
+		]
+	},
+	"babel-autocreate-abort": "The username you specified is used for [[$1|Babel]] category auto-creation and cannot be registered.",
+	"babel-autocreate-reason": "Automatically creating [[$1|Babel]] category page."
+}

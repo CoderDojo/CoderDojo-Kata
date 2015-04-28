@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"OC Ripper",
+			"Kolega2357"
+		]
+	},
+	"babel": "Babel korisničke informacije\n\nБабел корисничке информације",
+	"babel-desc": "Dodaje <code>#babel</code> parsersku funkciju koja omogućava automatsko pravljenje babel korisničke kutije u stupcu sa mogućnostima uključivanja prilagođenih šablona/predložaka",
+	"babel-url": "Project:Babel",
+	"babel-footer-url": ":Category:Babel - Korisnici po jeziku",
+	"babel-autocreate-abort": "Korisničko ime koje ste naveli se koristi za automatsko pravljenje [[$1|Babel]] kategorija i ne može se registrirati.",
+	"babel-autocreate-reason": "Automatsko stvaranje stranica [[$1|Babel]] kategorija.",
+	"babel-autocreate-text-levels": "Korisnici u ovoj kategoriji su označeni da imaju nivo $1 znanja $2 jezika.",
+	"babel-autocreate-text-main": "Korisnici u ovoj kategoriji su označeni da imaju znanje $1 jezika.",
+	"babel-0": "Ovaj korisnik [[$1|ne]] razum(ij)e [[$2|$3]] srpskohrvatski jezik.\n\nОвај корисник [[$1|не]] разум(иj)е [[$2|$3]] српскохрватски језик.",
+	"babel-1": "Ovaj korisnik posjeduje [[$1|osnovno]] razumijevanje [[$2|$3]] jezika.",
+	"babel-2": "Ovaj korisnik [[$1|srednje]] razumije [[$2|$3]].",
+	"babel-3": "Ovaj korisnik [[$1|napredno]] razumije [[$2|$3]].",
+	"babel-4": "Ovaj korisnik razumije [[$2|$3]] [[$1|gotovo kao maternji]] jezik.",
+	"babel-5": "Ovaj korisnik [[$2|$3]] na [[$1|profesionalnom]] nivou.",
+	"babel-N": "Ovaj korisnik razumije [[$2|$3]] kao [[$1|maternji]] jezik.",
+	"babel-0-n": "Ovaj korisnik [[$1|ne razumije]] [[$2|srpskohrvatski]] (ili ga razumije s velikim poteškoćama).",
+	"babel-1-n": "Ovaj korisnik ima [[$1|osnovno]] poznavanje [[$2|srpskohrvatskog jezika]].",
+	"babel-2-n": "Ovaj korisnik [[$1|srednje]] razumije [[$2|srpskohrvatski jezik]].",
+	"babel-3-n": "Ovaj korisnik ima [[$1|napredno]] poznavanje [[$2|srpskohrvatskog jezika]].",
+	"babel-4-n": "Ovaj korisnik razumije [[$2|srpskohrvatski]] [[$1|gotovo kao maternji jezik]].",
+	"babel-5-n": "Ovaj korisnik govori [[$2|srpskohrvatski jezik]] na [[$1|profesionalnoj]] razini.",
+	"babel-N-n": "Ovaj korisnik razumije [[$2|srpskohrvatski]] kao [[$1|maternji]] jezik.",
+	"babel-footer": "Korisnici po jeziku"
+}

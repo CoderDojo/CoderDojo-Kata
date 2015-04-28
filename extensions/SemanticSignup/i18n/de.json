@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kghbln"
+		]
+	},
+	"semanticsignup": "Semantische Anmeldung",
+	"ses-desc": "Ermöglicht das automatische Erstellen einer aus semantischen Daten bestehenden Benutzerseite, die während der Registrierung erfasst werden",
+	"ses-nousername": "Der Benutzername wurde nicht angegeben.",
+	"ses-nopwdmatch": "Das Passwort und die Passwortbestätigung stimmen nicht überein.",
+	"ses-norealname": "Der bürgerliche Name ist erforderlich, wurde aber nicht angegeben.",
+	"ses-userexists": "Der Benutzer ist bereits vorhanden.",
+	"ses-emailfailed": "Der Versand der Bestätigungs-E-Mail ist gescheitert.",
+	"ses-createforbidden": "Der aktuelle Benutzer ist nicht berechtigt, Konten zu erstellen.",
+	"ses-throttlehit": "Die Anzahl neuer Benutzerkonten je Tag wurde für diese IP-Adresse überschritten."
+}

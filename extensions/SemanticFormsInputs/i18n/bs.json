@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"CERminator"
+		]
+	},
+	"semanticformsinputs-desc": "Dodatne vrste unosa za [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Semantic_Forms Semantičke forme]",
+	"semanticformsinputs-wrongformat": "Pogrešan format.",
+	"semanticformsinputs-close": "Zatvori",
+	"semanticformsinputs-prev": "Prethodno",
+	"semanticformsinputs-next": "Slijedeće",
+	"semanticformsinputs-today": "Danas"
+}

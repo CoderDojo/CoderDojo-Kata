@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"David1010"
+		]
+	},
+	"viewxml": "XML-ის ხილვა",
+	"dt_viewxml_categories": "კატეგორიები",
+	"dt_viewxml_namespaces": "სახელთა სივრცეები",
+	"dt_viewxml_simplifiedformat": "გამარტივებული ფორმატი",
+	"dt_xml_namespace": "სახელთა სივრცე",
+	"dt_xml_pages": "გვერდები",
+	"dt_xml_page": "გვერდი",
+	"dt_xml_template": "თარგი",
+	"dt_xml_field": "ველი",
+	"dt_xml_name": "სახელი",
+	"dt_xml_title": "სათაური",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "თავისუფალი ტექსტი",
+	"importxml": "XML-ის იმპორტი",
+	"dt_import_selectfile": "გთხოვთ, აირჩიეთ $1 ფაილი იმპორტისათვის:",
+	"dt_import_encodingtype": "კოდირების ტიპი:",
+	"dt_import_forexisting": "გვერდებისათვის რომლებიც უკვე არსებობენ:",
+	"dt_import_skipexisting": "გამოტოვება",
+	"dt_import_summarydesc": "იმპორტის აღწერა:",
+	"dt_import_editsummary": "$1-ის იმპორტი",
+	"dt_import_importing": "იმპორტირება...",
+	"importcsv": "CSV-ის იმპორტი",
+	"right-datatransferimport": "მონაცემების იმპორტირება"
+}

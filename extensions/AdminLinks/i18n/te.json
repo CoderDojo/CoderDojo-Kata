@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ravichandra",
+			"Veeven"
+		]
+	},
+	"adminlinks": "నిర్వహణా లింకులు",
+	"adminlinks-desc": "నిర్వాహకులకు ఉపయుక్తమైన లంకెలతో ఒక [[Special:AdminLinks|ప్రత్యేక పుట]]ని చేరుస్తుంది",
+	"adminlinks_documentation": "$1 పత్రావళి",
+	"adminlinks_general": "సాధారణ",
+	"adminlinks_editsidebar": "సైడ్‌బార్ ను మార్చు",
+	"adminlinks_editcss": "స్టైల్ షీట్ ను మార్చు",
+	"adminlinks_editmainpagename": "ప్రధాన పేజీ పేరు మార్చు",
+	"adminlinks_users": "వాడుకరులు",
+	"adminlinks_createuser": "వాడుకరిని సృష్టించు",
+	"adminlinks_browsesearch": "విహరించడం, మరియు వెతకడం",
+	"adminlinks_importexport": "ఎగుమతులు, దిగుమతులు",
+	"right-adminlinks": "[[Special:AdminLinks|నిర్వహణా లింకుల]]కు లింకుని చూడగలగడం"
+}

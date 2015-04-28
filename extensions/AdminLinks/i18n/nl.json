@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Siebrand"
+		]
+	},
+	"adminlinks": "Koppelingen voor beheerders",
+	"adminlinks-desc": "Voegt een [[Special:AdminLinks|speciale pagina]] toe met handige koppelingen voor beheerders",
+	"adminlinks_documentation": "Documentatie voor $1",
+	"adminlinks_general": "Algemeen",
+	"adminlinks_editsidebar": "Zijbalk bewerken",
+	"adminlinks_editcss": "CSS bewerken",
+	"adminlinks_editmainpagename": "Naam van de hoofdpagina bewerken",
+	"adminlinks_users": "Gebruikers",
+	"adminlinks_createuser": "Gebruiker aanmaken",
+	"adminlinks_browsesearch": "Bekijken en zoeken",
+	"adminlinks_importexport": "Importeren en exporteren",
+	"right-adminlinks": "De koppeling naar [[Special:AdminLinks|koppeling voor beheerders]] zien"
+}

@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16",
+			"Rippitippi"
+		]
+	},
+	"approvedrevs-desc": "Imposta una singola versione di una pagina come approvata",
+	"approvedrevs-logname": "Registro di approvazione delle versioni",
+	"approvedrevs-logdesc": "Questo è il registro delle versioni che sono state approvate.",
+	"approvedrevs-approve": "approva",
+	"approvedrevs-unapprove": "non approvare",
+	"approvedrevs-approvesuccess": "Questa versione della pagina è stata impostata come quella approvata.",
+	"approvedrevs-unapprovesuccess": "Non ci sono ancora versioni approvate per questa pagina.\nAl suo posto verrà mostrata la versione più recente.",
+	"approvedrevs-unapprovesuccess2": "Non ci sono ancora versioni approvate per questa pagina.\nAl suo posto verrà mostrata una pagina vuota.",
+	"approvedrevs-approveaction": "impostare $2 come la versione approvata per \"[[$1]]\"",
+	"approvedrevs-unapproveaction": "rimuovi l'impostazione della versione approvata per \"[[$1]]\"",
+	"approvedrevs-notlatest": "Questa è la versione approvata di questa pagina, non è la più recente.",
+	"approvedrevs-approvedandlatest": "Questa è la versione approvata di questa pagina, oltre ad essere la più recente.",
+	"approvedrevs-blankpageshown": "Per questa pagina non è stata approvata alcuna versione.",
+	"approvedrevs-noapprovedrevision": "Questa è l'ultima versione di questa pagina; che non ha alcuna versione approvata.",
+	"approvedrevs-editwarning": "Si prega di notare che si sta modificando l'ultima versione di questa pagina, che non è quella approvata e visualizzata come impostazione predefinita.",
+	"approvedrevs": "Versioni approvate",
+	"approvedrevs-approvedpages": "Tutte le pagine con una versione approvata",
+	"approvedrevs-notlatestpages": "Pagine la cui versione approvata non è la loro ultima",
+	"approvedrevs-unapprovedpages": "Pagine non approvate",
+	"approvedrevs-view": "Visualizzare:",
+	"approvedrevs-revisionnumber": "versione $1",
+	"approvedrevs-approvedby": "approvato da $1 su $2",
+	"approvedrevs-difffromlatest": "differenza dal più recente",
+	"approvedrevs-approvelatest": "approvare i più recenti",
+	"approvedrevs-approvethisrev": "Approva questa versione.",
+	"approvedrevs-viewlatestrev": "Visualizza la versione più recente.",
+	"approvedrevs-approvedrevision": "Versione approvata",
+	"right-approverevisions": "Imposta una versione di una pagina wiki come approvata",
+	"right-viewlinktolatest": "Visualizza del testo esplicativo nella parte superiore delle pagine che hanno una versione approvata"
+}

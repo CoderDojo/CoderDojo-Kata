@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"EugeneZelenko",
+			"Kghbln",
+			"Nemo bis",
+			"Purodha",
+			"Shirayuki",
+			"Umherirrender",
+			"Raymond"
+		]
+	},
+	"approvedrevs-desc": "{{desc|name=Approved Revs|url=http://www.mediawiki.org/wiki/Extension:Approved_Revs}}",
+	"approvedrevs-logname": "{{doc-logpage}}",
+	"approvedrevs-logdesc": "Used as heading in [[Special:Log]]/approvedrevs.",
+	"approvedrevs-approve": "Used as link text.\n\nThe URL of the link contains \"action=approve\".\n\nSee also:\n* {{msg-mw|Approvedrevs-unapprove}}\n{{Identical|Approve}}",
+	"approvedrevs-unapprove": "Used as link text.\n\nThe URL of the link contains \"action=unapprove\".\n\nSee also:\n* {{msg-mw|Approvedrevs-approve}}",
+	"approvedrevs-approvesuccess": "Used as success message.",
+	"approvedrevs-unapprovesuccess": "Used as success message.\n\nSee also:\n* {{msg-mw|Approvedrevs-unapprovesuccess2}}",
+	"approvedrevs-unapprovesuccess2": "Used as success message.\n\nSee also:\n* {{msg-mw|Approvedrevs-unapprovesuccess}}",
+	"approvedrevs-approveaction": "This is a log entry. Thus \"set\" is past tense and not imperative.\n\nParameters:\n* $1 - page title\n* $2 - revision ID (with link)\nSee also:\n* {{msg-mw|Approvedrevs-unapproveaction}}",
+	"approvedrevs-unapproveaction": "This is a log entry. Thus \"unset\" is past tense and not imperative.\n\nParameters:\n* $1 - page title\nSee also:\n* {{msg-mw|Approvedrevs-approveaction}}",
+	"approvedrevs-notlatest": "This message is followed by a link. Its link text is {{msg-mw|Approvedrevs-viewlatestrev}}.\n\nSee also:\n* {{msg-mw|Approvedrevs-approvedandlatest}}",
+	"approvedrevs-approvedandlatest": "See also:\n* {{msg-mw|Approvedrevs-notlatest}}",
+	"approvedrevs-blankpageshown": "Used in subtitle.\n\nThis message is followed by a link. Its link text is {{msg-mw|Approvedrevs-viewlatestrev}}.\n\nSee also:\n* {{msg-mw|Approvedrevs-approvethisrev}}",
+	"approvedrevs-noapprovedrevision": "Used if this page has no approved revision.\n\nPreceded by subtitle + \"<code><nowiki><br /></nowiki></code>\".",
+	"approvedrevs-editwarning": "Used as warning shown in '''bold'''.",
+	"approvedrevs": "{{doc-special|ApprovedRevs}}\n{{Identical|Approved revision}}",
+	"approvedrevs-approvedpages": "Used as a '''bold''' message or a link text in [[Special:ApprovedRevs]].\n\nThis message follows {{msg-mw|Approvedrevs-view}}.\n\nThis message is followed by a string \" | \" and {{msg-mw|Approvedrevs-notlatestpages}}.",
+	"approvedrevs-notlatestpages": "Used as a '''bold''' message or a link text in [[Special:ApprovedRevs]].\n\nThis message follows {{msg-mw|Approvedrevs-view}}, {{msg-mw|Approvedrevs-approvedpages}} and \" | \".",
+	"approvedrevs-unapprovedpages": "Used as a '''bold''' message or a link text in [[Special:ApprovedRevs]].\n\nThis message follows {{msg-mw|Approvedrevs-notlatestpages}} and \" | \".\n\nSee also:\n* {{msg-mw|Approvedrevs-view}}",
+	"approvedrevs-view": "Used as label in [[Special:ApprovedRevs]].\n\nThis message is followed by the following messages:\n* {{msg-mw|Approvedrevs-approvedpages}}\n* \" | \"\n* {{msg-mw|Approvedrevs-notlatestpages}}\n* \" | \"\n* {{msg-mw|Approvedrevs-unapprovedpages}}\n{{Identical|View}}",
+	"approvedrevs-revisionnumber": "Used in [[Special:ApprovedRevs]].\n\nParameters:\n* $1 - revision ID\n{{Identical|Revision}}",
+	"approvedrevs-approvedby": "Used in [[Special:ApprovedRevs]]. Parameters:\n* $1 - link to the user's user page, or link to the IP user's contributions page\n* $2 - (Unused) time and date\n* $3 - username\n* $4 - date\n* $5 - time",
+	"approvedrevs-difffromlatest": "Used as link text in [[Special:ApprovedRevs]].\n\nThe link points to the \"Diff\" page.\n\nThe link follows a link which points to the page.",
+	"approvedrevs-approvelatest": "Used as link text in [[Special:ApprovedRevs]].\n\nThis message means \"approve the latest revision\".\n\nThe link follows a link to the page.",
+	"approvedrevs-approvethisrev": "Used as link text.\n\nSee also:\n* {{msg-mw|Approvedrevs-blankpageshown}}\n* {{msg-mw|Approvedrevs-viewlatestrev}}",
+	"approvedrevs-viewlatestrev": "Used as link text.\n\nThis message follows any one of the messages:\n* {{msg-mw|Approvedrevs-notlatest}}\n* {{msg-mw|Approvedrevs-blankpageshown}}",
+	"approvedrevs-revision-nav": "{{Optional}}\nAn expansion of the core MediaWiki message {{msg-mw|Revision-nav}}.\n\nParameters:\n* $1 - prev diff. link text is {{msg-mw|Diff}}\n* $2 - prev link. link text is {{msg-mw|Previousrevision}}\n* $3 - approved link. link text is {{msg-mw|Approvedrevs-approvedrevision}}\n* $4 - approved diff. link text is {{msg-mw|Diff}}\n* $5 - link. link text is {{msg-mw|Currentrevisionlink}}\n* $6 - cur diff. link text is {{msg-mw|Diff}}\n* $7 - next link. link text is {{msg-mw|Nextrevision}}\n* $8 - next diff. link text is {{msg-mw|Diff}}",
+	"approvedrevs-approvedrevision": "Used to link directly to the approved revision.\n{{Identical|Approved revision}}",
+	"right-approverevisions": "{{doc-right|approverevisions}}",
+	"right-viewlinktolatest": "{{doc-right|viewlinktolatest}}"
+}

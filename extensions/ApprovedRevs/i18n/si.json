@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"පසිඳු කාවින්ද"
+		]
+	},
+	"approvedrevs-desc": "අනුමත කර ඇති ලෙස පිටුවක තනි සංශෝධනයක් සකසන්න",
+	"approvedrevs-logname": "සංශෝධන අනුමැති ලොගය",
+	"approvedrevs-logdesc": "මෙය අනුමත කර ඇති ලඝු සංශෝධනයන් වේ.",
+	"approvedrevs-approve": "අනුමත කරන්න",
+	"approvedrevs-unapprove": "නොපිළිගන්න",
+	"approvedrevs-approvesuccess": "පිටුවේ මෙම සංශෝධනය අනුමත කරන ලද අනුවාදය ලෙස සකසා ඇත.",
+	"approvedrevs-approveaction": "\"[[$1]]\" සඳහා අනුමත සංශෝධනය ලෙස $2 සකසන්න",
+	"approvedrevs-unapproveaction": "\"[[$1]]\" සඳහා අනුමත කරන ලද සංශෝධනය සැකසුමෙන් ඉවත් කරන්න",
+	"approvedrevs-notlatest": "මෙය මෙම පිටුවේ අනුමත කරන ලද සංශෝධනයයි, මෑතම එකක් නොවේ.",
+	"approvedrevs-approvedandlatest": "මෙය මෙම පිටුවේ අනුමත කරන ලද සංශෝධනයයි, මෑතම එකක් ද වේ.",
+	"approvedrevs-blankpageshown": "මෙම පිටුව සඳහා කිසිදු සංශෝධනයක් අනුමත කර නොමැත.",
+	"approvedrevs": "අනුමත කල සංශෝධන",
+	"approvedrevs-approvedpages": "අනුමත කල සංශෝධනයක් සහිත සියලුම පිටු",
+	"approvedrevs-notlatestpages": "ඒවායේ නවතමය නොවන අනුමත කරන ලද සංශෝධන පිටු",
+	"approvedrevs-unapprovedpages": "අනුමත නොකෙරූ පිටු",
+	"approvedrevs-view": "නරඹන්න:",
+	"approvedrevs-revisionnumber": "$1 සංශෝධනය",
+	"approvedrevs-approvedby": "$4 හී $5 දී {{GENDER:$3|$1}} විසින් අනුමත කරන ලදී",
+	"approvedrevs-difffromlatest": "නවතමයෙන් වෙනස",
+	"approvedrevs-approvelatest": "නවතමය අනුමත කරන්න",
+	"approvedrevs-approvethisrev": "මෙම සංශෝධනය අනුමත කරන්න.",
+	"approvedrevs-viewlatestrev": "ගොඩක් මෑත සංශෝධනය පෙන්වන්න.",
+	"right-approverevisions": "අනුමත කර ඇති ලෙස විකි පිටුවක කිසියම් සංශෝධනයක් සකසන්න"
+}

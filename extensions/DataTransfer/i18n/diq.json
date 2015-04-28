@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Erdemaslancan",
+			"Mirzali",
+			"Marmase"
+		]
+	},
+	"viewxml": "XML'i bıvin",
+	"dt_viewxml_categories": "Kategoriy",
+	"dt_viewxml_namespaces": "Heruna naman",
+	"dt_xml_namespace": "Heruna namey",
+	"dt_xml_pages": "Peli",
+	"dt_xml_page": "Pele",
+	"dt_xml_template": "Şablon",
+	"dt_xml_field": "Ca",
+	"dt_xml_name": "Name",
+	"dt_xml_title": "Sername",
+	"dt_xml_id": "ID",
+	"importxml": "XML'i azere ke",
+	"dt_import_skipexisting": "Çerme",
+	"dt_import_editsummary": "$1 azerede",
+	"dt_import_importing": "Dano azere...",
+	"importcsv": "TSV'yi azere de",
+	"right-datatransferimport": "Malumata zerre ke"
+}

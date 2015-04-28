@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"아라"
+		]
+	},
+	"semanticinternalobjects-desc": "시맨틱 미디어위키에 내부 개체 설정",
+	"semanticinternalobjects-internalproperty": "내부 속성",
+	"semanticinternalobjects-mainpropertyname": "문서의 나머지 부분에 틀의 필드를 연결하는 속성 이름:",
+	"semanticinternalobjects-propnamewarning": "(이 틀이 여러 인스턴스를 가질 수 있을 때에만 사용해야 합니다)"
+}

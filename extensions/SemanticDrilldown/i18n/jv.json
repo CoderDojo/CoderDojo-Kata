@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Meursault2004"
+		]
+	},
+	"sd_browsedata_choosecategory": "Pilih kategori",
+	"sd_browsedata_viewcategory": "ndeleng kategori",
+	"sd_browsedata_subcategory": "Subkategori",
+	"sd_browsedata_other": "Liyané",
+	"sd_browsedata_none": "Ora ana",
+	"sd_browsedata_or": "utawa",
+	"sd_browsedata_removefilter": "Ilangana filter iki",
+	"sd_browsedata_addanothervalue": "Tambahna biji liya",
+	"filters": "Filter-filter",
+	"createfilter": "Nggawé filter",
+	"sd_createfilter_name": "Jeneng:",
+	"sd_createfilter_property": "Sifat sing diliput filter iki:",
+	"sd_createfilter_label": "Label kanggo filter (opsional):",
+	"sd_blank_error": "ora bisa kosong",
+	"sd_filter_requiresfilter": "Merlokaké anané filter $1."
+}

@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"E THP",
+			"Mousa"
+		]
+	},
+	"approvedrevs-desc": "بیر صحیفه‌نین تک نوسخه‌سینی اونایلا",
+	"approvedrevs-logname": "اونایلاما قئیدلری",
+	"approvedrevs-logdesc": "بو اونایلانمیش نوسخه‌لرین قئیدلر لیستی‌دیر.",
+	"approvedrevs-approve": "اونایلا",
+	"approvedrevs-unapprove": "اونایلاماغی قایتار",
+	"approvedrevs-approvesuccess": "صحیفه‌نین او نوسخه‌سی، اونایلانمیش نوسخه اولوندو.",
+	"approvedrevs-unapprovesuccess": "بو صحیفه‌یه داها بیر اونایلانمیش نوسخه یوخدور.\nاونون یئرینه، ان سون نوسخه گؤستریله‌جکدیر.",
+	"approvedrevs-unapprovesuccess2": "بو صحیفه‌یه داها بیر اونایلانمیش نوسخه یوخدور.\nاونون یئرینه، بوش صحیفه گؤستریله‌جکدیر.",
+	"approvedrevs-approveaction": "«[[$1]]» اوچون، $2 اونایلانمیش نوسخه اولوندو",
+	"approvedrevs-unapproveaction": "«[[$1]]» اوچون اونایلانمیش نوسخه‌نی قایتار",
+	"approvedrevs-notlatest": "بورا بو صحیفه‌نین اونایلانمیش نوسخه‌سی‌دیر؛ سون نوسخه دئییل.",
+	"approvedrevs-approvedandlatest": "بورا بو صحیفه‌نین اونایلانمیش نوسخه‌سی‌دیر، و هم ده سون نوسخه‌سی‌دیر.",
+	"approvedrevs-blankpageshown": "بو صحیفه اوچون بیر نوسخه اونایلانماییب‌دیر.",
+	"approvedrevs-editwarning": "لوطفاً دیقت ائدین کی سیز بو صحیفه‌نین سون نوسخه‌سینی دَییشدیریرسینیز، او حالداکی بو نوسخه اونایلانان دئییل.",
+	"approvedrevs": "اونایلانمیش نوسخه‌لر",
+	"approvedrevs-approvedpages": "اونایلانمیش نوسخه‌لری اولان بوتون صحیفه‌لر",
+	"approvedrevs-notlatestpages": "اونایلانمیش نوسخه‌لری، اون سون نوسخه اولمایان صحیفه‌لر",
+	"approvedrevs-unapprovedpages": "اونایلانمامیش صحیفه‌لر",
+	"approvedrevs-view": "گؤرونوش:",
+	"approvedrevs-revisionnumber": "نوسخه $1",
+	"approvedrevs-approvedby": "$4، $5-ده {{GENDER:$3|$1}} ایله اونایلانمیش",
+	"approvedrevs-difffromlatest": "سون ایله فرق",
+	"approvedrevs-approvelatest": "سونو اونایلا",
+	"approvedrevs-approvethisrev": "بو نوسخه‌نی اونایلا.",
+	"approvedrevs-viewlatestrev": "ان سون نوسخه‌یه باخینیز.",
+	"right-approverevisions": "بیر ویکی صحیفه‌سینین بیر خاص نوسخه‌سینی اونایلا",
+	"right-viewlinktolatest": "اونیلانمیش نوسخه‌لری اولان صحیفه‌لرین باشیندا آچیقلاما یازیسی اولسون"
+}

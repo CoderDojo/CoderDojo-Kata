@@ -1,0 +1,51 @@
+@mixin kata-content {
+	.kata-category-title,
+	.kata-content {
+		// border-top: 22px solid $sidebarBgColor;
+		border-bottom: 10px solid $sidebarBgColor;
+		margin-bottom: 10px;
+		> h2 {
+			margin: 9px 0px;
+		}
+	}
+
+	.kata-content {
+		padding-bottom: 20px;
+		border-bottom-width: 0px;
+		margin-bottom: 0px;
+	}
+	.kata-content:last-child {
+		border-bottom-width: 10px;
+		margin-bottom: 10px;
+	}
+	.ve-ui-surface {
+		border-bottom: 10px solid $sidebarBgColor;
+		margin-bottom: 10px;
+	}
+	.ve-init-mw-viewPageTarget-toolbar {
+		margin: -10px  0 1em 0;
+	}
+	.ve-init-mw-viewPageTarget-surface,
+	.ve-ui-debugBar {
+		margin: 0 0 0 0;
+	}
+
+	/* following rules should be moved to section-specific source files */
+
+	.organiser-resource .kata-category-title,
+	.organiser-resource .kata-content {
+		border-color: #61C93F;
+	}
+
+	.technical-resource .kata-category-title,
+	.technical-resource .kata-content {
+		border-color: #ED462F;
+	}
+
+	.ninja-resource .kata-category-title,
+	.ninja-resource .kata-content
+	{
+		border-color: #FBCC33;
+	}
+
+}

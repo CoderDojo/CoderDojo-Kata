@@ -1,0 +1,20 @@
+/*!
+ * VisualEditor Toolbar styles.
+ *
+ * @copyright 2011-2014 VisualEditor Team and others; see http://ve.mit-license.org
+ */
+
+.oo-ui-toolbar-bar {
+	position: relative;
+}
+
+.ve-ui-toolbar-floating > .oo-ui-toolbar-bar {
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	border-top: none;
+}
+
+.ve-ui-toolbar-floating .oo-ui-toolbar-shadow {
+	opacity: 0.5;
+}

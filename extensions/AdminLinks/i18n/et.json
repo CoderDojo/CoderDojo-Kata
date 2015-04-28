@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Avjoska",
+			"Pikne"
+		]
+	},
+	"adminlinks": "Administraatori lingid",
+	"adminlinks-desc": "Lisab [[Special:AdminLinks|erilehekülje]] administraatoritele kasulike linkidega.",
+	"adminlinks_documentation": "$1 dokumentatsioon",
+	"adminlinks_users": "Kasutajad",
+	"adminlinks_createuser": "Loo uus kasutajakonto",
+	"adminlinks_browsesearch": "Lehitsemine ja otsimine",
+	"right-adminlinks": "Näha linki leheküljele [[Special:AdminLinks|administraatori lingid]]"
+}

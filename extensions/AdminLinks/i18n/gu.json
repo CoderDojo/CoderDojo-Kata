@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ashok modhvadia",
+			"Harsh4101991"
+		]
+	},
+	"adminlinks": "પ્રબંધન કડીઓ",
+	"adminlinks-desc": "[[Special:AdminLinks|ખાસ પાનુ]] ઉમેરો જે પ્રબંધકો માટે ઉપયોગી કડીઓ ધરાવતુ હોય",
+	"adminlinks_documentation": "$1 દસ્તાવેજીકરણ",
+	"adminlinks_general": "સામાન્ય",
+	"adminlinks_editsidebar": "સાઇડબાર સંપાદિત કરો",
+	"adminlinks_editcss": "CSS ફાઇલ સંપાદિત કરો",
+	"adminlinks_editmainpagename": "મુખ્ય પાનાનું નામ સંપાદિત કરો",
+	"adminlinks_users": "સભ્યો",
+	"adminlinks_createuser": "સભ્ય બનાવો",
+	"adminlinks_browsesearch": "ખંખોળો અને શોધો",
+	"adminlinks_importexport": "આયાત અને નિર્યાત",
+	"right-adminlinks": "[[Special:AdminLinks|પ્રબંધન કડીઓ]]ની કડી જુઓ"
+}

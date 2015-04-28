@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chaduvari",
+			"Veeven"
+		]
+	},
+	"viewxml": "XMLని చూడండి",
+	"dt_viewxml_categories": "వర్గాలు",
+	"dt_viewxml_namespaces": "పేరుబరులు",
+	"dt_xml_namespace": "పేరుబరి",
+	"dt_xml_pages": "పేజీలు",
+	"dt_xml_page": "పేజీ",
+	"dt_xml_template": "మూస",
+	"dt_xml_name": "పేరు",
+	"dt_xml_title": "శీర్షిక",
+	"dt_xml_id": "ఐడీ",
+	"dt_xml_freetext": "స్వేచ్ఛా పాఠ్యం",
+	"dt_import_appendtoexisting": "ఈసరికే ఉన్న కంటెంటు వెనుక చేర్చు",
+	"dt_import_summarydesc": "దిగుమతి సారాంశం:",
+	"dt_import_editsummary": "$1 దిగుమతి",
+	"dt_import_importing": "దిగుమతి చేస్తున్నాం...",
+	"dt_import_success": "ఫైలు $2 నుండి $1 {{PLURAL:$1|పేజీ|పేజీలు}} సృష్టించబడతాయి.",
+	"importcsv": "CSV ని దిగుమతి చెయ్యి",
+	"dt_importcsv_badheader": "లోపం: నిలువు వరుస $1 శీర్షం, '$2', '$3' అయినా లేక  '$4' అయినా ఉండాలి. లేదా 'template_name[field_name]' రూపంలో అయినా ఉండాలి",
+	"right-datatransferimport": "డేటాను దిగుమతి చెయ్యి"
+}

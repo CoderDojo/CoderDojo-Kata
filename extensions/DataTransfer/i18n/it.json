@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16",
+			"BrokenArrow",
+			"Darth Kule"
+		]
+	},
+	"datatransfer-desc": "Permette l'importazione e l'esportazione di dati strutturati contenuti in chiamate a template",
+	"viewxml": "Vedi XML",
+	"dt_viewxml_docu": "Selezionare tra le categorie e namespace indicati di seguito quelli da visualizzare in formato XML.",
+	"dt_viewxml_categories": "Categorie",
+	"dt_viewxml_namespaces": "Namespace",
+	"dt_viewxml_simplifiedformat": "Formato semplificato",
+	"dt_xml_namespace": "Namespace",
+	"dt_xml_pages": "Pagine",
+	"dt_xml_page": "Pagina",
+	"dt_xml_template": "Template",
+	"dt_xml_field": "Campo",
+	"dt_xml_name": "Nome",
+	"dt_xml_title": "Titolo",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Testo libero",
+	"importxml": "Importa XML",
+	"dt_import_selectfile": "Seleziona il file $1 da importare:",
+	"dt_import_encodingtype": "Tipo di codifica",
+	"dt_import_forexisting": "Per le pagine già esistenti:",
+	"dt_import_overwriteexisting": "Sovrascrivi il contenuto esistente",
+	"dt_import_mergeintoexisting": "Sovrascrivi solo i campi contenuti nel file",
+	"dt_import_skipexisting": "Salta",
+	"dt_import_appendtoexisting": "Aggiungi al contenuto esistente",
+	"dt_import_summarydesc": "Oggetto dell'importazione:",
+	"dt_import_editsummary": "Importazione {{ucfirst:$1}}",
+	"dt_import_importing": "Sto importando...",
+	"dt_import_success": "$1 {{PLURAL:$1|pagina|pagine}} saranno create dal file $2.",
+	"importcsv": "Importa CSV",
+	"importspreadsheet": "Importa foglio di calcolo",
+	"dt_importcsv_badheader": "Errore: l'intestazione della colonna $1, \"$2\", deve avere uno dei seguenti valori: '$3', '$4' o il formato 'nome_template[nome_campo]'",
+	"right-datatransferimport": "Importa dati",
+	"dt_filetype_spreadsheet": "foglio di calcolo"
+}

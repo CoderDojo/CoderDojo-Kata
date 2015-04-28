@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"adminlinks": "Ligazóns de administrador",
+	"adminlinks-desc": "Engade unha [[Special:AdminLinks|páxina especial]] que contén ligazóns útiles para os administradores",
+	"adminlinks_documentation": "Documentación de $1",
+	"adminlinks_general": "Xeral",
+	"adminlinks_editsidebar": "Editar a barra lateral",
+	"adminlinks_editcss": "Editar o ficheiro CSS",
+	"adminlinks_editmainpagename": "Editar o nome da páxina principal",
+	"adminlinks_users": "Usuarios",
+	"adminlinks_createuser": "Crear un usuario",
+	"adminlinks_browsesearch": "Navegación e procura",
+	"adminlinks_importexport": "Importación e exportación",
+	"right-adminlinks": "Ver a ligazón cara á páxina especial [[Special:AdminLinks|Ligazóns de administrador]]"
+}

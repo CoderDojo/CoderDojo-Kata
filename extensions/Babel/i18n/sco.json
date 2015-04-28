@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha",
+			"John Reid"
+		]
+	},
+	"babel-1": "This uiser can contreebute wi ae [[$1|laich]] level o [[$2|$3]].",
+	"babel-2": "This uiser can contreebute wi ae [[$1|middlin]] level o [[$2|$3]].",
+	"babel-3": "This uiser can contreebute wi ae [[$1|heich]] level o [[$2|$3]].",
+	"babel-N": "This uiser haes [[$2|$3]] aes ae [[$1|mither tung]].",
+	"babel-1-n": "This uiser can contreebute wi ae [[$1|laich]] level o [[$2|Scots]].",
+	"babel-2-n": "This uiser can contreebute wi ae [[$1|middlin]] level o [[$2|Scots]].",
+	"babel-3-n": "This uiser can contreebute wi ae [[$1|heich]] level o [[$2|Scots]].",
+	"babel-N-n": "This uiser haes [[$2|Scots]] aes ae [[$1|mither tung]]."
+}

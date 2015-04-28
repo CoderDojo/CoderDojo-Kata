@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"පසිඳු කාවින්ද"
+		]
+	},
+	"dt_viewxml_categories": "زمرہ جات",
+	"dt_viewxml_namespaces": "فضاہائےنام",
+	"dt_xml_namespace": "نیم سپیس",
+	"dt_xml_pages": "صفحات",
+	"dt_xml_page": "صفحہ",
+	"dt_xml_template": "سانچے",
+	"dt_xml_field": "میدان",
+	"dt_xml_name": "نام",
+	"dt_xml_title": "عنوان",
+	"dt_import_skipexisting": "پر",
+	"right-datatransferimport": "درآمد کے اعداد و شمار"
+}

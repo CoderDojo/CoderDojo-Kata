@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"approvedrevs-desc": "Määd et müjjelesch, vun ener Sigg en beshtemmpte Version jood_ze_heiße.",
+	"approvedrevs-logname": "Logbooch vum Versione vun Sigge Joodheiße",
+	"approvedrevs-logdesc": "En heh däm Logbooch wääde de joodjeheiße Versione vun Sigge faßjehallde.",
+	"approvedrevs-approve": "joodheiße",
+	"approvedrevs-unapprove": "nit joodheiße",
+	"approvedrevs-approvesuccess": "Heh di Version vun dä Sigge wood joodjeheiße.",
+	"approvedrevs-unapprovesuccess": "Jäz jidd_et kein joodjeheiße Version vun dä Sigg mieh.\nDoför kritt mer de neuste Version aanjezeish.",
+	"approvedrevs-unapprovesuccess2": "Jäz jidd_et kein joodjeheiße Version vun dä Sigg mieh.\nDoför kritt mer en läddije Sigg aanjezeish.",
+	"approvedrevs-approveaction": "hät $2 vun dä Sigg „[[$1]]“ joodjeheiße",
+	"approvedrevs-unapproveaction": "donn kein Version vun dä Sigg „[[$1]]“ mieh joodheiße",
+	"approvedrevs-notlatest": "Dat heh es de joodjeheiße Version vun dä Sigg, es ävver nit de neuste Version.",
+	"approvedrevs-approvedandlatest": "Dat heh es de joodjeheiße Version vun dä Sigg, un och de Neuste.",
+	"approvedrevs-blankpageshown": "Vun heh dä Sigg jidd_et kein joodjeheiße Version.",
+	"approvedrevs-noapprovedrevision": "Dat heh es de neuste Väsjohn vun dä Sigg. Se hät kein joodjeheiße Väsjohne.",
+	"approvedrevs-editwarning": "Opjepaß: Do bes de neuste Version vun heh dä Sigg aam ändere. Dat es nit de joodjeheiße Väsjohn, di mer schtandmääßesch aanjezeisch kritt.",
+	"approvedrevs": "Joodjeheiße Versione",
+	"approvedrevs-approvedpages": "Alle Sigge med en joodjeheiße Version",
+	"approvedrevs-notlatestpages": "Sigge, woh de joodjeheiße Version nit de neuste es.",
+	"approvedrevs-unapprovedpages": "De nit joodjeheiße Sigge",
+	"approvedrevs-view": "Aanloore:",
+	"approvedrevs-revisionnumber": "Version $1",
+	"approvedrevs-approvedby": "joodjeheiße {{GENDER:$1|vum|vum|vum Metmaacher|vun dä|vum}} $1 aam $2",
+	"approvedrevs-difffromlatest": "der Ongerscheid zor neuste Version",
+	"approvedrevs-approvelatest": "de neuste Verson joodheiße",
+	"approvedrevs-approvethisrev": "Heh di Version joodheiße",
+	"approvedrevs-viewlatestrev": "De neuste Version aanloore",
+	"right-approverevisions": "En beshtemmpte Version vun ene Sigg em Wiki jooheiße",
+	"right-viewlinktolatest": "Täx met Henwies drövver op Sigge met joodjeheiße Version aanzeije"
+}

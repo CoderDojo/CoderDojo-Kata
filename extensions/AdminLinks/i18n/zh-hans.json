@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Franklsf95",
+			"Xiaomingyan",
+			"Yfdyh000",
+			"Liuxinyu970226"
+		]
+	},
+	"adminlinks": "管理链接",
+	"adminlinks-desc": "为管理员添加一个包含有用连接的[[Special:AdminLinks|特殊页面]]",
+	"adminlinks_documentation": "$1说明文件",
+	"adminlinks_general": "常规",
+	"adminlinks_editsidebar": "编辑侧边栏",
+	"adminlinks_editcss": "编辑CSS文件",
+	"adminlinks_editmainpagename": "编辑首页名称",
+	"adminlinks_users": "用户",
+	"adminlinks_createuser": "创建用户",
+	"adminlinks_browsesearch": "浏览与搜索",
+	"adminlinks_importexport": "导入和导出",
+	"right-adminlinks": "查看[[Special:AdminLinks|管理链接]]"
+}

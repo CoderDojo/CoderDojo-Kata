@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Helder.wiki",
+			"Luckas",
+			"555"
+		]
+	},
+	"templatedata-desc": "Implementa o armazenamento de dados para os parâmetros das predefinições (em JSON)",
+	"templatedata-doc-desc-empty": "Sem descrição.",
+	"templatedata-doc-params": "Parâmetros da predefinição",
+	"templatedata-doc-param-name": "Parâmetro",
+	"templatedata-doc-param-desc": "Descrição",
+	"templatedata-doc-param-type": "Tipo",
+	"templatedata-doc-param-default": "Padrão",
+	"templatedata-doc-param-default-empty": "em branco",
+	"templatedata-doc-param-status": "Condição",
+	"templatedata-doc-param-status-deprecated": "obsoleto",
+	"templatedata-doc-param-status-optional": "opcional",
+	"templatedata-doc-param-status-suggested": "recomendado",
+	"templatedata-doc-param-status-required": "obrigatório",
+	"templatedata-doc-param-desc-empty": "sem descrição",
+	"templatedata-invalid-parse": "Erro de sintaxe em JSON",
+	"templatedata-invalid-type": "A propriedade \"$1\" deveria ser do tipo \"$2\"",
+	"templatedata-invalid-missing": "A propriedade \"$1\" é requerida mas não foi encontrada.",
+	"templatedata-invalid-unknown": "Propriedade inesperada: \"$1\".",
+	"templatedata-invalid-value": "Valor inválido para a propriedade \"$1\".",
+	"templatedata-invalid-length": "Quantia de dados muito grande para ser salva ({{formatnum:$1}} {{PLURAL:$1|byte|bytes}}, {{PLURAL:$2|e o limite é}} {{formatnum:$2}})"
+}

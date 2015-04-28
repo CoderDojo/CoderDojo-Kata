@@ -1,0 +1,25 @@
+SemanticSignup version 0.4.
+
+This is a MediaWiki extension built on top of the Semantic MediaWiki
+and Semantic Forms extensions and intended to be used with them.
+
+It is recommended to read those extensions' manuals before this one.
+
+==License==
+
+This extension is open-source software, available under the GNU GPLv3+.
+
+==Usage==
+
+This extension tweaks user registration process in order to make 
+users populate their user pages with semantic data at registration time.
+Whenever the user registration form is requested the user is redirected
+to the Semantic Signup special page where he has to enter the usual
+account data and some additional information into a semantic form.
+When the form is submitted, the usual account information is used 
+to register the new user account and a new User:<Username> page is 
+populated with the additional data.
+
+For all further usage information, view the extension homepage at:
+
+https://www.mediawiki.org/wiki/Extension:SemanticSignup

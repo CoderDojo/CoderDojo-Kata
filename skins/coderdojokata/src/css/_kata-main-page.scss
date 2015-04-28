@@ -1,0 +1,35 @@
+@mixin kata-main-page() {
+
+	/*
+	############################################################################
+		MAIN PAGE
+	############################################################################
+	*/
+
+	.imagelink_organiser a {
+	  background-image: url("https://coderdojo.com/wp-content/uploads/2014/08/CoolestProjects4.jpg");
+	  display: block;
+	  height: 400px;
+	  text-decoration:none;
+	}
+
+	.imagelink_technical a {
+	  background-image: url("https://coderdojo.com/wp-content/uploads/2014/08/CoolestProjects-511-e1409237169610-584x584.jpg");
+	  display:block;
+	  height: 400px;
+	  text-decoration:none;
+	}
+
+	.imagelink_ninjas a {
+	  background-image: url("https://coderdojo.com/wp-content/uploads/2014/08/K20iFmmjyhgqNlCc4QLcFz_3huypqeyQx7-NZihauyWOYT7UlyWrFISeDEG2QQv9gWzoEws2048-584x584.jpg");
+	  display:block;
+	  height: 400px;
+	  text-decoration:none;
+	}
+	/*
+	############################################################################
+		END MAIN PAGE
+	############################################################################
+	*/
+
+}

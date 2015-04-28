@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"babel": "{{GENDER:$1|Däm $1 sing|Däm $1 sing|Däm Medmaacher $1 sing|Däm $1 sing|Dä Metmaacheren $1 ier}} Shprooche-Weße",
+	"babel-desc": "Brengk de <code>#babel</code>-Paaserfongxjohn, womet me automatesch ene Babel-Medmaacher-Kaste opboue kann, un dobeij och selfßjemaate Schabloone nozze kan.",
+	"babel-url": "Project:Babel",
+	"babel-footer-url": ":Category:Babel - Metmaacher noh Shprooche",
+	"babel-autocreate-abort": "Dä Metmaachername es ald verjovve för [[$1|Babel]]-{{int:categories}} automattesch aanzelääje, dä kanns De nit han.",
+	"babel-autocreate-reason": "En Saachjrupp fum [[$1|Babel]]-Süßteem es automattesch aanjelaat woode.",
+	"babel-autocreate-text-levels": "De Metmaacher un Metmaacherėnne en heh dä Saachjropp han jesaat, se künnte di Schprohch $1 $2.",
+	"babel-autocreate-text-main": "Metmaacher en hee dä Saachjrupp han jesaat, se künnte vum $1 jet.",
+	"babel-autocreate-user": "Babel-Automomatetsch-Aanlääjer",
+	"babel-0": "Heh {{GENDER:$4|dä|dat|dä Medmaacher|dat|di}} hät [[$1|keij]] Aahnong fon [[$2|$3]], odder ferschteijt di Shprooch esu joot wi jaa nit.",
+	"babel-1": "Heh {{GENDER:$4|dä|dat|dä Medmaacher|dat|di}} hät [[$1|Jrondlaare]] fon [[$2|$3]] drop.",
+	"babel-2": "Heh {{GENDER:$4|dä|dat|dä Medmaacher|dat|di}} kann [[$1|meddeljoot]] met [[$2|$3]] ömjonn.",
+	"babel-3": "Heh {{GENDER:$4|dä|dat|dä Medmaacher|dat|di}} kann [[$2|$3]] [[$1|reschtesch joot]].",
+	"babel-4": "För heh {{GENDER:$4|dä|dat|dä Medmaacher|dat|di}} eß [[$2|$3]] [[$1|bahl wi {{GENDER:$4|sing|däm sing|en|en|ier}} Mottershprooch]].",
+	"babel-5": "Heh {{GENDER:$4|dä|dat|dä Medmaacher|dat|di}} bruch [[$2|$3]] [[$1|berohflesh]].",
+	"babel-N": "{{GENDER:$4\n|Heh däm sing [[$1|Mottershprooch]] eß [[$2|$3]]\n|Heh däm sing [[$1|Mottershprooch]] eß [[$2|$3]]\n|För heh dä Medmaacher eß [[$2|$3]] de [[$1|Mottershprooch]]\n|För dat heh eß [[$2|$3]] de [[$1|Mottershprooch]]\n|Heh dä ier [[$1|Mottershprooch]] eß [[$2|$3]]\n}}.",
+	"babel-0-n": "Heh {{GENDER:$4|dä|dat|dä Medmaacher|dat|di}} hät [[$1|keij Aahnong]] fon enne [[$2|ripoaresche Shprooch]], odder fershteijt fum ripoaresch Platt esu joot wi nix.",
+	"babel-1-n": "Heh {{GENDER:$4|dä|dat|dä Medmaacher|dat|di}} hät [[$1|Jrondlaare]] fon ennem [[$2|ripoaresch Platt]] drop.",
+	"babel-2-n": "Heh {{GENDER:$4|dä|dat|dä Medmaacher|dat|di}} kann med_ennem [[$2|ripoaresch Platt]] [[$1|meddeljoot]] ömjonn.",
+	"babel-3-n": "Heh {{GENDER:$4|dä|dat|dä Medmaacher|dat|di}} kann [[$2|en ripoaresch Shprooch]] [[$1|reschtesch joot]].",
+	"babel-4-n": "För heh {{GENDER:$4|dä|dat|dä Medmaacher|dat|di}} es [[$2|e ripoaresch Platt]] [[$1|bahl wi {{GENDER:$4|sing|sing|de|de|ier}} Mottershprooch]].",
+	"babel-5-n": "Heh {{GENDER:$4|dä|dat|dä Medmaacher|dat|di}} brur_en [[$2|ripoaresche Sproor]]_[[$1|em Berohf]].",
+	"babel-N-n": "{{GENDER:$4\n|Heh däm sing [[$1|Motterschprohch]] es_en [[$2|ripoaresche Schprohch]]\n|Heh däm sing [[$1|Motterschprohch]] es_en [[$2|ripoaresche Schprohch]]\n|För heh dä Medmaacher es_en [[$2|ripoaresche Schprohch]] de [[$1|Motterschprohch]]\n|För dat heh es_en [[$2|ripoaresche Schprooch]] de [[$1|Motterschprohch]]\n|Heh dä ier [[$1|Motterschprohch]] es_en [[$2|ripoaresche Schprohch]]\n}}.",
+	"babel-footer": "Metmaacher noh Shprooche"
+}

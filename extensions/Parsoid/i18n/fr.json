@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"parsoid-desc": "Exécutable Parsoid du wiki pour MédiaWiki"
+}

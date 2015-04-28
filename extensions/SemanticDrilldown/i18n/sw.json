@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephenwanjau"
+		]
+	},
+	"browsedata": "Vinjari takwimu",
+	"sd_browsedata_choosecategory": "Chagua jamii",
+	"sd_browsedata_viewcategory": "tazama jamii",
+	"sd_browsedata_or": "au",
+	"sd_browsedata_daterangestart": "Anza:",
+	"sd_viewform": "Tazama fomu",
+	"sd_createfilter_name": "Jina:"
+}

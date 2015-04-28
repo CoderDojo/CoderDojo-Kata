@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dani",
+			"Dj",
+			"Glanthor Reviol"
+		]
+	},
+	"datatransfer-desc": "Lehetővé teszi a sablonhívásokban található adatok importálását és exportálását",
+	"viewxml": "XML megtekintése",
+	"dt_viewxml_docu": "Válaszd ki a kategóriák és a névterek közül azt, amelyiket meg akarod tekinteni XML formátumban.",
+	"dt_viewxml_categories": "Kategóriák",
+	"dt_viewxml_namespaces": "Névterek",
+	"dt_viewxml_simplifiedformat": "Egyszerűsített formátum",
+	"dt_xml_namespace": "Névtér",
+	"dt_xml_pages": "Lapok",
+	"dt_xml_page": "Lap",
+	"dt_xml_template": "Sablon",
+	"dt_xml_field": "Mező",
+	"dt_xml_name": "Név",
+	"dt_xml_title": "Cím",
+	"dt_xml_id": "Azonosító",
+	"dt_xml_freetext": "Szabad szöveg",
+	"importxml": "XML importálás",
+	"dt_import_selectfile": "Kérlek válaszd ki az importálandó $1 fájlt:",
+	"dt_import_encodingtype": "Kódolás típusa:",
+	"dt_import_forexisting": "Már létező lapok esetén:",
+	"dt_import_overwriteexisting": "Meglévő tartalom felülírása",
+	"dt_import_skipexisting": "Kihagyás",
+	"dt_import_appendtoexisting": "Hozzáfűzés a meglévő tartalomhoz",
+	"dt_import_summarydesc": "Az importálás összefoglalója:",
+	"dt_import_editsummary": "$1 importálás",
+	"dt_import_importing": "Importálás…",
+	"dt_import_success": "{{PLURAL:$1|egy|$1}} lap fog készülni a(z) $2 fájlból.",
+	"importcsv": "CSV importálása",
+	"dt_importcsv_badheader": "Hiba: a(z) $1 oszlop fejlécének („$2”) vagy „$3”, „$4”, vagy pedig „sablonnév[mezőnév]” formátumúnak kell lennie",
+	"right-datatransferimport": "Adatok importálása"
+}

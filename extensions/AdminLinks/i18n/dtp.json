@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"FRANCIS5091"
+		]
+	},
+	"adminlinks": "Toput mongu-ngulud",
+	"adminlinks-desc": "Poruhango [[Special:AdminLinks|bolikon suaikowokon]] it minongigit toput kiguno montok momumuruan",
+	"adminlinks_documentation": "$1 gogompipail",
+	"adminlinks_general": "Gumuan",
+	"adminlinks_editsidebar": "Idito bardisan",
+	"adminlinks_editcss": "Idito pail CSS",
+	"adminlinks_editmainpagename": "Idito ngaran do bolikon tagayo",
+	"adminlinks_users": "Momomoguno",
+	"adminlinks_createuser": "Pomonsoi momoguno",
+	"adminlinks_browsesearch": "Ansahai om ihumo",
+	"adminlinks_importexport": "Pingonuon om popingatodo",
+	"right-adminlinks": "Intaai nopotan [[Special:AdminLinks|Tongotoput Mongu-ngulud]]"
+}

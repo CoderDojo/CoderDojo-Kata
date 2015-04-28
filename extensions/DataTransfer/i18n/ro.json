@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"KlaudiuMihaila",
+			"Minisarm",
+			"Stelistcristi"
+		]
+	},
+	"viewxml": "Vizualizează XML",
+	"dt_viewxml_categories": "Categorii",
+	"dt_viewxml_namespaces": "Spații de nume",
+	"dt_viewxml_simplifiedformat": "Format simplificat",
+	"dt_xml_namespace": "Spațiu de nume",
+	"dt_xml_pages": "Pagini",
+	"dt_xml_page": "Pagină",
+	"dt_xml_template": "Format",
+	"dt_xml_field": "Câmp",
+	"dt_xml_name": "Nume",
+	"dt_xml_title": "Titlu",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Text liber",
+	"importxml": "Importă XML",
+	"dt_import_encodingtype": "Tipul de codificare:",
+	"dt_import_forexisting": "Pentru pagini care există deja:",
+	"dt_import_skipexisting": "Omite",
+	"dt_import_summarydesc": "Descrierea importului:",
+	"dt_import_editsummary": "Importare $1",
+	"dt_import_importing": "Importare...",
+	"importcsv": "Importă CSV",
+	"right-datatransferimport": "Importă date"
+}

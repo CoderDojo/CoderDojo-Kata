@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"V.narsikar"
+		]
+	},
+	"approvedrevs-desc": "पानाच्या एका आवृत्तीस 'मंजूर' म्हणून स्थापित करा",
+	"approvedrevs-logname": "आवृत्तीच्या मंजूरीच्या नोंदी",
+	"approvedrevs-logdesc": "प्रमाणित केलेल्या बदलांची ही नोंदवही आहे",
+	"approvedrevs-approve": "प्रमाणित",
+	"approvedrevs-unapprove": "अप्रमाणित",
+	"approvedrevs-approvesuccess": "या संस्करणातील बदल हे प्रमाणित आवृत्ती म्हणून स्थापित केल्या गेले आहेत.",
+	"approvedrevs-unapprovesuccess": "या पानाची प्रमाणित अशी आवृत्ती नाही.\nत्याएवजी सर्वात नविन अशी आवृत्ती दाखविली जाईल.",
+	"approvedrevs-unapprovesuccess2": "या पानाची प्रमाणित अशी आवृत्ती नाही.\nत्याएवजी कोरे पान दाखविले जाईल.",
+	"approvedrevs-approveaction": "$2 ला \"[[$1]]\" ची प्रमाणित आवृत्ती म्हणून स्थापित करा.",
+	"approvedrevs-unapproveaction": "\"[[$1]]\" ची प्रंमाणित आवृत्ती अस्थापित (अनसेट) करा",
+	"approvedrevs-notlatest": "ही या पानाची प्रमाणित आवृत्ती आहे;ही नविनतम नाही.",
+	"approvedrevs-approvedandlatest": "ही या पानाची प्रमाणित आवृत्ती आहे,तसेच सर्वात नविनही.",
+	"approvedrevs-blankpageshown": "या पानासाठी कोणतीही आवृत्ती प्रमाणित  नाही.",
+	"approvedrevs-noapprovedrevision": "ही या पानाची नविनतम आवृत्ती आहे;त्या पानास कोणतीही प्रमाणित आवृत्ती नाही.",
+	"approvedrevs-editwarning": "कृपया नोंद घ्या कि आपण सध्या या पानाची अद्यतन आवृत्ती संपादित करीत आहात,डिफॉल्टने दाखविल्याप्रमाणे ती अप्रमाणित आहे.",
+	"approvedrevs": "प्रमाणित आवृत्त्या",
+	"approvedrevs-approvedpages": "प्रमाणित आवृत्यांची सर्व पाने",
+	"approvedrevs-notlatestpages": "ती पाने,ज्यांची प्रमाणीत आवृत्ती ही त्यांची अद्यतन आवृत्ती नाही",
+	"approvedrevs-unapprovedpages": "अप्रमाणित पाने",
+	"approvedrevs-view": "बघा:",
+	"approvedrevs-revisionnumber": "आवृत्ती $1",
+	"approvedrevs-approvedby": "$5 येथे $4 वर{{GENDER:$3|$1}} ने मंजूर केले.",
+	"approvedrevs-difffromlatest": "नविनतम मधील फरक",
+	"approvedrevs-approvelatest": "अद्यतन प्रमाणित करा",
+	"approvedrevs-approvethisrev": "ही आवृत्ती प्रमाणिक करा.",
+	"approvedrevs-viewlatestrev": "सर्वात नविनतम आवृत्ती बघा.",
+	"right-approverevisions": "विकिपानाची एक विशिष्ट आवृत्ती 'प्रमाणित' म्हणून स्थापित करा",
+	"right-viewlinktolatest": "मंजूर आवृत्त्यांच्या पानांच्या वर असलेला स्प्ष्टीकरणाचा मजकूर बघा"
+}

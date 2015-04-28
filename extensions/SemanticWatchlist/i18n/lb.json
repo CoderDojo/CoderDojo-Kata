@@ -1,0 +1,42 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby",
+			"Les Meloures"
+		]
+	},
+	"right-semanticwatch": "Semantesch Iwwerwaachungslëscht benotzen",
+	"special-semanticwatchlist": "Semantesch Iwwerwaachungslëscht",
+	"special-watchlistconditions": "Astellunge vun der semantescher Iwwerwaachnugslëscht",
+	"swl-group-name": "Gruppennumm:",
+	"swl-group-legend": "Grupp",
+	"swl-properties-list": "Nimm mat | trennen",
+	"swl-group-page-selection": "Sicht Säiten eraus fir z'iwwerwaachen:",
+	"swl-group-save": "Späicheren",
+	"swl-group-remove": "Ewechhuelen",
+	"swl-group-saved": "D'Astellunge goufe gespäichert",
+	"swl-group-saving": "Späicheren",
+	"swl-group-category": "Kategorie",
+	"swl-group-namespace": "Nummraum",
+	"swl-group-concept": "Konzept",
+	"swl-group-confirm-remove": "Sidd Dir sécher datt Dir d'''$1''-Iwwerwaachungslëscht-Grupp ewechhuele wëllt?",
+	"swl-group-add-new-group": "Eng nei Grupp derbäisetzen",
+	"swl-group-add-group": "Grupp derbäisetzen",
+	"swl-custom-legend": "Personaliséierten Text",
+	"swl-custom-remove-property": "Ewechhuelen",
+	"swl-custom-text-add": "Personaliséierten Text derbäisetzen",
+	"swl-watchlist-insertions": "Derbäigesat:",
+	"swl-watchlist-deletions": "Al:",
+	"swl-new-item": "NEI",
+	"swl-watchlist-pagincontrol": "($1) ($2) weisen",
+	"swl-watchlist-firstn": "éischt $1",
+	"swl-watchlist-firstn-title": "{{PLURAL:$1|Dat éischt Resultat|Déi éischt $1 Resultater}}",
+	"swl-watchlist-no-items": "Dir hutt keng Objeten op Ärer Iwwerwaachungslëscht.",
+	"swl-watchlist-can-mod-groups": "Dir kënnt [[$1|d'Gruppe vun der Iwwerwaachungslëscht änneren]].",
+	"swl-email-propschanged": "D'Eegeschafte goufen op $1 geännert",
+	"swl-email-changes": "Ännerunge vun Eegescheschaften op [$2 $1]:",
+	"prefs-swl": "Semantesch Iwwerwaachungslëscht",
+	"prefs-swlgroup": "Gruppe fir z'iwwerwaachen",
+	"prefs-swlglobal": "Allgemeng Optiounen",
+	"swl-prefs-emailnofity": "Mir eng Mail schécke wann Attributer déi ech iwwerwaachen geännert ginn"
+}

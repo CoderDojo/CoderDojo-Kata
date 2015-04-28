@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Als-Holder"
+		]
+	},
+	"approvedrevs-desc": "E Version vun eree Syte as „aagluegt“ markiere",
+	"approvedrevs-logname": "Versions-Markierigs-Logbuech",
+	"approvedrevs-logdesc": "Des isch s Logbuech vu dr aagluegte Version",
+	"approvedrevs-approve": "As ''aagluegt'' markiere",
+	"approvedrevs-unapprove": "nit frejgee",
+	"approvedrevs-approvesuccess": "Die Version vu dr Syte isch as „aagluegti Version“ gsetzt wore.",
+	"approvedrevs-unapprovesuccess": "S git kei bstetigti Version me vu däre Syte. \nStatt däm wird di nejscht Version aazeigt.",
+	"approvedrevs-unapprovesuccess2": "S git kei bstetigti Version me vu däre Syte. \nStatt däm wird e lääri Syte aazeigt.",
+	"approvedrevs-approveaction": "$2 as aaglugti Version fir „[[$1]]“ setze",
+	"approvedrevs-unapproveaction": "d Markierig as aagluegti Version fir „[[$1]]“ uuseneh",
+	"approvedrevs-notlatest": "Des isch di aagluegt Version vu däre Syte; s isch nit di nejscht Version.",
+	"approvedrevs-approvedandlatest": "Des isch di aagluegt Version vu däre Syte un au di nejscht.",
+	"approvedrevs-blankpageshown": "Kei Version vu däre Syte isch bishär bstetigt wore.",
+	"approvedrevs-editwarning": "Bitte gib Acht, ass Du grad an dr nejschte Version vu däre Syte schaffsch. Des isch nit di bstetigt Version, wu standardmäßig aazeigt wird.",
+	"approvedrevs": "Aagluegti Versione",
+	"approvedrevs-approvedpages": "Aagluegti Syte",
+	"approvedrevs-notlatestpages": "Syte, wu di aagluegt Version nit di nejscht isch",
+	"approvedrevs-unapprovedpages": "Nit bstetigti Syte",
+	"approvedrevs-view": "Aaluege:",
+	"approvedrevs-revisionnumber": "Version $1",
+	"approvedrevs-approvedby": "vu $1 am $2 bstetigt",
+	"approvedrevs-difffromlatest": "Unterschid zue dr nejschte Version",
+	"approvedrevs-approvelatest": "nejschti Version bstetige",
+	"approvedrevs-approvethisrev": "Die Version bstetige.",
+	"approvedrevs-viewlatestrev": "Di nejscht Version aaluege.",
+	"right-approverevisions": "E sicheri Version vun ere Wikisyte as aagluegt markiere",
+	"right-viewlinktolatest": "Dr Erklerigstext aaluege obe uf Syte, wu s e aagluegti Version git"
+}

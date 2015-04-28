@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16",
+			"F. Cosoleto"
+		]
+	},
+	"semanticformsinputs-desc": "Ulteriori tipi di input per [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Semantic_Forms Semantic Forms]",
+	"semanticformsinputs-wrongformat": "Formato errato.",
+	"semanticformsinputs-close": "Chiudi",
+	"semanticformsinputs-prev": "Precedente",
+	"semanticformsinputs-next": "Successivo",
+	"semanticformsinputs-today": "Oggi",
+	"semanticformsinputs-malformedregexp": "Espressione regolare mal formattata ($1).",
+	"semanticformsinputs-datepicker-dateformat": "La stringa di formato data. Vedi la [https://www.mediawiki.org/w/index.php?title=Extension:Semantic_Forms_Inputs&fromsection=Date_picker#Parameters documentazione online] per ulteriori informazioni.",
+	"semanticformsinputs-datepicker-weekstart": "Il primo giorno della settimana (0 - domenica, 1 - lunedì, ...).",
+	"semanticformsinputs-datepicker-firstdate": "La prima data che può essere scelta (in formato aaaa/mm/gg).",
+	"semanticformsinputs-datepicker-lastdate": "L'ultima data che può essere scelta (in formato aaaa/mm/gg).",
+	"semanticformsinputs-datepicker-disabledaysofweek": "Un elenco di giorni che non può essere selezionato (ad esempio il fine settimana: 6, 0).",
+	"semanticformsinputs-datepicker-highlightdaysofweek": "Un elenco dei giorni da far apparire evidenziati (per esempio il fine settimana: 6, 0).",
+	"semanticformsinputs-datepicker-disabledates": "Un elenco di date/intervalli di date separate da una virgola (le date nel formato aaaa/mm/gg, gli intervalli nel formato aaaa/mm/gg-aaaa/mm/gg).",
+	"semanticformsinputs-datepicker-highlightdates": "Un elenco di date/intervalli di date che saranno mostrate evidenziate (le date nel formato aaaa/mm/gg, gli intervalli nel formato aaaa/mm/gg-aaaa/mm/gg).",
+	"semanticformsinputs-datepicker-showweeknumbers": "I numeri delle settimane dovrebbero essere mostrati a sinistra della settimana?",
+	"semanticformsinputs-datepicker-enableinputfield": "L'utente dovrebbe essere in grado di immettere manualmente la data o dovrebbe farlo solo attraverso la selezione?",
+	"semanticformsinputs-datepicker-showresetbutton": "Dovrebbe essere mostrato un pulsante di reset? Questo sarebbe il solo modo che avrebbe l'utente di cancellare il campo se l'immissione manuale è disabilitata.",
+	"semanticformsinputs-timepicker-mintime": "Il primo orario da mostrare. Formato hh:mm",
+	"semanticformsinputs-timepicker-maxtime": "L'ultimo orario da mostrare. Formato hh:mm",
+	"semanticformsinputs-timepicker-interval": "Intervallo in minuti. Numero compreso tra 1 e 60.",
+	"semanticformsinputs-timepicker-enableinputfield": "L'utente dovrebbe essere in grado di immettere manualmente la data o dovrebbe farlo solo attraverso la selezione?",
+	"semanticformsinputs-timepicker-showresetbutton": "Dovrebbe essere mostrato un pulsante di reset? Questo sarebbe il solo modo che avrebbe l'utente di cancellare il campo se l'immissione manuale è disabilitata.",
+	"semanticformsinputs-regexp-baseprefix": "Prefisso per i parametri di tipo base.",
+	"semanticformsinputs-regexp-orchar": "Il carattere OR da usare nelle espressioni regolari, al posto di |. Il valore predefinito è \"!\"",
+	"semanticformsinputs-regexp-message": "Il messaggio di errore da visualizzare se la corrispondenza non riesce. Il valore predefinito è \"Formato non valido!\" (o equivalente nella lingua selezionata)",
+	"semanticformsinputs-menuselect-structure": "La struttura del menu come una lista non ordinata.",
+	"semanticformsinputs-menuselect-enableinputfield": "L'utente dovrebbe essere in grado di immettere manualmente il valore?"
+}

@@ -1,6 +1,21 @@
 <?php
 /**
- * Database load balancing
+ * Database load balancing.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
  *
  * @file
  * @ingroup Database
@@ -13,31 +28,51 @@
  * @ingroup Database
  */
 class LoadBalancer {
-	private $mServers, $mConns, $mLoads, $mGroupLoads;
+	/** @var array Map of (server index => server config array) */
+	private $mServers;
+	/** @var array Map of (local/foreignUsed/foreignFree => server index => DatabaseBase array) */
+	private $mConns;
+	/** @var array Map of (server index => weight) */
+	private $mLoads;
+	/** @var array Map of (group => server index => weight) */
+	private $mGroupLoads;
+	/** @var bool Whether to disregard slave lag as a factor in slave selection */
+	private $mAllowLagged;
+	/** @var integer Seconds to spend waiting on slave lag to resolve */
+	private $mWaitTimeout;
+
+	/** @var array LBFactory information */
+	private $mParentInfo;
+	/** @var string The LoadMonitor subclass name */
+	private $mLoadMonitorClass;
+	/** @var LoadMonitor */
+	private $mLoadMonitor;
+
+	/** @var bool|DatabaseBase Database connection that caused a problem */
 	private $mErrorConnection;
-	private $mReadIndex, $mAllowLagged;
-	private $mWaitForPos, $mWaitTimeout;
-	private $mLaggedSlaveMode, $mLastError = 'Unknown error';
-	private $mParentInfo, $mLagTimes;
-	private $mLoadMonitorClass, $mLoadMonitor;
+	/** @var integer The generic (not query grouped) slave index (of $mServers) */
+	private $mReadIndex;
+	/** @var bool|DBMasterPos False if not set */
+	private $mWaitForPos;
+	/** @var bool Whether the generic reader fell back to a lagged slave */
+	private $mLaggedSlaveMode;
+	/** @var string The last DB selection or connection error */
+	private $mLastError = 'Unknown error';
+	/** @var array Process cache of LoadMonitor::getLagTimes() */
+	private $mLagTimes;
 
 	/**
-	 * @param $params Array with keys:
-	 *    servers           Required. Array of server info structures.
-	 *    masterWaitTimeout Replication lag wait timeout
-	 *    loadMonitor       Name of a class used to fetch server lag and load.
+	 * @param array $params Array with keys:
+	 *   servers           Required. Array of server info structures.
+	 *   loadMonitor       Name of a class used to fetch server lag and load.
+	 * @throws MWException
 	 */
 	function __construct( $params ) {
 		if ( !isset( $params['servers'] ) ) {
-			throw new MWException( __CLASS__.': missing servers parameter' );
+			throw new MWException( __CLASS__ . ': missing servers parameter' );
 		}
 		$this->mServers = $params['servers'];
-
-		if ( isset( $params['waitTimeout'] ) ) {
-			$this->mWaitTimeout = $params['waitTimeout'];
-		} else {
-			$this->mWaitTimeout = 10;
-		}
+		$this->mWaitTimeout = 10;
 
 		$this->mReadIndex = -1;
 		$this->mWriteIndex = -1;
@@ -56,13 +91,13 @@ class LoadBalancer {
 		} else {
 			$master = reset( $params['servers'] );
 			if ( isset( $master['type'] ) && $master['type'] === 'mysql' ) {
-				$this->mLoadMonitorClass = 'LoadMonitor_MySQL';
+				$this->mLoadMonitorClass = 'LoadMonitorMySQL';
 			} else {
-				$this->mLoadMonitorClass = 'LoadMonitor_Null';
+				$this->mLoadMonitorClass = 'LoadMonitorNull';
 			}
 		}
 
-		foreach( $params['servers'] as $i => $server ) {
+		foreach ( $params['servers'] as $i => $server ) {
 			$this->mLoads[$i] = $server['load'];
 			if ( isset( $server['groupLoads'] ) ) {
 				foreach ( $server['groupLoads'] as $group => $ratio ) {
@@ -85,11 +120,14 @@ class LoadBalancer {
 			$class = $this->mLoadMonitorClass;
 			$this->mLoadMonitor = new $class( $this );
 		}
+
 		return $this->mLoadMonitor;
 	}
 
 	/**
 	 * Get or set arbitrary data used by the parent object, usually an LBFactory
+	 * @param mixed $x
+	 * @return mixed
 	 */
 	function parentInfo( $x = null ) {
 		return wfSetVar( $this->mParentInfo, $x );
@@ -99,39 +137,18 @@ class LoadBalancer {
 	 * Given an array of non-normalised probabilities, this function will select
 	 * an element and return the appropriate key
 	 *
-	 * @param $weights
+	 * @deprecated since 1.21, use ArrayUtils::pickRandom()
 	 *
-	 * @return int
+	 * @param array $weights
+	 * @return bool|int|string
 	 */
 	function pickRandom( $weights ) {
-		if ( !is_array( $weights ) || count( $weights ) == 0 ) {
-			return false;
-		}
-
-		$sum = array_sum( $weights );
-		if ( $sum == 0 ) {
-			# No loads on any of them
-			# In previous versions, this triggered an unweighted random selection,
-			# but this feature has been removed as of April 2006 to allow for strict
-			# separation of query groups.
-			return false;
-		}
-		$max = mt_getrandmax();
-		$rand = mt_rand(0, $max) / $max * $sum;
-
-		$sum = 0;
-		foreach ( $weights as $i => $w ) {
-			$sum += $w;
-			if ( $sum >= $rand ) {
-				break;
-			}
-		}
-		return $i;
+		return ArrayUtils::pickRandom( $weights );
 	}
 
 	/**
-	 * @param $loads
-	 * @param $wiki bool
+	 * @param array $loads
+	 * @param bool|string $wiki Wiki to get non-lagged for
 	 * @return bool|int|string
 	 */
 	function getRandomNonLagged( $loads, $wiki = false ) {
@@ -140,10 +157,10 @@ class LoadBalancer {
 		foreach ( $lags as $i => $lag ) {
 			if ( $i != 0 ) {
 				if ( $lag === false ) {
-					wfDebug( "Server #$i is not replicating\n" );
+					wfDebugLog( 'replication', "Server #$i is not replicating" );
 					unset( $loads[$i] );
 				} elseif ( isset( $this->mServers[$i]['max lag'] ) && $lag > $this->mServers[$i]['max lag'] ) {
-					wfDebug( "Server #$i is excessively lagged ($lag seconds)\n" );
+					wfDebugLog( 'replication', "Server #$i is excessively lagged ($lag seconds)" );
 					unset( $loads[$i] );
 				}
 			}
@@ -169,7 +186,7 @@ class LoadBalancer {
 		#wfDebugLog( 'connect', var_export( $loads, true ) );
 
 		# Return a random representative of the remainder
-		return $this->pickRandom( $loads );
+		return ArrayUtils::pickRandom( $loads );
 	}
 
 	/**
@@ -178,32 +195,28 @@ class LoadBalancer {
 	 * always return a consistent index during a given invocation
 	 *
 	 * Side effect: opens connections to databases
-	 * @param $group bool
-	 * @param $wiki bool
+	 * @param bool|string $group
+	 * @param bool|string $wiki
+	 * @throws MWException
 	 * @return bool|int|string
 	 */
 	function getReaderIndex( $group = false, $wiki = false ) {
-		global $wgReadOnly, $wgDBClusterTimeout, $wgDBAvgStatusPoll, $wgDBtype;
+		global $wgReadOnly, $wgDBtype;
 
 		# @todo FIXME: For now, only go through all this for mysql databases
-		if ($wgDBtype != 'mysql') {
+		if ( $wgDBtype != 'mysql' ) {
 			return $this->getWriterIndex();
 		}
 
-		if ( count( $this->mServers ) == 1 )  {
+		if ( count( $this->mServers ) == 1 ) {
 			# Skip the load balancing if there's only one server
 			return 0;
-		} elseif ( $group === false and $this->mReadIndex >= 0 ) {
+		} elseif ( $group === false && $this->mReadIndex >= 0 ) {
 			# Shortcut if generic reader exists already
 			return $this->mReadIndex;
 		}
 
-		wfProfileIn( __METHOD__ );
-
-		$totalElapsed = 0;
-
-		# convert from seconds to microseconds
-		$timeout = $wgDBClusterTimeout * 1e6;
+		$section = new ProfileSection( __METHOD__ );
 
 		# Find the relevant load array
 		if ( $group !== false ) {
@@ -211,15 +224,15 @@ class LoadBalancer {
 				$nonErrorLoads = $this->mGroupLoads[$group];
 			} else {
 				# No loads for this group, return false and the caller can use some other group
-				wfDebug( __METHOD__.": no loads for group $group\n" );
-				wfProfileOut( __METHOD__ );
+				wfDebug( __METHOD__ . ": no loads for group $group\n" );
+
 				return false;
 			}
 		} else {
 			$nonErrorLoads = $this->mLoads;
 		}
 
-		if ( !$nonErrorLoads ) {
+		if ( !count( $nonErrorLoads ) ) {
 			throw new MWException( "Empty server array given to LoadBalancer" );
 		}
 
@@ -228,91 +241,60 @@ class LoadBalancer {
 
 		$laggedSlaveMode = false;
 
+		# No server found yet
+		$i = false;
 		# First try quickly looking through the available servers for a server that
 		# meets our criteria
-		do {
-			$totalThreadsConnected = 0;
-			$overloadedServers = 0;
-			$currentLoads = $nonErrorLoads;
-			while ( count( $currentLoads ) ) {
-				if ( $wgReadOnly || $this->mAllowLagged || $laggedSlaveMode ) {
-					$i = $this->pickRandom( $currentLoads );
-				} else {
-					$i = $this->getRandomNonLagged( $currentLoads, $wiki );
-					if ( $i === false && count( $currentLoads ) != 0 )  {
-						# All slaves lagged. Switch to read-only mode
-						$wgReadOnly = 'The database has been automatically locked ' .
-							'while the slave database servers catch up to the master';
-						$i = $this->pickRandom( $currentLoads );
-						$laggedSlaveMode = true;
-					}
-				}
-
-				if ( $i === false ) {
-					# pickRandom() returned false
-					# This is permanent and means the configuration or the load monitor
-					# wants us to return false.
-					wfDebugLog( 'connect', __METHOD__.": pickRandom() returned false\n" );
-					wfProfileOut( __METHOD__ );
-					return false;
-				}
-
-				wfDebugLog( 'connect', __METHOD__.": Using reader #$i: {$this->mServers[$i]['host']}...\n" );
-				$conn = $this->openConnection( $i, $wiki );
-
-				if ( !$conn ) {
-					wfDebugLog( 'connect', __METHOD__.": Failed connecting to $i/$wiki\n" );
-					unset( $nonErrorLoads[$i] );
-					unset( $currentLoads[$i] );
-					continue;
-				}
-
-				// Perform post-connection backoff
-				$threshold = isset( $this->mServers[$i]['max threads'] )
-					? $this->mServers[$i]['max threads'] : false;
-				$backoff = $this->getLoadMonitor()->postConnectionBackoff( $conn, $threshold );
-
-				// Decrement reference counter, we are finished with this connection.
-				// It will be incremented for the caller later.
-				if ( $wiki !== false ) {
-					$this->reuseConnection( $conn );
-				}
-
-				if ( $backoff ) {
-					# Post-connection overload, don't use this server for now
-					$totalThreadsConnected += $backoff;
-					$overloadedServers++;
-					unset( $currentLoads[$i] );
-				} else {
-					# Return this server
-					break 2;
+		$currentLoads = $nonErrorLoads;
+		while ( count( $currentLoads ) ) {
+			if ( $wgReadOnly || $this->mAllowLagged || $laggedSlaveMode ) {
+				$i = ArrayUtils::pickRandom( $currentLoads );
+			} else {
+				$i = $this->getRandomNonLagged( $currentLoads, $wiki );
+				if ( $i === false && count( $currentLoads ) != 0 ) {
+					# All slaves lagged. Switch to read-only mode
+					wfDebugLog( 'replication', "All slaves lagged. Switch to read-only mode" );
+					$wgReadOnly = 'The database has been automatically locked ' .
+						'while the slave database servers catch up to the master';
+					$i = ArrayUtils::pickRandom( $currentLoads );
+					$laggedSlaveMode = true;
 				}
 			}
 
-			# No server found yet
-			$i = false;
+			if ( $i === false ) {
+				# pickRandom() returned false
+				# This is permanent and means the configuration or the load monitor
+				# wants us to return false.
+				wfDebugLog( 'connect', __METHOD__ . ": pickRandom() returned false" );
 
-			# If all servers were down, quit now
-			if ( !count( $nonErrorLoads ) ) {
-				wfDebugLog( 'connect', "All servers down\n" );
-				break;
+				return false;
 			}
 
-			# Some servers must have been overloaded
-			if ( $overloadedServers == 0 ) {
-				throw new MWException( __METHOD__.": unexpectedly found no overloaded servers" );
-			}
-			# Back off for a while
-			# Scale the sleep time by the number of connected threads, to produce a
-			# roughly constant global poll rate
-			$avgThreads = $totalThreadsConnected / $overloadedServers;
-			$totalElapsed += $this->sleep( $wgDBAvgStatusPoll * $avgThreads );
-		} while ( $totalElapsed < $timeout );
+			wfDebugLog( 'connect', __METHOD__ .
+				": Using reader #$i: {$this->mServers[$i]['host']}..." );
 
-		if ( $totalElapsed >= $timeout ) {
-			wfDebugLog( 'connect', "All servers busy\n" );
-			$this->mErrorConnection = false;
-			$this->mLastError = 'All servers busy';
+			$conn = $this->openConnection( $i, $wiki );
+			if ( !$conn ) {
+				wfDebugLog( 'connect', __METHOD__ . ": Failed connecting to $i/$wiki" );
+				unset( $nonErrorLoads[$i] );
+				unset( $currentLoads[$i] );
+				$i = false;
+				continue;
+			}
+
+			// Decrement reference counter, we are finished with this connection.
+			// It will be incremented for the caller later.
+			if ( $wiki !== false ) {
+				$this->reuseConnection( $conn );
+			}
+
+			# Return this server
+			break;
+		}
+
+		# If all servers were down, quit now
+		if ( !count( $nonErrorLoads ) ) {
+			wfDebugLog( 'connect', "All servers down" );
 		}
 
 		if ( $i !== false ) {
@@ -323,22 +305,25 @@ class LoadBalancer {
 					$this->mServers[$i]['slave pos'] = $conn->getSlavePos();
 				}
 			}
-			if ( $this->mReadIndex <=0 && $this->mLoads[$i]>0 && $i !== false ) {
+			if ( $this->mReadIndex <= 0 && $this->mLoads[$i] > 0 && $group !== false ) {
 				$this->mReadIndex = $i;
 			}
 		}
-		wfProfileOut( __METHOD__ );
+
 		return $i;
 	}
 
 	/**
 	 * Wait for a specified number of microseconds, and return the period waited
+	 * @param int $t
+	 * @return int
 	 */
 	function sleep( $t ) {
 		wfProfileIn( __METHOD__ );
-		wfDebug( __METHOD__.": waiting $t us\n" );
+		wfDebug( __METHOD__ . ": waiting $t us\n" );
 		usleep( $t );
 		wfProfileOut( __METHOD__ );
+
 		return $t;
 	}
 
@@ -346,6 +331,7 @@ class LoadBalancer {
 	 * Set the master wait position
 	 * If a DB_SLAVE connection has been opened already, waits
 	 * Otherwise sets a variable telling it to wait if such a connection is opened
+	 * @param DBMasterPos $pos
 	 */
 	public function waitFor( $pos ) {
 		wfProfileIn( __METHOD__ );
@@ -363,21 +349,32 @@ class LoadBalancer {
 
 	/**
 	 * Set the master wait position and wait for ALL slaves to catch up to it
+	 * @param DBMasterPos $pos
+	 * @param int $timeout Max seconds to wait; default is mWaitTimeout
+	 * @return bool Success (able to connect and no timeouts reached)
 	 */
-	public function waitForAll( $pos ) {
+	public function waitForAll( $pos, $timeout = null ) {
 		wfProfileIn( __METHOD__ );
 		$this->mWaitForPos = $pos;
-		for ( $i = 1; $i < count( $this->mServers ); $i++ ) {
-			$this->doWait( $i , true );
+		$serverCount = count( $this->mServers );
+
+		$ok = true;
+		for ( $i = 1; $i < $serverCount; $i++ ) {
+			if ( $this->mLoads[$i] > 0 ) {
+				$ok = $this->doWait( $i, true, $timeout ) && $ok;
+			}
 		}
 		wfProfileOut( __METHOD__ );
+
+		return $ok;
 	}
 
 	/**
 	 * Get any open connection to a given server index, local or foreign
 	 * Returns false if there is no connection open
 	 *
-	 * @return DatabaseBase
+	 * @param int $i
+	 * @return DatabaseBase|bool False on failure
 	 */
 	function getAnyOpenConnection( $i ) {
 		foreach ( $this->mConns as $conns ) {
@@ -385,37 +382,47 @@ class LoadBalancer {
 				return reset( $conns[$i] );
 			}
 		}
+
 		return false;
 	}
 
 	/**
 	 * Wait for a given slave to catch up to the master pos stored in $this
+	 * @param int $index Server index
+	 * @param bool $open Check the server even if a new connection has to be made
+	 * @param int $timeout Max seconds to wait; default is mWaitTimeout
+	 * @return bool
 	 */
-	function doWait( $index, $open = false ) {
+	protected function doWait( $index, $open = false, $timeout = null ) {
 		# Find a connection to wait on
 		$conn = $this->getAnyOpenConnection( $index );
 		if ( !$conn ) {
 			if ( !$open ) {
 				wfDebug( __METHOD__ . ": no connection open\n" );
+
 				return false;
 			} else {
-				$conn = $this->openConnection( $index );
+				$conn = $this->openConnection( $index, '' );
 				if ( !$conn ) {
 					wfDebug( __METHOD__ . ": failed to open connection\n" );
+
 					return false;
 				}
 			}
 		}
 
-		wfDebug( __METHOD__.": Waiting for slave #$index to catch up...\n" );
-		$result = $conn->masterPosWait( $this->mWaitForPos, $this->mWaitTimeout );
+		wfDebug( __METHOD__ . ": Waiting for slave #$index to catch up...\n" );
+		$timeout = $timeout ?: $this->mWaitTimeout;
+		$result = $conn->masterPosWait( $this->mWaitForPos, $timeout );
 
 		if ( $result == -1 || is_null( $result ) ) {
 			# Timed out waiting for slave, use master instead
-			wfDebug( __METHOD__.": Timed out waiting for slave #$index pos {$this->mWaitForPos}\n" );
+			wfDebug( __METHOD__ . ": Timed out waiting for slave #$index pos {$this->mWaitForPos}\n" );
+
 			return false;
 		} else {
-			wfDebug( __METHOD__.": Done\n" );
+			wfDebug( __METHOD__ . ": Done\n" );
+
 			return true;
 		}
 	}
@@ -424,19 +431,20 @@ class LoadBalancer {
 	 * Get a connection by index
 	 * This is the main entry point for this class.
 	 *
-	 * @param $i Integer: server index
-	 * @param $groups Array: query groups
-	 * @param $wiki String: wiki ID
+	 * @param int $i Server index
+	 * @param array $groups Query groups
+	 * @param bool|string $wiki Wiki ID
 	 *
+	 * @throws MWException
 	 * @return DatabaseBase
 	 */
 	public function &getConnection( $i, $groups = array(), $wiki = false ) {
 		wfProfileIn( __METHOD__ );
 
-		if ( $i == DB_LAST ) {
-			throw new MWException( 'Attempt to call ' . __METHOD__ . ' with deprecated server index DB_LAST' );
-		} elseif ( $i === null || $i === false ) {
-			throw new MWException( 'Attempt to call ' . __METHOD__ . ' with invalid server index' );
+		if ( $i === null || $i === false ) {
+			wfProfileOut( __METHOD__ );
+			throw new MWException( 'Attempt to call ' . __METHOD__ .
+				' with invalid server index' );
 		}
 
 		if ( $wiki === wfWikiID() ) {
@@ -450,7 +458,7 @@ class LoadBalancer {
 			$groupIndex = $this->getReaderIndex( $groups, $wiki );
 			if ( $groupIndex !== false ) {
 				$serverName = $this->getServerName( $groupIndex );
-				wfDebug( __METHOD__.": using server $serverName for group $groups\n" );
+				wfDebug( __METHOD__ . ": using server $serverName for group $groups\n" );
 				$i = $groupIndex;
 			}
 		} else {
@@ -458,7 +466,7 @@ class LoadBalancer {
 				$groupIndex = $this->getReaderIndex( $group, $wiki );
 				if ( $groupIndex !== false ) {
 					$serverName = $this->getServerName( $groupIndex );
-					wfDebug( __METHOD__.": using server $serverName for group $group\n" );
+					wfDebug( __METHOD__ . ": using server $serverName for group $group\n" );
 					$i = $groupIndex;
 					break;
 				}
@@ -467,23 +475,27 @@ class LoadBalancer {
 
 		# Operation-based index
 		if ( $i == DB_SLAVE ) {
+			$this->mLastError = 'Unknown error'; // reset error string
 			$i = $this->getReaderIndex( false, $wiki );
 			# Couldn't find a working server in getReaderIndex()?
 			if ( $i === false ) {
 				$this->mLastError = 'No working slave server: ' . $this->mLastError;
-				$this->reportConnectionError( $this->mErrorConnection );
 				wfProfileOut( __METHOD__ );
-				return false;
+
+				return $this->reportConnectionError();
 			}
 		}
 
 		# Now we have an explicit index into the servers array
 		$conn = $this->openConnection( $i, $wiki );
 		if ( !$conn ) {
-			$this->reportConnectionError( $this->mErrorConnection );
+			wfProfileOut( __METHOD__ );
+
+			return $this->reportConnectionError();
 		}
 
 		wfProfileOut( __METHOD__ );
+
 		return $conn;
 	}
 
@@ -493,19 +505,14 @@ class LoadBalancer {
 	 * the same number of times as getConnection() to work.
 	 *
 	 * @param DatabaseBase $conn
+	 * @throws MWException
 	 */
 	public function reuseConnection( $conn ) {
-		$serverIndex = $conn->getLBInfo('serverIndex');
-		$refCount = $conn->getLBInfo('foreignPoolRefCount');
-		$dbName = $conn->getDBname();
-		$prefix = $conn->tablePrefix();
-		if ( strval( $prefix ) !== '' ) {
-			$wiki = "$dbName-$prefix";
-		} else {
-			$wiki = $dbName;
-		}
+		$serverIndex = $conn->getLBInfo( 'serverIndex' );
+		$refCount = $conn->getLBInfo( 'foreignPoolRefCount' );
 		if ( $serverIndex === null || $refCount === null ) {
-			wfDebug( __METHOD__.": this connection was not opened as a foreign connection\n" );
+			wfDebug( __METHOD__ . ": this connection was not opened as a foreign connection\n" );
+
 			/**
 			 * This can happen in code like:
 			 *   foreach ( $dbs as $db ) {
@@ -516,19 +523,61 @@ class LoadBalancer {
 			 * When a connection to the local DB is opened in this way, reuseConnection()
 			 * should be ignored
 			 */
+
 			return;
 		}
+
+		$dbName = $conn->getDBname();
+		$prefix = $conn->tablePrefix();
+		if ( strval( $prefix ) !== '' ) {
+			$wiki = "$dbName-$prefix";
+		} else {
+			$wiki = $dbName;
+		}
 		if ( $this->mConns['foreignUsed'][$serverIndex][$wiki] !== $conn ) {
-			throw new MWException( __METHOD__.": connection not found, has the connection been freed already?" );
+			throw new MWException( __METHOD__ . ": connection not found, has " .
+				"the connection been freed already?" );
 		}
 		$conn->setLBInfo( 'foreignPoolRefCount', --$refCount );
 		if ( $refCount <= 0 ) {
 			$this->mConns['foreignFree'][$serverIndex][$wiki] = $conn;
 			unset( $this->mConns['foreignUsed'][$serverIndex][$wiki] );
-			wfDebug( __METHOD__.": freed connection $serverIndex/$wiki\n" );
+			wfDebug( __METHOD__ . ": freed connection $serverIndex/$wiki\n" );
 		} else {
-			wfDebug( __METHOD__.": reference count for $serverIndex/$wiki reduced to $refCount\n" );
+			wfDebug( __METHOD__ . ": reference count for $serverIndex/$wiki reduced to $refCount\n" );
 		}
+	}
+
+	/**
+	 * Get a database connection handle reference
+	 *
+	 * The handle's methods wrap simply wrap those of a DatabaseBase handle
+	 *
+	 * @see LoadBalancer::getConnection() for parameter information
+	 *
+	 * @param int $db
+	 * @param mixed $groups
+	 * @param bool|string $wiki
+	 * @return DBConnRef
+	 */
+	public function getConnectionRef( $db, $groups = array(), $wiki = false ) {
+		return new DBConnRef( $this, $this->getConnection( $db, $groups, $wiki ) );
+	}
+
+	/**
+	 * Get a database connection handle reference without connecting yet
+	 *
+	 * The handle's methods wrap simply wrap those of a DatabaseBase handle
+	 *
+	 * @see LoadBalancer::getConnection() for parameter information
+	 *
+	 * @param int $db
+	 * @param mixed $groups
+	 * @param bool|string $wiki
+	 * @return DBConnRef
+	 */
+	public function getLazyConnectionRef( $db, $groups = array(), $wiki = false ) {
+		return new DBConnRef( $this, array( $db, $groups, $wiki ) );
 	}
 
 	/**
@@ -539,8 +588,8 @@ class LoadBalancer {
 	 * On error, returns false, and the connection which caused the
 	 * error will be available via $this->mErrorConnection.
 	 *
-	 * @param $i Integer server index
-	 * @param $wiki String wiki ID to open
+	 * @param int $i Server index
+	 * @param bool|string $wiki Wiki ID to open
 	 * @return DatabaseBase
 	 *
 	 * @access private
@@ -549,7 +598,8 @@ class LoadBalancer {
 		wfProfileIn( __METHOD__ );
 		if ( $wiki !== false ) {
 			$conn = $this->openForeignConnection( $i, $wiki );
-			wfProfileOut( __METHOD__);
+			wfProfileOut( __METHOD__ );
+
 			return $conn;
 		}
 		if ( isset( $this->mConns['local'][$i][0] ) ) {
@@ -559,6 +609,7 @@ class LoadBalancer {
 			$server['serverIndex'] = $i;
 			$conn = $this->reallyOpenConnection( $server, false );
 			if ( $conn->isOpen() ) {
+				wfDebug( "Connected to database $i at {$this->mServers[$i]['host']}\n" );
 				$this->mConns['local'][$i][0] = $conn;
 			} else {
 				wfDebug( "Failed to connect to database $i at {$this->mServers[$i]['host']}\n" );
@@ -567,6 +618,7 @@ class LoadBalancer {
 			}
 		}
 		wfProfileOut( __METHOD__ );
+
 		return $conn;
 	}
 
@@ -584,23 +636,23 @@ class LoadBalancer {
 	 * On error, returns false, and the connection which caused the
 	 * error will be available via $this->mErrorConnection.
 	 *
-	 * @param $i Integer: server index
-	 * @param $wiki String: wiki ID to open
+	 * @param int $i Server index
+	 * @param string $wiki Wiki ID to open
 	 * @return DatabaseBase
 	 */
 	function openForeignConnection( $i, $wiki ) {
-		wfProfileIn(__METHOD__);
+		wfProfileIn( __METHOD__ );
 		list( $dbName, $prefix ) = wfSplitWikiID( $wiki );
 		if ( isset( $this->mConns['foreignUsed'][$i][$wiki] ) ) {
 			// Reuse an already-used connection
 			$conn = $this->mConns['foreignUsed'][$i][$wiki];
-			wfDebug( __METHOD__.": reusing connection $i/$wiki\n" );
+			wfDebug( __METHOD__ . ": reusing connection $i/$wiki\n" );
 		} elseif ( isset( $this->mConns['foreignFree'][$i][$wiki] ) ) {
 			// Reuse a free connection for the same wiki
 			$conn = $this->mConns['foreignFree'][$i][$wiki];
 			unset( $this->mConns['foreignFree'][$i][$wiki] );
 			$this->mConns['foreignUsed'][$i][$wiki] = $conn;
-			wfDebug( __METHOD__.": reusing free connection $i/$wiki\n" );
+			wfDebug( __METHOD__ . ": reusing free connection $i/$wiki\n" );
 		} elseif ( !empty( $this->mConns['foreignFree'][$i] ) ) {
 			// Reuse a connection from another wiki
 			$conn = reset( $this->mConns['foreignFree'][$i] );
@@ -615,22 +667,23 @@ class LoadBalancer {
 				$conn->tablePrefix( $prefix );
 				unset( $this->mConns['foreignFree'][$i][$oldWiki] );
 				$this->mConns['foreignUsed'][$i][$wiki] = $conn;
-				wfDebug( __METHOD__.": reusing free connection from $oldWiki for $wiki\n" );
+				wfDebug( __METHOD__ . ": reusing free connection from $oldWiki for $wiki\n" );
 			}
 		} else {
 			// Open a new connection
 			$server = $this->mServers[$i];
 			$server['serverIndex'] = $i;
 			$server['foreignPoolRefCount'] = 0;
+			$server['foreign'] = true;
 			$conn = $this->reallyOpenConnection( $server, $dbName );
 			if ( !$conn->isOpen() ) {
-				wfDebug( __METHOD__.": error opening connection for $i/$wiki\n" );
+				wfDebug( __METHOD__ . ": error opening connection for $i/$wiki\n" );
 				$this->mErrorConnection = $conn;
 				$conn = false;
 			} else {
 				$conn->tablePrefix( $prefix );
 				$this->mConns['foreignUsed'][$i][$wiki] = $conn;
-				wfDebug( __METHOD__.": opened new connection for $i/$wiki\n" );
+				wfDebug( __METHOD__ . ": opened new connection for $i/$wiki\n" );
 			}
 		}
 
@@ -639,21 +692,23 @@ class LoadBalancer {
 			$refCount = $conn->getLBInfo( 'foreignPoolRefCount' );
 			$conn->setLBInfo( 'foreignPoolRefCount', $refCount + 1 );
 		}
-		wfProfileOut(__METHOD__);
+		wfProfileOut( __METHOD__ );
+
 		return $conn;
 	}
 
 	/**
 	 * Test if the specified index represents an open connection
 	 *
-	 * @param $index Integer: server index
+	 * @param int $index Server index
 	 * @access private
 	 * @return bool
 	 */
 	function isOpen( $index ) {
-		if( !is_integer( $index ) ) {
+		if ( !is_integer( $index ) ) {
 			return false;
 		}
+
 		return (bool)$this->getAnyOpenConnection( $index );
 	}
 
@@ -662,23 +717,22 @@ class LoadBalancer {
 	 * Returns a Database object whether or not the connection was successful.
 	 * @access private
 	 *
+	 * @param array $server
+	 * @param bool $dbNameOverride
+	 * @throws MWException
 	 * @return DatabaseBase
 	 */
 	function reallyOpenConnection( $server, $dbNameOverride = false ) {
-		if( !is_array( $server ) ) {
+		if ( !is_array( $server ) ) {
 			throw new MWException( 'You must update your load-balancing configuration. ' .
-			                       'See DefaultSettings.php entry for $wgDBservers.' );
+				'See DefaultSettings.php entry for $wgDBservers.' );
 		}
 
-		$host = $server['host'];
-		$dbname = $server['dbname'];
-
 		if ( $dbNameOverride !== false ) {
-			$server['dbname'] = $dbname = $dbNameOverride;
+			$server['dbname'] = $dbNameOverride;
 		}
 
 		# Create object
-		wfDebug( "Connecting to $host $dbname...\n" );
 		try {
 			$db = DatabaseBase::factory( $server['type'], $server );
 		} catch ( DBConnectionError $e ) {
@@ -687,11 +741,6 @@ class LoadBalancer {
 			$db = $e->db;
 		}
 
-		if ( $db->isOpen() ) {
-			wfDebug( "Connected to $host $dbname.\n" );
-		} else {
-			wfDebug( "Connection failed to $host $dbname.\n" );
-		}
 		$db->setLBInfo( $server );
 		if ( isset( $server['fakeSlaveLag'] ) ) {
 			$db->setFakeSlaveLag( $server['fakeSlaveLag'] );
@@ -699,26 +748,35 @@ class LoadBalancer {
 		if ( isset( $server['fakeMaster'] ) ) {
 			$db->setFakeMaster( true );
 		}
+
 		return $db;
 	}
 
-	function reportConnectionError( &$conn ) {
-		wfProfileIn( __METHOD__ );
+	/**
+	 * @throws DBConnectionError
+	 * @return bool
+	 */
+	private function reportConnectionError() {
+		$conn = $this->mErrorConnection; // The connection which caused the error
 
 		if ( !is_object( $conn ) ) {
 			// No last connection, probably due to all servers being too busy
-			wfLogDBError( "LB failure with no last connection. Connection error: {$this->mLastError}\n" );
-			$conn = new Database;
+			wfLogDBError( "LB failure with no last connection. Connection error: {$this->mLastError}" );
+
 			// If all servers were busy, mLastError will contain something sensible
-			throw new DBConnectionError( $conn, $this->mLastError );
+			throw new DBConnectionError( null, $this->mLastError );
 		} else {
 			$server = $conn->getProperty( 'mServer' );
-			wfLogDBError( "Connection error: {$this->mLastError} ({$server})\n" );
-			$conn->reportConnectionError( "{$this->mLastError} ({$server})" );
+			wfLogDBError( "Connection error: {$this->mLastError} ({$server})" );
+			$conn->reportConnectionError( "{$this->mLastError} ({$server})" ); // throws DBConnectionError
 		}
-		wfProfileOut( __METHOD__ );
+
+		return false; /* not reached */
 	}
 
+	/**
+	 * @return int
+	 */
 	function getWriterIndex() {
 		return 0;
 	}
@@ -726,6 +784,7 @@ class LoadBalancer {
 	/**
 	 * Returns true if the specified index is a valid server index
 	 *
+	 * @param string $i
 	 * @return bool
 	 */
 	function haveIndex( $i ) {
@@ -735,6 +794,7 @@ class LoadBalancer {
 	/**
 	 * Returns true if the specified index is valid and has non-zero load
 	 *
+	 * @param string $i
 	 * @return bool
 	 */
 	function isNonZeroLoad( $i ) {
@@ -753,6 +813,8 @@ class LoadBalancer {
 	/**
 	 * Get the host name or IP address of the server with the specified index
 	 * Prefer a readable name if available.
+	 * @param string $i
+	 * @return string
 	 */
 	function getServerName( $i ) {
 		if ( isset( $this->mServers[$i]['hostName'] ) ) {
@@ -766,6 +828,8 @@ class LoadBalancer {
 
 	/**
 	 * Return the server info structure for a given index, or false if the index is invalid.
+	 * @param int $i
+	 * @return array|bool
 	 */
 	function getServerInfo( $i ) {
 		if ( isset( $this->mServers[$i] ) ) {
@@ -776,7 +840,10 @@ class LoadBalancer {
 	}
 
 	/**
-	 * Sets the server info structure for the given index. Entry at index $i is created if it doesn't exist
+	 * Sets the server info structure for the given index. Entry at index $i
+	 * is created if it doesn't exist
+	 * @param int $i
+	 * @param array $serverInfo
 	 */
 	function setServerInfo( $i, $serverInfo ) {
 		$this->mServers[$i] = $serverInfo;
@@ -791,17 +858,21 @@ class LoadBalancer {
 		# master (however unlikely that may be), then we can fetch the position from the slave.
 		$masterConn = $this->getAnyOpenConnection( 0 );
 		if ( !$masterConn ) {
-			for ( $i = 1; $i < count( $this->mServers ); $i++ ) {
+			$serverCount = count( $this->mServers );
+			for ( $i = 1; $i < $serverCount; $i++ ) {
 				$conn = $this->getAnyOpenConnection( $i );
 				if ( $conn ) {
 					wfDebug( "Master pos fetched from slave\n" );
+
 					return $conn->getSlavePos();
 				}
 			}
 		} else {
 			wfDebug( "Master pos fetched from master\n" );
+
 			return $masterConn->getMasterPos();
 		}
+
 		return false;
 	}
 
@@ -810,7 +881,8 @@ class LoadBalancer {
 	 */
 	function closeAll() {
 		foreach ( $this->mConns as $conns2 ) {
-			foreach  ( $conns2 as $conns3 ) {
+			foreach ( $conns2 as $conns3 ) {
+				/** @var DatabaseBase $conn */
 				foreach ( $conns3 as $conn ) {
 					$conn->close();
 				}
@@ -824,20 +896,10 @@ class LoadBalancer {
 	}
 
 	/**
-	 * Deprecated function, typo in function name
-	 *
-	 * @deprecated in 1.18
-	 */
-	function closeConnecton( $conn ) {
-		$this->closeConnection( $conn );
-	}
-
-	/**
 	 * Close a connection
 	 * Using this function makes sure the LoadBalancer knows the connection is closed.
 	 * If you use $conn->close() directly, the load balancer won't update its state.
-	 * @param $conn
-	 * @return void
+	 * @param DatabaseBase $conn
 	 */
 	function closeConnection( $conn ) {
 		$done = false;
@@ -864,8 +926,11 @@ class LoadBalancer {
 	function commitAll() {
 		foreach ( $this->mConns as $conns2 ) {
 			foreach ( $conns2 as $conns3 ) {
+				/** @var DatabaseBase[] $conns3 */
 				foreach ( $conns3 as $conn ) {
-					$conn->commit();
+					if ( $conn->trxLevel() ) {
+						$conn->commit( __METHOD__, 'flush' );
+					}
 				}
 			}
 		}
@@ -881,34 +946,103 @@ class LoadBalancer {
 			if ( empty( $conns2[$masterIndex] ) ) {
 				continue;
 			}
+			/** @var DatabaseBase $conn */
 			foreach ( $conns2[$masterIndex] as $conn ) {
-				if ( $conn->doneWrites() ) {
-					$conn->commit();
+				if ( $conn->trxLevel() && $conn->writesOrCallbacksPending() ) {
+					$conn->commit( __METHOD__, 'flush' );
 				}
 			}
 		}
 	}
 
+	/**
+	 * Issue ROLLBACK only on master, only if queries were done on connection
+	 * @since 1.23
+	 */
+	function rollbackMasterChanges() {
+		// Always 0, but who knows.. :)
+		$masterIndex = $this->getWriterIndex();
+		foreach ( $this->mConns as $conns2 ) {
+			if ( empty( $conns2[$masterIndex] ) ) {
+				continue;
+			}
+			/** @var DatabaseBase $conn */
+			foreach ( $conns2[$masterIndex] as $conn ) {
+				if ( $conn->trxLevel() && $conn->writesOrCallbacksPending() ) {
+					$conn->rollback( __METHOD__, 'flush' );
+				}
+			}
+		}
+	}
+
+	/**
+	 * @return bool Whether a master connection is already open
+	 * @since 1.24
+	 */
+	function hasMasterConnection() {
+		return $this->isOpen( $this->getWriterIndex() );
+	}
+
+	/**
+	 * Determine if there are any pending changes that need to be rolled back
+	 * or committed.
+	 * @since 1.23
+	 * @return bool
+	 */
+	function hasMasterChanges() {
+		// Always 0, but who knows.. :)
+		$masterIndex = $this->getWriterIndex();
+		foreach ( $this->mConns as $conns2 ) {
+			if ( empty( $conns2[$masterIndex] ) ) {
+				continue;
+			}
+			/** @var DatabaseBase $conn */
+			foreach ( $conns2[$masterIndex] as $conn ) {
+				if ( $conn->trxLevel() && $conn->writesOrCallbacksPending() ) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * @param mixed $value
+	 * @return mixed
+	 */
 	function waitTimeout( $value = null ) {
 		return wfSetVar( $this->mWaitTimeout, $value );
 	}
 
+	/**
+	 * @return bool
+	 */
 	function getLaggedSlaveMode() {
 		return $this->mLaggedSlaveMode;
 	}
 
-	/* Disables/enables lag checks */
+	/**
+	 * Disables/enables lag checks
+	 * @param null|bool $mode
+	 * @return bool
+	 */
 	function allowLagged( $mode = null ) {
-		if ( $mode === null) {
+		if ( $mode === null ) {
 			return $this->mAllowLagged;
 		}
 		$this->mAllowLagged = $mode;
+
+		return $this->mAllowLagged;
 	}
 
+	/**
+	 * @return bool
+	 */
 	function pingAll() {
 		$success = true;
 		foreach ( $this->mConns as $conns2 ) {
 			foreach ( $conns2 as $conns3 ) {
+				/** @var DatabaseBase[] $conns3 */
 				foreach ( $conns3 as $conn ) {
 					if ( !$conn->ping() ) {
 						$success = false;
@@ -916,11 +1050,14 @@ class LoadBalancer {
 				}
 			}
 		}
+
 		return $success;
 	}
 
 	/**
 	 * Call a function with each open connection object
+	 * @param callable $callback
+	 * @param array $params
 	 */
 	function forEachOpenConnection( $callback, $params = array() ) {
 		foreach ( $this->mConns as $conns2 ) {
@@ -936,19 +1073,32 @@ class LoadBalancer {
 	/**
 	 * Get the hostname and lag time of the most-lagged slave.
 	 * This is useful for maintenance scripts that need to throttle their updates.
-	 * May attempt to open connections to slaves on the default DB. If there is 
+	 * May attempt to open connections to slaves on the default DB. If there is
 	 * no lag, the maximum lag will be reported as -1.
 	 *
-	 * @param $wiki string Wiki ID, or false for the default database
-	 *
+	 * @param bool|string $wiki Wiki ID, or false for the default database
 	 * @return array ( host, max lag, index of max lagged host )
 	 */
 	function getMaxLag( $wiki = false ) {
 		$maxLag = -1;
 		$host = '';
 		$maxIndex = 0;
-		if ( $this->getServerCount() > 1 ) { // no replication = no lag
+
+		if ( $this->getServerCount() <= 1 ) { // no replication = no lag
+			return array( $host, $maxLag, $maxIndex );
+		}
+
+		// Try to get the max lag info from the server cache
+		$key = 'loadbalancer:maxlag:cluster:' . $this->mServers[0]['host'];
+		$cache = ObjectCache::newAccelerator( array(), 'hash' );
+		$maxLagInfo = $cache->get( $key ); // (host, lag, index)
+
+		// Fallback to connecting to each slave and getting the lag
+		if ( !$maxLagInfo ) {
 			foreach ( $this->mServers as $i => $conn ) {
+				if ( $i == $this->getWriterIndex() ) {
+					continue; // nothing to check
+				}
 				$conn = false;
 				if ( $wiki === false ) {
 					$conn = $this->getAnyOpenConnection( $i );
@@ -966,16 +1116,18 @@ class LoadBalancer {
 					$maxIndex = $i;
 				}
 			}
+			$maxLagInfo = array( $host, $maxLag, $maxIndex );
+			$cache->set( $key, $maxLagInfo, 5 );
 		}
-		return array( $host, $maxLag, $maxIndex );
+
+		return $maxLagInfo;
 	}
 
 	/**
 	 * Get lag time for each server
 	 * Results are cached for a short time in memcached, and indefinitely in the process cache
 	 *
-	 * @param $wiki
-	 *
+	 * @param string|bool $wiki
 	 * @return array
 	 */
 	function getLagTimes( $wiki = false ) {
@@ -988,22 +1140,26 @@ class LoadBalancer {
 			$this->mLagTimes = array( 0 => 0 );
 		} else {
 			# Send the request to the load monitor
-			$this->mLagTimes = $this->getLoadMonitor()->getLagTimes( 
+			$this->mLagTimes = $this->getLoadMonitor()->getLagTimes(
 				array_keys( $this->mServers ), $wiki );
 		}
+
 		return $this->mLagTimes;
 	}
 
 	/**
-	 * Get the lag in seconds for a given connection, or zero if this load 
-	 * balancer does not have replication enabled. 
+	 * Get the lag in seconds for a given connection, or zero if this load
+	 * balancer does not have replication enabled.
 	 *
-	 * This should be used in preference to Database::getLag() in cases where 
-	 * replication may not be in use, since there is no way to determine if 
-	 * replication is in use at the connection level without running 
+	 * This should be used in preference to Database::getLag() in cases where
+	 * replication may not be in use, since there is no way to determine if
+	 * replication is in use at the connection level without running
 	 * potentially restricted queries such as SHOW SLAVE STATUS. Using this
 	 * function instead of Database::getLag() avoids a fatal error in this
 	 * case on many installations.
+	 *
+	 * @param DatabaseBase $conn
+	 * @return int
 	 */
 	function safeGetLag( $conn ) {
 		if ( $this->getServerCount() == 1 ) {
@@ -1018,5 +1174,51 @@ class LoadBalancer {
 	 */
 	function clearLagTimeCache() {
 		$this->mLagTimes = null;
+	}
+}
+
+/**
+ * Helper class to handle automatically marking connectons as reusable (via RAII pattern)
+ * as well handling deferring the actual network connection until the handle is used
+ *
+ * @ingroup Database
+ * @since 1.22
+ */
+class DBConnRef implements IDatabase {
+	/** @var LoadBalancer */
+	protected $lb;
+
+	/** @var DatabaseBase|null */
+	protected $conn;
+
+	/** @var array|null */
+	protected $params;
+
+	/**
+	 * @param LoadBalancer $lb
+	 * @param DatabaseBase|array $conn Connection or (server index, group, wiki ID) array
+	 */
+	public function __construct( LoadBalancer $lb, $conn ) {
+		$this->lb = $lb;
+		if ( $conn instanceof DatabaseBase ) {
+			$this->conn = $conn;
+		} else {
+			$this->params = $conn;
+		}
+	}
+
+	public function __call( $name, $arguments ) {
+		if ( $this->conn === null ) {
+			list( $db, $groups, $wiki ) = $this->params;
+			$this->conn = $this->lb->getConnection( $db, $groups, $wiki );
+		}
+
+		return call_user_func_array( array( $this->conn, $name ), $arguments );
+	}
+
+	function __destruct() {
+		if ( $this->conn !== null ) {
+			$this->lb->reuseConnection( $this->conn );
+		}
 	}
 }

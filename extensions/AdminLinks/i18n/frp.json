@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"ChrisPtDe"
+		]
+	},
+	"adminlinks": "Lims d’administracion",
+	"adminlinks-desc": "Apond una [[Special:AdminLinks|pâge spèciâla]] que contint des lims utilos por los administrators.",
+	"adminlinks_documentation": "documentacion de $1",
+	"adminlinks_general": "G·ènèral",
+	"adminlinks_editsidebar": "Changiér la bârra de fllanc",
+	"adminlinks_editcss": "Changiér lo fichiér CSS",
+	"adminlinks_editmainpagename": "Changiér lo nom de la pâge de reçua",
+	"adminlinks_users": "Usanciérs",
+	"adminlinks_createuser": "Fâre un usanciér",
+	"adminlinks_browsesearch": "Navigacion et rechèrche",
+	"adminlinks_importexport": "Importar et èxportar",
+	"right-adminlinks": "Vêre lo lim de vers los [[Special:AdminLinks|lims d’administracion]]"
+}

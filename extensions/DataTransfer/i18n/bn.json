@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wikitanvir",
+			"Aftab1995"
+		]
+	},
+	"viewxml": "এক্সএমএল দেখাও",
+	"dt_viewxml_categories": "বিষয়শ্রেণীসমূহ",
+	"dt_viewxml_namespaces": "নামস্থানসমূহ",
+	"dt_viewxml_simplifiedformat": "সাধারণকৃত কাঠামো",
+	"dt_xml_namespace": "নামস্থান",
+	"dt_xml_pages": "পাতা",
+	"dt_xml_page": "পাতা",
+	"dt_xml_template": "টেম্পলেট",
+	"dt_xml_field": "ফিল্ড",
+	"dt_xml_name": "নাম",
+	"dt_xml_title": "শিরোনাম",
+	"dt_xml_id": "আইডি",
+	"dt_xml_freetext": "মুক্ত লেখা",
+	"importxml": "এক্সএমএল আমদানি",
+	"dt_import_selectfile": "অনুগ্রহ করে আমদানির জন্য $1 ফাইল নির্বাচন করুন:",
+	"dt_import_encodingtype": "এনকোডিংয়ের ধরন:",
+	"dt_import_forexisting": "যে পাতাগুলো ইতিমধ্যেই আছে তার জন্য:",
+	"dt_import_overwriteexisting": "বিদ্যমান বিষয়সমূহ প্রতিস্থাপন করো",
+	"dt_import_skipexisting": "উপেক্ষা করো",
+	"dt_import_summarydesc": "আমদানির সারাংশ",
+	"dt_import_editsummary": "{{ucfirst:$1}} আমদানি",
+	"dt_import_importing": "আমদানি হচ্ছে...",
+	"dt_import_success": "$2টি ফাইল থেকে $1টি {{PLURAL:$1|পাতা|পাতা}} তৈরি করা হবে।",
+	"importcsv": "সিএসভি আমদানি",
+	"right-datatransferimport": "উপাত্ত আমদানি"
+}

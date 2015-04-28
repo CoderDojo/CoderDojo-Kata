@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Protnet"
+		]
+	},
+	"semanticformsinputs-desc": "Επιπρόσθετοι τύποι εισαγωγής δεδομένων για τις [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Semantic_Forms Σημασιολογικές Φόρμες]",
+	"semanticformsinputs-wrongformat": "Εσφαλμένη μορφή.",
+	"semanticformsinputs-close": "Κλείσιμο",
+	"semanticformsinputs-prev": "Προηγούμενο",
+	"semanticformsinputs-next": "Επόμενο",
+	"semanticformsinputs-today": "Σήμερα",
+	"semanticformsinputs-malformedregexp": "Κακή μορφή κανονικής έκφρασης ($1).",
+	"semanticformsinputs-datepicker-dateformat": "Η συμβολοσειρά μορφοποίησης ημερομηνίας. Δείτε την [https://www.mediawiki.org/w/index.php?title=Extension:Semantic_Forms_Inputs&fromsection=Date_picker#Parameters ηλεκτρονική τεκμηρίωση] για περισσότερες πληροφορίες.",
+	"semanticformsinputs-datepicker-weekstart": "Η πρώτη ημέρα της εβδομάδας (0 - Κυριακή, 1 - Δευτέρα, ...).",
+	"semanticformsinputs-datepicker-firstdate": "Η πρώτη ημερομηνία που μπορεί να επιλεγεί (σε μορφή εεεε/μμ/ηη).",
+	"semanticformsinputs-datepicker-lastdate": "Η τελευταία ημερομηνία που μπορεί να επιλεγεί (σε μορφή εεεε/μμ/ηη).",
+	"semanticformsinputs-datepicker-disabledaysofweek": "Λίστα των ημερών που δεν μπορούν να επιλέγονται (π.χ. Σαββατοκύριακο: 6, 0).",
+	"semanticformsinputs-datepicker-highlightdaysofweek": "Λίστα των ημερών που θα είναι τονισμένες (π.χ. Σαββατοκύριακο: 6, 0).",
+	"semanticformsinputs-datepicker-disabledates": "Λίστα διαχωρισμένη με κόμματα των απενεργοποιημένων ημερομηνιών/χρονικών περιόδων (ημερομηνίες σε μορφή εεεε/μμ/ηη, χρονικές περίοδοι σε μορφή εεεε/μμ/ηη-εεεε/μμ/ηη).",
+	"semanticformsinputs-datepicker-highlightdates": "Λίστα διαχωρισμένη με κόμματα των ημερομηνιών/χρονικών περιόδων που θα εμφανίζονται τονισμένες (ημερομηνίες σε μορφή εεεε/μμ/ηη, χρονικές περίοδοι σε μορφή εεεε/μμ/ηη-εεεε/μμ/ηη).",
+	"semanticformsinputs-datepicker-showweeknumbers": "Θέλετε ο αριθμός εβδομάδας να φαίνεται αριστερά της εβδομάδας;",
+	"semanticformsinputs-datepicker-enableinputfield": "Να μπορεί ο χρήστης να συμπληρώσει το πλαίσιο εισόδου δεδομένων απευθείας ή μόνο μέσω του επιλογέα ημερομηνίας;",
+	"semanticformsinputs-datepicker-showresetbutton": "Να εμφανίζεται κουμπί επαναφοράς; Αυτός είναι ο μόνος τρόπος για να σβήσει ο χρήστης το πλαίσιο εισαγωγής δεδομένων εάν είναι απενεργοποιημένη η άμεση εισαγωγή.",
+	"semanticformsinputs-timepicker-mintime": "Η πιο παλιά ώρα που θα εμφανίζεται. Μορφή: ωω:λλ",
+	"semanticformsinputs-timepicker-maxtime": "Η πιο πρόσφατη ώρα που θα εμφανίζεται. Μορφή: ωω:λλ",
+	"semanticformsinputs-timepicker-interval": "Χρονικό διάστημα μεταξύ λεπτών. Αριθμός μεταξύ 1 και 60.",
+	"semanticformsinputs-timepicker-enableinputfield": "Να μπορεί ο χρήστης να συμπληρώσει το πλαίσιο εισόδου δεδομένων απευθείας ή μόνο μέσω του επιλογέα ημερομηνίας;",
+	"semanticformsinputs-timepicker-showresetbutton": "Να εμφανίζεται κουμπί επαναφοράς; Αυτός είναι ο μόνος τρόπος για να σβήσει ο χρήστης το πλαίσιο εισαγωγής δεδομένων εάν είναι απενεργοποιημένη η άμεση εισαγωγή.",
+	"semanticformsinputs-regexp-regexp": "Η κανονική έκφραση που πρέπει να πληρούν τα δεδομένα που εισάγονται για να είναι έγκυρα. Πρέπει να αποδοθεί συμπεριλαμβανομένων των καθέτων! Η προεπιλογή είναι «/.*/», δηλαδή οποιαδήποτε τιμή.",
+	"semanticformsinputs-regexp-basetype": "Ο βασικός τύπος που θα χρησιμοποιηθεί. Μπορεί να είναι οποιοσδήποτε τύπος εισόδου που παράγει στοιχεία φόρμας html τύπου πλαισίου εισόδου ή τύπου επιλογέα (π.χ. κείμενο, πλαίσιο λίστας, επιλογέας ημερομηνίας) ή μια άλλη κανονική έκφραση. Η προεπιλογή είναι «κείμενο».",
+	"semanticformsinputs-regexp-baseprefix": "Πρόθεμα για τις παραμέτρους του βασικού τύπου.",
+	"semanticformsinputs-regexp-orchar": "Ο χαρακτήρας OR που θα χρησιμοποιηθεί στην κανονική έκφραση αντί του |. Η προεπιλογή είναι «!»",
+	"semanticformsinputs-regexp-inverse": "Αν οριστεί, η είσοδος πρέπει να ΜΗΝ πληροί την κανονική έκφραση για να είναι έγκυρη. Δηλαδή η κανονική έκφραση αντιστρέφεται.",
+	"semanticformsinputs-regexp-message": "Το μήνυμα λάθους που θα εμφανίζεται εάν δεν πληροίται η κανονική έκφραση. Η προεπιλογή είναι «Εσφαλμένη μορφή!» (ή το ισοδύναμο στη γλώσσα που ορίζεται από τις τοπικές ρυθμίσεις)",
+	"semanticformsinputs-menuselect-structure": "Η δομή του μενού ως αταξινόμητη λίστα.",
+	"semanticformsinputs-menuselect-enableinputfield": "Να μπορεί ο χρήστης να συμπληρώσει το πλαίσιο εισόδου δεδομένων απευθείας;"
+}

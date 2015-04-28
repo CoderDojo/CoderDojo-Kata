@@ -4,30 +4,29 @@
  * Base class that store and restore the Language objects
  */
 abstract class MediaWikiLangTestCase extends MediaWikiTestCase {
-	private static $oldLang;
-	private static $oldContLang;
+	protected function setUp() {
+		global $wgLanguageCode, $wgContLang;
+		parent::setUp();
 
-	public function setUp() {
-		global $wgLanguageCode, $wgLang, $wgContLang;
+		if ( $wgLanguageCode != $wgContLang->getCode() ) {
+			throw new MWException( "Error in MediaWikiLangTestCase::setUp(): " .
+				"\$wgLanguageCode ('$wgLanguageCode') is different from " .
+				"\$wgContLang->getCode() (" . $wgContLang->getCode() . ")" );
+		}
 
-		self::$oldLang = $wgLang;
-		self::$oldContLang = $wgContLang;
+		// HACK: Call getLanguage() so the real $wgContLang is cached as the user language
+		// rather than our fake one. This is to avoid breaking other, unrelated tests.
+		RequestContext::getMain()->getLanguage();
 
-		if( $wgLanguageCode != $wgContLang->getCode() ) die("nooo!");
+		$langCode = 'en'; # For mainpage to be 'Main Page'
+		$langObj = Language::factory( $langCode );
 
-		$wgLanguageCode = 'en'; # For mainpage to be 'Main Page'
+		$this->setMwGlobals( array(
+			'wgLanguageCode' => $langCode,
+			'wgLang' => $langObj,
+			'wgContLang' => $langObj,
+		) );
 
-		$wgContLang = $wgLang = Language::factory( $wgLanguageCode );
 		MessageCache::singleton()->disable();
 	}
-
-	public function tearDown() {
-		global $wgContLang, $wgLang, $wgLanguageCode;
-		$wgLang = self::$oldLang;
-
-		$wgContLang = self::$oldContLang;
-		$wgLanguageCode = $wgContLang->getCode();
-		self::$oldContLang = self::$oldLang = null;
-	}
-
 }

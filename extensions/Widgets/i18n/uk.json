@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Base",
+			"Prima klasy4na",
+			"Тест"
+		]
+	},
+	"widgets-desc": "Дозволяє адміністраторам вікі додавати різноманітні віджети шляхом редагування сторінок простору назв {{ns:widget}}.\nПідтримувані спільнотою віджети можна знайти на [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]",
+	"widgets-error": "Помилка [[{{ns:widget}}:$1|віджету $1]]",
+	"group-widgeteditor": "Редактори віджетів",
+	"group-widgeteditor-member": "{{GENDER:$1|Редактор віджетів|Редакторка віджетів}}",
+	"grouppage-widgeteditor": "{{ns:project}}:Редактори віджетів",
+	"right-editwidgets": "Створювати і редагувати [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Widgets віджети] у просторі назв <tt>{{ns:widget}}</tt>"
+}

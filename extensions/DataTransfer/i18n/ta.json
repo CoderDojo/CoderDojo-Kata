@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Karthi.dr",
+			"Shanmugamp7",
+			"TRYPPN",
+			"Trengarasu",
+			"Ulmo",
+			"மதனாஹரன்",
+			"ElangoRamanujam"
+		]
+	},
+	"viewxml": "XML ஐப் பார்",
+	"dt_viewxml_categories": "பகுப்புகள்",
+	"dt_viewxml_namespaces": "பெயர்வெளிகள்",
+	"dt_viewxml_simplifiedformat": "எளிதாக்கப்பட்ட வடிவம்",
+	"dt_xml_namespace": "பெயர்வெளி",
+	"dt_xml_pages": "பக்கங்கள்",
+	"dt_xml_page": "பக்கம்",
+	"dt_xml_template": "வார்ப்புரு",
+	"dt_xml_field": "புலம்",
+	"dt_xml_name": "பெயர்",
+	"dt_xml_title": "தலைப்பு",
+	"dt_xml_id": "அடையாளம்",
+	"dt_xml_freetext": "எந்த கட்டுப்பாடும் இல்லா சொற்றொடர்",
+	"importxml": "XML இறக்குமதி செய்",
+	"dt_import_selectfile": "தயவுசெய்து  $1 கோப்பை இறக்குமதிக்காக தேர்வுசெய்யவும்:",
+	"dt_import_forexisting": "ஏற்கனவே உள்ள பக்கங்களுக்கு:",
+	"dt_import_overwriteexisting": "தற்போதுள்ள உள்ளடக்கத்தை அழித்தெழுது",
+	"dt_import_skipexisting": "தவிர்",
+	"dt_import_appendtoexisting": "ஏற்கனவே உள்ள உள்ளடக்கத்துடன் இணை",
+	"dt_import_summarydesc": "இறக்குமதிச் சுருக்கம்:",
+	"dt_import_editsummary": "{{ucfirst:$1}} இறக்குமதி",
+	"dt_import_importing": "இறக்குமதியாகிறது...",
+	"dt_import_success": "$2 கோப்பிலிருந்து $1 {{PLURAL:$1|பக்கம்|பக்கங்கள்}} உருவாக்கப்படும்.",
+	"right-datatransferimport": "தரவுகளை ஏற்றுமதி செய்யவும்"
+}

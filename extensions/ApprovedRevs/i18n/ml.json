@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Junaidpv",
+			"Praveenp"
+		]
+	},
+	"approvedrevs-desc": "ഒരു താളിന്റെ ഒരൊറ്റ നാൾപ്പതിപ്പ് അംഗീകരിച്ചതായി സജ്ജീകരിക്കുക",
+	"approvedrevs-logname": "നാൾപ്പതിപ്പ് അംഗീകരണ രേഖ",
+	"approvedrevs-logdesc": "ഇത് നാൾപ്പതിപ്പുകൾ അംഗീകരിച്ചതിന്റെ രേഖയാണ്.",
+	"approvedrevs-approve": "അംഗീകരിക്കുക",
+	"approvedrevs-unapprove": "അംഗീകാരം നീക്കുക",
+	"approvedrevs-approvesuccess": "താളിന്റെ ഈ നാൾപ്പതിപ്പ് അംഗീകരിച്ച പതിപ്പായി സജ്ജീകരിച്ചിരിക്കുന്നു.",
+	"approvedrevs-unapprovesuccess": "ഈ താളിൽ അംഗീകരിച്ച പതിപ്പ് ഇല്ല.\nപകരം, ഏറ്റവും പുതിയ നാൾപ്പതിപ്പ് പ്രദർശിപ്പിക്കുന്നു.",
+	"approvedrevs-unapprovesuccess2": "ഈ താളിന് അംഗീകരിച്ച പതിപ്പ് ഇല്ല.\nപകരം, ശൂന്യമായ താൾ പ്രദർശിപ്പിക്കുന്നു.",
+	"approvedrevs-approveaction": "\"[[$1]]\" താളിന്റെ അംഗീകരിച്ച പതിപ്പായി $2 സജ്ജീകരിക്കുക",
+	"approvedrevs-unapproveaction": "\"[[$1]]\" എന്നതിന്റെ അംഗീകൃത നാൾപ്പതിപ്പ് സജ്ജീകരണം നീക്കുക",
+	"approvedrevs-notlatest": "ഇത് ഈ താളിന്റെ അംഗീകരിച്ച നാൾപ്പതിപ്പ് ആണ്; ഇത് ഏറ്റവും പുതിയത് അല്ല.",
+	"approvedrevs-approvedandlatest": "ഇത് ഈ താളിന്റെ അംഗീകരിച്ച പതിപ്പ് ആണ്, അതേ പോലെ ഏറ്റവും പുതിയതുമാണ്.",
+	"approvedrevs-blankpageshown": "ഈ താളിന്റെ ഒരു നാൾപ്പതിപ്പും അംഗീകരിച്ചിട്ടില്ല.",
+	"approvedrevs-editwarning": "ഈ താളിന്റെ ഏറ്റവും പുതിയ നാൾപ്പതിപ്പ് അല്ല താങ്കൾ തിരുത്തുന്നതെന്ന് ശ്രദ്ധിക്കുക, അത് സ്വതേ പ്രദർശിപ്പിച്ചിരിക്കുന്ന പതിപ്പ് അല്ല.",
+	"approvedrevs": "അംഗീകരിച്ച നാൾപ്പതിപ്പുകൾ",
+	"approvedrevs-approvedpages": "അംഗീകരിച്ച താളുകൾ",
+	"approvedrevs-notlatestpages": "താളിന്റെ ഏറ്റവും പുതിയ നാൾപ്പതിപ്പ് അംഗീകരിച്ചതല്ലാത്ത താളുകൾ",
+	"approvedrevs-unapprovedpages": "അംഗീകരിച്ചിട്ടില്ലാത്ത താളുകൾ",
+	"approvedrevs-view": "കാണുക:",
+	"approvedrevs-revisionnumber": "നാൾപ്പതിപ്പ് $1",
+	"approvedrevs-approvedby": "$2-നു $1 അംഗീകരിച്ചത്",
+	"approvedrevs-difffromlatest": "ഏറ്റവും പുതിയ പതിപ്പിൽ നിന്നുള്ള വ്യത്യാസം",
+	"approvedrevs-approvelatest": "ഒടുവിലേത്തത് അംഗീകരിക്കുക",
+	"approvedrevs-approvethisrev": "ഈ നാൾപ്പതിപ്പ് അംഗീകരിക്കുക.",
+	"approvedrevs-viewlatestrev": "ഏറ്റവും പുതിയ നാൾപ്പതിപ്പ് കാണുക.",
+	"right-approverevisions": "വിക്കി താളിന്റെ ഒരു പ്രത്യേക നാൾപ്പതിപ്പ് അംഗീകരിച്ചതായി സജ്ജീകരിക്കുക",
+	"right-viewlinktolatest": "അംഗീകരിച്ച നാൾപ്പതിപ്പുള്ള താളുകളുടെ മുകളിലായി ഒരു വിശദീകരണ കുറിപ്പ് പ്രദർശിപ്പിക്കുക"
+}

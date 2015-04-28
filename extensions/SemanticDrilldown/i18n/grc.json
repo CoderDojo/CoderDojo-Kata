@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Crazymadlover",
+			"Omnipaedista"
+		]
+	},
+	"browsedata": "Δεδομένα πλοηγήσεως",
+	"sd_browsedata_viewcategory": "ὁρᾶν κατηγορίαν",
+	"sd_browsedata_subcategory": "Ὑποκατηγορία",
+	"sd_browsedata_other": "Ἄλλον",
+	"sd_browsedata_none": "Οὐδεμία",
+	"sd_browsedata_or": "ἢ",
+	"sd_browsedata_daterangestart": "Ἐκκινεῖν:",
+	"sd_browsedata_daterangeend": "Τέλος:",
+	"filters": "Διηθητήρια",
+	"sd_viewform": "Ὁρᾶν τύπον",
+	"createfilter": "Ποιεῖν διηθητήριον",
+	"sd_createfilter_name": "Ὄνομα:"
+}

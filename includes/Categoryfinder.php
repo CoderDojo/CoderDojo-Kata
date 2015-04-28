@@ -1,52 +1,82 @@
 <?php
 /**
- * The "Categoryfinder" class takes a list of articles, creates an internal
+ * Recent changes filtering by category.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ */
+
+/**
+ * The "CategoryFinder" class takes a list of articles, creates an internal
  * representation of all their parent categories (as well as parents of
  * parents etc.). From this representation, it determines which of these
  * articles are in one or all of a given subset of categories.
  *
  * Example use :
  * <code>
- * 	# Determines whether the article with the page_id 12345 is in both
- * 	# "Category 1" and "Category 2" or their subcategories, respectively
+ *     # Determines whether the article with the page_id 12345 is in both
+ *     # "Category 1" and "Category 2" or their subcategories, respectively
  *
- * 	$cf = new Categoryfinder;
- * 	$cf->seed(
- * 		array( 12345 ),
- * 		array( 'Category 1', 'Category 2' ),
- * 		'AND'
- * 	);
- * 	$a = $cf->run();
- * 	print implode( ',' , $a );
+ *     $cf = new CategoryFinder;
+ *     $cf->seed(
+ *         array( 12345 ),
+ *         array( 'Category 1', 'Category 2' ),
+ *         'AND'
+ *     );
+ *     $a = $cf->run();
+ *     print implode( ',' , $a );
  * </code>
  *
  */
-class Categoryfinder {
-	var $articles = array(); # The original article IDs passed to the seed function
-	var $deadend = array(); # Array of DBKEY category names for categories that don't have a page
-	var $parents = array(); # Array of [ID => array()]
-	var $next = array(); # Array of article/category IDs
-	var $targets = array(); # Array of DBKEY category names
-	var $name2id = array();
-	var $mode; # "AND" or "OR"
-	var $dbr; # Read-DB slave
+class CategoryFinder {
+	/** @var int[] The original article IDs passed to the seed function */
+	protected $articles = array();
 
-	/**
-	 * Constructor (currently empty).
-	 */
-	function __construct() {
-	}
+	/** @var array Array of DBKEY category names for categories that don't have a page */
+	protected $deadend = array();
+
+	/** @var array Array of [ID => array()] */
+	protected $parents = array();
+
+	/** @var array Array of article/category IDs */
+	protected $next = array();
+
+	/** @var array Array of DBKEY category names */
+	protected $targets = array();
+
+	/** @var array */
+	protected $name2id = array();
+
+	/** @var string "AND" or "OR" */
+	protected $mode;
+
+	/** @var DatabaseBase Read-DB slave */
+	protected $dbr;
 
 	/**
 	 * Initializes the instance. Do this prior to calling run().
-	 * @param $article_ids Array of article IDs
-	 * @param $categories FIXME
-	 * @param $mode String: FIXME, default 'AND'.
+	 * @param array $articleIds Array of article IDs
+	 * @param array $categories FIXME
+	 * @param string $mode FIXME, default 'AND'.
 	 * @todo FIXME: $categories/$mode
 	 */
-	function seed( $article_ids, $categories, $mode = 'AND' ) {
-		$this->articles = $article_ids;
-		$this->next = $article_ids;
+	public function seed( $articleIds, $categories, $mode = 'AND' ) {
+		$this->articles = $articleIds;
+		$this->next = $articleIds;
 		$this->mode = $mode;
 
 		# Set the list of target categories; convert them to DBKEY form first
@@ -63,12 +93,12 @@ class Categoryfinder {
 	/**
 	 * Iterates through the parent tree starting with the seed values,
 	 * then checks the articles if they match the conditions
-	 * @return array of page_ids (those given to seed() that match the conditions)
+	 * @return array Array of page_ids (those given to seed() that match the conditions)
 	 */
-	function run() {
+	public function run() {
 		$this->dbr = wfGetDB( DB_SLAVE );
 		while ( count( $this->next ) > 0 ) {
-			$this->scan_next_layer();
+			$this->scanNextLayer();
 		}
 
 		# Now check if this applies to the individual articles
@@ -85,13 +115,21 @@ class Categoryfinder {
 	}
 
 	/**
+	 * Get the parents. Only really useful if run() has been called already
+	 * @return array
+	 */
+	public function getParents() {
+		return $this->parents;
+	}
+
+	/**
 	 * This functions recurses through the parent representation, trying to match the conditions
-	 * @param $id int The article/category to check
-	 * @param $conds array The array of categories to match
-	 * @param $path array used to check for recursion loops
+	 * @param int $id The article/category to check
+	 * @param array $conds The array of categories to match
+	 * @param array $path Used to check for recursion loops
 	 * @return bool Does this match the conditions?
 	 */
-	function check( $id, &$conds, $path = array() ) {
+	private function check( $id, &$conds, $path = array() ) {
 		// Check for loops and stop!
 		if ( in_array( $id, $path ) ) {
 			return false;
@@ -99,7 +137,7 @@ class Categoryfinder {
 
 		$path[] = $id;
 
-		# Shortcut (runtime paranoia): No contitions=all matched
+		# Shortcut (runtime paranoia): No conditions=all matched
 		if ( count( $conds ) == 0 ) {
 			return true;
 		}
@@ -110,7 +148,7 @@ class Categoryfinder {
 
 		# iterate through the parents
 		foreach ( $this->parents[$id] as $p ) {
-			$pname = $p->cl_to ;
+			$pname = $p->cl_to;
 
 			# Is this a condition?
 			if ( isset( $conds[$pname] ) ) {
@@ -146,7 +184,9 @@ class Categoryfinder {
 	/**
 	 * Scans a "parent layer" of the articles/categories in $this->next
 	 */
-	function scan_next_layer() {
+	private function scanNextLayer() {
+		$profiler = new ProfileSection( __METHOD__ );
+
 		# Find all parents of the article currently in $this->next
 		$layer = array();
 		$res = $this->dbr->select(
@@ -184,7 +224,7 @@ class Categoryfinder {
 			$res = $this->dbr->select(
 				/* FROM   */ 'page',
 				/* SELECT */ array( 'page_id', 'page_title' ),
-				/* WHERE  */ array( 'page_namespace' => NS_CATEGORY , 'page_title' => $layer ),
+				/* WHERE  */ array( 'page_namespace' => NS_CATEGORY, 'page_title' => $layer ),
 				__METHOD__ . '-2'
 			);
 			foreach ( $res as $o ) {
@@ -201,5 +241,4 @@ class Categoryfinder {
 			$this->deadend[$v] = $v;
 		}
 	}
-
 }

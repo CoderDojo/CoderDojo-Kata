@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Minh Nguyen"
+		]
+	},
+	"semanticformsinputs-wrongformat": "Định dạng sai",
+	"semanticformsinputs-close": "Đóng",
+	"semanticformsinputs-prev": "Trước",
+	"semanticformsinputs-next": "Sau",
+	"semanticformsinputs-today": "Hôm nay"
+}

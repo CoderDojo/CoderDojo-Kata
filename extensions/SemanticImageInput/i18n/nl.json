@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"SPQRobin",
+			"Siebrand"
+		]
+	},
+	"sii-desc": "Voegt een invoerveld toe voor afbeeldingen zodat afbeeldingen van Wikipedia gebruikt kunnen worden in [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]",
+	"sii-imageinput-loading": "Bezig met het laden van de afbeelding..."
+}

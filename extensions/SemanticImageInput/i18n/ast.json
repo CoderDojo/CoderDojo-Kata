@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"sii-desc": "Amiesta una entrada d'imaxes que baxa imaxes de la Wikipedia a [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]",
+	"sii-imageinput-loading": "Cargando la imaxe..."
+}

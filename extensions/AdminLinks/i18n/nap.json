@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chelin",
+			"C.R."
+		]
+	},
+	"adminlinks": "Pannello ammenistrazione",
+	"adminlinks-desc": "Azzecca na [[Special:AdminLinks|paggena spiciale]] ca tene 'e link utile pe' ll'ammenistrature",
+	"adminlinks_documentation": "documentazione 'e $1",
+	"adminlinks_general": "Generale",
+	"adminlinks_editsidebar": "Cágna sidebar",
+	"adminlinks_editcss": "Cágna 'o file CSS",
+	"adminlinks_editmainpagename": "Cágna 'o nomme d' 'a paggene princepale",
+	"adminlinks_users": "Utente",
+	"adminlinks_createuser": "Cria 'nu cunto",
+	"adminlinks_browsesearch": "Ascìa e tròva",
+	"adminlinks_importexport": "Importa ed esporta",
+	"right-adminlinks": "Vide 'o link a 'o [[Special:AdminLinks|Pannello ammenistrazione]]"
+}

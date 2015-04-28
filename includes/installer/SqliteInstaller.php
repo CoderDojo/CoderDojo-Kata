@@ -2,6 +2,21 @@
 /**
  * Sqlite-specific installer.
  *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
  * @file
  * @ingroup Deployment
  */
@@ -13,6 +28,7 @@
  * @since 1.17
  */
 class SqliteInstaller extends DatabaseInstaller {
+	const MINIMUM_VERSION = '3.3.7';
 
 	/**
 	 * @var DatabaseSqlite
@@ -32,6 +48,25 @@ class SqliteInstaller extends DatabaseInstaller {
 		return self::checkExtension( 'pdo_sqlite' );
 	}
 
+	/**
+	 *
+	 * @return Status
+	 */
+	public function checkPrerequisites() {
+		$result = Status::newGood();
+		// Bail out if SQLite is too old
+		$db = new DatabaseSqliteStandalone( ':memory:' );
+		if ( version_compare( $db->getServerVersion(), self::MINIMUM_VERSION, '<' ) ) {
+			$result->fatal( 'config-outdated-sqlite', $db->getServerVersion(), self::MINIMUM_VERSION );
+		}
+		// Check for FTS3 full-text search module
+		if ( DatabaseSqlite::getFulltextSearchModule() != 'FTS3' ) {
+			$result->warning( 'config-no-fts3' );
+		}
+
+		return $result;
+	}
+
 	public function getGlobalDefaults() {
 		if ( isset( $_SERVER['DOCUMENT_ROOT'] ) ) {
 			$path = str_replace(
@@ -39,6 +74,7 @@ class SqliteInstaller extends DatabaseInstaller {
 				DIRECTORY_SEPARATOR,
 				dirname( $_SERVER['DOCUMENT_ROOT'] ) . '/data'
 			);
+
 			return array( 'wgSQLiteDataDir' => $path );
 		} else {
 			return array();
@@ -46,14 +82,23 @@ class SqliteInstaller extends DatabaseInstaller {
 	}
 
 	public function getConnectForm() {
-		return $this->getTextBox( 'wgSQLiteDataDir', 'config-sqlite-dir', array(), $this->parent->getHelpBox( 'config-sqlite-dir-help' ) ) .
-			$this->getTextBox( 'wgDBname', 'config-db-name', array(), $this->parent->getHelpBox( 'config-sqlite-name-help' ) );
+		return $this->getTextBox(
+			'wgSQLiteDataDir',
+			'config-sqlite-dir', array(),
+			$this->parent->getHelpBox( 'config-sqlite-dir-help' )
+		) .
+		$this->getTextBox(
+			'wgDBname',
+			'config-db-name',
+			array(),
+			$this->parent->getHelpBox( 'config-sqlite-name-help' )
+		);
 	}
 
 	/**
 	 * Safe wrapper for PHP's realpath() that fails gracefully if it's unable to canonicalize the path.
 	 *
-	 * @param $path string
+	 * @param string $path
 	 *
 	 * @return string
 	 */
@@ -62,6 +107,7 @@ class SqliteInstaller extends DatabaseInstaller {
 		if ( !$result ) {
 			return $path;
 		}
+
 		return $result;
 	}
 
@@ -79,12 +125,15 @@ class SqliteInstaller extends DatabaseInstaller {
 			$dir = self::realpath( $dir );
 			$this->setVar( 'wgSQLiteDataDir', $dir );
 		}
+		# Table prefix is not used on SQLite, keep it empty
+		$this->setVar( 'wgDBprefix', '' );
+
 		return $result;
 	}
 
 	/**
-	 * @param $dir
-	 * @param $create bool
+	 * @param string $dir
+	 * @param bool $create
 	 * @return Status
 	 */
 	private static function dataDirOKmaybeCreate( $dir, $create = false ) {
@@ -92,9 +141,16 @@ class SqliteInstaller extends DatabaseInstaller {
 			if ( !is_writable( dirname( $dir ) ) ) {
 				$webserverGroup = Installer::maybeGetWebserverPrimaryGroup();
 				if ( $webserverGroup !== null ) {
-					return Status::newFatal( 'config-sqlite-parent-unwritable-group', $dir, dirname( $dir ), basename( $dir ), $webserverGroup );
+					return Status::newFatal(
+						'config-sqlite-parent-unwritable-group',
+						$dir, dirname( $dir ), basename( $dir ),
+						$webserverGroup
+					);
 				} else {
-					return Status::newFatal( 'config-sqlite-parent-unwritable-nogroup', $dir, dirname( $dir ), basename( $dir ) );
+					return Status::newFatal(
+						'config-sqlite-parent-unwritable-nogroup',
+						$dir, dirname( $dir ), basename( $dir )
+					);
 				}
 			}
 
@@ -102,7 +158,7 @@ class SqliteInstaller extends DatabaseInstaller {
 			# if it's still writable
 			if ( $create ) {
 				wfSuppressWarnings();
-				$ok = wfMkdirParents( $dir, 0700 );
+				$ok = wfMkdirParents( $dir, 0700, __METHOD__ );
 				wfRestoreWarnings();
 				if ( !$ok ) {
 					return Status::newFatal( 'config-sqlite-mkdir-error', $dir );
@@ -137,6 +193,7 @@ class SqliteInstaller extends DatabaseInstaller {
 		} catch ( DBConnectionError $e ) {
 			$status->fatal( 'config-sqlite-connection-error', $e->getMessage() );
 		}
+
 		return $status;
 	}
 
@@ -184,19 +241,21 @@ class SqliteInstaller extends DatabaseInstaller {
 		$this->setVar( 'wgDBuser', '' );
 		$this->setVar( 'wgDBpassword', '' );
 		$this->setupSchemaVars();
+
 		return $this->getConnection();
 	}
 
 	/**
-	 * @return Staus
+	 * @return Status
 	 */
 	public function createTables() {
 		$status = parent::createTables();
+
 		return $this->setupSearchIndex( $status );
 	}
 
 	/**
-	 * @param $status Status
+	 * @param Status $status
 	 * @return Status
 	 */
 	public function setupSearchIndex( &$status ) {
@@ -204,12 +263,13 @@ class SqliteInstaller extends DatabaseInstaller {
 
 		$module = DatabaseSqlite::getFulltextSearchModule();
 		$fts3tTable = $this->db->checkForEnabledSearch();
-		if ( $fts3tTable &&  !$module ) {
+		if ( $fts3tTable && !$module ) {
 			$status->warning( 'config-sqlite-fts3-downgrade' );
 			$this->db->sourceFile( "$IP/maintenance/sqlite/archives/searchindex-no-fts.sql" );
 		} elseif ( !$fts3tTable && $module == 'FTS3' ) {
 			$this->db->sourceFile( "$IP/maintenance/sqlite/archives/searchindex-fts3.sql" );
 		}
+
 		return $status;
 	}
 
@@ -218,8 +278,8 @@ class SqliteInstaller extends DatabaseInstaller {
 	 */
 	public function getLocalSettings() {
 		$dir = LocalSettingsGenerator::escapePhpString( $this->getVar( 'wgSQLiteDataDir' ) );
-		return
-"# SQLite-specific settings
-\$wgSQLiteDataDir    = \"{$dir}\";";
+
+		return "# SQLite-specific settings
+\$wgSQLiteDataDir = \"{$dir}\";";
 	}
 }

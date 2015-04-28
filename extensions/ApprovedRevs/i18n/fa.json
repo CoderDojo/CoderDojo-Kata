@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dalba",
+			"Ebraminio",
+			"Leyth",
+			"Mehran",
+			"Mjbmr",
+			"Reza1615",
+			"Taha",
+			"Rtemis"
+		]
+	},
+	"approvedrevs-desc": "یک نسخه از یک صفحه را به عنوان تأییدشده علامت بزنید.",
+	"approvedrevs-logname": "سیاههٔ تأیید نسخه",
+	"approvedrevs-logdesc": "این سیاههٔ نسخه‌هایی است که تأیید شده‌اند.",
+	"approvedrevs-approve": "تصویب",
+	"approvedrevs-unapprove": "واگردانی تصویب",
+	"approvedrevs-approvesuccess": "این نسخه از صفحه به‌عنوان نسخهٔ تأییدشده علامت خورده‌است.",
+	"approvedrevs-unapprovesuccess": "هیچ نسخهٔ تائیدشده‌ای از این صفحه وجود ندارد.\nدر عوض، تازه‌ترین نسخه نشان‌داده خواهد شد.",
+	"approvedrevs-unapprovesuccess2": "هیچ نسخهٔ تائیدشده‌ای از این صفحه وجود ندارد.\nدر عوض، یک صفحهٔ خالی نشان‌داده خواهد شد.",
+	"approvedrevs-approveaction": "$2 را به‌عنوان نسخهٔ تأییدشده برای «[[$1]]» علامت بزن.",
+	"approvedrevs-unapproveaction": "علامت نسخهٔ تأییدشده را برای «[[$1]]» بردار.",
+	"approvedrevs-notlatest": "این نسخهٔ تائیدشدهٔ این صفحه است و تازه‌ترین نسخهٔ آن نیست.",
+	"approvedrevs-approvedandlatest": "این نسخهٔ تائیدشدهٔ این صفحه و تازه‌ترین نسخهٔ آن است.",
+	"approvedrevs-blankpageshown": "هیچ نسخه‌ای از این صفحه تأیید نشده‌اند.",
+	"approvedrevs-noapprovedrevision": "این آخرین نسخهٔ این صفحه است؛ نسخهٔ تأییدشده‌ای ندارد.",
+	"approvedrevs-editwarning": "توجه‌کنید که شما در حال ویرایش آخرین نسخهٔ این صفحه هستید که با نسخهٔ تأیید شده‌ای که به صورت پیش‌فرض نمایش می‌شود تفاوت دارد.",
+	"approvedrevs": "نسخه‌های تأییدشده",
+	"approvedrevs-approvedpages": "تمام صفحات دارای نسخهٔ تأییدشده",
+	"approvedrevs-notlatestpages": "صفحاتی که نسخهٔ تأییدشدهٔ آن‌ها آخرین نیست",
+	"approvedrevs-unapprovedpages": "صفحه‌های تاییدنشده",
+	"approvedrevs-view": "مشاهده:",
+	"approvedrevs-revisionnumber": "نسخهٔ $1",
+	"approvedrevs-approvedby": "تأیید شده توسط {{GENDER:$3|$1}} در تاریخ $4 در ساعت $5",
+	"approvedrevs-difffromlatest": "تفاوت با آخرین",
+	"approvedrevs-approvelatest": "تأیید آخرین",
+	"approvedrevs-approvethisrev": "این نسخه را تأیید کنید.",
+	"approvedrevs-viewlatestrev": "تازه‌ترین نسخه را مشاهده کنید.",
+	"approvedrevs-approvedrevision": "تجدیدنظر مورد تأیید واقع شد.",
+	"right-approverevisions": "نسخهٔ خاصی از یک صفحهٔ ویکی را به عنوان تأییدشده علامت بزنید.",
+	"right-viewlinktolatest": "توضیحات بالای صفحاتی را که یک نسخهٔ تأییدشده دارند را ببینید."
+}

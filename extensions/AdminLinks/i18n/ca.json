@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"SMP",
+			"Solde"
+		]
+	},
+	"adminlinks": "Enllaços d'administració",
+	"adminlinks-desc": "Afegeix una [[Special:AdminLinks|pàgina especial]] que manté enllaços útils per als administradors",
+	"adminlinks_documentation": "documentació $1",
+	"adminlinks_general": "General",
+	"adminlinks_editsidebar": "Edita la barra lateral",
+	"adminlinks_editcss": "Edita el fitxer CSS",
+	"adminlinks_editmainpagename": "Edita el nom de la pàgina principal",
+	"adminlinks_users": "Usuaris",
+	"adminlinks_createuser": "Crea un usuari",
+	"adminlinks_browsesearch": "S'està navegant i buscant",
+	"adminlinks_importexport": "S'està important i exportant",
+	"right-adminlinks": "Veure l'enllaç a [[Special:AdminLinks|enllaços d'administrador]]"
+}

@@ -1,41 +1,45 @@
 <?php
 
 /**
+ * @group API
  * @group Database
+ * @group medium
+ *
+ * @covers ApiPurge
  */
 class ApiPurgeTest extends ApiTestCase {
 
-	function setUp() {
+	protected function setUp() {
 		parent::setUp();
 		$this->doLogin();
 	}
-	
-	function testPurgeMainPage() {
-		
+
+	/**
+	 * @group Broken
+	 */
+	public function testPurgeMainPage() {
 		if ( !Title::newFromText( 'UTPage' )->exists() ) {
 			$this->markTestIncomplete( "The article [[UTPage]] does not exist" );
 		}
-		
+
 		$somePage = mt_rand();
 
 		$data = $this->doApiRequest( array(
 			'action' => 'purge',
 			'titles' => 'UTPage|' . $somePage . '|%5D' ) );
-	
-		$this->assertArrayHasKey( 'purge', $data[0] );
-		
-		$this->assertArrayHasKey( 0, $data[0]['purge'] );
-		$this->assertArrayHasKey( 'purged', $data[0]['purge'][0] );
-		$this->assertEquals( 'UTPage', $data[0]['purge'][0]['title'] );
-		
-		$this->assertArrayHasKey( 1, $data[0]['purge'] );
-		$this->assertArrayHasKey( 'missing', $data[0]['purge'][1] );
-		$this->assertEquals( $somePage, $data[0]['purge'][1]['title'] );
-		
-		$this->assertArrayHasKey( 2, $data[0]['purge'] );
-		$this->assertArrayHasKey( 'invalid', $data[0]['purge'][2] );
-		$this->assertEquals( '%5D', $data[0]['purge'][2]['title'] );
-		
-	}
 
+		$this->assertArrayHasKey( 'purge', $data[0],
+			"Must receive a 'purge' result from API" );
+
+		$this->assertEquals(
+			3,
+			count( $data[0]['purge'] ),
+			"Purge request for three articles should give back three results received: "
+				. var_export( $data[0]['purge'], true ) );
+
+		$pages = array( 'UTPage' => 'purged', $somePage => 'missing', '%5D' => 'invalid' );
+		foreach ( $data[0]['purge'] as $v ) {
+			$this->assertArrayHasKey( $pages[$v['title']], $v );
+		}
+	}
 }

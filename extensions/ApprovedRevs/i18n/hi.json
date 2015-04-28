@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ansumang",
+			"Siddhartha Ghai"
+		]
+	},
+	"approvedrevs-logname": "अवतरण अनुमोदन लॉग",
+	"approvedrevs-approve": "अनुमोदित करें",
+	"approvedrevs-unapprove": "अनुमोदन रद्द करें",
+	"approvedrevs": "अनुमोदित अवतरण",
+	"approvedrevs-view": "देखें:",
+	"approvedrevs-revisionnumber": "अवतरण $1",
+	"approvedrevs-approvethisrev": "इस अवतरण को अनुमोदीत करें।"
+}

@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"datatransfer-desc": "Permitte importar e exportar datos continite in appellos a patronos",
+	"viewxml": "Vider XML",
+	"dt_viewxml_docu": "Per favor selige inter le sequente categorias e spatios de nomines pro vider in formato XML.",
+	"dt_viewxml_categories": "Categorias",
+	"dt_viewxml_namespaces": "Spatios de nomines",
+	"dt_viewxml_simplifiedformat": "Formato simplificate",
+	"dt_xml_namespace": "Spatio de nomines",
+	"dt_xml_pages": "Paginas",
+	"dt_xml_page": "Pagina",
+	"dt_xml_template": "Patrono",
+	"dt_xml_field": "Campo",
+	"dt_xml_name": "Nomine",
+	"dt_xml_title": "Titulo",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Texto libere",
+	"importxml": "Importar XML",
+	"dt_import_selectfile": "Per favor selige le file $1 a importar:",
+	"dt_import_encodingtype": "Typo de codification:",
+	"dt_import_forexisting": "Pro paginas que ja existe:",
+	"dt_import_overwriteexisting": "Superscriber le contento existente",
+	"dt_import_mergeintoexisting": "Superscriber solmente le campos continite in le file",
+	"dt_import_skipexisting": "Saltar",
+	"dt_import_appendtoexisting": "Adjunger al contento existente",
+	"dt_import_summarydesc": "Summario de importation:",
+	"dt_import_editsummary": "Importation de $1",
+	"dt_import_importing": "Importation in curso…",
+	"dt_import_success": "$1 {{PLURAL:$1|pagina|paginas}} essera create ex le file $2.",
+	"importcsv": "Importar CSV",
+	"dt_importcsv_badheader": "Error: le capite del columna $1, '$2', debe esser '$3', '$4' o in le forma 'nomine_de_patrono[nomine_de_campo]'",
+	"right-datatransferimport": "Importar datos"
+}

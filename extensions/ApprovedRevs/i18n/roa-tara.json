@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"approvedrevs-desc": "'Mboste 'an revisione singole de 'na pàgene cumme approvate",
+	"approvedrevs-logname": "Archivije de le approvaziune de le revisiune",
+	"approvedrevs-logdesc": "Quiste jè l'archivije de le revisiune ca onne state approvate.",
+	"approvedrevs-approve": "approve",
+	"approvedrevs-unapprove": "scitte",
+	"approvedrevs-approvesuccess": "'A revisione d'a pàgene ha state 'mbostate cumme 'na versione approvate.",
+	"approvedrevs-unapprovesuccess": "Non ge stè cchiù 'na versione approvate pe sta pàgene.\nInvece, 'a revisione cchiù recende avène fatte vedè.",
+	"approvedrevs-unapprovesuccess2": "Non ge stè cchiù 'na versione approvate pe sta pàgene.\nInvece, 'na pàgena vacande avène fatte vedè.",
+	"approvedrevs-approveaction": "'mboste $2 cumme 'na revisione approvate pe \"[[$1]]\"",
+	"approvedrevs-unapproveaction": "live 'a revisione approvate pe \"[[$1]]\"",
+	"approvedrevs-notlatest": "Queste jè 'na revisione approvate de sta pàgene; non g'à l'urtema.",
+	"approvedrevs-approvedandlatest": "Queste jè 'na revisione approvate de sta pàgene, apparte ca jè pure 'a cchiù recende.",
+	"approvedrevs-blankpageshown": "Nisciuna revisione ha state approvate pe sta pàgene.",
+	"approvedrevs-noapprovedrevision": "Queste jè l'urtema revisione de sta pàgene; jedde non ge tène 'na revisione approvate.",
+	"approvedrevs-editwarning": "Pe piacere vide ca tu mò ste cange l'urtema revisione de sta pàgene, 'a quale non g'è approvate cumme te face vedè de base.",
+	"approvedrevs": "Revisiune approvate",
+	"approvedrevs-approvedpages": "Tutte le pàggene cu 'na revisione approvate",
+	"approvedrevs-notlatestpages": "Pàggene ca tènene 'a revisione approvate ca non g'è l'urteme",
+	"approvedrevs-unapprovedpages": "Pàggene none approvate",
+	"approvedrevs-view": "Vide:",
+	"approvedrevs-revisionnumber": "revisione $1",
+	"approvedrevs-approvedby": "approvate da $1 'u $2",
+	"approvedrevs-difffromlatest": "differenze da l'urteme",
+	"approvedrevs-approvelatest": "approve l'urteme",
+	"approvedrevs-approvethisrev": "Approve sta revisione.",
+	"approvedrevs-viewlatestrev": "Vide le revisiune urteme urteme.",
+	"right-approverevisions": "'Mboste 'na revisione secure de 'na pàgene uicchi cumme approvate",
+	"right-viewlinktolatest": "'Ndruche 'u teste ca spieghe 'ngape a le pàggene ca onne 'na revisione approvate"
+}

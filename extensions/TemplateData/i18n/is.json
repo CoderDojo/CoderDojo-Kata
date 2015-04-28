@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Snævar"
+		]
+	},
+	"templatedata-doc-desc-empty": "Engin lýsing",
+	"templatedata-doc-params": "Gildi sniðsins",
+	"templatedata-doc-param-name": "Gildi",
+	"templatedata-doc-param-desc": "Lýsing",
+	"templatedata-doc-param-type": "Gerð",
+	"templatedata-doc-param-default": "Sjálfgefið",
+	"templatedata-doc-param-default-empty": "tómt",
+	"templatedata-doc-param-status": "Staða",
+	"templatedata-doc-param-status-deprecated": "úrelt",
+	"templatedata-doc-param-status-optional": "valfrjáls",
+	"templatedata-doc-param-status-required": "nauðsynleg",
+	"templatedata-doc-param-desc-empty": "engin lýsing",
+	"templatedata-invalid-parse": "Villa í málskipan JSON.",
+	"templatedata-invalid-type": "Bjóst við að eiginleikinn „$1” væri af gerðinni „$2”, en fékk eitthvað allt annað.",
+	"templatedata-invalid-missing": "Nauðsynlegur eiginleiki „$1” fannst ekki.",
+	"templatedata-invalid-empty-array": "Gildið „$1” verður að hafa í það minnsta eitt eigindargildi í fylkinu sínu.",
+	"templatedata-invalid-unknown": "Óvæntur eiginleiki „$1”.",
+	"templatedata-invalid-value": "Ógilt eigindargildi fyrir eiginleikann „$1”."
+}

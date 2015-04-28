@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Firilacroco",
+			"KlaudiuMihaila",
+			"Minisarm",
+			"Stelistcristi"
+		]
+	},
+	"adminlinks": "Legături administrator",
+	"adminlinks-desc": "Adaugă o [[Special:AdminLinks|pagină specială]] ce conține legături utile pentru administratori",
+	"adminlinks_documentation": "Documentație pentru $1",
+	"adminlinks_general": "General",
+	"adminlinks_editsidebar": "Modifică bara laterală",
+	"adminlinks_editcss": "Modifică fișierul CSS",
+	"adminlinks_editmainpagename": "Modifică numele paginii principale",
+	"adminlinks_users": "Utilizatori",
+	"adminlinks_createuser": "Creează un utilizator",
+	"adminlinks_browsesearch": "Răsfoire și căutare",
+	"adminlinks_importexport": "Importare și exportare",
+	"right-adminlinks": "Vizualizează legătura către [[Special:AdminLinks|Legăturile administrative]]"
+}

@@ -1,75 +1,158 @@
 <?php
 /**
- * @defgroup Profiler Profiler
+ * Base class and functions for profiling.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
  *
  * @file
  * @ingroup Profiler
- * This file is only included if profiling is enabled
+ * @defgroup Profiler Profiler
  */
 
 /**
+ * Get system resource usage of current request context.
+ * Invokes the getrusage(2) system call, requesting RUSAGE_SELF if on PHP5
+ * or RUSAGE_THREAD if on HHVM. Returns false if getrusage is not available.
+ *
+ * @since 1.24
+ * @return array|bool Resource usage data or false if no data available.
+ */
+function wfGetRusage() {
+	if ( !function_exists( 'getrusage' ) ) {
+		return false;
+	} elseif ( defined ( 'HHVM_VERSION' ) ) {
+		return getrusage( 2 /* RUSAGE_THREAD */ );
+	} else {
+		return getrusage( 0 /* RUSAGE_SELF */ );
+	}
+}
+
+/**
  * Begin profiling of a function
- * @param $functionname String: name of the function we will profile
+ * @param string $functionname Name of the function we will profile
  */
 function wfProfileIn( $functionname ) {
-	global $wgProfiler;
-	if ( $wgProfiler instanceof Profiler || isset( $wgProfiler['class'] ) ) {
-		Profiler::instance()->profileIn( $functionname );
+	if ( Profiler::$__instance === null ) { // use this directly to reduce overhead
+		Profiler::instance();
+	}
+	if ( !( Profiler::$__instance instanceof ProfilerStub ) ) {
+		Profiler::$__instance->profileIn( $functionname );
 	}
 }
 
 /**
  * Stop profiling of a function
- * @param $functionname String: name of the function we have profiled
+ * @param string $functionname Name of the function we have profiled
  */
 function wfProfileOut( $functionname = 'missing' ) {
-	global $wgProfiler;
-	if ( $wgProfiler instanceof Profiler || isset( $wgProfiler['class'] ) ) {
-		Profiler::instance()->profileOut( $functionname );
+	if ( Profiler::$__instance === null ) { // use this directly to reduce overhead
+		Profiler::instance();
+	}
+	if ( !( Profiler::$__instance instanceof ProfilerStub ) ) {
+		Profiler::$__instance->profileOut( $functionname );
 	}
 }
 
 /**
- * @ingroup Profiler
- * @todo document
+ * Class for handling function-scope profiling
+ *
+ * @since 1.22
  */
-class Profiler {
-	var $mStack = array (), $mWorkStack = array (), $mCollated = array ();
-	var $mCalls = array (), $mTotals = array ();
-	var $mTemplated = false;
-	var $mTimeMetric = 'wall';
-	private $mCollateDone = false;
-	protected $mProfileID = false;
-	private static $__instance = null;
+class ProfileSection {
+	protected $name; // string; method name
+	protected $enabled = false; // boolean; whether profiling is enabled
 
-	function __construct( $params ) {
-		// Push an entry for the pre-profile setup time onto the stack
-		global $wgRequestTime;
-		if ( !empty( $wgRequestTime ) ) {
-			$this->mWorkStack[] = array( '-total', 0, $wgRequestTime, 0 );
-			$this->mStack[] = array( '-setup', 1, $wgRequestTime, 0, microtime(true), 0 );
-		} else {
-			$this->profileIn( '-total' );
+	/**
+	 * Begin profiling of a function and return an object that ends profiling of
+	 * the function when that object leaves scope. As long as the object is not
+	 * specifically linked to other objects, it will fall out of scope at the same
+	 * moment that the function to be profiled terminates.
+	 *
+	 * This is typically called like:
+	 * <code>$section = new ProfileSection( __METHOD__ );</code>
+	 *
+	 * @param string $name Name of the function to profile
+	 */
+	public function __construct( $name ) {
+		$this->name = $name;
+		if ( Profiler::$__instance === null ) { // use this directly to reduce overhead
+			Profiler::instance();
 		}
-		if ( isset( $params['timeMetric'] ) ) {
-			$this->mTimeMetric = $params['timeMetric'];
+		if ( !( Profiler::$__instance instanceof ProfilerStub ) ) {
+			$this->enabled = true;
+			Profiler::$__instance->profileIn( $this->name );
 		}
+	}
+
+	function __destruct() {
+		if ( $this->enabled ) {
+			Profiler::$__instance->profileOut( $this->name );
+		}
+	}
+}
+
+/**
+ * Profiler base class that defines the interface and some trivial functionality
+ *
+ * @ingroup Profiler
+ */
+abstract class Profiler {
+	/** @var string|bool Profiler ID for bucketing data */
+	protected $mProfileID = false;
+	/** @var bool Whether MediaWiki is in a SkinTemplate output context */
+	protected $mTemplated = false;
+
+	/** @var TransactionProfiler */
+	protected $trxProfiler;
+
+	// @codingStandardsIgnoreStart PSR2.Classes.PropertyDeclaration.Underscore
+	/** @var Profiler Do not call this outside Profiler and ProfileSection */
+	public static $__instance = null;
+	// @codingStandardsIgnoreEnd
+
+	/**
+	 * @param array $params
+	 */
+	public function __construct( array $params ) {
+		if ( isset( $params['profileID'] ) ) {
+			$this->mProfileID = $params['profileID'];
+		}
+		$this->trxProfiler = new TransactionProfiler();
 	}
 
 	/**
 	 * Singleton
 	 * @return Profiler
 	 */
-	public static function instance() {
-		if( is_null( self::$__instance ) ) {
+	final public static function instance() {
+		if ( self::$__instance === null ) {
 			global $wgProfiler;
-			if( is_array( $wgProfiler ) ) {
-				$class = isset( $wgProfiler['class'] ) ? $wgProfiler['class'] : 'ProfilerStub';
+			if ( is_array( $wgProfiler ) ) {
+				if ( !isset( $wgProfiler['class'] ) ) {
+					$class = 'ProfilerStub';
+				} elseif ( $wgProfiler['class'] === 'Profiler' ) {
+					$class = 'ProfilerStub'; // b/c; don't explode
+				} else {
+					$class = $wgProfiler['class'];
+				}
 				self::$__instance = new $class( $wgProfiler );
-			} elseif( $wgProfiler instanceof Profiler ) {
+			} elseif ( $wgProfiler instanceof Profiler ) {
 				self::$__instance = $wgProfiler; // back-compat
 			} else {
-				self::$__instance = new ProfilerStub( $wgProfiler );
+				self::$__instance = new ProfilerStub( array() );
 			}
 		}
 		return self::$__instance;
@@ -77,25 +160,41 @@ class Profiler {
 
 	/**
 	 * Set the profiler to a specific profiler instance. Mostly for dumpHTML
-	 * @param $p Profiler object
+	 * @param Profiler $p
 	 */
-	public static function setInstance( Profiler $p ) {
+	final public static function setInstance( Profiler $p ) {
 		self::$__instance = $p;
 	}
 
 	/**
 	 * Return whether this a stub profiler
 	 *
-	 * @return Boolean
+	 * @return bool
 	 */
-	public function isStub() {
-		return false;
-	}
+	abstract public function isStub();
 
+	/**
+	 * Return whether this profiler stores data
+	 *
+	 * Called by Parser::braceSubstitution. If true, the parser will not
+	 * generate per-title profiling sections, to avoid overloading the
+	 * profiling data collector.
+	 *
+	 * @see Profiler::logData()
+	 * @return bool
+	 */
+	abstract public function isPersistent();
+
+	/**
+	 * @param string $id
+	 */
 	public function setProfileID( $id ) {
 		$this->mProfileID = $id;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getProfileID() {
 		if ( $this->mProfileID === false ) {
 			return wfWikiID();
@@ -107,378 +206,264 @@ class Profiler {
 	/**
 	 * Called by wfProfieIn()
 	 *
-	 * @param $functionname String
+	 * @param string $functionname
 	 */
-	public function profileIn( $functionname ) {
-		global $wgDebugFunctionEntry;
-		if( $wgDebugFunctionEntry ){
-			$this->debug( str_repeat( ' ', count( $this->mWorkStack ) ) . 'Entering ' . $functionname . "\n" );
-		}
-
-		$this->mWorkStack[] = array( $functionname, count( $this->mWorkStack ), $this->getTime(), memory_get_usage() );
-	}
+	abstract public function profileIn( $functionname );
 
 	/**
 	 * Called by wfProfieOut()
 	 *
-	 * @param $functionname String
+	 * @param string $functionname
 	 */
-	public function profileOut( $functionname ) {
-		global $wgDebugFunctionEntry;
-		$memory = memory_get_usage();
-		$time = $this->getTime();
+	abstract public function profileOut( $functionname );
 
-		if( $wgDebugFunctionEntry ){
-			$this->debug( str_repeat( ' ', count( $this->mWorkStack ) - 1 ) . 'Exiting ' . $functionname . "\n" );
-		}
+	/**
+	 * Mark a DB as in a transaction with one or more writes pending
+	 *
+	 * Note that there can be multiple connections to a single DB.
+	 *
+	 * @param string $server DB server
+	 * @param string $db DB name
+	 * @param string $id Resource ID string of connection
+	 */
+	public function transactionWritingIn( $server, $db, $id = '' ) {
+		$this->trxProfiler->transactionWritingIn( $server, $db, $id );
+	}
 
-		$bit = array_pop($this->mWorkStack);
-
-		if (!$bit) {
-			$this->debug("Profiling error, !\$bit: $functionname\n");
-		} else {
-			//if( $wgDebugProfiling ){
-				if( $functionname == 'close' ){
-					$message = "Profile section ended by close(): {$bit[0]}";
-					$this->debug( "$message\n" );
-					$this->mStack[] = array( $message, 0, '0 0', 0, '0 0', 0 );
-				}
-				elseif( $bit[0] != $functionname ){
-					$message = "Profiling error: in({$bit[0]}), out($functionname)";
-					$this->debug( "$message\n" );
-					$this->mStack[] = array( $message, 0, '0 0', 0, '0 0', 0 );
-				}
-			//}
-			$bit[] = $time;
-			$bit[] = $memory;
-			$this->mStack[] = $bit;
-		}
+	/**
+	 * Mark a DB as no longer in a transaction
+	 *
+	 * This will check if locks are possibly held for longer than
+	 * needed and log any affected transactions to a special DB log.
+	 * Note that there can be multiple connections to a single DB.
+	 *
+	 * @param string $server DB server
+	 * @param string $db DB name
+	 * @param string $id Resource ID string of connection
+	 */
+	public function transactionWritingOut( $server, $db, $id = '' ) {
+		$this->trxProfiler->transactionWritingOut( $server, $db, $id );
 	}
 
 	/**
 	 * Close opened profiling sections
 	 */
-	public function close() {
-		while( count( $this->mWorkStack ) ){
-			$this->profileOut( 'close' );
-		}
-	}
+	abstract public function close();
+
+	/**
+	 * Log the data to some store or even the page output
+	 */
+	abstract public function logData();
 
 	/**
 	 * Mark this call as templated or not
 	 *
-	 * @param $t Boolean
+	 * @param bool $t
 	 */
-	function setTemplated( $t ) {
+	public function setTemplated( $t ) {
 		$this->mTemplated = $t;
 	}
 
 	/**
 	 * Returns a profiling output to be stored in debug file
 	 *
-	 * @return String
+	 * @return string
 	 */
-	public function getOutput() {
-		global $wgDebugFunctionEntry, $wgProfileCallTree;
-		$wgDebugFunctionEntry = false;
-
-		if( !count( $this->mStack ) && !count( $this->mCollated ) ){
-			return "No profiling output\n";
-		}
-
-		if( $wgProfileCallTree ) {
-			return $this->getCallTree();
-		} else {
-			return $this->getFunctionReport();
-		}
-	}
+	abstract public function getOutput();
 
 	/**
-	 * Returns a tree of function call instead of a list of functions
+	 * @return array
 	 */
-	function getCallTree() {
-		return implode( '', array_map( array( &$this, 'getCallTreeLine' ), $this->remapCallTree( $this->mStack ) ) );
-	}
+	abstract public function getRawData();
 
 	/**
-	 * Recursive function the format the current profiling array into a tree
+	 * Get the initial time of the request, based either on $wgRequestTime or
+	 * $wgRUstart. Will return null if not able to find data.
 	 *
-	 * @param $stack profiling array
+	 * @param string|bool $metric Metric to use, with the following possibilities:
+	 *   - user: User CPU time (without system calls)
+	 *   - cpu: Total CPU time (user and system calls)
+	 *   - wall (or any other string): elapsed time
+	 *   - false (default): will fall back to default metric
+	 * @return float|null
 	 */
-	function remapCallTree( $stack ) {
-		if( count( $stack ) < 2 ){
-			return $stack;
-		}
-		$outputs = array ();
-		for( $max = count( $stack ) - 1; $max > 0; ){
-			/* Find all items under this entry */
-			$level = $stack[$max][1];
-			$working = array ();
-			for( $i = $max -1; $i >= 0; $i-- ){
-				if( $stack[$i][1] > $level ){
-					$working[] = $stack[$i];
-				} else {
-					break;
-				}
+	protected function getTime( $metric = 'wall' ) {
+		if ( $metric === 'cpu' || $metric === 'user' ) {
+			$ru = wfGetRusage();
+			if ( !$ru ) {
+				return 0;
 			}
-			$working = $this->remapCallTree( array_reverse( $working ) );
-			$output = array();
-			foreach( $working as $item ){
-				array_push( $output, $item );
+			$time = $ru['ru_utime.tv_sec'] + $ru['ru_utime.tv_usec'] / 1e6;
+			if ( $metric === 'cpu' ) {
+				# This is the time of system calls, added to the user time
+				# it gives the total CPU time
+				$time += $ru['ru_stime.tv_sec'] + $ru['ru_stime.tv_usec'] / 1e6;
 			}
-			array_unshift( $output, $stack[$max] );
-			$max = $i;
-
-			array_unshift( $outputs, $output );
-		}
-		$final = array();
-		foreach( $outputs as $output ){
-			foreach( $output as $item ){
-				$final[] = $item;
-			}
-		}
-		return $final;
-	}
-
-	/**
-	 * Callback to get a formatted line for the call tree
-	 */
-	function getCallTreeLine( $entry ) {
-		list( $fname, $level, $start, /* $x */, $end)  = $entry;
-		$delta = $end - $start;
-		$space = str_repeat(' ', $level);
-		# The ugly double sprintf is to work around a PHP bug,
-		# which has been fixed in recent releases.
-		return sprintf( "%10s %s %s\n", trim( sprintf( "%7.3f", $delta * 1000.0 ) ), $space, $fname );
-	}
-
-	function getTime() {
-		if ( $this->mTimeMetric === 'user' ) {
-			return $this->getUserTime();
+			return $time;
 		} else {
-			return microtime(true);
+			return microtime( true );
 		}
-	}
-
-	function getUserTime() {
-		$ru = getrusage();
-		return $ru['ru_utime.tv_sec'].' '.$ru['ru_utime.tv_usec'] / 1e6;
-	}
-
-	protected function collateData() {
-		if ( $this->mCollateDone ) {
-			return;
-		}
-		$this->mCollateDone = true;
-
-		$this->close();
-
-		$this->mCollated = array();
-		$this->mCalls = array();
-		$this->mMemory = array();
-
-		# Estimate profiling overhead
-		$profileCount = count($this->mStack);
-		self::calculateOverhead( $profileCount );
-
-		# First, subtract the overhead!
-		$overheadTotal = $overheadMemory = $overheadInternal = array();
-		foreach( $this->mStack as $entry ){
-			$fname = $entry[0];
-			$start = $entry[2];
-			$end = $entry[4];
-			$elapsed = $end - $start;
-			$memory = $entry[5] - $entry[3];
-
-			if( $fname == '-overhead-total' ){
-				$overheadTotal[] = $elapsed;
-				$overheadMemory[] = $memory;
-			}
-			elseif( $fname == '-overhead-internal' ){
-				$overheadInternal[] = $elapsed;
-			}
-		}
-		$overheadTotal = $overheadTotal ? array_sum( $overheadTotal ) / count( $overheadInternal ) : 0;
-		$overheadMemory = $overheadMemory ? array_sum( $overheadMemory ) / count( $overheadInternal ) : 0;
-		$overheadInternal = $overheadInternal ? array_sum( $overheadInternal ) / count( $overheadInternal ) : 0;
-
-		# Collate
-		foreach( $this->mStack as $index => $entry ){
-			$fname = $entry[0];
-			$start = $entry[2];
-			$end = $entry[4];
-			$elapsed = $end - $start;
-
-			$memory = $entry[5] - $entry[3];
-			$subcalls = $this->calltreeCount( $this->mStack, $index );
-
-			if( !preg_match( '/^-overhead/', $fname ) ){
-				# Adjust for profiling overhead (except special values with elapsed=0
-				if( $elapsed ) {
-					$elapsed -= $overheadInternal;
-					$elapsed -= ($subcalls * $overheadTotal);
-					$memory -= ($subcalls * $overheadMemory);
-				}
-			}
-
-			if( !array_key_exists( $fname, $this->mCollated ) ){
-				$this->mCollated[$fname] = 0;
-				$this->mCalls[$fname] = 0;
-				$this->mMemory[$fname] = 0;
-				$this->mMin[$fname] = 1 << 24;
-				$this->mMax[$fname] = 0;
-				$this->mOverhead[$fname] = 0;
-			}
-
-			$this->mCollated[$fname] += $elapsed;
-			$this->mCalls[$fname]++;
-			$this->mMemory[$fname] += $memory;
-			$this->mMin[$fname] = min($this->mMin[$fname], $elapsed);
-			$this->mMax[$fname] = max($this->mMax[$fname], $elapsed);
-			$this->mOverhead[$fname] += $subcalls;
-		}
-
-		$this->mCalls['-overhead-total'] = $profileCount;
-		arsort( $this->mCollated, SORT_NUMERIC );
 	}
 
 	/**
-	 * Returns a list of profiled functions.
-	 * Also log it into the database if $wgProfileToDatabase is set to true.
-	 */
-	function getFunctionReport() {
-		$this->collateData();
-
-		$width = 140;
-		$nameWidth = $width - 65;
-		$format =      "%-{$nameWidth}s %6d %13.3f %13.3f %13.3f%% %9d  (%13.3f -%13.3f) [%d]\n";
-		$titleFormat = "%-{$nameWidth}s %6s %13s %13s %13s %9s\n";
-		$prof = "\nProfiling data\n";
-		$prof .= sprintf( $titleFormat, 'Name', 'Calls', 'Total', 'Each', '%', 'Mem' );
-
-		$total = isset( $this->mCollated['-total'] ) ? $this->mCollated['-total'] : 0;
-
-		foreach( $this->mCollated as $fname => $elapsed ){
-			$calls = $this->mCalls[$fname];
-			$percent = $total ? 100. * $elapsed / $total : 0;
-			$memory = $this->mMemory[$fname];
-			$prof .= sprintf($format, substr($fname, 0, $nameWidth), $calls, (float) ($elapsed * 1000), (float) ($elapsed * 1000) / $calls, $percent, $memory, ($this->mMin[$fname] * 1000.0), ($this->mMax[$fname] * 1000.0), $this->mOverhead[$fname]);
-		}
-		$prof .= "\nTotal: $total\n\n";
-
-		return $prof;
-	}
-
-	/**
-	 * Dummy calls to wfProfileIn/wfProfileOut to calculate its overhead
-	 */
-	protected static function calculateOverhead( $profileCount ) {
-		wfProfileIn( '-overhead-total' );
-		for( $i = 0; $i < $profileCount; $i++ ){
-			wfProfileIn( '-overhead-internal' );
-			wfProfileOut( '-overhead-internal' );
-		}
-		wfProfileOut( '-overhead-total' );
-	}
-	
-	/**
-	 * Counts the number of profiled function calls sitting under
-	 * the given point in the call graph. Not the most efficient algo.
+	 * Get the initial time of the request, based either on $wgRequestTime or
+	 * $wgRUstart. Will return null if not able to find data.
 	 *
-	 * @param $stack Array:
-	 * @param $start Integer:
-	 * @return Integer
-	 * @private
+	 * @param string|bool $metric Metric to use, with the following possibilities:
+	 *   - user: User CPU time (without system calls)
+	 *   - cpu: Total CPU time (user and system calls)
+	 *   - wall (or any other string): elapsed time
+	 *   - false (default): will fall back to default metric
+	 * @return float|null
 	 */
-	function calltreeCount($stack, $start) {
-		$level = $stack[$start][1];
-		$count = 0;
-		for ($i = $start -1; $i >= 0 && $stack[$i][1] > $level; $i --) {
-			$count ++;
-		}
-		return $count;
-	}
+	protected function getInitialTime( $metric = 'wall' ) {
+		global $wgRequestTime, $wgRUstart;
 
-	/**
-	 * Log the whole profiling data into the database.
-	 */
-	public function logData(){
-		global $wgProfilePerHost, $wgProfileToDatabase;
-
-		# Do not log anything if database is readonly (bug 5375)
-		if( wfReadOnly() || !$wgProfileToDatabase ) {
-			return;
-		}
-
-		$dbw = wfGetDB( DB_MASTER );
-		if( !is_object( $dbw ) ) {
-			return;
-		}
-
-		$errorState = $dbw->ignoreErrors( true );
-
-		if( $wgProfilePerHost ){
-			$pfhost = wfHostname();
-		} else {
-			$pfhost = '';
-		}
-
-		$this->collateData();
-
-		foreach( $this->mCollated as $name => $elapsed ){
-			$eventCount = $this->mCalls[$name];
-			$timeSum = (float) ($elapsed * 1000);
-			$memorySum = (float)$this->mMemory[$name];
-			$name = substr($name, 0, 255);
-
-			// Kludge
-			$timeSum = ($timeSum >= 0) ? $timeSum : 0;
-			$memorySum = ($memorySum >= 0) ? $memorySum : 0;
-
-			$dbw->update( 'profiling',
-				array(
-					"pf_count=pf_count+{$eventCount}",
-					"pf_time=pf_time+{$timeSum}",
-					"pf_memory=pf_memory+{$memorySum}",
-				),
-				array(
-					'pf_name' => $name,
-					'pf_server' => $pfhost,
-				),
-				__METHOD__ );
-
-			$rc = $dbw->affectedRows();
-			if ( $rc == 0 ) {
-				$dbw->insert('profiling', array ('pf_name' => $name, 'pf_count' => $eventCount,
-					'pf_time' => $timeSum, 'pf_memory' => $memorySum, 'pf_server' => $pfhost ), 
-					__METHOD__, array ('IGNORE'));
+		if ( $metric === 'cpu' || $metric === 'user' ) {
+			if ( !count( $wgRUstart ) ) {
+				return null;
 			}
-			// When we upgrade to mysql 4.1, the insert+update
-			// can be merged into just a insert with this construct added:
-			//     "ON DUPLICATE KEY UPDATE ".
-			//     "pf_count=pf_count + VALUES(pf_count), ".
-			//     "pf_time=pf_time + VALUES(pf_time)";
+
+			$time = $wgRUstart['ru_utime.tv_sec'] + $wgRUstart['ru_utime.tv_usec'] / 1e6;
+			if ( $metric === 'cpu' ) {
+				# This is the time of system calls, added to the user time
+				# it gives the total CPU time
+				$time += $wgRUstart['ru_stime.tv_sec'] + $wgRUstart['ru_stime.tv_usec'] / 1e6;
+			}
+			return $time;
+		} else {
+			if ( empty( $wgRequestTime ) ) {
+				return null;
+			} else {
+				return $wgRequestTime;
+			}
 		}
-
-		$dbw->ignoreErrors( $errorState );
-	}
-
-	/**
-	 * Get the function name of the current profiling section
-	 */
-	function getCurrentSection() {
-		$elt = end( $this->mWorkStack );
-		return $elt[0];
 	}
 
 	/**
 	 * Add an entry in the debug log file
 	 *
-	 * @param $s String to output
+	 * @param string $s String to output
 	 */
-	function debug( $s ) {
-		if( defined( 'MW_COMPILED' ) || function_exists( 'wfDebug' ) ) {
+	protected function debug( $s ) {
+		if ( function_exists( 'wfDebug' ) ) {
 			wfDebug( $s );
 		}
+	}
+
+	/**
+	 * Add an entry in the debug log group
+	 *
+	 * @param string $group Group to send the message to
+	 * @param string $s String to output
+	 */
+	protected function debugGroup( $group, $s ) {
+		if ( function_exists( 'wfDebugLog' ) ) {
+			wfDebugLog( $group, $s );
+		}
+	}
+}
+
+/**
+ * Helper class that detects high-contention DB queries via profiling calls
+ *
+ * This class is meant to work with a Profiler, as the later already knows
+ * when methods start and finish (which may take place during transactions).
+ *
+ * @since 1.24
+ */
+class TransactionProfiler {
+	/** @var float Seconds */
+	protected $mDBLockThreshold = 3.0;
+	/** @var array DB/server name => (active trx count, time, DBs involved) */
+	protected $mDBTrxHoldingLocks = array();
+	/** @var array DB/server name => list of (function name, elapsed time) */
+	protected $mDBTrxMethodTimes = array();
+
+	/**
+	 * Mark a DB as in a transaction with one or more writes pending
+	 *
+	 * Note that there can be multiple connections to a single DB.
+	 *
+	 * @param string $server DB server
+	 * @param string $db DB name
+	 * @param string $id ID string of transaction
+	 */
+	public function transactionWritingIn( $server, $db, $id ) {
+		$name = "{$server} ({$db}) (TRX#$id)";
+		if ( isset( $this->mDBTrxHoldingLocks[$name] ) ) {
+			wfDebugLog( 'DBPerformance', "Nested transaction for '$name' - out of sync." );
+		}
+		$this->mDBTrxHoldingLocks[$name] =
+			array( 'start' => microtime( true ), 'conns' => array() );
+		$this->mDBTrxMethodTimes[$name] = array();
+
+		foreach ( $this->mDBTrxHoldingLocks as $name => &$info ) {
+			$info['conns'][$name] = 1; // track all DBs in transactions for this transaction
+		}
+	}
+
+	/**
+	 * Register the name and time of a method for slow DB trx detection
+	 *
+	 * This method is only to be called by the Profiler class as methods finish
+	 *
+	 * @param string $method Function name
+	 * @param float $realtime Wal time ellapsed
+	 */
+	public function recordFunctionCompletion( $method, $realtime ) {
+		if ( !$this->mDBTrxHoldingLocks ) {
+			return; // short-circuit
+		// @todo hardcoded check is a tad janky (what about FOR UPDATE?)
+		} elseif ( !preg_match( '/^query-m: (?!SELECT)/', $method )
+			&& $realtime < $this->mDBLockThreshold
+		) {
+			return; // not a DB master query nor slow enough
+		}
+		$now = microtime( true );
+		foreach ( $this->mDBTrxHoldingLocks as $name => $info ) {
+			// Hacky check to exclude entries from before the first TRX write
+			if ( ( $now - $realtime ) >= $info['start'] ) {
+				$this->mDBTrxMethodTimes[$name][] = array( $method, $realtime );
+			}
+		}
+	}
+
+	/**
+	 * Mark a DB as no longer in a transaction
+	 *
+	 * This will check if locks are possibly held for longer than
+	 * needed and log any affected transactions to a special DB log.
+	 * Note that there can be multiple connections to a single DB.
+	 *
+	 * @param string $server DB server
+	 * @param string $db DB name
+	 * @param string $id ID string of transaction
+	 */
+	public function transactionWritingOut( $server, $db, $id ) {
+		$name = "{$server} ({$db}) (TRX#$id)";
+		if ( !isset( $this->mDBTrxMethodTimes[$name] ) ) {
+			wfDebugLog( 'DBPerformance', "Detected no transaction for '$name' - out of sync." );
+			return;
+		}
+		$slow = false;
+		foreach ( $this->mDBTrxMethodTimes[$name] as $info ) {
+			$realtime = $info[1];
+			if ( $realtime >= $this->mDBLockThreshold ) {
+				$slow = true;
+				break;
+			}
+		}
+		if ( $slow ) {
+			$dbs = implode( ', ', array_keys( $this->mDBTrxHoldingLocks[$name]['conns'] ) );
+			$msg = "Sub-optimal transaction on DB(s) [{$dbs}]:\n";
+			foreach ( $this->mDBTrxMethodTimes[$name] as $i => $info ) {
+				list( $method, $realtime ) = $info;
+				$msg .= sprintf( "%d\t%.6f\t%s\n", $i, $realtime, $method );
+			}
+			wfDebugLog( 'DBPerformance', $msg );
+		}
+		unset( $this->mDBTrxHoldingLocks[$name] );
+		unset( $this->mDBTrxMethodTimes[$name] );
 	}
 }

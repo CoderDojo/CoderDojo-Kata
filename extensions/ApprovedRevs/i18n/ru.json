@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kaganer",
+			"MaxSem",
+			"Okras",
+			"Александр Сигачёв"
+		]
+	},
+	"approvedrevs-desc": "Установка одной из версий страниц как подтверждённой",
+	"approvedrevs-logname": "Журнал подтверждения версий",
+	"approvedrevs-logdesc": "Это журнал версий страниц, которые были подтверждены.",
+	"approvedrevs-approve": "подтвердить",
+	"approvedrevs-unapprove": "снять подтверждение",
+	"approvedrevs-approvesuccess": "Это версия страницы была отмечена как подтверждённая.",
+	"approvedrevs-unapprovesuccess": "Не существует подтверждённой версии этой страницы.\nВместо неё будет показана последняя версия.",
+	"approvedrevs-unapprovesuccess2": "Больше не существует подтверждённой версии этой страницы.\nВместо неё будет показана пустая страница.",
+	"approvedrevs-approveaction": "установить $2 как подтверждённую версию «[[$1]]»",
+	"approvedrevs-unapproveaction": "снять утверждённую версию для «[[$1]]»",
+	"approvedrevs-notlatest": "Это утверждённая версия страницы. Существуют более свежие версии.",
+	"approvedrevs-approvedandlatest": "Это утверждённая версия страницы. Она же является наиболее свежей версией.",
+	"approvedrevs-blankpageshown": "Для этой страницы нет подтверждённых версий.",
+	"approvedrevs-noapprovedrevision": "Это последняя версия этой страницы; у неё нет утверждённой версии.",
+	"approvedrevs-editwarning": "Пожалуйста, обратите внимание, сейчас вы редактируете последнюю версию этой страницы, но она не показывается по умолчанию, так как не подтверждена.",
+	"approvedrevs": "Подтверждённые версии",
+	"approvedrevs-approvedpages": "Все страницы, имеющие подтверждённые версии",
+	"approvedrevs-notlatestpages": "Страницы, чьи подтверждённые версии не являются последними",
+	"approvedrevs-unapprovedpages": "Неутверждённые страницы",
+	"approvedrevs-view": "Просмотр:",
+	"approvedrevs-revisionnumber": "версия $1",
+	"approvedrevs-approvedby": "подтверждена $1 $2",
+	"approvedrevs-difffromlatest": "разн. с последней",
+	"approvedrevs-approvelatest": "подтвердить последнюю",
+	"approvedrevs-approvethisrev": "Подтвердить эту версию.",
+	"approvedrevs-viewlatestrev": "Просмотр последней версии.",
+	"approvedrevs-approvedrevision": "Подтверждённая версия",
+	"right-approverevisions": "отметка определённых версий вики-страниц как подтверждённых",
+	"right-viewlinktolatest": "просмотр пояснительного текста в верхней части страниц, имеющих утверждённые версии"
+}

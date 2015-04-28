@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cainamarques",
+			"Eduardo.mps",
+			"Giro720",
+			"Helder.wiki"
+		]
+	},
+	"widgets-desc": "Permite que os administradores da wiki adicionem ''widgets free-form'' à wiki, editando páginas no espaço nominal {{ns:widget}}.\nWidgets fornecidos pela comunidade podem ser encontrados na [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]",
+	"widgets-error": "Erro em [[{{ns:widget}}:$1|widget $1]]",
+	"group-widgeteditor": "Editores de widget",
+	"group-widgeteditor-member": "{{GENDER:$1|Editor|Editora}} de widget",
+	"grouppage-widgeteditor": "{{ns:project}}:Editores de widget",
+	"right-editwidgets": "Criar e editar [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Widgets widgets] no espaço nominal <tt>{{ns:widget}}</tt>"
+}

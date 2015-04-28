@@ -1,0 +1,14 @@
+/**
+ * Style sheet for the input type datecheck.
+ *
+ * @author Simon Bachenberg
+ */
+
+.has-error input.error {
+	font-size: inherit;
+}
+
+.form-error {
+	color:   #ff0000;
+	display: inline;
+}

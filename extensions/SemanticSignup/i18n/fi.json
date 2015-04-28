@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nedergard"
+		]
+	},
+	"semanticsignup": "Semanttinen kirjautuminen",
+	"ses-desc": "Semanttisia lomakkeita käyttävä MediaWikin laajennus, jonka avulla käyttäjäsivulle lisätään kirjauduttaessa semanttisia tietoja.",
+	"ses-nousername": "Käyttäjätunnusta ei ole määritetty.",
+	"ses-nopwdmatch": "Salasana ja salasanan vahvistus eivät täsmää.",
+	"ses-norealname": "Oikea nimi on pakollinen, mutta sitä ei ole määritetty.",
+	"ses-userexists": "Käyttäjä on jo olemassa.",
+	"ses-emailfailed": "Vahvistussähköpostin lähetys epäonnistui.",
+	"ses-createforbidden": "Nykyinen käyttäjä ei saa luoda käyttäjätunnuksia.",
+	"ses-throttlehit": "Tästä IP-osoitteesta luotujen uusien käyttäjätunnusten päiväkohtainen enimmäismäärä on ylitetty."
+}

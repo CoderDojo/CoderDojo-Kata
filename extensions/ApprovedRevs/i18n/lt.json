@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200",
+			"Homo",
+			"Ignas693"
+		]
+	},
+	"approvedrevs-desc": "Nustatyti vieną puslapį su patvirtinta peržiūros",
+	"approvedrevs-logname": "Pakeitimo patvirtinimo žurnalas",
+	"approvedrevs-logdesc": "Tai yra pataisymų, kurie buvo patvirtinti žurnalą.",
+	"approvedrevs-approve": "Patvirtinti",
+	"approvedrevs-unapprove": "Patvirtinti",
+	"approvedrevs-approvesuccess": "Puslapio peržiūros yra nustatytas kaip patvirtintą versiją.",
+	"approvedrevs-unapprovesuccess": "Nebėra patvirtintų versija šio puslapio.\nVietoj to, rodoma paskutinio peržiūrėjimo.",
+	"approvedrevs-unapprovesuccess2": "Nebėra patvirtintų versija šio puslapio.\nVietoj to, rodoma paskutinio peržiūrėjimo.",
+	"approvedrevs-approveaction": "nustatyti  $2  kaip patvirtinta peržiūros dėl \"[[ $1 ]]\"",
+	"approvedrevs-unapproveaction": "nustatyti  $2  kaip patvirtinta peržiūros dėl \"[[ $1 ]]\"",
+	"approvedrevs-notlatest": "Tai yra patvirtintos peržiūrėjimo šio puslapio; tai ne pačius naujausius.",
+	"approvedrevs-approvedandlatest": "Tai yra patvirtintos peržiūrėjimo šio puslapio; tai ne pačius naujausius.",
+	"approvedrevs-blankpageshown": "Nr peržiūros buvo patvirtintas šio puslapio.",
+	"approvedrevs-editwarning": "Atkreipkite dėmesį, kad dabar redaguojate šiame puslapyje, kurie nėra patvirtinti vėliausios peržiūros vienas rodomi pagal numatytuosius parametrus.",
+	"approvedrevs": "Patvirtintos versijos",
+	"approvedrevs-approvedpages": "Visi puslapiai su patvirtinta peržiūros",
+	"approvedrevs-notlatestpages": "Puslapiai, kurių patvirtinto pakeitimo nėra jų naujausia",
+	"approvedrevs-unapprovedpages": "Nepatvirtintas puslapių",
+	"approvedrevs-view": "Žiūrėti:",
+	"approvedrevs-revisionnumber": "versija $1",
+	"approvedrevs-approvedby": "patvirtintas  $1  dėl$2",
+	"approvedrevs-difffromlatest": "diff iš vėliau kaip",
+	"approvedrevs-approvelatest": "patvirtinti naujausią",
+	"approvedrevs-approvethisrev": "Patvirtinti šios peržiūros.",
+	"approvedrevs-viewlatestrev": "Peržiūrėti naujausių peržiūrėjimo.",
+	"right-approverevisions": "Nustatyti vieną puslapį su patvirtinta peržiūros",
+	"right-viewlinktolatest": "Peržiūrėti paaiškinamasis tekstas viršuje, puslapiai, kurie patvirtintų peržiūros"
+}

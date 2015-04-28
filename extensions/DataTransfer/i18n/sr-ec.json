@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rancher",
+			"Sasa Stefanovic",
+			"Жељко Тодоровић",
+			"Михајло Анђелковић",
+			"Milicevic01"
+		]
+	},
+	"viewxml": "Види XML",
+	"dt_viewxml_categories": "Категорије",
+	"dt_viewxml_namespaces": "Именски простори",
+	"dt_viewxml_simplifiedformat": "Поједностављени формат",
+	"dt_xml_namespace": "Именски простор",
+	"dt_xml_pages": "Странице",
+	"dt_xml_page": "Страница",
+	"dt_xml_template": "Шаблон",
+	"dt_xml_field": "Поље",
+	"dt_xml_name": "Име",
+	"dt_xml_title": "Наслов",
+	"dt_xml_id": "Назнака",
+	"dt_xml_freetext": "Слободан текст",
+	"importxml": "Увези XML",
+	"dt_import_encodingtype": "Врста кодирања:",
+	"dt_import_forexisting": "За странице које већ постоје:",
+	"dt_import_overwriteexisting": "Замени постојећи садржај",
+	"dt_import_skipexisting": "Прескочи",
+	"dt_import_appendtoexisting": "Додај у постојећи садржај",
+	"dt_import_summarydesc": "Опис увоза:",
+	"dt_import_editsummary": "{{ucfirst:$1}} увоз",
+	"dt_import_importing": "Увоз у току...",
+	"importcsv": "Увези CSV",
+	"right-datatransferimport": "Увези податке"
+}

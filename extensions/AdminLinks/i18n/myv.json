@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Botuzhaleny-sodamo"
+		]
+	},
+	"adminlinks": "Администраторонь сюлмавома пенеть",
+	"adminlinks-desc": "Полады [[Special:AdminLinks|башка лопа]], конасонть администраторонь туртов лезэв сюлмавома пенеть",
+	"adminlinks_documentation": "$1 документациясь",
+	"adminlinks_general": "Овсекс",
+	"adminlinks_editsidebar": "Витнемс-петнемс бокасо лазнэнть",
+	"adminlinks_editcss": "Витнемс-петнемс CSS файла",
+	"adminlinks_editmainpagename": "Витнемс-петнемс прякс лопанть лемензэ",
+	"adminlinks_users": "Совицят",
+	"adminlinks_createuser": "Шкамс совиця",
+	"adminlinks_browsesearch": "Якавтомат-пакавтомат ды вешнема",
+	"adminlinks_importexport": "Совавтомат-ливтемат",
+	"right-adminlinks": "Ваномс [[Special:AdminLinks|администраторонь сюлмавома пенетнень]]"
+}

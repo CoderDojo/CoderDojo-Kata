@@ -1,0 +1,83 @@
+@mixin kata-sidebar {
+/*
+############################################################################
+	SIDEBAR
+############################################################################
+*/
+
+.kata-seperator {
+	border-top: 5px solid #ccc;
+	display: block;
+}
+
+#SideBar .nav-pills a
+{
+	color: #000000;
+}
+
+#SideBar .nav-pills a:hover
+{
+	color: #FFFFFF;
+}
+
+#SideBar .nav-pills > li
+{
+	border-bottom: 1px solid #CCC;
+	margin: 0 0 0 0 !important;
+}
+#SideBar ul > li {
+	list-style-type: dot;
+	list-style-position: outside;
+	list-style-image: url('../images/listDot.png');
+}
+
+.nav-pills li.main:hover, .nav-pills li.main:focus
+{
+	background-color: #2E7AC7;
+}
+
+.nav-pills li.technical-resource:hover, .nav-pills li.technical-resource:focus
+{
+	background-color: #ED462F;
+}
+
+.nav-pills li.ninja-resource:hover, .nav-pills li.ninja-resource:focus
+{
+	background-color: #FBCC33;
+}
+
+#OrganiserMenuItem:hover, #OrganiserMenuItem:focus, #OrganiserMenuItem li:hover, #OrganiserMenuItem li:focus, #OrganiserMenuItem a:hover, #OrganiserMenuItem a:focus
+{
+	background-color: #61C93F;
+}
+
+#OrganiserMenuItem.open > a, #OrganiserMenuItem.open > a:hover, #OrganiserMenuItem.open > a:focus
+{
+	background-color: #61C93F;
+}
+
+#TechnicalMenuItem:hover, #TechnicalMenuItem:focus, #TechnicalMenuItem li:hover, #TechnicalMenuItem li:focus, #TechnicalMenuItem a:hover, #TechnicalMenuItem a:focus
+{
+	background-color: #ED462F;
+}
+
+#TechnicalMenuItem.open > a, #TechnicalMenuItem.open > a:hover, #TechnicalMenuItem.open > a:focus
+{
+	background-color: #ED462F;
+}
+
+#NinjaMenuItem:hover, #NinjaMenuItem:focus, #NinjaMenuItem li:hover, #NinjaMenuItem li:focus, #NinjaMenuItem a:hover, #NinjaMenuItem a:focus
+{
+	background-color: #FBCC33;
+}
+
+#NinjaMenuItem.open > a, #NinjaMenuItem.open > a:hover, #NinjaMenuItem.open > a:focus
+{
+	background-color: #FBCC33;
+}
+/*
+############################################################################
+	END SIDEBAR
+############################################################################
+*/
+}

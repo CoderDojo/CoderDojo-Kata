@@ -1,0 +1,101 @@
+@mixin kata-mentors {
+	$kataMentorsColor: #CF2A27;
+	$kataNinjasColor: #F7AA00;
+
+	$highlightColor: #ffffff;
+
+	.kata-mentors, .kata-ninjas-list {
+
+		.kata-button {
+			width: 100%;
+			border: 1px solid #999;
+			display: block;
+			text-align: center;
+			background: $kataMentorsColor;
+			color: #fff;
+			box-sizing: border-box;
+			vertical-align: middle;
+			font-size: 1.6rem;
+			height: 3rem;
+			line-height: 3rem;
+		}
+		.kata-button:hover {
+			border: 1px solid #555;
+		}
+
+		table.kata-filter-section {
+			width: 100%;
+			th {
+				font-weight: bold;
+				text-align: left;
+			}
+			td select {
+				width: 100%;
+				box-sizing: border-box;
+				height: 3rem;
+			}
+		}
+		table.kata-result-section {
+			width: 100%;
+			th {
+				font-weight: bold;
+				text-align: left;
+			}
+			.kata-result-element {
+				width: 15%;
+			}
+			.kata-result-element-description {
+				width: 40%;
+			}
+			.kata-course-action {
+				text-align: center;
+				.kata-button {
+					max-width: 250px;
+					margin: 0 auto;
+				}
+			}
+			.kata-course-image {
+				width: 30%;
+				text-align: center;
+				position: relative;
+				img {
+					display: block;
+					margin: 0 auto;
+					position: relative;
+					max-width: 250px;
+				}
+			}
+
+		}
+
+		.kata-category-title {
+			/* only override border color */
+			border-color: $kataMentorsColor;
+		}
+		.kata-tags .kata-tag span {
+			/* inherit all properties, but define specific highlight color */
+			background-color: $kataMentorsColor;
+			color: $highlightColor;
+		}
+
+		.alpha-filter {
+			.letter {
+				&.selected {
+					background-color: $kataMentorsColor;
+					a:visited, a:link {
+						color: $highlightColor;
+					}
+					a:hover, a:active {
+						color: $highlightColor * 0.8;
+					}
+				}
+			}
+		}
+	}
+	
+	.kata-ninjas-list {
+		.kata-button {
+			background: $kataNinjasColor;
+		}
+	}
+}

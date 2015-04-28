@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dbc334",
+			"Eleassar"
+		]
+	},
+	"approvedrevs-desc": "Označi eno redakcijo strani kot odobreno",
+	"approvedrevs-logname": "Dnevnik odobritev redakcij",
+	"approvedrevs-logdesc": "To je dnevnik redakcij, ki so bile odobrene.",
+	"approvedrevs-approve": "odobri",
+	"approvedrevs-unapprove": "zavrni",
+	"approvedrevs-approvesuccess": "Ta redakcija strani je bila označena kot odobrena različica.",
+	"approvedrevs-unapprovesuccess": "Ni več odobrene različice te strani.\nNamesto tega bo prikazana najnovejša redakcija.",
+	"approvedrevs-unapprovesuccess2": "Ni več odobrene različice te strani.\nNamesto tega bo prikazana prazna stran.",
+	"approvedrevs-approveaction": "označil(-a) $2 kot odobreno redakcijo »[[$1]]«",
+	"approvedrevs-unapproveaction": "odznačil(-a) odobreno redakcijo »[[$1]]«",
+	"approvedrevs-notlatest": "To je odobrena redakcija te strani; ni najnovejša.",
+	"approvedrevs-approvedandlatest": "To je odobrena redakcija te strani, prav tako tudi najnovejša.",
+	"approvedrevs-blankpageshown": "Za to stran ni bila odobrena nobena redakcija.",
+	"approvedrevs-noapprovedrevision": "To je zadnja redakcija strani; nima odobrenih redakcij.",
+	"approvedrevs-editwarning": "Vedite, da trenutno urejate zadnjo redakcijo strani, ki ni po privzetem prikazana odobrena.",
+	"approvedrevs": "Odobrene redakcije",
+	"approvedrevs-approvedpages": "Vse strani z odobrenimi redakcijami",
+	"approvedrevs-notlatestpages": "Strani, katerih odobrena redakcija ni njihova najnovejša",
+	"approvedrevs-unapprovedpages": "Neodobrene strani",
+	"approvedrevs-view": "Pogled:",
+	"approvedrevs-revisionnumber": "redakcija $1",
+	"approvedrevs-approvedby": "odobril(-a) $1 dne $2",
+	"approvedrevs-difffromlatest": "spremembe od najnovejše",
+	"approvedrevs-approvelatest": "odobri najnovejšo",
+	"approvedrevs-approvethisrev": "Odobri to redakcijo.",
+	"approvedrevs-viewlatestrev": "Ogled najnovejše redakcije.",
+	"approvedrevs-approvedrevision": "Odobrena redakcija",
+	"right-approverevisions": "Označevanje določenih redakcij wikistrani kot odobrene",
+	"right-viewlinktolatest": "Ogled pojasnjevalnega besedila na vrhu strani, ki imajo odobrene redakcije"
+}

@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"TK-999"
+		]
+	},
+	"semanticsignup": "Szemantikus regisztráció",
+	"ses-desc": "A szemantikus űrlapok kiterjesztésre épülő épülő MediaWiki kiterjesztés, mely lehetővé teszi a felhasználói lap kitöltését szemantikus adatokkal regisztrációkor.",
+	"ses-nousername": "Nem adtál meg felhasználónevet.",
+	"ses-nopwdmatch": "A jelszó és a megerősítése nem egyeznek meg.",
+	"ses-norealname": "A valódi név szükséges, de nincs megadva.",
+	"ses-userexists": "A felhasználó már létezik.",
+	"ses-emailfailed": "A megerősítő e-mail küldése nem sikerült.",
+	"ses-createforbidden": "Jelen felhasználó nem hozhat létre felhasználói fiókokat.",
+	"ses-throttlehit": "Ezen IP-cím túllépte az egy nap alatt létrehozható felhasználói fiókok maximumát."
+}

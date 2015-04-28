@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Michawiki"
+		]
+	},
+	"adminlinks": "za administratorow",
+	"adminlinks-desc": "Pśidawa [[Special:AdminLinks|specialny bok]] z pomocniwymi wótkazami za administratorow",
+	"adminlinks_documentation": "$1 dokumentacija",
+	"adminlinks_general": "Powšykny",
+	"adminlinks_editsidebar": "Bocnu kšomu wobźěłaś",
+	"adminlinks_editcss": "Dataju CSS wobźěłaś",
+	"adminlinks_editmainpagename": "Mě głownego boka wobźěłaś",
+	"adminlinks_users": "Wužywarje",
+	"adminlinks_createuser": "Wužywarja napóraś",
+	"adminlinks_browsesearch": "Pśeglědowanje a pytanje",
+	"adminlinks_importexport": "Importěrowanje a eksportěrowanje",
+	"right-adminlinks": "Glědaj wótkaz k [[Special:AdminLinks|wótkazam za administratorow]]"
+}

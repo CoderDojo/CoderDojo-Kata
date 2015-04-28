@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Steve.rusyn",
+			"SteveR",
+			"Ата"
+		]
+	},
+	"sii-desc": "Додає введення зображень, що витягує зображення з Вікіпедії до [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]",
+	"sii-imageinput-loading": "Завантаження зображення..."
+}

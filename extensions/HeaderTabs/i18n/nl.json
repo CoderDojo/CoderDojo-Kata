@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"SPQRobin",
+			"Siebrand"
+		]
+	},
+	"headertabs-desc": "Voegt tabbladen toe aan een pagina om de hoogste niveaus te scheiden",
+	"headertabs-edittab": "bewerken",
+	"headertabs-edittab-hint": "Tabblad bewerken"
+}

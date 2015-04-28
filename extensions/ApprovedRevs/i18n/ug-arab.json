@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Arlin"
+		]
+	},
+	"approvedrevs-approve": "تەستىق",
+	"approvedrevs-unapprove": "تەستىقلىما",
+	"approvedrevs": "تەستىقلىغان ئۆزگەرتىش",
+	"approvedrevs-unapprovedpages": "تەستىقلىمىغان بەتلەر",
+	"approvedrevs-view": "كۆرۈنۈش:",
+	"approvedrevs-revisionnumber": "تۈزىتىلگەن نەشرى $1",
+	"approvedrevs-approvedby": "{{GENDER:$3|$1}} $4 $5 ماقۇللىدى",
+	"approvedrevs-difffromlatest": "يېڭىسى بىلەن پەرقى",
+	"approvedrevs-approvelatest": "ئەڭ يېڭىنى تەستىقلاش",
+	"approvedrevs-approvethisrev": "بۇ ئۆزگەرتىشنى ماقۇللاش",
+	"approvedrevs-viewlatestrev": "ئەڭ يېقىنقى ئۆزگەرتىشنى كۆرۈش."
+}

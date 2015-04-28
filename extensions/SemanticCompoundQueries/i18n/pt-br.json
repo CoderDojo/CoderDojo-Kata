@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardo.mps"
+		]
+	},
+	"semanticcompoundqueries-desc": "Uma função analisadora que exibe múltiplas consultas semânticas ao mesmo tempo"
+}

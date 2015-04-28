@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Borichèt",
+			"Dragonòt"
+		]
+	},
+	"approvedrevs-desc": "Ampòsta na sola revision ëd na pàgina com aprovà",
+	"approvedrevs-logname": "Registr d'aprovassion dle revision",
+	"approvedrevs-logdesc": "Sto-sì a l'é ël registr dle revision ch'a son ëstàite aprovà.",
+	"approvedrevs-approve": "apreuva",
+	"approvedrevs-unapprove": "apreuva pa",
+	"approvedrevs-approvesuccess": "Costa revision-sì ëd la pàgina a l'é stàita ampostà com la version aprovà.",
+	"approvedrevs-unapprovesuccess": "A-i é pa pi na version aprovà për sta pàgina-sì.\nAl pòst, a sarà mostrà la revision pi recenta.",
+	"approvedrevs-unapprovesuccess2": "A-i é pa pi na version aprovà për sta pàgina-sì.\nAl pòst, a sarà mostrà na pàgina bianca.",
+	"approvedrevs-approveaction": "a l'ha marcà $2 tanme revision aprovà për \"[[$1]]\"",
+	"approvedrevs-unapproveaction": "gava ampostassion ëd la revision aprovà për \"[[$1]]\"",
+	"approvedrevs-notlatest": "Costa a l'é la revision aprovà ëd sa pàgina; a l'é pa la pi recenta.",
+	"approvedrevs-approvedandlatest": "Costa a l'é la revision aprovà ëd sa pàgina, e a l'é ëdcò la pi recenta.",
+	"approvedrevs-blankpageshown": "Gnun-e revision a son ëstàite aprovà për sta pàgina.",
+	"approvedrevs-editwarning": "Për piasì, ch'a nòta ch'a l'é an camin ch'a modìfica l'ùltima revision ëd la pàgina, ch'a l'é pa cola aprovà smonùa për stàndard.",
+	"approvedrevs": "Revision aprovà",
+	"approvedrevs-approvedpages": "Tute le pàgine con na revision aprovà",
+	"approvedrevs-notlatestpages": "Pàgine dont la revision aprovà a l'é pa l'ùltima",
+	"approvedrevs-unapprovedpages": "Pàgine pa aprovà",
+	"approvedrevs-view": "Vardé:",
+	"approvedrevs-revisionnumber": "revision $1",
+	"approvedrevs-approvedby": "aprovà da $1 su $2",
+	"approvedrevs-difffromlatest": "diferense da l'ùltima",
+	"approvedrevs-approvelatest": "aprové l'ùltima",
+	"approvedrevs-approvethisrev": "Aprové sta revision.",
+	"approvedrevs-viewlatestrev": "Vardé l'ùltima revision.",
+	"right-approverevisions": "Ampòsta na certa revision ëd na pàgina wiki com aprovà",
+	"right-viewlinktolatest": "Vëdde ël test dë spiegassion an cò dle pàgine ch'a l'han na revision aprovà"
+}

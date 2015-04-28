@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80",
+			"Inkbug"
+		]
+	},
+	"approvedrevs-desc": "הגדרת גרסה אחת של דף כגרסה מאושרת",
+	"approvedrevs-logname": "יומן אישור גרסאות",
+	"approvedrevs-logdesc": "זהו יומן של גרסאות שאושרו.",
+	"approvedrevs-approve": "לאשר",
+	"approvedrevs-unapprove": "לבטל אישור",
+	"approvedrevs-approvesuccess": "הגרסה הזאת של הדף הוגדרה כגרסה מאושרת.",
+	"approvedrevs-unapprovesuccess": "אין עוד גרסה מאושרת לדף זה.\nבמקום זאת תוצג הגרסה העדכנית ביותר.",
+	"approvedrevs-unapprovesuccess2": "אין עוד גרסה מאושרת לדף זה.\nבמקום זאת יוצג דף ריק.",
+	"approvedrevs-approveaction": "להגדיר את $2 בתור הגרסה המאושרת עבור \"[[$1]]\"",
+	"approvedrevs-unapproveaction": "לבטל אישור גרסה עבור \"[[$1]]\"",
+	"approvedrevs-notlatest": "זוהי הגרסה המאושרת של הדף הזה; היא לא העדכנית ביותר.",
+	"approvedrevs-approvedandlatest": "זוהי הגרסה המאושרת של הדף הזה, והיא גם העדכנית ביותר.",
+	"approvedrevs-blankpageshown": "שום גרסה של דף זה לא אושרה.",
+	"approvedrevs-noapprovedrevision": "זאת הגרסה האחרונה של הדף הזה; אין לו גרסה מאושרת.",
+	"approvedrevs-editwarning": "יש לשים לב לכך שעכשיו נערכת הגרסה העדכנית ביותר של הדף הזה, ולא המאושרת שמוצגת כבררת מחדל.",
+	"approvedrevs": "גרסאות מאושרות",
+	"approvedrevs-approvedpages": "כל הדפים עם גרסה מאושרת",
+	"approvedrevs-notlatestpages": "דפים שהגרסה המאושרת שלהם אינה הגרסה העדכנית ביותר",
+	"approvedrevs-unapprovedpages": "דפים לא מאושרים",
+	"approvedrevs-view": "תצוגה:",
+	"approvedrevs-revisionnumber": "גרסה $1",
+	"approvedrevs-approvedby": "אושר על־ידי $1 ב־$2",
+	"approvedrevs-difffromlatest": "השוואה עם הגרסה האחרונה",
+	"approvedrevs-approvelatest": "לאשר את האחרונה",
+	"approvedrevs-approvethisrev": "לאשר את הגרסה הזאת.",
+	"approvedrevs-viewlatestrev": "להציג את הגרסה האחרונה.",
+	"approvedrevs-approvedrevision": "גרסה מאושרת",
+	"right-approverevisions": "הגדר גרסה מסוימת של דף הוויקי כמאושרת",
+	"right-viewlinktolatest": "הצגת הסבר בחלק העליון של העמודים שיש להם גרסה מאושרת"
+}

@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"زكريا",
+			"Test Create account"
+		]
+	},
+	"templatedata-desc": "تخزين بيانات وسائط القالب",
+	"templatedata-doc-params": "وسائط القالب",
+	"templatedata-doc-param-name": "وسيط",
+	"templatedata-doc-param-desc": "وصف",
+	"templatedata-doc-param-type": "نوع",
+	"templatedata-doc-param-default": "غيابي",
+	"templatedata-doc-param-status": "حالة",
+	"templatedata-invalid-parse": "خطأ نحوي",
+	"templatedata-invalid-type": "خاصية \"$1\" من نوع \"$2\".",
+	"templatedata-invalid-missing": "خاصية \"$1\" ضرورية.",
+	"templatedata-invalid-unknown": "خاصية \"$1\" غير متوقعة.",
+	"templatedata-invalid-value": "قيمة خاصية \"$1\" غير صالحة.",
+	"templatedata-modal-table-param-suggested": "اقترح",
+	"templatedata-modal-table-param-type-file": "ملف"
+}

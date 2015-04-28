@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"පසිඳු කාවින්ද"
+		]
+	},
+	"semanticformsinputs-wrongformat": "වැරදි ආකෘතිය.",
+	"semanticformsinputs-close": "වසන්න",
+	"semanticformsinputs-prev": "පෙර",
+	"semanticformsinputs-next": "මීළඟ",
+	"semanticformsinputs-today": "අද",
+	"semanticformsinputs-malformedregexp": "විකෘති වූ ක්‍රමික උච්චාරණය ($1).",
+	"semanticformsinputs-datepicker-weekstart": "සතියේ පළමු දිනය (0 - ඉරිදා, 1 - සඳුදා, ...).",
+	"semanticformsinputs-datepicker-firstdate": "(in yyyy/mm/dd ආකෘතියෙන්) පළමු දිනය තෝරාගත හැකියි.",
+	"semanticformsinputs-datepicker-lastdate": "(yyyy/mm/dd ආකෘතියෙන්) අවසන් දිනය තෝරාගත හැකියි.",
+	"semanticformsinputs-timepicker-mintime": "පෙන්වීමට ඇති වේලාසනම කාලය. ආකෘතිය: hh:mm",
+	"semanticformsinputs-timepicker-maxtime": "පෙන්වීමට ඇති නවතම කාලය. ආකෘතිය: hh:mm",
+	"semanticformsinputs-timepicker-interval": "මිනිත්තු අතර විරාම කාලය. 1 සහ 60 අතර අංකයක්.",
+	"semanticformsinputs-regexp-baseprefix": "පාදක වර්ගයේ පරාමිතීන් සඳහා උපසර්ගය.",
+	"semanticformsinputs-menuselect-structure": "නිප්පටිපාටිගත ලයිස්තුවක් ලෙස මෙනුවේ ව්‍යුහය."
+}

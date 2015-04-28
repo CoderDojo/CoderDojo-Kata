@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jaideraf"
+		]
+	},
+	"headertabs-desc": "Adiciona guias à página separando seções de primeiro nível",
+	"headertabs-edittab": "editar",
+	"headertabs-edittab-hint": "Editar guia"
+}

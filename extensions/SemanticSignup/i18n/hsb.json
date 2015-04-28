@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Michawiki"
+		]
+	},
+	"semanticsignup": "Semantiske přizjewjenje",
+	"ses-desc": "Rozšěrjenje MediaWiki, kotrež zmóžnja, wužiwarsku stronu ze semantiskimi datami za přizjewjenje wuhotować",
+	"ses-nousername": "Wužiwarske mjeno njeje so podało.",
+	"ses-nopwdmatch": "Hesło a jeho wobkrućenje so njekryjetej.",
+	"ses-norealname": "Woprawdźite mjeno je trěbne, ale njeje so podało.",
+	"ses-userexists": "Wužiwar hižo eksistuje.",
+	"ses-emailfailed": "Słanje wobkrućenskeje e-mejle je so njeporadźiło.",
+	"ses-createforbidden": "Aktualny wužiwar njesmě konta załožić",
+	"ses-throttlehit": "Maksimalna ličba nowych wužiwarskich kontow na dźeń je za tutu IP-adresu překročena."
+}

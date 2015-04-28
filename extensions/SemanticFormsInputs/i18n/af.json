@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Naudefj"
+		]
+	},
+	"semanticformsinputs-desc": "Ekstra invoertipes vir [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Semantic_Forms Semantic Forms]",
+	"semanticformsinputs-wrongformat": "Verkeerde formaat.",
+	"semanticformsinputs-close": "Sluit",
+	"semanticformsinputs-prev": "Vorige",
+	"semanticformsinputs-next": "Volgende",
+	"semanticformsinputs-today": "Vandag"
+}

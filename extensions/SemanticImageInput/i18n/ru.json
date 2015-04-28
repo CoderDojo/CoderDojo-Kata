@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pastakhov"
+		]
+	},
+	"sii-desc": "Добавляет поле для загрузки изображений из Wikipedia в [https://www.mediawiki.org/wiki/Extension:Semantic_Forms cемантические формы]",
+	"sii-imageinput-loading": "Идёт загрузка изображения…"
+}

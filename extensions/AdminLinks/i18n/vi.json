@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Minh Nguyen",
+			"Withoutaname"
+		]
+	},
+	"adminlinks": "Liên kết quản lý",
+	"adminlinks-desc": "Thêm [[Special:AdminLinks|trang đặc biệt]] liệt kê các liên kết có ích cho bảo quản viên",
+	"adminlinks_documentation": "Tài liệu $1",
+	"adminlinks_general": "Tổng quát",
+	"adminlinks_editsidebar": "Sửa đổi thanh bên",
+	"adminlinks_editcss": "Sửa đổi tập tin CSS",
+	"adminlinks_editmainpagename": "Sửa đổi tên trang đầu",
+	"adminlinks_users": "Người dùng",
+	"adminlinks_createuser": "Mở tài khoản",
+	"adminlinks_browsesearch": "Duyệt và tìm kiếm",
+	"adminlinks_importexport": "Nhập và xuất",
+	"right-adminlinks": "Xem [[Special:AdminLinks|các liên kết quản lý]]"
+}

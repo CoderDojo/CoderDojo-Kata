@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleferen"
+		]
+	},
+	"headertabs-desc": "Добавляет вкладки на странице, разделяющие разделы верхнего уровня",
+	"headertabs-edittab": "править",
+	"headertabs-edittab-hint": "Редактировать вкладку"
+}

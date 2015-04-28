@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liangent",
+			"Mark85296341",
+			"LNDDYL"
+		]
+	},
+	"datatransfer-desc": "允許根據模板的要求匯入匯出結構化的資料",
+	"viewxml": "檢視XML",
+	"dt_viewxml_docu": "請在下列分類、名稱空間中選擇，以使用XML格式查看。",
+	"dt_viewxml_categories": "分類",
+	"dt_viewxml_namespaces": "名稱空間",
+	"dt_viewxml_simplifiedformat": "簡化格式",
+	"dt_xml_namespace": "名稱空間",
+	"dt_xml_pages": "頁面",
+	"dt_xml_page": "頁面",
+	"dt_xml_template": "模板",
+	"dt_xml_field": "事件",
+	"dt_xml_name": "名稱",
+	"dt_xml_title": "標題",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "自由文字",
+	"importxml": "導入 XML",
+	"dt_import_selectfile": "請選擇 $1 要匯入的檔案：",
+	"dt_import_encodingtype": "編碼類型：",
+	"dt_import_forexisting": "對於已經存在的頁面：",
+	"dt_import_overwriteexisting": "覆蓋現有內容",
+	"dt_import_skipexisting": "跳過",
+	"dt_import_appendtoexisting": "追加到現有內容",
+	"dt_import_summarydesc": "導入摘要：",
+	"dt_import_editsummary": "{{ucfirst:$1}} 導入",
+	"dt_import_importing": "正在導入...",
+	"dt_import_success": "將依據此$2檔案建立$1個{{PLURAL:$1|個頁面|個頁面}}。",
+	"importcsv": "導入 CSV",
+	"dt_importcsv_badheader": "錯誤：第$1列的標題'$2'必須為'$3'、或者'$4'、或者採取'模板名稱[字段名稱]'的形式",
+	"right-datatransferimport": "匯入資料"
+}

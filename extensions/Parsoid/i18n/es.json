@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"parsoid-desc": "Entorno de ejecución de Parsoid para MediaWiki"
+}

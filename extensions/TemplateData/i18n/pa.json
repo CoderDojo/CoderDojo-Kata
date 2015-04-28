@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Babanwalia"
+		]
+	},
+	"templatedata-doc-params": "ਫਰਮੇ ਦੇ ਮਾਪਦੰਡ",
+	"templatedata-doc-param-name": "ਮਾਪਦੰਡ",
+	"templatedata-doc-param-desc": "ਵੇਰਵਾ",
+	"templatedata-doc-param-type": "ਕਿਸਮ",
+	"templatedata-doc-param-default": "ਮੂਲ ਰੂਪ",
+	"templatedata-doc-param-status": "ਦਰਜਾ",
+	"templatedata-invalid-parse": "JSON ਵਿਚ ਵਾਕ-ਰਚਨਾ ਦੋਸ਼",
+	"templatedata-invalid-missing": "ਲੋੜੀਂਦਾ ਮਲਕੀਅਤ \"$1\" ਨਹੀਂ ਲੱਭੀ।",
+	"templatedata-invalid-value": "\"$1\" ਮਲਕੀਅਤ ਲਈ ਗ਼ਲਤ ਮੁੱਲ"
+}

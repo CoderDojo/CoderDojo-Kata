@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Minisarm",
+			"Stelistcristi"
+		]
+	},
+	"ses-nousername": "Numele de utilizator nu a fost specificat",
+	"ses-nopwdmatch": "Parola și confirmarea parolei nu se potrivesc.",
+	"ses-norealname": "Numele real este obligatoriu însă nu a fost specificat.",
+	"ses-userexists": "Utilizatorul există deja.",
+	"ses-emailfailed": "Nu s-a reușit trimiterea e-mailului de confirmare.",
+	"ses-createforbidden": "Actualului utilizator nu îi este permisă crearea de conturi."
+}

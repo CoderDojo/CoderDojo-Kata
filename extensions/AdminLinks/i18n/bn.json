@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wikitanvir"
+		]
+	},
+	"adminlinks": "প্রশাসকের সংযোগ",
+	"adminlinks-desc": "একটি [[Special:AdminLinks|বিশেষ পাতার]] লিংক যোগ করুন, যেখানে প্রশাসকদের জন্য কিছু সাহায্য পাতার লিংক রয়েছে",
+	"adminlinks_documentation": "$1 কার্যকৌশল বিবরণী",
+	"adminlinks_general": "সাধারণ",
+	"adminlinks_editsidebar": "সাইডবার সম্পাদনা",
+	"adminlinks_editcss": "সিএসএস ফাইল সম্পাদনা",
+	"adminlinks_editmainpagename": "প্রধান পাতার নাম সম্পাদনা করুন",
+	"adminlinks_users": "ব্যবহারকারী",
+	"adminlinks_createuser": "ব্যবহারকারী সৃষ্টি",
+	"adminlinks_browsesearch": "ব্রাউজ ও অনুসন্ধান",
+	"adminlinks_importexport": "আমদানি ও রপ্তানি",
+	"right-adminlinks": "সংযোগটি [[Special:AdminLinks|প্রশাসক লিংকে]] দেখুন"
+}

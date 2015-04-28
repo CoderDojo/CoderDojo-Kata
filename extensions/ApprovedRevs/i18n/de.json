@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kghbln",
+			"Metalhead64",
+			"Purodha"
+		]
+	},
+	"approvedrevs-desc": "Ermöglicht es, stets eine bestimmte Version einer Seite als bestätigte Version anzuzeigen",
+	"approvedrevs-logname": "Versionsbestätigungs-Logbuch",
+	"approvedrevs-logdesc": "In diesem Logbuch werden die Versionsbestätigungen von Seiten protokolliert.",
+	"approvedrevs-approve": "bestätigen",
+	"approvedrevs-unapprove": "ablehnen",
+	"approvedrevs-approvesuccess": "Diese Version der Seite wurde als bestätigte Version festgelegt.",
+	"approvedrevs-unapprovesuccess": "Nunmehr gibt es keine bestätigte Version dieser Seite.\nStattdessen wird die neueste Version angezeigt.",
+	"approvedrevs-unapprovesuccess2": "Nunmehr gibt es keine bestätigte Version dieser Seite.\nStattdessen wird eine leere Seite angezeigt.",
+	"approvedrevs-approveaction": "legte Version $2 als bestätigte Version für „[[$1]]“ fest",
+	"approvedrevs-unapproveaction": "nahm die bestätigte Version für „[[$1]]“ zurück",
+	"approvedrevs-notlatest": "Dies ist die bestätigte Version dieser Seite, allerdings nicht deren neueste Version.",
+	"approvedrevs-approvedandlatest": "Dies ist die bestätigte sowie die neueste Version dieser Seite.",
+	"approvedrevs-blankpageshown": "Keine Version dieser Seite ist bestätigt worden.",
+	"approvedrevs-noapprovedrevision": "Dies ist die aktuellste Version dieser Seite. Sie hat keine bestätigte Version.",
+	"approvedrevs-editwarning": "Beachte bitte, dass du gerade die neueste Version dieser Seite bearbeitest. Sie entspricht nicht der bestätigten Version, die standardmäßig angezeigt wird.",
+	"approvedrevs": "Bestätigte Versionen",
+	"approvedrevs-approvedpages": "Alle Seiten mit bestätigten Versionen",
+	"approvedrevs-notlatestpages": "Alle Seiten, deren bestätigte Version nicht die Neueste ist",
+	"approvedrevs-unapprovedpages": "Alle Seiten mit unbestätigten Versionen",
+	"approvedrevs-view": "Ansehen:",
+	"approvedrevs-revisionnumber": "Version $1",
+	"approvedrevs-approvedby": "von $1 am $2 bestätigt",
+	"approvedrevs-difffromlatest": "Unterschied zur neuesten Version",
+	"approvedrevs-approvelatest": "neueste Version bestätigen",
+	"approvedrevs-approvethisrev": "Diese Version bestätigen.",
+	"approvedrevs-viewlatestrev": "Die neueste Version ansehen.",
+	"approvedrevs-approvedrevision": "Bestätigte Version",
+	"right-approverevisions": "Eine bestimmte Version einer Seite als bestätigt festlegen",
+	"right-viewlinktolatest": "Erläuternde Hinweise im Kopfbereich der Seiten anzeigen, die eine bestätigte Version haben"
+}

@@ -1,0 +1,147 @@
+/* an scss can contain just old plain css: syntax is fully compatible */
+
+#PageContainer .kata-top-margin-2rem{
+	margin-top: 2rem !important;
+}
+
+#PageContainer .kata-mentors .kata-mentors-group {
+    margin-top: 0rem;
+}
+
+#PageContainer .kata-mentors .kata-breadcrumbs .kata-breadcrumb {
+    background-color: #333333;
+    color: white;
+    float: left;
+    height: 4rem;
+    margin: 0 1px 2rem 0;
+    padding: 0.9rem 4rem 1rem 0;
+    position: relative;
+    text-align: center;
+    width: 10%;
+}
+
+#PageContainer .kata-box {
+    margin-top: 0;
+}
+
+#PageContainer .kata-mentors .kata-breadcrumbs .kata-breadcrumb-selected{
+	background-color: #cf2a27;
+}
+
+#PageContainer .kata-mentors .kata-mentors-group .kata-mentors-filtercontent {
+    background-color: #cccccc;
+    padding: 1rem 2%;
+}
+
+#PageContainer .kata-mentors .kata-filter-section, #PageContainer .kata-mentors .kata-result-section, #PageContainer .kata-mentors .kata-tutorial-container, #PageContainer .kata-mentors .kata-tutorial-selection{
+	width: 100%;
+}
+
+#PageContainer .kata-mentors .kata-tutorial-container{
+	border:1px solid #333333;
+}
+
+#PageContainer .kata-mentors .kata-tutorial-container td{
+	padding: 0px;
+}
+
+#PageContainer .kata-mentors .kata-filter-section .kata-filter-element, #PageContainer .kata-mentors .kata-result-section .kata-result-element{
+	width: 20%;
+	text-align: left;
+}
+
+#PageContainer .kata-mentors .kata-result-section .kata-result-element-description{
+	width: 40%;
+	text-align: left;
+}
+
+#PageContainer .kata-mentors .kata-result-section th.kata-result-element,
+#PageContainer .kata-mentors .kata-filter-section th.kata-filter-element,
+#PageContainer .kata-mentors .kata-result-section th.kata-result-element-description{
+	font-weight: bold;
+}
+
+#PageContainer .kata-mentors .kata-tutorial-container{
+	background-color: #333333;
+}
+
+#PageContainer .kata-mentors .kata-tutorial-selection td {
+	height: 4rem;
+    padding: 0.9rem 0.9rem 0.1rem;
+    border: 0px;
+    right: 0;
+    top: 0;
+    vertical-align: middle;
+    color:#fff;
+}
+
+#PageContainer .kata-mentors .kata-tutorial-selection-label{
+	width: 5%;
+}
+
+#PageContainer .kata-mentors .kata-tutorial-selection-options{
+	width: 40%;
+	text-align: left;
+}
+
+#PageContainer .kata-mentors .kata-tutorial-selection-pagination{
+	width: 40%;
+	text-align: right
+}
+
+#PageContainer .kata-mentors .kata-tutorial-navigation-container{
+	width: 15%;
+}
+
+#PageContainer .kata-mentors .kata-tutorial-navigation{
+	width: 100%;
+}
+
+#PageContainer .kata-mentors .kata-tutorial-navigation .kata-tutorial-navigation-item{
+	height: 5rem;
+    padding: 0.5rem 0.9rem;
+    color: #FFFFFF;
+    vertical-align: middle;
+}
+
+#PageContainer .kata-mentors .kata-tutorial-navigation .kata-tutorial-navigation-item-selected{
+	background-color: #cf2a27;
+}
+
+#PageContainer .kata-mentors td.kata-tutorial-content-container{
+	width: 85%;
+	padding: 0.7rem 1.5rem;
+	background-color: #FFFFFF;
+}
+
+#PageContainer .kata-mentors td.kata-tutorial-content-container h3 {
+    border-top: none;
+    margin: 0 0 10px;
+    padding-top: 10px;
+}
+
+
+#PageContainer .kata-mentors .kata-filter-section .kata-filter-element .kata-select,
+#PageContainer .kata-mentors .kata-tutorial-selection .kata-tutorial-selection-options .kata-select {
+	background-color: #fff;
+    height: 4rem;
+    padding: 0.9rem 0;
+    border: 0px;
+    right: 0;
+    top: 0;
+    width: 15rem;
+	text-align: left;
+}
+
+#PageContainer .kata-mentors .kata-filter-section .kata-filter-element .kata-button {
+	background-color: #cf2a27;
+    color: white;
+    height: 4rem;
+    padding: 0.9rem 0;
+    border: 0;
+    right: 0;
+    top: 0;
+    width: 25rem;
+	text-align: center;
+}
+

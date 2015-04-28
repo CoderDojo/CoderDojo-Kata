@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nghtwlkr"
+		]
+	},
+	"adminlinks": "Adminlenker",
+	"adminlinks-desc": "Legger til en [[Special:AdminLinks|spesialside]] som inneholder nyttige lenker for administratorer",
+	"adminlinks_documentation": "dokumentasjon for $1",
+	"adminlinks_general": "Generelt",
+	"adminlinks_editsidebar": "Endre sidespalten",
+	"adminlinks_editcss": "Rediger CSS-filen",
+	"adminlinks_editmainpagename": "Endre navnet på hovedsiden",
+	"adminlinks_users": "Brukere",
+	"adminlinks_createuser": "Opprett en bruker",
+	"adminlinks_browsesearch": "Lesing og søking",
+	"adminlinks_importexport": "Importering og eksportering",
+	"right-adminlinks": "Se lenken til [[Special:AdminLinks|admin-lenker]]"
+}

@@ -1,5 +1,5 @@
-# Mime type info file.
-# the first mime type in each line is the "main" mime type,
+# MIME type info file.
+# the first MIME type in each line is the "main" MIME type,
 # the others are aliases for this type
 # the media type is given in upper case and square brackets,
 # like [BITMAP], and must indicate a media type as defined by
@@ -13,12 +13,12 @@ image/jpeg	[BITMAP]
 image/jp2	[BITMAP]
 image/xbm	[BITMAP]
 image/tiff	[BITMAP]
-image/x-icon	[BITMAP]
+image/x-icon image/x-ico image/vnd.microsoft.icon	[BITMAP]
 image/x-rgb	[BITMAP]
 image/x-portable-pixmap		[BITMAP]
 image/x-portable-graymap image/x-portable-greymap	[BITMAP]
 image/x-bmp image/x-ms-bmp image/bmp application/x-bmp application/bmp	[BITMAP]
-image/x-photoshop image/psd image/x-psd image/photoshop	[BITMAP]
+image/x-photoshop image/psd image/x-psd image/photoshop image/vnd.adobe.photoshop	[BITMAP]
 image/vnd.djvu image/x.djvu image/x-djvu [BITMAP]
 image/webp	[BITMAP]
 
@@ -30,6 +30,7 @@ application/x-dia-diagram [DRAWING]
 
 
 audio/mpeg audio/mp3 audio/mpeg3	[AUDIO]
+audio/mp4				[AUDIO]
 audio/wav audio/x-wav audio/wave	[AUDIO]
 audio/midi audio/mid	[AUDIO]
 audio/basic		[AUDIO]
@@ -39,6 +40,8 @@ audio/x-pn-realaudio	[AUDIO]
 audio/x-realaudio	[AUDIO]
 audio/webm		[AUDIO]
 audio/x-matroska	[AUDIO]
+audio/x-flac		[AUDIO]
+audio/flac		[AUDIO]
 
 video/mpeg application/mpeg	[VIDEO]
 video/ogg			[VIDEO]
@@ -46,6 +49,7 @@ video/x-sgi-video		[VIDEO]
 video/x-flv			[VIDEO]
 video/webm			[VIDEO]
 video/x-matroska		[VIDEO]
+video/mp4			[VIDEO]
 
 application/ogg application/x-ogg audio/ogg audio/x-ogg video/ogg video/x-ogg		[MULTIMEDIA]
 
@@ -61,6 +65,9 @@ text/plain	[TEXT]
 text/html application/xhtml+xml	[TEXT]
 application/xml text/xml	[TEXT]
 text	[TEXT]
+application/json	[TEXT]
+text/csv	[TEXT]
+text/tab-separated-values	[TEXT]
 
 application/zip application/x-zip	[ARCHIVE]
 application/x-gzip	[ARCHIVE]
@@ -104,3 +111,8 @@ application/vnd.ms-excel.template.macroEnabled.12				[OFFICE]
 application/vnd.ms-excel.addin.macroEnabled.12					[OFFICE]
 application/vnd.ms-excel.sheet.binary.macroEnabled.12				[OFFICE]
 application/acad application/x-acad application/autocad_dwg image/x-dwg application/dwg application/x-dwg application/x-autocad image/vnd.dwg drawing/dwg [DRAWING]
+chemical/x-mdl-molfile     [DRAWING]
+chemical/x-mdl-sdfile      [DRAWING]
+chemical/x-mdl-rxnfile     [DRAWING]
+chemical/x-mdl-rdfile      [DRAWING]
+chemical/x-mdl-rgfile      [DRAWING]

@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ferrer",
+			"Ilnur efende",
+			"Александр Сигачёв",
+			"NBS"
+		]
+	},
+	"adminlinks": "Ссылки для администраторов",
+	"adminlinks-desc": "Добавляет [[Special:AdminLinks|служебную страницу]], содержащую полезные ссылки для администраторов",
+	"adminlinks_documentation": "документация $1",
+	"adminlinks_general": "Общие",
+	"adminlinks_editsidebar": "Править боковую панель",
+	"adminlinks_editcss": "Править файл CSS",
+	"adminlinks_editmainpagename": "Править имя заглавной страницы",
+	"adminlinks_users": "Участники",
+	"adminlinks_createuser": "Создать учётную запись",
+	"adminlinks_browsesearch": "Обзор и поиск",
+	"adminlinks_importexport": "Импорт и экспорт",
+	"right-adminlinks": "доступ к странице [[Special:AdminLinks|ссылки для администраторов]]"
+}

@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Charmed94",
+			"Rancher",
+			"Михајло Анђелковић"
+		]
+	},
+	"adminlinks": "Административне везе",
+	"adminlinks-desc": "Додаје [[Special:AdminLinks|посебну страницу]] која садржи корисне везе за администраторе",
+	"adminlinks_documentation": "$1 документација",
+	"adminlinks_general": "Опште",
+	"adminlinks_editsidebar": "Уреди бочну траку",
+	"adminlinks_editcss": "Уреди CSS датотеку",
+	"adminlinks_editmainpagename": "Измени назив главне странице",
+	"adminlinks_users": "Корисници",
+	"adminlinks_createuser": "Направи корисника",
+	"adminlinks_browsesearch": "Претраживање",
+	"adminlinks_importexport": "Увоз и извоз",
+	"right-adminlinks": "прегледање везе до [[Special:AdminLinks|администраторских веза]]"
+}

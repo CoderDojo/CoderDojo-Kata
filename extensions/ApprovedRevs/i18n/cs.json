@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Matěj Grabovský",
+			"Mormegil",
+			"Paxt"
+		]
+	},
+	"approvedrevs-desc": "Nastavuje jednu revizi stránky jako schválenou",
+	"approvedrevs-logname": "Seznam schválených revizí",
+	"approvedrevs-logdesc": "Toto je seznam schválených revizí.",
+	"approvedrevs-approve": "schválit",
+	"approvedrevs-unapprove": "neschválit",
+	"approvedrevs-approvesuccess": "Tato stránková revize byla nastavena jako schválená verze.",
+	"approvedrevs-unapprovesuccess": "Pro tuto stránku neexistuje schválená verze.\nMísto ní se zobrazí poslední revize.",
+	"approvedrevs-unapprovesuccess2": "Pro tuto stránku již neexistuje schválená verze.\nMísto ní se zobrazí prázdná stránka.",
+	"approvedrevs-approveaction": "Jako schválená revize pro  \"[[$1]]\" nastavena $2",
+	"approvedrevs-unapproveaction": "zrušena schválená revize pro \"[[$1]]\"",
+	"approvedrevs-notlatest": "Toto je schválená revize této stránky, nikoli nejnovější.",
+	"approvedrevs-approvedandlatest": "Toto je schválená revize této stránky, a zároveň nejnovější.",
+	"approvedrevs-blankpageshown": "Pro tuto stránku nebyla schválena žádná revize.",
+	"approvedrevs-noapprovedrevision": "Toto je aktuální revize této stránky; nemá žádnou schválenou revizi.",
+	"approvedrevs-editwarning": "Prosím všimněte si, že nyní upravujete poslední revizi této stránky, která se ve výchozím nastavení nezobrazuje jako schválená.",
+	"approvedrevs": "Schválené revize",
+	"approvedrevs-approvedpages": "Všechny stránky se schválenou revizí",
+	"approvedrevs-notlatestpages": "Stránky, jejichž schválená revize není nejnovější",
+	"approvedrevs-unapprovedpages": "Neschválené stránky",
+	"approvedrevs-view": "Prohlédnout:",
+	"approvedrevs-revisionnumber": "revize $1",
+	"approvedrevs-approvedby": "schváleno {{GENDER:$3|uživatelem|uživatelkou}} $1 $4 v $5",
+	"approvedrevs-difffromlatest": "rozdíl od poslední",
+	"approvedrevs-approvelatest": "schválit nejnovější",
+	"approvedrevs-approvethisrev": "Schválit tuto revizi.",
+	"approvedrevs-viewlatestrev": "Prohlédnout poslední revizi.",
+	"right-approverevisions": "Nastavit určitou revizi wiki stránky jako schválenou",
+	"right-viewlinktolatest": "Prohlédnout vysvětlivky v záhlaví stránek se schválenou revizí"
+}

@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Darth Kule",
+			"EugeneZelenko",
+			"Fryed-peach",
+			"Kghbln",
+			"Kwj2772",
+			"McMonster",
+			"Nike",
+			"Purodha",
+			"Shirayuki",
+			"Umherirrender"
+		]
+	},
+	"replacetext": "{{doc-special|ReplaceText}}",
+	"replacetext-desc": "{{desc|name=Replace Text|url=http://www.mediawiki.org/wiki/Extension:Replace_Text}}\n{{Identical|Content page}}",
+	"replacetext_docu": "Description of how to use this extension, displayed on the extension's special page ([[Special:ReplaceText]]).\n\nRefers to {{msg-mw|Replacetext continue}}.",
+	"replacetext_originaltext": "Label of the text field, where user enters original piece of text, which would be replaced.",
+	"replacetext_regexdocu": "<code>$1</code> is not a parameter.\n\nRefers to the following messages:\n* {{msg-mw|Replacetext originaltext}}\n* {{msg-mw|Replacetext replacementtext}}",
+	"replacetext_choosepagesforedit": "Displayed over the list of pages where the given text was found. Parameters:\n* $1 - target code\n* $2 - replacement code\n* $3 - number of pages for edit",
+	"replacetext_choosepagesformove": "Used in [[Special:ReplaceText]].\n\nThis message is followed by list of the pages.\n\nParameters:\n* $1 - target string\n* $2 - replacement string\n* $3 - number of pages",
+	"replacetext_cannotmove": "Used in [[Special:ReplaceText]].\n\nThis message is followed by list of the pages.\n\nParameters:\n* $1 - number of pages which cannot be moved",
+	"replacetext_invertselections": "{{Identical|Invert selection}}",
+	"replacetext_replace": "Label of the button, which triggers the begin of replacment.\n\n{{Identical|Replace}}",
+	"replacetext_success": "Used as success message in [[Special:ReplaceText]]. Parameters:\n* $1 - target string\n* $2 - replacement string\n* $3 - number of affected pages",
+	"replacetext_noreplacement": "Used in [[Special:ReplaceText]]. Parameters:\n* $1 - target string\nSee also:\n* {{msg-mw|Replacetext nomove}}",
+	"replacetext_nomove": "Used in [[Special:ReplaceText]]. Parameters:\n* $1 - target string\nSee also:\n* {{msg-mw|Replacetext noreplacement}}",
+	"replacetext_nosuchcategory": "Used in [[Special:ReplaceText]]. Parameters:\n* $1 - category name (with link)",
+	"replacetext_warning": "Used in [[Special:ReplaceText]]. Parameters:\n* $1 - number of pages\n* $2 - replacement string",
+	"replacetext_continue": "{{Identical|Continue}}",
+	"replacetext_editsummary": "Used as Edit Summary in [[Special:ReplaceText]]. Parameters:\n* $1 - target string\n* $2 - replacement string",
+	"right-replacetext": "{{doc-right|replacetext}}",
+	"action-replacetext": "{{doc-action|replacetext}}"
+}

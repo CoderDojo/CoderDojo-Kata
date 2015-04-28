@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Minh Nguyen"
+		]
+	},
+	"approvedrevs-logname": "Nhật trình chấp nhận phiên bản",
+	"approvedrevs-approve": "chấp nhận",
+	"approvedrevs-unapprove": "bỏ chấp nhận",
+	"approvedrevs-approveaction": "đặt $2 là phiên bản chấp nhận của “[[$1]]”",
+	"approvedrevs-unapproveaction": "bỏ phiên bản chấp nhận của “[[$1]]”",
+	"approvedrevs": "Phiên bản được chấp nhận",
+	"approvedrevs-approvedpages": "Các trang có phiên bản đã chấp nhận",
+	"approvedrevs-unapprovedpages": "Trang chưa được chấp nhận",
+	"approvedrevs-view": "Xem:",
+	"approvedrevs-revisionnumber": "phiên bản $1",
+	"approvedrevs-approvedby": "được $1 chấp nhận vào $2",
+	"approvedrevs-difffromlatest": "so với phiên bản hiện tại",
+	"approvedrevs-approvelatest": "chấp nhận mới nhất",
+	"approvedrevs-approvethisrev": "Chấp nhận phiên bản này.",
+	"approvedrevs-viewlatestrev": "Xem phiên bản gần đây nhất.",
+	"right-approverevisions": "Đặt một phiên bản của trang wiki là phiên bản chấp nhận",
+	"right-viewlinktolatest": "Xem văn bản giải thích ở đầu các trang có phiên bản chấp nhận"
+}

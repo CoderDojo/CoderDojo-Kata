@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kghbln",
+			"Shirayuki",
+			"Yaron Koren"
+		]
+	},
+	"semanticinternalobjects-desc": "{{desc|name=Semantic Internal Objects|url=http://www.mediawiki.org/wiki/Extension:Semantic_Internal_Objects}}",
+	"semanticinternalobjects-internalproperty": "A semantic property stored internally in the page",
+	"semanticinternalobjects-mainpropertyname": "Used as label for the input box.\n\nFollowed by the following message and the input box.\n* {{msg-mw|Semanticinternalobjects-propnamewarning}}",
+	"semanticinternalobjects-propnamewarning": "Used as warning.\n\nPreceded by the following message (label for the input box):\n* {{msg-mw|Semanticinternalobjects-mainpropertyname}}\n\nFollowed by the input box."
+}

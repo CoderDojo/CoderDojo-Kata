@@ -1,0 +1,38 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alma",
+			"Toliño"
+		]
+	},
+	"datatransfer-desc": "Permite importar e exportar datos contidos en chamadas de modelos",
+	"viewxml": "Ver XML",
+	"dt_viewxml_docu": "Por favor seleccione entre as seguintes categorías e espazos de nomes para ver en formato XML.",
+	"dt_viewxml_categories": "Categorías",
+	"dt_viewxml_namespaces": "Espazos de nomes",
+	"dt_viewxml_simplifiedformat": "Formato simplificado",
+	"dt_xml_namespace": "Espazo de nomes",
+	"dt_xml_pages": "Páxinas",
+	"dt_xml_page": "Páxina",
+	"dt_xml_template": "Modelo",
+	"dt_xml_field": "Campo",
+	"dt_xml_name": "Nome",
+	"dt_xml_title": "Título",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Texto libre",
+	"importxml": "Importar XML",
+	"dt_import_selectfile": "Por favor, seleccione o ficheiro $1 a importar:",
+	"dt_import_encodingtype": "Tipo de codificación:",
+	"dt_import_forexisting": "Para páxinas que xa existen:",
+	"dt_import_overwriteexisting": "Sobrescribir o contido existente",
+	"dt_import_mergeintoexisting": "Sobrescribir só os campos contidos no ficheiro",
+	"dt_import_skipexisting": "Omitir",
+	"dt_import_appendtoexisting": "Engadir ao contido existente",
+	"dt_import_summarydesc": "Resumo da importación:",
+	"dt_import_editsummary": "Importación en $1",
+	"dt_import_importing": "Importando...",
+	"dt_import_success": "{{PLURAL:$1|Unha páxina será creada|$1 páxinas serán creadas}} a partir do ficheiro $2.",
+	"importcsv": "Importación en CSV",
+	"dt_importcsv_badheader": "Erro: a cabeceira da columna $1, \"$2\", debe ser un \"$3\", \"$4\" ou do formulario \"template_name[field_name]\"",
+	"right-datatransferimport": "Importar datos"
+}

@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Als-Chlämens",
+			"Als-Holder"
+		]
+	},
+	"adminlinks": "Adminlinks",
+	"adminlinks-desc": "Fiegt e [[Special:AdminLinks|Spezialsyte]] yy mit hilfryyche Links fir Ammanne.",
+	"adminlinks_documentation": "$1 Dokumäntation",
+	"adminlinks_general": "Allgmein",
+	"adminlinks_editsidebar": "Syteleischte bearbeite",
+	"adminlinks_editcss": "CSS-Datei bearbeite",
+	"adminlinks_editmainpagename": "Name vu dr Hauptsyte bearbeite",
+	"adminlinks_users": "Benutzer",
+	"adminlinks_createuser": "E Benutzer aalege",
+	"adminlinks_browsesearch": "Browse un Sueche",
+	"adminlinks_importexport": "Importiere un Exportiere",
+	"right-adminlinks": "Lueg uff de Link zue [[Special:AdminLinks|Adminlinks]]"
+}

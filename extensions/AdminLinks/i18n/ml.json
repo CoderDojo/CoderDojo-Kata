@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sadik Khalid"
+		]
+	},
+	"adminlinks": "കാര്യനിർവാഹക കണ്ണികൾ",
+	"adminlinks-desc": "കാര്യനിർവാഹകർക്ക് സഹായകരമായ കണ്ണികളോടു കൂടിയ ഒരു [[Special:AdminLinks|പ്രത്യേക താൾ]] ചേർക്കുന്നു",
+	"adminlinks_documentation": "$1 വിവരണം",
+	"adminlinks_general": "സാർവത്രികം",
+	"adminlinks_editsidebar": "സൈഡ്ബാർ തിരുത്തുക",
+	"adminlinks_editcss": "CSS പ്രമാണം തിരുത്തുക",
+	"adminlinks_editmainpagename": "പ്രധാനതാളിന്റെ പേര് തിരുത്തുക",
+	"adminlinks_users": "ഉപയോക്താക്കൾ",
+	"adminlinks_createuser": "ഒരു ഉപയോക്താവിനെ സൃഷ്ടിക്കുക",
+	"adminlinks_browsesearch": "തിരച്ചിലും മേച്ചിലും",
+	"adminlinks_importexport": "കയറ്റുമതിയും ഇറക്കുമതിയും",
+	"right-adminlinks": "[[Special:AdminLinks|കാര്യനിവാഹക കണ്ണികളിലേക്കുള്ള]] കണ്ണികൾ കാണുക"
+}

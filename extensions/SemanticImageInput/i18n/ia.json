@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"sii-desc": "Adde un modo de inserer imagines que extrahe imagines ex Wikipedia a [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Formularios Semantic]",
+	"sii-imageinput-loading": "Carga imagine..."
+}

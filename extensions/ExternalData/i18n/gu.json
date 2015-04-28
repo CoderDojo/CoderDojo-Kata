@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ashok modhvadia",
+			"KartikMistry"
+		]
+	},
+	"getdata": "માહિતી પ્રાપ્ત કરો",
+	"externaldata-desc": "બાહ્ય કડીઓ અને સ્થાનિક વિકિ પાનાઓ પરથી CSV, JSON અને XML શૈલીમાં માહિતીની પુન:પ્રાપ્તિની છુટ",
+	"externaldata-invalid-json": "ક્ષતિ: અયોગ્ય JSON"
+}

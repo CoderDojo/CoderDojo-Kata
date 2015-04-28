@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Juan de Vojníkov",
+			"Juandev",
+			"Matěj Grabovský"
+		]
+	},
+	"semanticcompoundqueries-desc": "Syntaktický analyzátor, který zobrazuje více sémantických dotazů najednou"
+}

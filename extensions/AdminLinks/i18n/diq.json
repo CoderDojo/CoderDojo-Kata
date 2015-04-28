@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Erdemaslancan",
+			"Mirzali"
+		]
+	},
+	"adminlinks": "Grey admini",
+	"adminlinks-desc": "Qan dê xizmetkaran granê nahfatına estin rê [[Special:AdminLinks|peley xısusi]] vırazêno.",
+	"adminlinks_documentation": "Tewsiqkerdışê $1",
+	"adminlinks_general": "Bıngeh",
+	"adminlinks_editsidebar": "Çuway kışti timar kerê",
+	"adminlinks_editcss": "Dosyay CSS'i timar ke",
+	"adminlinks_editmainpagename": "Namey pela seri timar ke",
+	"adminlinks_users": "Karberi",
+	"adminlinks_createuser": "Karber vırazê",
+	"adminlinks_browsesearch": "Geyrayin u cı geyrayış",
+	"adminlinks_importexport": "Zere u teber dayış",
+	"right-adminlinks": "Şo ri [[Special:AdminLinks|Gran dê xizmetkaran]] bıvin"
+}

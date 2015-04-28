@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"IAlex",
+			"Urhixidur"
+		]
+	},
+	"adminlinks": "Liens d’administration",
+	"adminlinks-desc": "Ajoute une [[Special:AdminLinks|page spéciale]] qui contient des liens utiles pour les administrateurs",
+	"adminlinks_documentation": "documentation de $1",
+	"adminlinks_general": "Général",
+	"adminlinks_editsidebar": "Modifier la barre latérale",
+	"adminlinks_editcss": "Modifier le fichier CSS",
+	"adminlinks_editmainpagename": "Modifier le nom de la page d'accueil",
+	"adminlinks_users": "Utilisateurs",
+	"adminlinks_createuser": "Créer un utilisateur",
+	"adminlinks_browsesearch": "Navigation et recherche",
+	"adminlinks_importexport": "Importer et exporter",
+	"right-adminlinks": "Voir le lien vers les [[Special:AdminLinks|Liens d’administration]]"
+}

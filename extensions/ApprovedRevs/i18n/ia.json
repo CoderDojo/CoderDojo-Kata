@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"approvedrevs-desc": "Marcar un sol version de un pagina como approbate",
+	"approvedrevs-logname": "Registro de approbation de versiones",
+	"approvedrevs-logdesc": "Isto es le registro del versiones que ha essite approbate.",
+	"approvedrevs-approve": "approbar",
+	"approvedrevs-unapprove": "disapprobar",
+	"approvedrevs-approvesuccess": "Iste version del pagina ha essite marcate como le version approbate.",
+	"approvedrevs-unapprovesuccess": "Il non ha plus un version approbate de iste pagina.\nIn loco de illo, le version le plus recente essera monstrate.",
+	"approvedrevs-unapprovesuccess2": "Il non ha plus un version approbate de iste pagina.\nIn loco de illo, un pagina vacue essera monstrate.",
+	"approvedrevs-approveaction": "marcava $2 como le version approbate de \"[[$1]]\"",
+	"approvedrevs-unapproveaction": "dismarcava le version approbate de \"[[$1]]\"",
+	"approvedrevs-notlatest": "Isto es le version approbate de iste pagina; non es le plus recente.",
+	"approvedrevs-approvedandlatest": "Isto es le version approbate de iste pagina, e tamben le plus recente.",
+	"approvedrevs-blankpageshown": "Nulle version de iste pagina ha essite approbate.",
+	"approvedrevs-noapprovedrevision": "Iste es le version le plus recente del pagina; il non ha un version approbate.",
+	"approvedrevs-editwarning": "Nota ben que tu modifica ora le ultime version de iste pagina, le qual non es le version approbate que es monstrate normalmente.",
+	"approvedrevs": "Versiones approbate",
+	"approvedrevs-approvedpages": "Tote le paginas con un version approbate",
+	"approvedrevs-notlatestpages": "Paginas del quales le version approbate non es lor ultime",
+	"approvedrevs-unapprovedpages": "Paginas non approbate",
+	"approvedrevs-view": "Vider:",
+	"approvedrevs-revisionnumber": "version $1",
+	"approvedrevs-approvedby": "approbate per $1 le $2",
+	"approvedrevs-difffromlatest": "differentias del ultime version",
+	"approvedrevs-approvelatest": "approbar le plus recente",
+	"approvedrevs-approvethisrev": "Approbar iste version.",
+	"approvedrevs-viewlatestrev": "Vider le version le plus recente.",
+	"approvedrevs-approvedrevision": "Version approbate",
+	"right-approverevisions": "Marcar un certe version de un pagina wiki como approbate",
+	"right-viewlinktolatest": "Vider le texto explicative in alto del paginas que ha un version approbate"
+}

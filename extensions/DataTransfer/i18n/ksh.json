@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Purodha"
+		]
+	},
+	"datatransfer-desc": "Määt et müjjelesch, Date uß Schabloone ier Oproofe ze emporteere un ze exporteere.",
+	"viewxml": "<i lang=\"en\">XML</i> beloore",
+	"dt_viewxml_docu": "Don ußsöke, wat fö_n Saachjruppe un Appachtemangs De em <i lang=\"en\">XML</i> Fommaat aanloore wells.",
+	"dt_viewxml_categories": "Saachjroppe",
+	"dt_viewxml_namespaces": "Appachtemangs",
+	"dt_viewxml_simplifiedformat": "Em eijfachere Fommaat",
+	"dt_xml_namespace": "Appachtemang",
+	"dt_xml_pages": "Sigge",
+	"dt_xml_page": "Sigg",
+	"dt_xml_template": "Schablohn",
+	"dt_xml_field": "Felldt",
+	"dt_xml_name": "Name",
+	"dt_xml_title": "Tėttel",
+	"dt_xml_id": "Kännong",
+	"dt_xml_freetext": "Freije Täx",
+	"importxml": "<i lang=\"en\">XML</i> Empotteere",
+	"dt_import_selectfile": "Söhk de <i lang=\"en\">$1</i>-Dattei för zem Empotteere uß:",
+	"dt_import_encodingtype": "Zoot Kodeerung för de Bohchshtahbe un Zeishe:",
+	"dt_import_forexisting": "För Sigge, di et ald jitt:",
+	"dt_import_overwriteexisting": "Övverschrieve, wat ald doh es",
+	"dt_import_mergeintoexisting": "Donn bloß Fälder övverschriive, di ald en dä Dattei schtonn",
+	"dt_import_skipexisting": "Övverjonn",
+	"dt_import_appendtoexisting": "An dat aanhange, wat ald doh es",
+	"dt_import_summarydesc": "Zesammefassung vun däm Empoot:",
+	"dt_import_editsummary": "uss ene <i lang=\"en\">$1</i>-Datei empotteet",
+	"dt_import_importing": "Ben aam Empotteere{{int:Ellipsis}}",
+	"dt_import_success": "{{PLURAL:$1|Ein Sigg weed_uß|$1 Sigge weede uß|Kein einzelne Sigg weed_uß}} dä <i lang=\"en\">$2</i>-Dattei empotteet.",
+	"importcsv": "<i lang=\"en\">CSV</i>-Dattei empoteere",
+	"dt_importcsv_badheader": "Fähler: De Shpallde-Övverschreff för $1 es „$2“, mööt ävver „$3“ udder „$4“ sin, udder dat Fommaat „<code>Name_vun_ene_Schablohn[Name_vun_enem_Felldt]</code>“ han.",
+	"right-datatransferimport": "Daate empoteere"
+}

@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"sii-desc": "Aggiunge un input di immagine che recupera le immagini da Wikipedia verso [https://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]",
+	"sii-imageinput-loading": "Caricamento immagine..."
+}

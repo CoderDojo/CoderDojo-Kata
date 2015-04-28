@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gunnernett",
+			"Harald Khan",
+			"Jon Harald Søby",
+			"Njardarlogar"
+		]
+	},
+	"datatransfer-desc": "Gjer det mogleg å importera og eksportera data i maloppkallingar",
+	"viewxml": "Syn XML",
+	"dt_viewxml_docu": "Vel mellom følgjande kategoriar og namnerom for å syna dei i XML-format.",
+	"dt_viewxml_categories": "Kategoriar",
+	"dt_viewxml_namespaces": "Namnerom",
+	"dt_viewxml_simplifiedformat": "Forenkla format",
+	"dt_xml_namespace": "Namnerom",
+	"dt_xml_pages": "Sider",
+	"dt_xml_page": "Side",
+	"dt_xml_template": "Mal",
+	"dt_xml_field": "Felt",
+	"dt_xml_name": "Namn",
+	"dt_xml_title": "Tittel",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Fritekst",
+	"importxml": "Importer XML",
+	"dt_import_selectfile": "Ver venleg og vel $1-fila som skal verta importert:",
+	"dt_import_encodingtype": "Teiknkodingstype:",
+	"dt_import_editsummary": "$1-importering",
+	"dt_import_importing": "Importerer...",
+	"dt_import_success": "$1 {{PLURAL:$1|Éi side vil verta importert|$1 sider vil verta importerte}} frå $2-fila.",
+	"importcsv": "Importer CSV",
+	"dt_importcsv_badheader": "Feil: kolonneoverskrifta $1, '$2', må vera anten '$3', '$4' eller på forma 'malnamn[feltnamn]'",
+	"right-datatransferimport": "Importer data"
+}

@@ -1,0 +1,386 @@
+.mw-sp-translate-table {
+	width: 100%;
+	border-width: 1px;
+	border-collapse: collapse;
+}
+
+.mw-sp-translate-table th {
+	background-color: #b2b2ff;
+	border: 1px solid;
+}
+
+.mw-sp-translate-table tr.orig {
+	background-color: #ffe2e2;
+}
+
+.mw-sp-translate-table tr.new {
+	background-color: #e2ffe2;
+}
+
+.mw-sp-translate-table tr.def {
+	background-color: #f0f0ff;
+}
+
+.mw-sp-translate-table tr.ign {
+	background-color: #202020;
+}
+
+.mw-sp-translate-table tr.opt {
+	background-color: #F2F200;
+}
+
+.mw-sp-translate-table .untranslated {
+	background-color: #a2f290;
+}
+
+.mw-sp-translate-table > tbody > tr > * {
+	vertical-align: top;
+	border: 1px solid #909090;
+}
+
+.mw-translate-messagereviewbutton {
+	float: right;
+}
+
+.mw-translate-messagereviewstatus {
+	clear: right;
+	text-align: right;
+}
+
+/*
+ * Tux MessageTable
+ */
+
+/* Default colors */
+.tux-messagelist {
+	color: #252525;
+	background-color: #F8F8F8;
+	max-width: 800px;
+}
+
+.tux-message {
+	height: auto;
+	cursor: pointer;
+}
+
+/* The "block" views of page mode and proofreading mode have 0 margin on
+ * .tux-message. To make the actual editor be of same width, set 0 margin on
+ * the open editor (overriding the -5px set by the grid) */
+.grid .tux-message.open {
+	margin: 0 auto;
+}
+
+.tux-message-item {
+	line-height: 50px;
+	height: 50px;
+	overflow: hidden;
+	margin-right: 5px !important;
+	margin-left: 5px !important;
+	vertical-align: middle;
+	border-bottom: 1px solid #C9C9C9;
+	background: #FFFFFF;
+}
+
+.tux-message-item.translated,
+.tux-message-item.translated:hover,
+.tux-message-item.proofread,
+.tux-message-item.proofread:hover {
+	background-color: #F0F0F0;
+}
+
+.tux-message-item:hover {
+	background-color: #F8F8F8;
+}
+
+.tux-list-status span,
+.tux-list-edit {
+	padding: 5px;
+	/* 15px space for icon */
+	padding-left: 20px;
+	/* Do not combine these two, unless you also fix the
+	 * tux-status-* styles below. That includes you, Siebrand ;)
+	 */
+	background-position: left;
+	background-repeat: no-repeat;
+}
+
+.tux-info {
+	background-color: #F0F0F0;
+}
+
+.tux-list-source {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	unicode-bidi: -webkit-isolate;
+	unicode-bidi: -moz-isolate;
+	unicode-bidi: isolate;
+}
+
+.tux-list-translation {
+	white-space: nowrap;
+	color: #565656;
+	padding-left: 5px;
+	text-overflow: ellipsis;
+	unicode-bidi: -webkit-isolate;
+	unicode-bidi: -moz-isolate;
+	unicode-bidi: isolate;
+}
+
+.tux-list-message {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.tux-status-unsaved {
+	background-image: url(../images/label-pen.png);
+	background-image: -webkit-linear-gradient(transparent, transparent), url(../images/label-pen.svg);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(../images/label-pen.svg);
+}
+
+.tux-status-translated,
+.tux-status-proofread {
+	background-image: url(../images/label-tick.png);
+	background-image: -webkit-linear-gradient(transparent, transparent), url(../images/label-tick.svg);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(../images/label-tick.svg);
+}
+
+.tux-status-fuzzy {
+	background-image: url(../images/label-clock.png);
+	background-image: -webkit-linear-gradient(transparent, transparent), url(../images/label-clock.svg);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(../images/label-clock.svg);
+}
+
+.tux-list-edit a {
+	background: transparent url(../images/action-edit.png) left center no-repeat;
+	background-image: -webkit-linear-gradient(transparent, transparent), url(../images/action-edit.svg);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(../images/action-edit.svg);
+	background-size: 18px 18px;
+	padding-left: 19px;
+}
+
+.tux-messagetable-loader {
+	height: 75px;
+	color: #565656;
+	padding: 15px;
+	top: 0;
+	background: #F0F0F0 16px 50%;
+	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.1) inset;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.1) inset;
+}
+
+.tux-messagetable-loader-count {
+	padding: 0 0 5px 46px;
+	font-size: 25px;
+}
+
+.tux-messagetable-loader-more {
+	padding-left: 46px;
+	font-size: 15px;
+}
+
+.tux-action-bar {
+	margin: 0 !important;
+	background-color: #F0F0F0;
+	color: #252525;
+	height: 50px;
+	line-height: 50px;
+	-webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	transition: width 250ms;
+}
+
+.tux-action-bar.floating {
+	border-top: 1px solid #DDD;
+	position: fixed;
+	bottom: 0;
+	z-index: 200;
+}
+
+.tux-action-bar .tux-statsbar {
+	position: relative;
+	top: 30px;
+}
+
+.tux-action-bar .toggle.button {
+	height: 40px;
+	font-size: 14px;
+	vertical-align: middle;
+	border-radius: 0;
+	text-shadow: none;
+	margin: 0;
+	text-indent: 0;
+	padding: 0 6px;
+}
+
+.tux-action-bar .tux-view-switcher {
+	padding: 0 5px;
+}
+
+.tux-action-bar .tux-view-switcher .toggle.button {
+	padding: 0 2px 0 0;
+}
+
+.tux-action-bar .tux-view-switcher .toggle.button:first-child {
+	border-radius: 3px 0 0 3px;
+	border-right: none;
+}
+
+.tux-action-bar .tux-view-switcher .toggle.button:last-child {
+	border-radius: 0 3px 3px 0;
+	border-left: none;
+}
+
+.tux-action-bar .tux-view-switcher .toggle.button:before {
+	content: "";
+	height: 15px;
+	width: 25px;
+	display: inline-block;
+	vertical-align: bottom;
+}
+
+.tux-action-bar .translate-mode-button {
+	width: 30%;
+}
+
+.tux-action-bar .translate-mode-button:before {
+	background: transparent url(../images/view-list.png) center center no-repeat;
+	background-image: -webkit-linear-gradient(transparent, transparent), url(../images/view-list.svg);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(../images/view-list.svg);
+}
+
+.tux-action-bar .translate-mode-button.down:before {
+	background: transparent url(../images/view-list-hi.png) center center no-repeat;
+	background-image: -webkit-linear-gradient(transparent, transparent), url(../images/view-list-hi.svg);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(../images/view-list-hi.svg);
+}
+
+.tux-action-bar .page-mode-button {
+	width: 30%;
+}
+
+.tux-action-bar .page-mode-button:before {
+	background: transparent url(../images/view-page.png) center center no-repeat;
+	background-image: -webkit-linear-gradient(transparent, transparent), url(../images/view-page.svg);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(../images/view-page.svg);
+}
+
+.tux-action-bar .page-mode-button.down:before {
+	background: transparent url(../images/view-list-hi.png) center center no-repeat;
+	background-image: -webkit-linear-gradient(transparent, transparent), url(../images/view-page-hi.svg);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(../images/view-page-hi.svg);
+}
+
+.tux-action-bar .proofread-mode-button {
+	width: 36%;
+}
+
+.tux-action-bar .proofread-mode-button:before {
+	background: transparent url(../images/view-proofread.png) center center no-repeat;
+	background-image: -webkit-linear-gradient(transparent, transparent), url(../images/view-proofread.svg);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(../images/view-proofread.svg);
+}
+
+.tux-action-bar .proofread-mode-button.down:before {
+	background: transparent url(../images/view-proofread-hi.png) center center no-repeat;
+	background-image: -webkit-linear-gradient(transparent, transparent), url(../images/view-proofread-hi.svg);
+	/* @embed */
+	background-image: linear-gradient(transparent, transparent), url(../images/view-proofread-hi.svg);
+}
+
+.tux-action-bar .toggle.button.down {
+	color: #FFF;
+	background: #252525;
+}
+
+.ext-translate-container .tux-messagelist .tux-message-filter-result {
+	color: #252525;
+	line-height: 35px;
+	font-size: 15px;
+	vertical-align: middle;
+	border-bottom: 1px solid #C9C9C9;
+	margin: 0;
+	padding: 0 5px;
+}
+
+.tux-message-filter-result.highlight {
+	background: #FFF5AA;
+}
+
+.tux-message-filter-result .button {
+	height: 30px;
+	padding: 5px;
+	margin: 5px 0;
+	font-size: 15px;
+	vertical-align: middle;
+}
+
+.tux-empty-list {
+	padding: 20px;
+}
+
+.tux-empty-list-header {
+	font-size: 25px;
+	padding: 5px 0;
+}
+
+.tux-empty-list-guide {
+	font-size: 15px;
+	color: #565656;
+	padding: 5px 0;
+}
+
+.tux-empty-list-actions {
+	font-size: 15px;
+	padding: 8px 0;
+}
+
+.tux-empty-list-actions a {
+	cursor: pointer;
+	margin: 0 10px;
+}
+
+
+.ext-translate-language-selector-label {
+	color: #555555;
+}
+
+.ext-translate-language-selector {
+	float: right;
+	text-align: right;
+	border: medium none;
+	font-size: 14pt;
+	font-weight: normal;
+	line-height: 1.25em;
+	padding-bottom: 3px;
+	padding-left: 15px;
+	padding-top: 1.25em;
+}
+
+/* The triangle shaped down-pointing callout after the language name
+ * in the target language selector
+ */
+.ext-translate-language-selector:after {
+	margin-left: 4px;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	border-top: 4px solid #0645AD;
+	content: "";
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.ext-translate-language-selector .uls {
+	color: #0645AD;
+	cursor: pointer;
+	min-height: 1px;
+	position: relative;
+}

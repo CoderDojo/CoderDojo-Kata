@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"templatedata-desc": "Met en place un emmagazinatge de donadas pels paramètres dels modèls (en utilizant JSON)",
+	"templatedata-doc-params": "Paramètres del modèl",
+	"templatedata-doc-param-name": "Paramètre",
+	"templatedata-doc-param-desc": "Descripcion",
+	"templatedata-doc-param-type": "Tipe",
+	"templatedata-doc-param-default": "Per defaut",
+	"templatedata-doc-param-status": "Estatut",
+	"templatedata-invalid-parse": "Error de sintaxi dins JSON.",
+	"templatedata-invalid-type": "La proprietat « $1 » deu èsser de tipe « $2 ».",
+	"templatedata-invalid-missing": "Proprietat « $1 » obligatòria pas trobada.",
+	"templatedata-invalid-unknown": "Proprietat « $1 » pas esperada.",
+	"templatedata-invalid-value": "Valor invalida per la proprietat « $1 ».",
+	"templatedata-invalid-length": "Donadas tròp gròssas per èsser enregistradas ({{formatnum:$1}} {{PLURAL:$1|octet|octets}}, {{PLURAL:$2|lo limit es}} {{formatnum:$2}})"
+}

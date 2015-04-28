@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"EugeneZelenko",
+			"Jim-by"
+		]
+	},
+	"adminlinks": "Спасылкі для адміністратараў",
+	"adminlinks-desc": "Дадае [[Special:AdminLinks|спэцыяльную старонку]], якая ўтрымлівае спасылкі карысныя для адміністратараў",
+	"adminlinks_documentation": "Дакумэнтацыя $1",
+	"adminlinks_general": "Агульныя",
+	"adminlinks_editsidebar": "Рэдагаваць бакавую панэль",
+	"adminlinks_editcss": "Рэдагаваць CSS-файл",
+	"adminlinks_editmainpagename": "Рэдагаваць назву галоўнай старонкі",
+	"adminlinks_users": "Удзельнікі",
+	"adminlinks_createuser": "Стварыць рахунак",
+	"adminlinks_browsesearch": "Агляд і пошук",
+	"adminlinks_importexport": "Імпартаваньне і экспартаваньне",
+	"right-adminlinks": "бачыць спасылку на [[Special:AdminLinks|спасылкі для адміністратараў]]"
+}

@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ahmed-Najib-Biabani-Ibrahimkhel"
+		]
+	},
+	"viewxml": "XML کتل",
+	"dt_viewxml_categories": "وېشنيزې",
+	"dt_viewxml_namespaces": "نوم-تشيالونه",
+	"dt_viewxml_simplifiedformat": "ساده بڼه",
+	"dt_xml_namespace": "نوم-تشيال",
+	"dt_xml_pages": "مخونه",
+	"dt_xml_page": "مخ",
+	"dt_xml_template": "کينډۍ",
+	"dt_xml_name": "نوم",
+	"dt_xml_title": "سرليک",
+	"dt_xml_id": "پېژند",
+	"dt_xml_freetext": "خپلواکه متن",
+	"dt_import_skipexisting": "تېرېدل"
+}

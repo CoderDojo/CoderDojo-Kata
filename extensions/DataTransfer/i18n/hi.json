@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ansumang",
+			"Kaustubh",
+			"Siddhartha Ghai"
+		]
+	},
+	"datatransfer-desc": "टेम्प्लेट कॉल में उपलब्ध डाटाकी आयात-निर्यात करने की अनुमति देता हैं",
+	"viewxml": "XML देखें",
+	"dt_viewxml_docu": "कॄपया XML में देखने के लिये श्रेणीयाँ और नामस्थान चुनें।",
+	"dt_viewxml_categories": "श्रेणियाँ",
+	"dt_viewxml_namespaces": "नामस्थान",
+	"dt_viewxml_simplifiedformat": "आसान फॉरमैट",
+	"dt_xml_namespace": "नामस्थान",
+	"dt_xml_pages": "पृष्ठ",
+	"dt_xml_page": "पन्ना",
+	"dt_xml_template": "साँचा",
+	"dt_xml_field": "फ़ील्ड",
+	"dt_xml_name": "नाम",
+	"dt_xml_title": "शीर्षक",
+	"dt_xml_id": "आईडी",
+	"dt_xml_freetext": "मुक्त पाठ",
+	"dt_import_skipexisting": "छोड़ें",
+	"dt_import_editsummary": "$1 आयात",
+	"right-datatransferimport": "डेटा आयात करें"
+}

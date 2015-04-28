@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Avjoska"
+		]
+	},
+	"replacetext": "Asenda tekst",
+	"replacetext_originaltext": "Originaaltekst:",
+	"replacetext_replacementtext": "Asendustekst:",
+	"replacetext_replace": "Asenda"
+}

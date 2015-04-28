@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"SPQRobin",
+			"Siebrand"
+		]
+	},
+	"approvedrevs-desc": "Een versie van een pagina als goedgekeurd instellen",
+	"approvedrevs-logname": "Logboek versiegoedkeuring",
+	"approvedrevs-logdesc": "Dit is het logboek met de versies die zijn goedgekeurd.",
+	"approvedrevs-approve": "goedkeuren",
+	"approvedrevs-unapprove": "afkeuren",
+	"approvedrevs-approvesuccess": "Deze versie van de pagina is ingesteld als de goedgekeurde versie.",
+	"approvedrevs-unapprovesuccess": "Deze pagina heeft niet langer een goedgekeurde versie.\nDaarom wordt de laatste versie weergegeven.",
+	"approvedrevs-unapprovesuccess2": "Er is niet langer een goedgekeurde versie voor deze pagina.\nEr wordt een lege pagina weergegeven.",
+	"approvedrevs-approveaction": "heeft $2 ingesteld als de goedgekeurde versie voor \"[[$1]]\"",
+	"approvedrevs-unapproveaction": "heeft de goedgekeurde versie verwijderd voor \"[[$1]]\"",
+	"approvedrevs-notlatest": "Dit is de goedgekeurde versie van deze pagina.\nHet is niet de meeste recente versie.",
+	"approvedrevs-approvedandlatest": "Dit is de goedgekeurde versie van deze pagina. Er is geen nieuwere versie.",
+	"approvedrevs-blankpageshown": "Deze pagina heeft geen goedgekeurde versie.",
+	"approvedrevs-noapprovedrevision": "Dit is de meest recente versie van deze pagina. Er is geen goedgekeurde versie.",
+	"approvedrevs-editwarning": "U bewerkt de meest recente versie van deze pagina die nog niet goedgekeurd is en standaard niet wordt weergegeven.",
+	"approvedrevs": "Goedgekeurde versies",
+	"approvedrevs-approvedpages": "Alle pagina's met een goedgekeurde versie",
+	"approvedrevs-notlatestpages": "Pagina's waarvan de goedgekeurde versie niet de laatste versie is",
+	"approvedrevs-unapprovedpages": "Niet-goedgekeurde pagina's",
+	"approvedrevs-view": "Weergave:",
+	"approvedrevs-revisionnumber": "versie $1",
+	"approvedrevs-approvedby": "goedgekeurd door {{GENDER:$3|$1}} op $4 om $5",
+	"approvedrevs-difffromlatest": "verschil met de meest recente versie",
+	"approvedrevs-approvelatest": "laatste versie goedkeuren",
+	"approvedrevs-approvethisrev": "Deze versie goedkeuren",
+	"approvedrevs-viewlatestrev": "Laatste versie bekijken",
+	"approvedrevs-approvedrevision": "Goedgekeurde versie",
+	"right-approverevisions": "Een versie van een wikipagina markeren als goedgekeurd.",
+	"right-viewlinktolatest": "De verklarende tekst bovenaan pagina's zien die die een goedgekeurde versie hebben"
+}

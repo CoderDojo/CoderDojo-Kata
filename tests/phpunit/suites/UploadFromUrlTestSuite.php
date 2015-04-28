@@ -1,8 +1,10 @@
 <?php
 
-require_once( dirname( dirname( __FILE__ ) ) . '/includes/upload/UploadFromUrlTest.php' );
+require_once dirname( __DIR__ ) . '/includes/upload/UploadFromUrlTest.php';
 
 class UploadFromUrlTestSuite extends PHPUnit_Framework_TestSuite {
+	public $savedGlobals = array();
+
 	public static function addTables( &$tables ) {
 		$tables[] = 'user_properties';
 		$tables[] = 'filearchive';
@@ -13,55 +15,79 @@ class UploadFromUrlTestSuite extends PHPUnit_Framework_TestSuite {
 		return true;
 	}
 
-	function setUp() {
-		global $wgParser, $wgParserConf, $IP, $messageMemc, $wgMemc, $wgDeferredUpdateList,
-				  $wgUser, $wgLang, $wgOut, $wgRequest, $wgStyleDirectory, $wgEnableParserCache,
-				  $wgNamespaceAliases, $wgNamespaceProtection, $wgLocalFileRepo,
-				  $parserMemc, $wgThumbnailScriptPath, $wgScriptPath,
-				  $wgArticlePath, $wgStyleSheetPath, $wgScript, $wgStylePath;
+	protected function setUp() {
+		global $wgParser, $wgParserConf, $IP, $messageMemc, $wgMemc, $wgUser,
+			$wgLang, $wgOut, $wgRequest, $wgStyleDirectory,
+			$wgEnableParserCache, $wgNamespaceAliases, $wgNamespaceProtection,
+			$parserMemc;
 
-		$wgScript = '/index.php';
-		$wgScriptPath = '/';
-		$wgArticlePath = '/wiki/$1';
-		$wgStyleSheetPath = '/skins';
-		$wgStylePath = '/skins';
-		$wgThumbnailScriptPath = false;
-		$wgLocalFileRepo = array(
+		$tmpGlobals = array();
+
+		$tmpGlobals['wgScript'] = '/index.php';
+		$tmpGlobals['wgScriptPath'] = '/';
+		$tmpGlobals['wgArticlePath'] = '/wiki/$1';
+		$tmpGlobals['wgStylePath'] = '/skins';
+		$tmpGlobals['wgThumbnailScriptPath'] = false;
+		$tmpGlobals['wgLocalFileRepo'] = array(
 			'class' => 'LocalRepo',
 			'name' => 'local',
-			'directory' => wfTempDir() . '/test-repo',
 			'url' => 'http://example.com/images',
-			'deletedDir' => wfTempDir() . '/test-repo/delete',
 			'hashLevels' => 2,
 			'transformVia404' => false,
+			'backend' => new FSFileBackend( array(
+				'name' => 'local-backend',
+				'wikiId' => wfWikiId(),
+				'containerPaths' => array(
+					'local-public' => wfTempDir() . '/test-repo/public',
+					'local-thumb' => wfTempDir() . '/test-repo/thumb',
+					'local-temp' => wfTempDir() . '/test-repo/temp',
+					'local-deleted' => wfTempDir() . '/test-repo/delete',
+				)
+			) ),
 		);
+		foreach ( $tmpGlobals as $var => $val ) {
+			if ( array_key_exists( $var, $GLOBALS ) ) {
+				$this->savedGlobals[$var] = $GLOBALS[$var];
+			}
+			$GLOBALS[$var] = $val;
+		}
+
 		$wgNamespaceProtection[NS_MEDIAWIKI] = 'editinterface';
 		$wgNamespaceAliases['Image'] = NS_FILE;
 		$wgNamespaceAliases['Image_talk'] = NS_FILE_TALK;
 
-
 		$wgEnableParserCache = false;
-		$wgDeferredUpdateList = array();
+		DeferredUpdates::clearPendingUpdates();
 		$wgMemc = wfGetMainCache();
 		$messageMemc = wfGetMessageCacheStorage();
 		$parserMemc = wfGetParserCacheStorage();
 
-		// $wgContLang = new StubContLang;
 		$wgUser = new User;
 		$context = new RequestContext;
-		$wgLang = $context->getLang();
+		$wgLang = $context->getLanguage();
 		$wgOut = $context->getOutput();
 		$wgParser = new StubObject( 'wgParser', $wgParserConf['class'], array( $wgParserConf ) );
-		$wgRequest = new WebRequest;
+		$wgRequest = $context->getRequest();
 
 		if ( $wgStyleDirectory === false ) {
-			$wgStyleDirectory   = "$IP/skins";
+			$wgStyleDirectory = "$IP/skins";
 		}
 
+		RepoGroup::destroySingleton();
+		FileBackendGroup::destroySingleton();
 	}
 
-	public function tearDown() {
+	protected function tearDown() {
+		foreach ( $this->savedGlobals as $var => $val ) {
+			$GLOBALS[$var] = $val;
+		}
+		// Restore backends
+		RepoGroup::destroySingleton();
+		FileBackendGroup::destroySingleton();
+
 		$this->teardownUploadDir( $this->uploadDir );
+
+		parent::tearDown();
 	}
 
 	private $uploadDir;
@@ -69,6 +95,7 @@ class UploadFromUrlTestSuite extends PHPUnit_Framework_TestSuite {
 
 	/**
 	 * Remove the dummy uploads directory
+	 * @param string $dir
 	 */
 	private function teardownUploadDir( $dir ) {
 		if ( $this->keepUploads ) {
@@ -77,7 +104,7 @@ class UploadFromUrlTestSuite extends PHPUnit_Framework_TestSuite {
 
 		// delete the files first, then the dirs.
 		self::deleteFiles(
-			array (
+			array(
 				"$dir/3/3a/Foobar.jpg",
 				"$dir/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg",
 				"$dir/thumb/3/3a/Foobar.jpg/200px-Foobar.jpg",
@@ -89,7 +116,7 @@ class UploadFromUrlTestSuite extends PHPUnit_Framework_TestSuite {
 		);
 
 		self::deleteDirs(
-			array (
+			array(
 				"$dir/3/3a",
 				"$dir/3",
 				"$dir/thumb/6/65",
@@ -110,7 +137,7 @@ class UploadFromUrlTestSuite extends PHPUnit_Framework_TestSuite {
 	/**
 	 * Delete the specified files, if they exist.
 	 *
-	 * @param $files Array: full paths to files to delete.
+	 * @param array $files Full paths to files to delete.
 	 */
 	private static function deleteFiles( $files ) {
 		foreach ( $files as $file ) {
@@ -123,7 +150,7 @@ class UploadFromUrlTestSuite extends PHPUnit_Framework_TestSuite {
 	/**
 	 * Delete the specified directories, if they exist. Must be empty.
 	 *
-	 * @param $dirs Array: full paths to directories to delete.
+	 * @param array $dirs Full paths to directories to delete.
 	 */
 	private static function deleteDirs( $dirs ) {
 		foreach ( $dirs as $dir ) {
@@ -137,7 +164,7 @@ class UploadFromUrlTestSuite extends PHPUnit_Framework_TestSuite {
 	 * Create a dummy uploads directory which will contain a couple
 	 * of files in order to pass existence tests.
 	 *
-	 * @return String: the directory
+	 * @return string The directory
 	 */
 	private function setupUploadDir() {
 		global $IP;
@@ -156,14 +183,15 @@ class UploadFromUrlTestSuite extends PHPUnit_Framework_TestSuite {
 
 		if ( file_exists( $dir ) ) {
 			wfDebug( "Already exists!\n" );
+
 			return $dir;
 		}
 
-		wfMkdirParents( $dir . '/3/3a' );
-		copy( "$IP/skins/monobook/headbg.jpg", "$dir/3/3a/Foobar.jpg" );
+		wfMkdirParents( $dir . '/3/3a', null, __METHOD__ );
+		copy( "$IP/tests/phpunit/data/upload/headbg.jpg", "$dir/3/3a/Foobar.jpg" );
 
-		wfMkdirParents( $dir . '/0/09' );
-		copy( "$IP/skins/monobook/headbg.jpg", "$dir/0/09/Bad.jpg" );
+		wfMkdirParents( $dir . '/0/09', null, __METHOD__ );
+		copy( "$IP/tests/phpunit/data/upload/headbg.jpg", "$dir/0/09/Bad.jpg" );
 
 		return $dir;
 	}
@@ -173,6 +201,7 @@ class UploadFromUrlTestSuite extends PHPUnit_Framework_TestSuite {
 		// the UploadFromUrlTest class
 		class_exists( 'UploadFromUrlTest' );
 		$suite = new UploadFromUrlTestSuite( 'UploadFromUrlTest' );
+
 		return $suite;
 	}
 }

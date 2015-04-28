@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Andriykopanytsia"
+		]
+	},
+	"parsoid-desc": "Середовище виконання Parsoid-вікі для MediaWiki"
+}

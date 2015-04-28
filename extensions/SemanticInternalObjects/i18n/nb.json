@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"EvenT",
+			"Event",
+			"Nghtwlkr"
+		]
+	},
+	"semanticinternalobjects-desc": "Innstilling for interne objekter i Semantic MediaWiki",
+	"semanticinternalobjects-internalproperty": "Intern egenskap",
+	"semanticinternalobjects-mainpropertyname": "Egenskapsnavn som knytter denne malens felter til resten av siden:",
+	"semanticinternalobjects-propnamewarning": "(bør bare brukes dersom denne malen kan ha multiple forekomster)"
+}

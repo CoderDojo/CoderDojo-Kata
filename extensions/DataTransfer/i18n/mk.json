@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"datatransfer-desc": "Овозможува увоз и извоз на податоци содржани во повикувањата на шаблоните",
+	"viewxml": "Преглед на XML",
+	"dt_viewxml_docu": "Одберете од следиве категории и именски простори за преглед во XML формат.",
+	"dt_viewxml_categories": "Категории",
+	"dt_viewxml_namespaces": "Именски простори",
+	"dt_viewxml_simplifiedformat": "Упростен формат",
+	"dt_xml_namespace": "Именски простор",
+	"dt_xml_pages": "Страници",
+	"dt_xml_page": "Страница",
+	"dt_xml_template": "Шаблон",
+	"dt_xml_field": "Поле",
+	"dt_xml_name": "Име",
+	"dt_xml_title": "Наслов",
+	"dt_xml_id": "Назнака",
+	"dt_xml_freetext": "Слободен текст",
+	"importxml": "Увоз на XML",
+	"dt_import_selectfile": "Одберете ја $1 податотеката за увоз:",
+	"dt_import_encodingtype": "Тип на кодирање:",
+	"dt_import_forexisting": "За страници што веќе постојат:",
+	"dt_import_overwriteexisting": "Презапиши врз постоечките содржини",
+	"dt_import_mergeintoexisting": "Презапиши само врз полињата што се содржат во податотеката",
+	"dt_import_skipexisting": "Прескокни",
+	"dt_import_appendtoexisting": "Додај во постоечката содржина",
+	"dt_import_summarydesc": "Опис на увозот:",
+	"dt_import_editsummary": "Увоз на {{ucfirst:$1}}",
+	"dt_import_importing": "Увезувам...",
+	"dt_import_success": "$1 {{PLURAL:$1|страница ќе биде создадена|страници ќе бидат создадени}} од $2 податотеката.",
+	"importcsv": "Увоз на CSV",
+	"importspreadsheet": "Увези табеларна пресметка",
+	"dt_importcsv_badheader": "Грешка: насловот на колона $1, „$2“, мора да биде или „$3“, или „$4“, или пак од обликот „template_name[field_name]“",
+	"right-datatransferimport": "Увезување податоци",
+	"dt_filetype_spreadsheet": "табеларна пресметка"
+}

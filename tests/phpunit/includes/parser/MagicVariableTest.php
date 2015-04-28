@@ -6,14 +6,16 @@
  * As of february 2011, it only tests some revisions and date related
  * magic variables.
  *
- * @author Ashar Voultoiz
- * @copyright Copyright © 2011, Ashar Voultoiz
+ * @author Antoine Musso
+ * @copyright Copyright © 2011, Antoine Musso
  * @file
+ * @todo covers tags
  */
 
-/** */
 class MagicVariableTest extends MediaWikiTestCase {
-	/** Will contains a parser object*/
+	/**
+	 * @var Parser
+	 */
 	private $testParser = null;
 
 	/**
@@ -29,20 +31,55 @@ class MagicVariableTest extends MediaWikiTestCase {
 	);
 
 	/** setup a basic parser object */
-	function setUp() {
-		global $wgContLang;
-		$wgContLang = Language::factory( 'en' );
+	protected function setUp() {
+		parent::setUp();
+
+		$contLang = Language::factory( 'en' );
+		$this->setMwGlobals( array(
+			'wgLanguageCode' => 'en',
+			'wgContLang' => $contLang,
+		) );
 
 		$this->testParser = new Parser();
-		$this->testParser->Options( new ParserOptions() );
+		$this->testParser->Options( ParserOptions::newFromUserAndLang( new User, $contLang ) );
 
 		# initialize parser output
 		$this->testParser->clearState();
+
+		# Needs a title to do magic word stuff
+		$title = Title::newFromText( 'Tests' );
+		# Else it needs a db connection just to check if it's a redirect
+		# (when deciding the page language).
+		$title->mRedirect = false;
+
+		$this->testParser->setTitle( $title );
 	}
 
-	/** destroy parser (TODO: is it really neded?)*/
-	function tearDown() {
-		unset( $this->testParser );
+	/**
+	 * @param int $num Upper limit for numbers
+	 * @return array Array of numbers from 1 up to $num
+	 */
+	private static function createProviderUpTo( $num ) {
+		$ret = array();
+		for ( $i = 1; $i <= $num; $i++ ) {
+			$ret[] = array( $i );
+		}
+
+		return $ret;
+	}
+
+	/**
+	 * @return array Array of months numbers (as an integer)
+	 */
+	public static function provideMonths() {
+		return self::createProviderUpTo( 12 );
+	}
+
+	/**
+	 * @return array Array of days numbers (as an integer)
+	 */
+	public static function provideDays() {
+		return self::createProviderUpTo( 31 );
 	}
 
 	############### TESTS #############################################
@@ -52,120 +89,115 @@ class MagicVariableTest extends MediaWikiTestCase {
 
 	# day
 
-	/** @dataProvider MediaWikiProvide::Days */
-	function testCurrentdayIsUnPadded( $day ) {
+	/** @dataProvider provideDays */
+	public function testCurrentdayIsUnPadded( $day ) {
 		$this->assertUnPadded( 'currentday', $day );
 	}
-	/** @dataProvider MediaWikiProvide::Days */
-	function testCurrentdaytwoIsZeroPadded( $day ) {
+
+	/** @dataProvider provideDays */
+	public function testCurrentdaytwoIsZeroPadded( $day ) {
 		$this->assertZeroPadded( 'currentday2', $day );
 	}
-	/** @dataProvider MediaWikiProvide::Days */
-	function testLocaldayIsUnPadded( $day ) {
+
+	/** @dataProvider provideDays */
+	public function testLocaldayIsUnPadded( $day ) {
 		$this->assertUnPadded( 'localday', $day );
 	}
-	/** @dataProvider MediaWikiProvide::Days */
-	function testLocaldaytwoIsZeroPadded( $day ) {
+
+	/** @dataProvider provideDays */
+	public function testLocaldaytwoIsZeroPadded( $day ) {
 		$this->assertZeroPadded( 'localday2', $day );
 	}
-	
+
 	# month
 
-	/** @dataProvider MediaWikiProvide::Months */
-	function testCurrentmonthIsZeroPadded( $month ) {
+	/** @dataProvider provideMonths */
+	public function testCurrentmonthIsZeroPadded( $month ) {
 		$this->assertZeroPadded( 'currentmonth', $month );
 	}
-	/** @dataProvider MediaWikiProvide::Months */
-	function testCurrentmonthoneIsUnPadded( $month ) {
+
+	/** @dataProvider provideMonths */
+	public function testCurrentmonthoneIsUnPadded( $month ) {
 		$this->assertUnPadded( 'currentmonth1', $month );
 	}
-	/** @dataProvider MediaWikiProvide::Months */
-	function testLocalmonthIsZeroPadded( $month ) {
+
+	/** @dataProvider provideMonths */
+	public function testLocalmonthIsZeroPadded( $month ) {
 		$this->assertZeroPadded( 'localmonth', $month );
 	}
-	/** @dataProvider MediaWikiProvide::Months */
-	function testLocalmonthoneIsUnPadded( $month ) {
+
+	/** @dataProvider provideMonths */
+	public function testLocalmonthoneIsUnPadded( $month ) {
 		$this->assertUnPadded( 'localmonth1', $month );
 	}
 
-
 	# revision day
 
-	/** @dataProvider MediaWikiProvide::Days */
-	function testRevisiondayIsUnPadded( $day ) {
+	/** @dataProvider provideDays */
+	public function testRevisiondayIsUnPadded( $day ) {
 		$this->assertUnPadded( 'revisionday', $day );
 	}
-	/** @dataProvider MediaWikiProvide::Days */
-	function testRevisiondaytwoIsZeroPadded( $day ) {
+
+	/** @dataProvider provideDays */
+	public function testRevisiondaytwoIsZeroPadded( $day ) {
 		$this->assertZeroPadded( 'revisionday2', $day );
 	}
-	
+
 	# revision month
 
-	/** @dataProvider MediaWikiProvide::Months */
-	function testRevisionmonthIsZeroPadded( $month ) {
+	/** @dataProvider provideMonths */
+	public function testRevisionmonthIsZeroPadded( $month ) {
 		$this->assertZeroPadded( 'revisionmonth', $month );
 	}
-	/** @dataProvider MediaWikiProvide::Months */
-	function testRevisionmonthoneIsUnPadded( $month ) {
+
+	/** @dataProvider provideMonths */
+	public function testRevisionmonthoneIsUnPadded( $month ) {
 		$this->assertUnPadded( 'revisionmonth1', $month );
-	}
-
-	/**
-	 * Rough tests for {{SERVERNAME}} magic word
-	 * Bug 31176
-	 */
-	function testServernameFromDifferentProtocols() {
-		global $wgServer;
-		$saved_wgServer= $wgServer;
-
-		$wgServer = 'http://localhost/';
-		$this->assertMagic( 'localhost', 'servername' );
-		$wgServer = 'https://localhost/';
-		$this->assertMagic( 'localhost', 'servername' );
-		$wgServer = '//localhost/';  # bug 31176
-		$this->assertMagic( 'localhost', 'servername' );
-
-		$wgServer = $saved_wgServer;
 	}
 
 	############### HELPERS ############################################
 
 	/** assertion helper expecting a magic output which is zero padded */
-	PUBLIC function assertZeroPadded( $magic, $value ) {
+	public function assertZeroPadded( $magic, $value ) {
 		$this->assertMagicPadding( $magic, $value, '%02d' );
 	}
 
 	/** assertion helper expecting a magic output which is unpadded */
-	PUBLIC function assertUnPadded( $magic, $value ) {
+	public function assertUnPadded( $magic, $value ) {
 		$this->assertMagicPadding( $magic, $value, '%d' );
 	}
 
 	/**
 	 * Main assertion helper for magic variables padding
-	 * @param $magic string Magic variable name 
-	 * @param $value mixed Month or day
-	 * @param $format string sprintf format for $value 
+	 * @param string $magic Magic variable name
+	 * @param mixed $value Month or day
+	 * @param string $format Sprintf format for $value
 	 */
 	private function assertMagicPadding( $magic, $value, $format ) {
 		# Initialize parser timestamp as year 2010 at 12h34 56s.
 		# month and day are given by the caller ($value). Month < 12!
-		if( $value > 12 ) { $month = $value % 12; }
-		else { $month = $value; }
-	
+		if ( $value > 12 ) {
+			$month = $value % 12;
+		} else {
+			$month = $value;
+		}
+
 		$this->setParserTS(
 			sprintf( '2010%02d%02d123456', $month, $value )
 		);
 
-		# please keep the following commented line of code. It helps debugging.	
+		# please keep the following commented line of code. It helps debugging.
 		//print "\nDEBUG (value $value):" . sprintf( '2010%02d%02d123456', $value, $value ) . "\n";
 
 		# format expectation and test it
 		$expected = sprintf( $format, $value );
-		$this->assertMagic( $expected, $magic ); 
+		$this->assertMagic( $expected, $magic );
 	}
 
-	/** helper to set the parser timestamp and revision timestamp */
+	/**
+	 * helper to set the parser timestamp and revision timestamp
+	 * @param string $ts
+	 */
 	private function setParserTS( $ts ) {
 		$this->testParser->Options()->setTimestamp( $ts );
 		$this->testParser->mRevisionTimestamp = $ts;
@@ -173,10 +205,12 @@ class MagicVariableTest extends MediaWikiTestCase {
 
 	/**
 	 * Assertion helper to test a magic variable output
+	 * @param string|int $expected
+	 * @param string $magic
 	 */
 	private function assertMagic( $expected, $magic ) {
-		if( in_array( $magic, $this->expectedAsInteger ) ) {
-			$expected = (int) $expected;
+		if ( in_array( $magic, $this->expectedAsInteger ) ) {
+			$expected = (int)$expected;
 		}
 
 		# Generate a message for the assertion

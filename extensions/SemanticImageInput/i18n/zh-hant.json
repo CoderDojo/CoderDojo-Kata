@@ -1,0 +1,5 @@
+{
+	"@metadata": [],
+	"sii-desc": "為[https://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]（語義表單）添加一個用於從Wikipedia獲取圖像的圖像輸入控件",
+	"sii-imageinput-loading": "加載圖像..."
+}

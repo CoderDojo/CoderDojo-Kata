@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Crazymadlover",
+			"Locos epraix"
+		]
+	},
+	"adminlinks": "Administrar vínculos",
+	"adminlinks-desc": "Añade una [[Special:AdminLinks|página especial]] con enlaces útiles para administradores",
+	"adminlinks_documentation": "documentación de $1",
+	"adminlinks_general": "General",
+	"adminlinks_editsidebar": "Editar barra lateral",
+	"adminlinks_editcss": "Editar archivo CSS",
+	"adminlinks_editmainpagename": "Editar nombre de página principal",
+	"adminlinks_users": "Usuarios",
+	"adminlinks_createuser": "Crear un usuario",
+	"adminlinks_browsesearch": "Exploración y búsqueda",
+	"adminlinks_importexport": "Importación y exportación",
+	"right-adminlinks": "Ver el vínculo a [[Special:AdminLinks|Administrar vínculos]]"
+}

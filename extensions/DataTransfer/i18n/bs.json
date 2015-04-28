@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"CERminator"
+		]
+	},
+	"datatransfer-desc": "Omogućuje uvoz i izvoz podataka koji su sadržani u pozivima šablona",
+	"viewxml": "Pregledaj XML",
+	"dt_viewxml_docu": "Molimo Vas odaberite unutar slijedećih kategorija i imenskih prostora za pregled u XML formatu.",
+	"dt_viewxml_categories": "Kategorije",
+	"dt_viewxml_namespaces": "Imenski prostori",
+	"dt_viewxml_simplifiedformat": "Pojednostavljeni format",
+	"dt_xml_namespace": "Imenski prostor",
+	"dt_xml_pages": "Stranice",
+	"dt_xml_page": "Stranica",
+	"dt_xml_template": "Šablon",
+	"dt_xml_field": "Polje",
+	"dt_xml_name": "Naziv",
+	"dt_xml_title": "Naslov",
+	"dt_xml_id": "ID",
+	"dt_xml_freetext": "Slobodni tekst",
+	"importxml": "Uvezi XML",
+	"dt_import_selectfile": "Molimo odaberite $1 datoteku za uvoz:",
+	"dt_import_encodingtype": "Tip šifriranja:",
+	"dt_import_forexisting": "Za stranice koje već postoje:",
+	"dt_import_overwriteexisting": "Piši preko postojećeg sadržaja",
+	"dt_import_skipexisting": "Preskoči",
+	"dt_import_appendtoexisting": "Dodaj na postojeći sadržaj",
+	"dt_import_summarydesc": "Sažetak uvoza:",
+	"dt_import_editsummary": "$1 uvoz",
+	"dt_import_importing": "Uvoz...",
+	"dt_import_success": "$1 {{PLURAL:$1|stranica|stranice|stranica}} će biti napravljeno iz $2 datoteke.",
+	"importcsv": "Uvoz CSV",
+	"dt_importcsv_badheader": "Greška: zaglavlje $1 kolone, '$2', mora biti ili '$3', '$4' ili od obrasca 'template_name[field_name]'",
+	"right-datatransferimport": "Uvoz podataka"
+}

@@ -1,0 +1,273 @@
+@mixin kata-header() {
+	/*
+	############################################################################
+		TEMPORARY IMPORT FROM SHRUTHI
+	############################################################################
+	*/
+
+	.sidebar
+	{
+	   color: white;
+	}
+
+	.sidebar a
+	{
+	   color: white;
+	}
+
+	.row.kata {
+	    padding-top: 10px;
+	}
+
+	.logo.kata {
+	    margin-bottom: 10px !important;
+	    width: auto;
+	}
+	@media only screen and (max-width: 767px) {
+		.inner .logo, .logo {
+			float: left;
+			width: auto;
+			height: auto;
+			position: relative;
+			top: 0;
+			left: 0;
+			margin: 0 0 0;
+			img {
+				width: auto;
+				height: 32px;
+			}
+		}
+	}
+	.login.kata {
+	    margin-top: 5px;
+	    float: right;
+	    font-family: 'latoregular', Arial, Helvetica, sans-serif;
+	}
+	.login .kata .input {
+	    border: 2px solid;
+	}
+	.login.kata >input {
+	    border: 2px solid;
+	}
+	.login.kata >a {
+	    font-weight: bold;
+	    color: black;
+	    margin: 2px;
+	}
+	.kata-panel>img {
+	    height: 200px;  padding: 5px;
+	}
+	.col-xs-4.kata.kata-panel.orgnise {
+	    background-color: #61c93f;
+	}
+	.kata-panel  {
+	background-color: #eeeeee;
+	padding: 0;
+	border: 2px;
+	border-color: white !important;
+	border-right: 2px;
+	border-style: solid;
+	}
+	.kata-panel .organise {
+	    background-color: #61c93f;
+	    height: 6px;
+	}
+	.col-xs-4.kata-home-organise {
+	    background-color: #61c93f;
+	    
+	}
+
+	.col-xs-4.kata-home-panel.ninjas {
+	    background-color: #FBCC33;
+	}
+
+	.col-xs-4.kata-home-panel {
+	    display: block;  padding: 19px 7px;  color: #fff;  text-align: center;  /* padding-left: 2px; */  /* padding-right: 1px; */  border-right-color: white;  border-right: 4px;  border-style: solid;text-transform: uppercase;
+	text-align: center;
+	font-size: 14px;
+	line-height: 18px;
+	}
+	.col-xs-4.kata-home-panel.organise {
+	    background-color: #61c93f;
+	}
+	.col-xs-4.kata-home-panel.mentors {
+	    background-color: red;
+	}
+
+	/*
+	#Col2BodyContainer:before {
+	content: '';
+	position: absolute;
+	height: 11px;
+	width: 9999px;
+	left: 0;
+	top: -19px;
+	background: #CCC;
+	}
+	*/
+	.kata-home-panel-button {
+	    text-align: center;
+	    font-size: 14px;
+	    width: 90%;
+	    margin-left: auto;      margin-right: auto;
+	    margin-bottom: 10px;
+	    line-height: 30px;
+	}
+	a {}
+	.kata-home-panel.kata-home-panel-button>a {
+	    color: white;
+	    font-family: 'latoregular', Arial, Helvetica, sans-serif;
+	    /* margin-left: 10px; */
+	}
+	.kata-home-panel.kata-home-panel-button.organise-button {
+	    background-color: #61c93f;
+	}
+	.kata-home-panel.kata-home-panel-button.explore-button {
+	    background-color: #FBCC33;
+	}
+	.kata-home-panel.kata-home-panel-button.view-tutorials-button {
+	    background-color: #FF0000;
+	}
+
+	.kata-panel .ninjas {
+	    background-color: #FBCC33;  height: 6px;  }
+	.kata-panel .mentors {
+	    background-color: #FF0000;  height: 6px;  }
+	.logo.kata.home>img{
+	    margin-top:5px;
+	}
+	.logo.kata.home {
+	    margin-top: 10px;
+	}
+	span.logo-text.hidden-xs {
+	    margin-top: 22px;
+	}
+	.kata-home-panel-image {
+	    height: 400px;
+	    border: 2px solid;
+	    margin: 10px;
+	}
+	.kata-panel .details {
+	    height: 100px;
+	    height: auto;
+	    padding: 5px;
+	}
+	.logo.kata .kata-logo-text {
+	    display: inline;
+	    color: black;
+	    font-weight: bold;
+	    vertical-align: middle;
+	    font-size: 28px;
+	    padding-left: 5px;
+	}li.cat-item.organise:hover {
+	    background-color: #61c93f;
+	}
+
+	li.cat-item.kata {
+	    padding: 15 10 15px !important;  
+	    margin: 0 0 0 !important;
+	}
+
+	li.cat-item.kata.home:hover {
+	    background-color: #cccccc;
+	}
+	li.cat-item.kata.about:hover {
+	    background-color: orange;
+	}
+	li.cat-item.kata.organise:hover {
+	    background-color: #61c93f;
+	}
+	li.cat-item.kata.ninjas:hover {
+	    /* background-color: yellow; */
+	}
+	li.cat-item.kata.ninjas:hover {
+	    background-color: #fbcc33;
+	}
+	li.cat-item.kata.mentors:hover {
+	    background-color: #ff0000;
+	}
+	li.cat-item.kata.organise.sub-item {
+	    padding: 20px !important;
+	    /* list-style-type: disc; */
+	}
+	li.cat-item.kata:active {
+	    padding: 20px !important;
+	    /* list-style-type: disc; */
+	    font-weight: bold;
+	}
+	ul.subitem {
+	    display: none;
+	}
+	li.cat-item.kata:hover ul.subitem {
+	    display: block;
+	}
+	li.cat-item.kata ul.subitem {
+	    margin-left: 270px;
+	    position: absolute;
+	    margin-top: -40px;
+	    width: 100%;
+	}
+	li.cat-item.kata.organise ul.subitem {
+	    background-color: #61c93f;
+	    z-index: 99999999;
+	}
+	li.cat-item.kata.ninjas ul.subitem {
+	    background-color: #fbcc33;
+	}
+	ul.subitem {}
+	li.cat-item.kata.mentors ul.subitem {
+	    background-color: #ff0000;
+	}
+	li.cat-item.kata ul.subitem li {
+	    padding: 15px 10px 15px;
+	    margin: 0;
+	}
+	li.cat-item.kata.about:active {
+	    background-color: orange;
+	}
+
+	.kata-seperator.about-selected {
+	    border-top-color: orange;
+	}
+
+	#Col2BodyContainer.about-selected:before {
+	    background: orange;
+	}
+	
+	div.login span{
+	    float: left;
+	    font-size: 0.90em;
+	    font-weight: bold;
+	    line-height: 1.125em;
+	    margin-left: 0.90em;
+	    margin-right: 0.15em;
+	    margin-top: 0.5em;
+	    white-space: nowrap;
+	    list-style-type: square;
+	}
+	
+	div.login a{
+		color: #000000
+	}
+	
+	div.login a.new{
+		color: #FF0000
+	}
+	
+	div.login a:hover{
+		text-decoration: underline;
+	}
+	
+	#pt-userpage, #pt-anonuserpage {
+	    background-image: linear-gradient(transparent, transparent), url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iMTJweCIgaGVpZ2h0PSIxMy44MzZweCIgdmlld0JveD0iMCAwIDEyIDEzLjgzNiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTIgMTMuODM2IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiM3Nzc3NzciIGQ9Ik0xLjkzOCw2LjY1NmMtMS4zMiwxLjQ4NS0xLjQ3LDMuMTUtMC45Nyw0LjI1YzAuMzIzLDAuNzA3LDAuNzgsMS4xMjcsMS4zMTMsMS4zNzUNCgljMC40OTYsMC4yMjksMS4wNzQsMC4yNzMsMS42NTgsMC4yODJjMC4wMjMsMCwwLjA0LDAuMDMsMC4wNjIsMC4wM2g0LjE4N2MwLjYxLDAsMS4yMjUtMC4xMjUsMS43NS0wLjQwNQ0KCWMwLjUyNy0wLjI4LDAuOTYxLTAuNzE4LDEuMTg4LTEuMzc2YzAuMzM1LTAuOTY0LDAuMTc1LTIuNTI5LTEuMDk0LTQuMDNDOS4wOTQsNy45NTQsNy42OCw4LjcxOSw2LjA2NSw4LjcxOQ0KCWMtMS42NzcsMC0zLjE4Mi0wLjgxMi00LjEyNS0yLjA2M0gxLjkzOHoiLz4NCjxwYXRoIGZpbGw9IiM3Nzc3NzciIGQ9Ik02LjA2MywwYy0xLjg5LDAtMy41OTUsMS42NzQtMy41OTQsMy41NjNDMi40NjcsNS40NSw0LjE3Myw3LjE1NSw2LjA2LDcuMTU1DQoJYzEuODksMCwzLjU2NC0xLjcwNSwzLjU2My0zLjU5M0M5LjYyNSwxLjY3Myw3Ljk1LDAsNi4wNjMsMEw2LjA2MywweiIvPg0KPC9zdmc+DQo=");
+	    background-position: left top;
+	    background-repeat: no-repeat;
+	    padding-left: 15px !important;
+	}
+		
+	/*
+	############################################################################
+		END TEMPORARY IMPORT FROM SHRUTHI
+	############################################################################
+	*/
+}

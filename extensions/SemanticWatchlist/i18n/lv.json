@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Papuass"
+		]
+	},
+	"swl-group-name": "Grupas nosaukums:",
+	"swl-group-legend": "Grupa",
+	"swl-group-save": "Saglabāt",
+	"swl-group-remove": "Noņemt",
+	"swl-group-saving": "Saglabā",
+	"swl-group-category": "kategorija",
+	"swl-group-add-new-group": "Pievienot jaunu grupu",
+	"swl-group-add-group": "Pievienot grupu",
+	"swl-custom-legend": "Pielāgots teksts",
+	"swl-custom-remove-property": "Noņemt",
+	"swl-custom-text-add": "Pievienot pielāgotu tekstu"
+}

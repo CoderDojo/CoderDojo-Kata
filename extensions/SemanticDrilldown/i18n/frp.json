@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31",
+			"ChrisPtDe"
+		]
+	},
+	"specialpages-group-sd_group": "Ègzèrcice de sèmantica",
+	"browsedata": "Navegar les balyês",
+	"sd_browsedata_choosecategory": "Chouèsir una catègorie",
+	"sd_browsedata_viewcategory": "vêre la catègorie",
+	"sd_browsedata_subcategory": "Sot-catègorie",
+	"sd_browsedata_other": "Ôtro",
+	"sd_browsedata_none": "Nion",
+	"sd_browsedata_filterbyvalue": "Filtrar per ceta valor",
+	"sd_browsedata_filterbysubcategory": "Filtrar per ceta sot-catègorie",
+	"sd_browsedata_otherfilter": "Fâre vêre les pâges avouéc una ôtra valor por ceti filtro",
+	"sd_browsedata_nonefilter": "Fâre vêre les pâges avouéc gins de valor por ceti filtro",
+	"sd_browsedata_or": "ou ben",
+	"sd_browsedata_removefilter": "Enlevar ceti filtro",
+	"sd_browsedata_removesubcategoryfilter": "Enlevar ceti filtro de sot-catègorie",
+	"sd_browsedata_resetfilters": "Tornar inicialisar los filtros",
+	"sd_browsedata_daterangestart": "Comencement :",
+	"sd_browsedata_daterangeend": "Fin :",
+	"filters": "Filtros",
+	"sd_filters_docu": "Cetos filtros ègzistont dessus {{SITENAME}} :",
+	"sd_formcreate": "Fâre avouéc un formulèro",
+	"sd_viewform": "Vêre lo formulèro",
+	"createfilter": "Fâre un filtro",
+	"sd-createfilter-with-name": "Fâre lo filtro : $1",
+	"sd_createfilter_name": "Nom :",
+	"sd_createfilter_label": "Ètiquèta por ceti filtro (u chouèx) :",
+	"sd_blank_error": "pôt pas étre vouedo",
+	"sd-pageschemas-filter": "Filtro",
+	"sd-pageschemas-values": "Valors",
+	"sd_filter_coversproperty": "Ceti filtro côvre la propriètât $1.",
+	"sd_filter_getsvaluesfromcategory": "Il at ses valors dês la catègorie $1.",
+	"sd_filter_haslabel": "Il at l’ètiquèta $1."
+}
