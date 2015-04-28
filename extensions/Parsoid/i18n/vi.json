@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Minh Nguyen"
-		]
-	},
-	"parsoid-desc": "Thư viện thời gian chạy chuyển đổi qua lại mã wiki và mô hình tài liệu RDFa"
-}
