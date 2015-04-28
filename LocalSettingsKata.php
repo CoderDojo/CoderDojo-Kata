@@ -1,6 +1,4 @@
 <?php
-$wgShowExceptionDetails = true;
-
 $wgLogo = "$wgStylePath/CoderDojoKata/images/logo.png";
 $wgFavicon = "$wgStylePath/CoderDojoKata/images/favicon.ico";
 
