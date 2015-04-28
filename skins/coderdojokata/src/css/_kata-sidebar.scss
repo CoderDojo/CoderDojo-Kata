@@ -46,6 +46,11 @@
 	background-color: #FBCC33;
 }
 
+#KataMenuItem.open > a, #KataMenuItem.open > a:hover, #KataMenuItem.open > a:focus, #KataMenuItem:hover, #KataMenuItem:focus, #KataMenuItem li:hover, #KataMenuItem li:focus, #KataMenuItem a:hover, #KataMenuItem a:focus
+{
+	background-color: #2E7AC7;
+}
+
 #OrganiserMenuItem:hover, #OrganiserMenuItem:focus, #OrganiserMenuItem li:hover, #OrganiserMenuItem li:focus, #OrganiserMenuItem a:hover, #OrganiserMenuItem a:focus
 {
 	background-color: #61C93F;
