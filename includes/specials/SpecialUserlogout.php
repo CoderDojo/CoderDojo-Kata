@@ -1,6 +1,6 @@
 <?php
 /**
- * Implements Special:Upload
+ * Implements Special:Userlogout
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,37 +27,42 @@
  * @ingroup SpecialPage
  */
 class SpecialUserlogout extends UnlistedSpecialPage {
-
 	function __construct() {
 		parent::__construct( 'Userlogout' );
 	}
 
 	function execute( $par ) {
-		global $wgUser, $wgOut;
-
 		/**
 		 * Some satellite ISPs use broken precaching schemes that log people out straight after
 		 * they're logged in (bug 17790). Luckily, there's a way to detect such requests.
 		 */
 		if ( isset( $_SERVER['REQUEST_URI'] ) && strpos( $_SERVER['REQUEST_URI'], '&amp;' ) !== false ) {
 			wfDebug( "Special:Userlogout request {$_SERVER['REQUEST_URI']} looks suspicious, denying.\n" );
-			wfHttpError( 400, wfMsg( 'loginerror' ), wfMsg( 'suspicious-userlogout' ) );
-			return;
+			throw new HttpError( 400, $this->msg( 'suspicious-userlogout' ), $this->msg( 'loginerror' ) );
 		}
 
 		$this->setHeaders();
 		$this->outputHeader();
 
-		$oldName = $wgUser->getName();
-		$wgUser->logout();
+		$user = $this->getUser();
+		$oldName = $user->getName();
+		$user->logout();
 
-		$wgOut->addWikiMsg( 'logouttext' );
+		$loginURL = SpecialPage::getTitleFor( 'Userlogin' )->getFullURL(
+			$this->getRequest()->getValues( 'returnto', 'returntoquery' ) );
+
+		$out = $this->getOutput();
+		$out->addWikiMsg( 'logouttext', $loginURL );
 
 		// Hook.
 		$injected_html = '';
-		wfRunHooks( 'UserLogoutComplete', array( &$wgUser, &$injected_html, $oldName ) );
-		$wgOut->addHTML( $injected_html );
+		wfRunHooks( 'UserLogoutComplete', array( &$user, &$injected_html, $oldName ) );
+		$out->addHTML( $injected_html );
 
-		$wgOut->returnToMain();
+		$out->returnToMain();
+	}
+
+	protected function getGroupName() {
+		return 'login';
 	}
 }

@@ -37,6 +37,7 @@ class SideBarTest extends MediaWikiLangTestCase {
 		parent::setUp();
 		$this->initMessagesHref();
 		$this->skin = new SkinTemplate();
+		$this->skin->getContext()->setLanguage( Language::factory( 'en' ) );
 	}
 	function tearDown() {
 		parent::tearDown();
@@ -105,6 +106,39 @@ class SideBarTest extends MediaWikiLangTestCase {
 		);
 
 	}
+	/**
+	 * bug 33321 - Make sure there's a | after transforming.
+	 * @group Database
+	 */
+	function testTrickyPipe() {
+		$this->assertSidebar(
+		array( 'Title' => array(
+			# The first 2 are skipped
+			# Doesn't really test the url properly
+			# because it will vary with $wgArticlePath et al.
+			# ** Baz|Fred
+			array(
+				'text'   => 'Fred',
+				'href'   => Title::newFromText( 'Baz' )->getLocalUrl(),
+				'id'     => 'n-Fred',
+				'active' => null,
+			),
+			array(
+				'text'   => 'title-to-display',
+				'href'   => Title::newFromText( 'page-to-go-to' )->getLocalUrl(),
+				'id'     => 'n-title-to-display',
+				'active' => null,
+			),
+		)),
+'* Title
+** {{PAGENAME|Foo}}
+** Bar
+** Baz|Fred
+** {{PLURAL:1|page-to-go-to{{int:pipe-separator/en}}title-to-display|branch not taken}}
+'
+		);
+
+	}
 
 
 	#### Attributes for external links ##########################
@@ -135,7 +169,7 @@ class SideBarTest extends MediaWikiLangTestCase {
 	}
 
 	/**
-	 * Test wgNoFollowLinks in sidebar
+	 * Test $wgNoFollowLinks in sidebar
 	 */
 	function testRespectWgnofollowlinks() {
 		global $wgNoFollowLinks;
@@ -144,7 +178,7 @@ class SideBarTest extends MediaWikiLangTestCase {
 
 		$attribs = $this->getAttribs();
 		$this->assertArrayNotHasKey( 'rel', $attribs,
-			'External URL in sidebar do not have rel=nofollow when wgNoFollowLinks = false'
+			'External URL in sidebar do not have rel=nofollow when $wgNoFollowLinks = false'
 		);
 
 		// Restore global
@@ -152,7 +186,7 @@ class SideBarTest extends MediaWikiLangTestCase {
 	}
 
 	/**
-	 * Test wgExternaLinkTarget in sidebar
+	 * Test $wgExternaLinkTarget in sidebar
 	 */
 	function testRespectExternallinktarget() {
 		global $wgExternalLinkTarget;

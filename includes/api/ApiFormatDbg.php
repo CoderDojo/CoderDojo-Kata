@@ -4,7 +4,7 @@
  *
  * Created on Oct 22, 2006
  *
- * Copyright © 2008 Roan Kattouw <Firstname>.<Lastname>@gmail.com
+ * Copyright © 2008 Roan Kattouw "<Firstname>.<Lastname>@gmail.com"
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,20 +24,12 @@
  * @file
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	// Eclipse helper - will be ignored in production
-	require_once( 'ApiFormatBase.php' );
-}
-
 /**
  * API PHP's var_export() output formatter
+ * @deprecated since 1.24
  * @ingroup API
  */
 class ApiFormatDbg extends ApiFormatBase {
-
-	public function __construct( $main, $format ) {
-		parent::__construct( $main, $format );
-	}
 
 	public function getMimeType() {
 		// This looks like it should be text/plain, but IE7 is so
@@ -47,14 +39,11 @@ class ApiFormatDbg extends ApiFormatBase {
 	}
 
 	public function execute() {
+		$this->markDeprecated();
 		$this->printText( var_export( $this->getResultData(), true ) );
 	}
 
 	public function getDescription() {
-		return 'Output data in PHP\'s var_export() format' . parent::getDescription();
-	}
-
-	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiFormatDbg.php 78829 2010-12-22 20:52:06Z reedy $';
+		return 'DEPRECATED! Output data in PHP\'s var_export() format' . parent::getDescription();
 	}
 }

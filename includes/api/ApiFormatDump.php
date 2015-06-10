@@ -24,20 +24,12 @@
  * @file
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	// Eclipse helper - will be ignored in production
-	require_once( 'ApiFormatBase.php' );
-}
-
 /**
  * API PHP's var_dump() output formatter
+ * @deprecated since 1.24
  * @ingroup API
  */
 class ApiFormatDump extends ApiFormatBase {
-
-	public function __construct( $main, $format ) {
-		parent::__construct( $main, $format );
-	}
 
 	public function getMimeType() {
 		// This looks like it should be text/plain, but IE7 is so
@@ -47,6 +39,7 @@ class ApiFormatDump extends ApiFormatBase {
 	}
 
 	public function execute() {
+		$this->markDeprecated();
 		ob_start();
 		var_dump( $this->getResultData() );
 		$result = ob_get_contents();
@@ -55,10 +48,6 @@ class ApiFormatDump extends ApiFormatBase {
 	}
 
 	public function getDescription() {
-		return 'Output data in PHP\'s var_dump() format' . parent::getDescription();
-	}
-
-	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiFormatDump.php 79969 2011-01-10 22:36:26Z reedy $';
+		return 'DEPRECATED! Output data in PHP\'s var_dump() format' . parent::getDescription();
 	}
 }

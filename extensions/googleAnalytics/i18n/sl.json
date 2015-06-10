@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dbc334"
+		]
+	},
+	"googleanalytics-desc": "Vstavi skript Google Analytics (ga.js) na strani MediaWiki za sledenje",
+	"right-noanalytics": "Izvzetost iz sledenja Google Analytics"
+}

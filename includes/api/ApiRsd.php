@@ -25,19 +25,11 @@
  * @file
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	require_once( 'ApiBase.php' );
-}
-
 /**
  * API module for sending out RSD information
  * @ingroup API
  */
 class ApiRsd extends ApiBase {
-
-	public function __construct( $main, $action ) {
-		parent::__construct( $main, $action );
-	}
 
 	public function execute() {
 		$result = $this->getResult();
@@ -48,7 +40,7 @@ class ApiRsd extends ApiBase {
 		$service = array( 'apis' => $this->formatRsdApiList() );
 		ApiResult::setContent( $service, 'MediaWiki', 'engineName' );
 		ApiResult::setContent( $service, 'https://www.mediawiki.org/', 'engineLink' );
-		ApiResult::setContent( $service, Title::newMainPage()->getCanonicalUrl(), 'homePageLink' );
+		ApiResult::setContent( $service, Title::newMainPage()->getCanonicalURL(), 'homePageLink' );
 
 		$result->setIndexedTagName( $service['apis'], 'api' );
 
@@ -68,13 +60,17 @@ class ApiRsd extends ApiBase {
 	}
 
 	public function getDescription() {
-		return 'Export an RSD (Really Simple Discovery) schema';
+		return 'Export an RSD (Really Simple Discovery) schema.';
 	}
 
-	protected function getExamples() {
+	public function getExamples() {
 		return array(
 			'api.php?action=rsd'
 		);
+	}
+
+	public function isReadMode() {
+		return false;
 	}
 
 	/**
@@ -115,6 +111,7 @@ class ApiRsd extends ApiBase {
 			),
 		);
 		wfRunHooks( 'ApiRsdServiceApis', array( &$apis ) );
+
 		return $apis;
 	}
 
@@ -157,25 +154,18 @@ class ApiRsd extends ApiBase {
 			}
 			$outputData[] = $data;
 		}
-		return $outputData;
-	}
 
-	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiRsd.php 104449 2011-11-28 15:52:04Z reedy $';
+		return $outputData;
 	}
 }
 
 class ApiFormatXmlRsd extends ApiFormatXml {
-	public function __construct( $main, $format ) {
+	public function __construct( ApiMain $main, $format ) {
 		parent::__construct( $main, $format );
 		$this->setRootElement( 'rsd' );
 	}
 
 	public function getMimeType() {
 		return 'application/rsd+xml';
-	}
-
-	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiRsd.php 104449 2011-11-28 15:52:04Z reedy $';
 	}
 }

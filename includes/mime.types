@@ -35,6 +35,7 @@ application/x-gzip gz
 application/x-hdf hdf
 application/x-jar jar
 application/x-javascript js
+application/json json
 application/x-koan skp skd skt skm
 application/x-latex latex
 application/x-netcdf nc cdf
@@ -57,14 +58,15 @@ application/x-wais-source src
 application/x-xpinstall xpi
 application/xhtml+xml xhtml xht
 application/xslt+xml xslt
-application/xml xml xsl xsd
+application/xml xml xsl xsd kml
 application/xml-dtd dtd
-application/zip zip jar xpi  sxc stc  sxd std   sxi sti   sxm stm   sxw stw
+application/zip zip jar xpi sxc stc sxd std sxi sti sxm stm sxw stw
 application/x-rar rar
 audio/basic au snd
 audio/midi mid midi kar
 audio/mpeg mpga mp2 mp3
 audio/ogg oga ogg spx
+video/webm webm
 audio/webm webm
 audio/x-aiff aif aiff aifc
 audio/x-matroska mka mkv
@@ -74,6 +76,9 @@ audio/x-pn-realaudio ram rm
 audio/x-pn-realaudio-plugin rpm
 audio/x-realaudio ra
 audio/x-wav wav
+audio/wav wav
+audio/x-flac flac
+audio/flac flac
 chemical/x-pdb pdb
 chemical/x-xyz xyz
 image/bmp bmp
@@ -86,6 +91,7 @@ image/png png apng
 image/svg+xml svg
 image/tiff tiff tif
 image/vnd.djvu djvu djv
+image/vnd.microsoft.icon ico
 image/vnd.wap.wbmp wbmp
 image/webp webp
 image/x-cmu-raster ras
@@ -105,6 +111,7 @@ model/mesh msh mesh silo
 model/vrml wrl vrml
 text/calendar ics ifb
 text/css css
+text/csv csv
 text/html html htm
 text/plain txt
 text/richtext rtx
@@ -115,32 +122,35 @@ text/vnd.wap.wml wml
 text/vnd.wap.wmlscript wmls
 text/xml xml xsl xslt rss rdf
 text/x-setext etx
+text/x-sawfish jl
 video/mpeg mpeg mpg mpe
+video/mp4 mp4 m4a m4p m4b m4r m4v
+audio/mp4 m4a
 video/ogg ogv ogm ogg
 video/quicktime qt mov
 video/vnd.mpegurl mxu
-video/webm webm
 video/x-flv flv
 video/x-matroska mkv mka
 video/x-msvideo avi
 video/x-ogg ogv ogm ogg
 video/x-sgi-movie movie
 x-conference/x-cooltalk ice
-application/vnd.oasis.opendocument.text odt
-application/vnd.oasis.opendocument.text-template ott
+application/vnd.oasis.opendocument.chart odc
+application/vnd.oasis.opendocument.chart-template otc
+application/vnd.oasis.opendocument.database odb
+application/vnd.oasis.opendocument.formula odf
+application/vnd.oasis.opendocument.formula-template otf
 application/vnd.oasis.opendocument.graphics odg
 application/vnd.oasis.opendocument.graphics-template otg
+application/vnd.oasis.opendocument.image odi
+application/vnd.oasis.opendocument.image-template oti
 application/vnd.oasis.opendocument.presentation odp
 application/vnd.oasis.opendocument.presentation-template otp
 application/vnd.oasis.opendocument.spreadsheet ods
 application/vnd.oasis.opendocument.spreadsheet-template ots
-application/vnd.oasis.opendocument.chart odc
-application/vnd.oasis.opendocument.chart-template otc
-application/vnd.oasis.opendocument.image odi
-application/vnd.oasis.opendocument.image-template oti
-application/vnd.oasis.opendocument.formula odf
-application/vnd.oasis.opendocument.formula-template otf
+application/vnd.oasis.opendocument.text odt
 application/vnd.oasis.opendocument.text-master odm
+application/vnd.oasis.opendocument.text-template ott
 application/vnd.oasis.opendocument.text-web oth
 application/vnd.openxmlformats-officedocument.wordprocessingml.document docx
 application/vnd.openxmlformats-officedocument.wordprocessingml.template dotx
@@ -162,3 +172,8 @@ application/vnd.ms-excel.sheet.binary.macroEnabled.12 xlsb
 model/vnd.dwfx+xps dwfx
 application/vnd.ms-xpsdocument xps
 application/x-opc+zip docx dotx docm dotm potx ppsx pptx ppam pptm potm ppsm xlsx xltx xlsm xltm xlam xlsb dwfx xps
+chemical/x-mdl-molfile mol
+chemical/x-mdl-sdfile sdf
+chemical/x-mdl-rxnfile rxn
+chemical/x-mdl-rdfile rd
+chemical/x-mdl-rgfile rg

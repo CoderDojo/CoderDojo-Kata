@@ -1,26 +1,26 @@
 <?php
 /**
  * Hooks for WikiEditor extension
- * 
+ *
  * @file
  * @ingroup Extensions
  */
 
 class WikiEditorHooks {
-	
+
 	/* Protected Static Members */
-	
+
 	protected static $features = array(
-		
-		/* Beta Features */
-		
+
+		/* Toolbar Features */
+
 		'toolbar' => array(
 			'preferences' => array(
 				// Ideally this key would be 'wikieditor-toolbar'
 				'usebetatoolbar' => array(
 					'type' => 'toggle',
 					'label-message' => 'wikieditor-toolbar-preference',
-					'section' => 'editing/beta',
+					'section' => 'editing/editor',
 				),
 			),
 			'requirements' => array(
@@ -29,6 +29,9 @@ class WikiEditorHooks {
 			'modules' => array(
 				'ext.wikiEditor.toolbar',
 			),
+			'stylemodules' => array(
+				'ext.wikiEditor.toolbar.styles',
+			),
 		),
 		'dialogs' => array(
 			'preferences' => array(
@@ -36,7 +39,7 @@ class WikiEditorHooks {
 				'usebetatoolbar-cgd' => array(
 					'type' => 'toggle',
 					'label-message' => 'wikieditor-toolbar-dialogs-preference',
-					'section' => 'editing/beta',
+					'section' => 'editing/editor',
 				),
 			),
 			'requirements' => array(
@@ -52,7 +55,7 @@ class WikiEditorHooks {
 				'wikieditor-toolbar-hidesig' => array(
 					'type' => 'toggle',
 					'label-message' => 'wikieditor-toolbar-hidesig',
-					'section' => 'editing/beta',
+					'section' => 'editing/editor',
 				),
 			),
 			'requirements' => array(
@@ -63,39 +66,9 @@ class WikiEditorHooks {
 				'ext.wikiEditor.toolbar.hideSig',
 			),
 		),
-		
+
 		/* Labs Features */
-		
-		'templateEditor' => array(
-			'preferences' => array(
-				'wikieditor-template-editor' => array(
-					'type' => 'toggle',
-					'label-message' => 'wikieditor-template-editor-preference',
-					'section' => 'editing/labs',
-				),
-			),
-			'requirements' => array(
-				'wikieditor-template-editor' => true,
-			),
-			'modules' => array(
-				'ext.wikiEditor.templateEditor',
-			),
-		),
-		'templates' => array(
-			'preferences' => array(
-				'wikieditor-templates' => array(
-					'type' => 'toggle',
-					'label-message' => 'wikieditor-templates-preference',
-					'section' => 'editing/labs',
-				),
-			),
-			'requirements' => array(
-				'wikieditor-templates' => true,
-			),
-			'modules' => array(
-				'ext.wikiEditor.templates',
-			),
-		),
+
 		'preview' => array(
 			'preferences' => array(
 				'wikieditor-preview' => array(
@@ -140,38 +113,23 @@ class WikiEditorHooks {
 			'modules' => array(
 				'ext.wikiEditor.publish',
 			),
-		),
-		'toc' => array(
-			'preferences' => array(
-				// Ideally this key would be 'wikieditor-toc'
-			 	'usenavigabletoc' => array(
-					'type' => 'toggle',
-					'label-message' => 'wikieditor-toc-preference',
-					'section' => 'editing/labs',
-				),
-			),
-			'requirements' => array(
-				'usenavigabletoc' => true,
-			),
-			'modules' => array(
-				'ext.wikiEditor.toc',
-			),
-		),
+		)
 	);
-	
+
 	/* Static Methods */
-	
+
 	/**
 	 * Checks if a certain option is enabled
 	 *
 	 * This method is public to allow other extensions that use WikiEditor to use the
 	 * same configuration as WikiEditor itself
 	 *
-	 * @param $name Name of the feature, should be a key of $features
+	 * @param $name string Name of the feature, should be a key of $features
+	 * @return bool
 	 */
 	public static function isEnabled( $name ) {
 		global $wgWikiEditorFeatures, $wgUser;
-		
+
 		// Features with global set to true are always enabled
 		if ( !isset( $wgWikiEditorFeatures[$name] ) || $wgWikiEditorFeatures[$name]['global'] ) {
 			return true;
@@ -188,40 +146,71 @@ class WikiEditorHooks {
 			}
 			return true;
 		}
-		// Features controlled by $wgWikiEditorFeatures with both global and user set to false are awlways disabled 
+		// Features controlled by $wgWikiEditorFeatures with both global and user set to false are awlways disabled
 		return false;
 	}
-	
+
 	/**
 	 * EditPage::showEditForm:initial hook
-	 * 
+	 *
 	 * Adds the modules to the edit form
-	 * 
-	 * @param $toolbar array list of toolbar items
+	 *
+	 * @param $editPage EditPage the current EditPage object.
+	 * @param $output OutputPage object.
+	 * @return bool
 	 */
-	public static function editPageShowEditFormInitial( &$toolbar ) {
-		global $wgOut;
-		
+	public static function editPageShowEditFormInitial( $editPage, $outputPage ) {
+		if ( $editPage->contentModel !== CONTENT_MODEL_WIKITEXT ) {
+			return true;
+		}
+
 		// Add modules for enabled features
 		foreach ( self::$features as $name => $feature ) {
-			if ( isset( $feature['modules'] ) && self::isEnabled( $name ) ) {
-				$wgOut->addModules( $feature['modules'] );
+			if ( !self::isEnabled( $name ) ) {
+				continue;
+			}
+			if ( isset( $feature['stylemodules'] ) ) {
+				$outputPage->addModuleStyles( $feature['stylemodules'] );
+			}
+			if ( isset( $feature['modules'] ) ) {
+				$outputPage->addModules( $feature['modules'] );
 			}
 		}
 		return true;
 	}
-	
+
+	/**
+	 * EditPageBeforeEditToolbar hook
+	 *
+	 * Disable the old toolbar if the new one is enabled
+	 *
+	 * @param $toolbar html
+	 * @return bool
+	 */
+	public static function EditPageBeforeEditToolbar( &$toolbar ) {
+		if ( self::isEnabled( 'toolbar' ) ) {
+			$toolbar = Html::rawElement(
+				'div', array(
+					'class' => 'wikiEditor-oldToolbar'
+				),
+				$toolbar
+			);
+		}
+		return true;
+	}
+
 	/**
 	 * GetPreferences hook
-	 * 
+	 *
 	 * Adds WikiEditor-releated items to the preferences
-	 * 
+	 *
 	 * @param $user User current user
 	 * @param $defaultPreferences array list of default user preference controls
+	 * @return bool
 	 */
 	public static function getPreferences( $user, &$defaultPreferences ) {
 		global $wgWikiEditorFeatures;
-		
+
 		foreach ( self::$features as $name => $feature ) {
 			if (
 				isset( $feature['preferences'] ) &&
@@ -234,15 +223,17 @@ class WikiEditorHooks {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * MakeGlobalVariablesScript hook
-	 * 
+	 *
 	 * Adds enabled/disabled switches for WikiEditor modules
+	 * @param $vars array
+	 * @return bool
 	 */
 	public static function resourceLoaderGetConfigVars( &$vars ) {
 		global $wgWikiEditorFeatures;
-		
+
 		$configurations = array();
 		foreach ( self::$features as $name => $feature ) {
 			if (
@@ -258,19 +249,46 @@ class WikiEditorHooks {
 		if ( count( $configurations ) ) {
 			$vars = array_merge( $vars, $configurations );
 		}
+		//expose magic words for use by the wikieditor toolbar
+		WikiEditorHooks::getMagicWords( $vars );
 		return true;
 	}
-	
+
+	/**
+	 * @param $vars array
+	 * @return bool
+	 */
 	public static function makeGlobalVariablesScript( &$vars ) {
-		global $wgWikiEditorFeatures;
-		
 		// Build and export old-style wgWikiEditorEnabledModules object for back compat
 		$enabledModules = array();
 		foreach ( self::$features as $name => $feature ) {
 			$enabledModules[$name] = self::isEnabled( $name );
 		}
-		
+
 		$vars['wgWikiEditorEnabledModules'] = $enabledModules;
 		return true;
 	}
+
+	/**
+	 * Expose useful magic words which are used by the wikieditor toolbar
+	 * @param $vars array
+	 * @return bool
+	 */
+	private static function getMagicWords( &$vars ){
+		$requiredMagicWords = array(
+			'redirect',
+			'img_right',
+			'img_left',
+			'img_none',
+			'img_center',
+			'img_thumbnail',
+			'img_framed',
+			'img_frameless',
+		);
+		foreach ( $requiredMagicWords as $name ) {
+				$magicWords[$name] = MagicWord::get( $name )->getSynonym( 0 );
+			}
+		$vars['wgWikiEditorMagicWords'] = $magicWords;
+	}
+
 }

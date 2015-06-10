@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Liangent",
+			"Liuxinyu970226",
+			"Mark85296341",
+			"Citizen01"
+		]
+	},
+	"googleanalytics-desc": "為追蹤用戶而插入 Google 通用分析（或其他網站分析工具）腳本到 MedaiWiki 頁面",
+	"right-noanalytics": "避免網站分析工具追蹤"
+}

@@ -17,13 +17,13 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
  *
  * @file
- * @ingroup Action
+ * @ingroup Actions
  */
 
 /**
  * User interface for the rollback action
  *
- * @ingroup Action
+ * @ingroup Actions
  */
 class RollbackAction extends FormlessAction {
 
@@ -39,6 +39,7 @@ class RollbackAction extends FormlessAction {
 		$details = null;
 
 		$request = $this->getRequest();
+		$user = $this->getUser();
 
 		$result = $this->page->doRollback(
 			$request->getVal( 'from' ),
@@ -53,17 +54,20 @@ class RollbackAction extends FormlessAction {
 			throw new ThrottledError;
 		}
 
-		if ( isset( $result[0][0] ) && ( $result[0][0] == 'alreadyrolled' || $result[0][0] == 'cantrollback' ) ) {
-			$this->getOutput()->setPageTitle( wfMsg( 'rollbackfailed' ) );
+		if ( isset( $result[0][0] ) &&
+			( $result[0][0] == 'alreadyrolled' || $result[0][0] == 'cantrollback' )
+		) {
+			$this->getOutput()->setPageTitle( $this->msg( 'rollbackfailed' ) );
 			$errArray = $result[0];
 			$errMsg = array_shift( $errArray );
 			$this->getOutput()->addWikiMsgArray( $errMsg, $errArray );
 
 			if ( isset( $details['current'] ) ) {
+				/** @var Revision $current */
 				$current = $details['current'];
 
 				if ( $current->getComment() != '' ) {
-					$this->getOutput()->addHTML( wfMessage( 'editcomment' )->rawParams(
+					$this->getOutput()->addHTML( $this->msg( 'editcomment' )->rawParams(
 						Linker::formatComment( $current->getComment() ) )->parse() );
 				}
 			}
@@ -71,47 +75,47 @@ class RollbackAction extends FormlessAction {
 			return;
 		}
 
-		# Display permissions errors before read-only message -- there's no
-		# point in misleading the user into thinking the inability to rollback
-		# is only temporary.
-		if ( !empty( $result ) && $result !== array( array( 'readonlytext' ) ) ) {
-			# array_diff is completely broken for arrays of arrays, sigh.
-			# Remove any 'readonlytext' error manually.
-			$out = array();
-			foreach ( $result as $error ) {
-				if ( $error != array( 'readonlytext' ) ) {
-					$out [] = $error;
-				}
-			}
-			$this->getOutput()->showPermissionsErrorPage( $out );
-
-			return;
-		}
+		#NOTE: Permission errors already handled by Action::checkExecute.
 
 		if ( $result == array( array( 'readonlytext' ) ) ) {
 			throw new ReadOnlyError;
 		}
 
+		#XXX: Would be nice if ErrorPageError could take multiple errors, and/or a status object.
+		#     Right now, we only show the first error
+		foreach ( $result as $error ) {
+			throw new ErrorPageError( 'rollbackfailed', $error[0], array_slice( $error, 1 ) );
+		}
+
+		/** @var Revision $current */
 		$current = $details['current'];
 		$target = $details['target'];
 		$newId = $details['newid'];
-		$this->getOutput()->setPageTitle( wfMsg( 'actioncomplete' ) );
+		$this->getOutput()->setPageTitle( $this->msg( 'actioncomplete' ) );
 		$this->getOutput()->setRobotPolicy( 'noindex,nofollow' );
 
-		if ( $current->getUserText() === '' ) {
-			$old = wfMsg( 'rev-deleted-user' );
-		} else {
-			$old = Linker::userLink( $current->getUser(), $current->getUserText() )
-				. Linker::userToolLinks( $current->getUser(), $current->getUserText() );
+		$old = Linker::revUserTools( $current );
+		$new = Linker::revUserTools( $target );
+		$this->getOutput()->addHTML( $this->msg( 'rollback-success' )->rawParams( $old, $new )
+			->parseAsBlock() );
+
+		if ( $user->getBoolOption( 'watchrollback' ) ) {
+			$user->addWatch( $this->page->getTitle(), WatchedItem::IGNORE_USER_RIGHTS );
 		}
 
-		$new = Linker::userLink( $target->getUser(), $target->getUserText() )
-			. Linker::userToolLinks( $target->getUser(), $target->getUserText() );
-		$this->getOutput()->addHTML( wfMsgExt( 'rollback-success', array( 'parse', 'replaceafter' ), $old, $new ) );
 		$this->getOutput()->returnToMain( false, $this->getTitle() );
 
-		if ( !$request->getBool( 'hidediff', false ) && !$this->getUser()->getBoolOption( 'norollbackdiff', false ) ) {
-			$de = new DifferenceEngine( $this->getTitle(), $current->getId(), $newId, false, true );
+		if ( !$request->getBool( 'hidediff', false ) &&
+			!$this->getUser()->getBoolOption( 'norollbackdiff', false )
+		) {
+			$contentHandler = $current->getContentHandler();
+			$de = $contentHandler->createDifferenceEngine(
+				$this->getContext(),
+				$current->getId(),
+				$newId,
+				false,
+				true
+			);
 			$de->showDiff( '', '' );
 		}
 	}

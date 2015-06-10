@@ -1,19 +1,40 @@
 <?php
 /**
- * Functions to get cache objects
+ * Functions to get cache objects.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
  *
  * @file
  * @ingroup Cache
  */
+
+/**
+ * Functions to get cache objects
+ *
+ * @ingroup Cache
+ */
 class ObjectCache {
-	static $instances = array();
+	public static $instances = array();
 
 	/**
 	 * Get a cached instance of the specified type of cache object.
 	 *
-	 * @param $id
+	 * @param string $id
 	 *
-	 * @return object
+	 * @return BagOStuff
 	 */
 	static function getInstance( $id ) {
 		if ( isset( self::$instances[$id] ) ) {
@@ -35,15 +56,16 @@ class ObjectCache {
 	/**
 	 * Create a new cache object of the specified type.
 	 *
-	 * @param $id
+	 * @param string $id
 	 *
-	 * @return ObjectCache
+	 * @throws MWException
+	 * @return BagOStuff
 	 */
 	static function newFromId( $id ) {
 		global $wgObjectCaches;
 
 		if ( !isset( $wgObjectCaches[$id] ) ) {
-			throw new MWException( "Invalid object cache type \"$id\" requested. " . 
+			throw new MWException( "Invalid object cache type \"$id\" requested. " .
 				"It is not present in \$wgObjectCaches." );
 		}
 
@@ -53,9 +75,10 @@ class ObjectCache {
 	/**
 	 * Create a new cache object from parameters
 	 *
-	 * @param $params array
+	 * @param array $params
 	 *
-	 * @return ObjectCache
+	 * @throws MWException
+	 * @return BagOStuff
 	 */
 	static function newFromParams( $params ) {
 		if ( isset( $params['factory'] ) ) {
@@ -64,13 +87,23 @@ class ObjectCache {
 			$class = $params['class'];
 			return new $class( $params );
 		} else {
-			throw new MWException( "The definition of cache type \"" . print_r( $params, true ) . "\" lacks both " .
-				"factory and class parameters." );
+			throw new MWException( "The definition of cache type \""
+				. print_r( $params, true ) . "\" lacks both "
+				. "factory and class parameters." );
 		}
 	}
 
 	/**
 	 * Factory function referenced from DefaultSettings.php for CACHE_ANYTHING
+	 *
+	 * CACHE_ANYTHING means that stuff has to be cached, not caching is not an option.
+	 * If a caching method is configured for any of the main caches ($wgMainCacheType,
+	 * $wgMessageCacheType, $wgParserCacheType), then CACHE_ANYTHING will effectively
+	 * be an alias to the configured cache choice for that.
+	 * If no cache choice is configured (by default $wgMainCacheType is CACHE_NONE),
+	 * then CACHE_ANYTHING will forward to CACHE_DB.
+	 * @param array $params
+	 * @return BagOStuff
 	 */
 	static function newAnything( $params ) {
 		global $wgMainCacheType, $wgMessageCacheType, $wgParserCacheType;
@@ -86,18 +119,25 @@ class ObjectCache {
 	/**
 	 * Factory function referenced from DefaultSettings.php for CACHE_ACCEL.
 	 *
-	 * @return ObjectCache
+	 * This will look for any APC style server-local cache.
+	 * A fallback cache can be specified if none is found.
+	 *
+	 * @param array $params
+	 * @param int|string $fallback Fallback cache, e.g. (CACHE_NONE, "hash") (since 1.24)
+	 * @throws MWException
+	 * @return BagOStuff
 	 */
-	static function newAccelerator( $params ) {
-		if ( function_exists( 'eaccelerator_get' ) ) {
-			$id = 'eaccelerator';
-		} elseif ( function_exists( 'apc_fetch') ) {
+	static function newAccelerator( $params, $fallback = null ) {
+		if ( function_exists( 'apc_fetch' ) ) {
 			$id = 'apc';
-		} elseif( function_exists( 'xcache_get' ) && wfIniGetBool( 'xcache.var_size' ) ) {
+		} elseif ( function_exists( 'xcache_get' ) && wfIniGetBool( 'xcache.var_size' ) ) {
 			$id = 'xcache';
-		} elseif( function_exists( 'wincache_ucache_get' ) ) {
+		} elseif ( function_exists( 'wincache_ucache_get' ) ) {
 			$id = 'wincache';
 		} else {
+			if ( $fallback ) {
+				return self::newFromId( $fallback );
+			}
 			throw new MWException( "CACHE_ACCEL requested but no suitable object " .
 				"cache is present. You may want to install APC." );
 		}
@@ -106,11 +146,13 @@ class ObjectCache {
 
 	/**
 	 * Factory function that creates a memcached client object.
-	 * The idea of this is that it might eventually detect and automatically 
-	 * support the PECL extension, assuming someone can get it to compile.
 	 *
-	 * @param $params array
-	 * 
+	 * This always uses the PHP client, since the PECL client has a different
+	 * hashing scheme and a different interpretation of the flags bitfield, so
+	 * switching between the two clients randomly would be disastrous.
+	 *
+	 * @param array $params
+	 *
 	 * @return MemcachedPhpBagOStuff
 	 */
 	static function newMemcached( $params ) {

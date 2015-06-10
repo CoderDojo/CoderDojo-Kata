@@ -21,10 +21,15 @@
  * @ingroup Maintenance
  */
 
-require_once( dirname( __FILE__ ) . '/Maintenance.php' );
+require_once __DIR__ . '/Maintenance.php';
 
+/**
+ * Maintenance script that minifies a file or set of files.
+ *
+ * @ingroup Maintenance
+ */
 class MinifyScript extends Maintenance {
-	var $outDir;
+	public $outDir;
 
 	public function __construct() {
 		parent::__construct();
@@ -44,7 +49,6 @@ class MinifyScript extends Maintenance {
 		$this->mDescription = "Minify a file or set of files.\n\n" .
 			"If --outfile is not specified, then the output file names will have a .min extension\n" .
 			"added, e.g. jquery.js -> jquery.min.js.";
-
 	}
 
 	public function execute() {
@@ -61,6 +65,7 @@ class MinifyScript extends Maintenance {
 
 			// Minify one file
 			$this->minify( $this->getArg( 0 ), $this->getOption( 'outfile' ) );
+
 			return;
 		}
 
@@ -98,6 +103,7 @@ class MinifyScript extends Maintenance {
 			$this->error( "No file extension, cannot determine type: $fileName" );
 			exit( 1 );
 		}
+
 		return substr( $fileName, $dotPos + 1 );
 	}
 
@@ -139,4 +145,4 @@ class MinifyScript extends Maintenance {
 }
 
 $maintClass = 'MinifyScript';
-require_once( RUN_MAINTENANCE_IF_MAIN );
+require_once RUN_MAINTENANCE_IF_MAIN;

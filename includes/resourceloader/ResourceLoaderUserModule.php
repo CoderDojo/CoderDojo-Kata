@@ -1,5 +1,7 @@
 <?php
 /**
+ * Resource loader module for user customizations.
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -25,26 +27,59 @@
  */
 class ResourceLoaderUserModule extends ResourceLoaderWikiModule {
 
-	/* Protected Methods */
+	/* Protected Members */
+
 	protected $origin = self::ORIGIN_USER_INDIVIDUAL;
 
+	/* Protected Methods */
+
 	/**
-	 * @param $context ResourceLoaderContext
+	 * @param ResourceLoaderContext $context
 	 * @return array
 	 */
 	protected function getPages( ResourceLoaderContext $context ) {
-		if ( $context->getUser() ) {
-			$username = $context->getUser();
-			return array(
-				"User:$username/common.js" => array( 'type' => 'script' ),
-				"User:$username/" . $context->getSkin() . '.js' => 
-					array( 'type' => 'script' ),
-				"User:$username/common.css" => array( 'type' => 'style' ),
-				"User:$username/" . $context->getSkin() . '.css' => 
-					array( 'type' => 'style' ),
-			);
+		$username = $context->getUser();
+
+		if ( $username === null ) {
+			return array();
 		}
-		return array();
+
+		$allowUserJs = $this->getConfig()->get( 'AllowUserJs' );
+		$allowUserCss = $this->getConfig()->get( 'AllowUserCss' );
+
+		if ( !$allowUserJs && !$allowUserCss ) {
+			return array();
+		}
+
+		// Get the normalized title of the user's user page
+		$userpageTitle = Title::makeTitleSafe( NS_USER, $username );
+
+		if ( !$userpageTitle instanceof Title ) {
+			return array();
+		}
+
+		$userpage = $userpageTitle->getPrefixedDBkey(); // Needed so $excludepages works
+
+		$pages = array();
+		if ( $allowUserJs ) {
+			$pages["$userpage/common.js"] = array( 'type' => 'script' );
+			$pages["$userpage/" . $context->getSkin() . '.js'] = array( 'type' => 'script' );
+		}
+		if ( $allowUserCss ) {
+			$pages["$userpage/common.css"] = array( 'type' => 'style' );
+			$pages["$userpage/" . $context->getSkin() . '.css'] = array( 'type' => 'style' );
+		}
+
+		// Hack for bug 26283: if we're on a preview page for a CSS/JS page,
+		// we need to exclude that page from this module. In that case, the excludepage
+		// parameter will be set to the name of the page we need to exclude.
+		$excludepage = $context->getRequest()->getVal( 'excludepage' );
+		if ( isset( $pages[$excludepage] ) ) {
+			// This works because $excludepage is generated with getPrefixedDBkey(),
+			// just like the keys in $pages[] above
+			unset( $pages[$excludepage] );
+		}
+		return $pages;
 	}
 
 	/* Methods */

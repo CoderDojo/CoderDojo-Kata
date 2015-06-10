@@ -1,10 +1,10 @@
 <?php
 /**
- * This script fixes timestamp corruption caused by one or more webservers
- * temporarily being set to the wrong time. The time offset must be known and
- * consistent. Start and end times (in 14-character format) restrict the search,
- * and must bracket the damage. There must be a majority of good timestamps in the
- * search period.
+ * Fixes timestamp corruption caused by one or more webservers temporarily
+ * being set to the wrong time.
+ * The time offset must be known and consistent. Start and end times
+ * (in 14-character format) restrict the search, and must bracket the damage.
+ * There must be a majority of good timestamps in the search period.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,11 +21,18 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
+ * @file
  * @ingroup Maintenance
  */
 
-require_once( dirname( __FILE__ ) . '/Maintenance.php' );
+require_once __DIR__ . '/Maintenance.php';
 
+/**
+ * Maintenance script that fixes timestamp corruption caused by one or
+ * more webservers temporarily being set to the wrong time.
+ *
+ * @ingroup Maintenance
+ */
 class FixTimestamps extends Maintenance {
 	public function __construct() {
 		parent::__construct();
@@ -78,11 +85,11 @@ class FixTimestamps extends Maintenance {
 			if ( $sign == 0 || $sign == $expectedSign ) {
 				// Monotonic change
 				$lastNormal = $timestamp;
-				++ $numGoodRevs;
+				++$numGoodRevs;
 				continue;
 			} elseif ( abs( $delta ) <= $grace ) {
 				// Non-monotonic change within grace interval
-				++ $numGoodRevs;
+				++$numGoodRevs;
 				continue;
 			} else {
 				// Non-monotonic change larger than grace interval
@@ -93,7 +100,7 @@ class FixTimestamps extends Maintenance {
 		$numBadRevs = count( $badRevs );
 		if ( $numBadRevs > $numGoodRevs ) {
 			$this->error(
-		"The majority of revisions in the search interval are marked as bad.
+				"The majority of revisions in the search interval are marked as bad.
 
 		Are you sure the offset ($offset) has the right sign? Positive means the clock
 		was incorrectly set forward, negative means the clock was incorrectly set back.
@@ -110,7 +117,8 @@ class FixTimestamps extends Maintenance {
 
 		$fixup = -$offset;
 		$sql = "UPDATE $revisionTable " .
-			"SET rev_timestamp=DATE_FORMAT(DATE_ADD(rev_timestamp, INTERVAL $fixup SECOND), '%Y%m%d%H%i%s') " .
+			"SET rev_timestamp="
+				. "DATE_FORMAT(DATE_ADD(rev_timestamp, INTERVAL $fixup SECOND), '%Y%m%d%H%i%s') " .
 			"WHERE rev_id IN (" . $dbw->makeList( $badRevs ) . ')';
 		$dbw->query( $sql, __METHOD__ );
 		$this->output( "Done\n" );
@@ -118,4 +126,4 @@ class FixTimestamps extends Maintenance {
 }
 
 $maintClass = "FixTimestamps";
-require_once( RUN_MAINTENANCE_IF_MAIN );
+require_once RUN_MAINTENANCE_IF_MAIN;

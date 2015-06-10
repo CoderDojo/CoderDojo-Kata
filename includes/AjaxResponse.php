@@ -1,6 +1,21 @@
 <?php
 /**
- * Response handler for Ajax requests
+ * Response handler for Ajax requests.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
  *
  * @file
  * @ingroup Ajax
@@ -13,30 +28,61 @@
  * @ingroup Ajax
  */
 class AjaxResponse {
-	/** Number of seconds to get the response cached by a proxy */
+	/**
+	 * Number of seconds to get the response cached by a proxy
+	 * @var int $mCacheDuration
+	 */
 	private $mCacheDuration;
 
-	/** HTTP header Content-Type */
+	/**
+	 * HTTP header Content-Type
+	 * @var string $mContentType
+	 */
 	private $mContentType;
 
-	/** Disables output. Can be set by calling $AjaxResponse->disable() */
+	/**
+	 * Disables output. Can be set by calling $AjaxResponse->disable()
+	 * @var bool $mDisabled
+	 */
 	private $mDisabled;
 
-	/** Date for the HTTP header Last-modified */
+	/**
+	 * Date for the HTTP header Last-modified
+	 * @var string|bool $mLastModified
+	 */
 	private $mLastModified;
 
-	/** HTTP response code */
+	/**
+	 * HTTP response code
+	 * @var string $mResponseCode
+	 */
 	private $mResponseCode;
 
-	/** HTTP Vary header */
+	/**
+	 * HTTP Vary header
+	 * @var string $mVary
+	 */
 	private $mVary;
 
-	/** Content of our HTTP response */
+	/**
+	 * Content of our HTTP response
+	 * @var string $mText
+	 */
 	private $mText;
 
-	function __construct( $text = null ) {
+	/**
+	 * @var Config
+	 */
+	private $mConfig;
+
+	/**
+	 * @param string|null $text
+	 * @param Config|null $config
+	 */
+	function __construct( $text = null, Config $config = null ) {
 		$this->mCacheDuration = null;
 		$this->mVary = null;
+		$this->mConfig = $config ?: ConfigFactory::getDefaultInstance()->makeConfig( 'main' );
 
 		$this->mDisabled = false;
 		$this->mText = '';
@@ -49,44 +95,68 @@ class AjaxResponse {
 		}
 	}
 
+	/**
+	 * Set the number of seconds to get the response cached by a proxy
+	 * @param int $duration
+	 */
 	function setCacheDuration( $duration ) {
 		$this->mCacheDuration = $duration;
 	}
 
+	/**
+	 * Set the HTTP Vary header
+	 * @param string $vary
+	 */
 	function setVary( $vary ) {
 		$this->mVary = $vary;
 	}
 
+	/**
+	 * Set the HTTP response code
+	 * @param string $code
+	 */
 	function setResponseCode( $code ) {
 		$this->mResponseCode = $code;
 	}
 
+	/**
+	 * Set the HTTP header Content-Type
+	 * @param string $type
+	 */
 	function setContentType( $type ) {
 		$this->mContentType = $type;
 	}
 
+	/**
+	 * Disable output.
+	 */
 	function disable() {
 		$this->mDisabled = true;
 	}
 
-	/** Add content to the response */
+	/**
+	 * Add content to the response
+	 * @param string $text
+	 */
 	function addText( $text ) {
-		if ( ! $this->mDisabled && $text ) {
+		if ( !$this->mDisabled && $text ) {
 			$this->mText .= $text;
 		}
 	}
 
-	/** Output text */
+	/**
+	 * Output text
+	 */
 	function printText() {
-		if ( ! $this->mDisabled ) {
+		if ( !$this->mDisabled ) {
 			print $this->mText;
 		}
 	}
 
-	/** Construct the header and output it */
+	/**
+	 * Construct the header and output it
+	 */
 	function sendHeaders() {
-		global $wgUseSquid, $wgUseESI;
-
 		if ( $this->mResponseCode ) {
 			$n = preg_replace( '/^ *(\d+)/', '\1', $this->mResponseCode );
 			header( "Status: " . $this->mResponseCode, true, (int)$n );
@@ -105,12 +175,12 @@ class AjaxResponse {
 			# and tell the client to always check with the squid. Otherwise,
 			# tell the client to use a cached copy, without a way to purge it.
 
-			if ( $wgUseSquid ) {
-				# Expect explicite purge of the proxy cache, but require end user agents
+			if ( $this->mConfig->get( 'UseSquid' ) ) {
+				# Expect explicit purge of the proxy cache, but require end user agents
 				# to revalidate against the proxy on each visit.
 				# Surrogate-Control controls our Squid, Cache-Control downstream caches
 
-				if ( $wgUseESI ) {
+				if ( $this->mConfig->get( 'UseESI' ) ) {
 					header( 'Surrogate-Control: max-age=' . $this->mCacheDuration . ', content="ESI/1.0"' );
 					header( 'Cache-Control: s-maxage=0, must-revalidate, max-age=0' );
 				} else {
@@ -118,10 +188,10 @@ class AjaxResponse {
 				}
 
 			} else {
-
 				# Let the client do the caching. Cache is not purged.
 				header ( "Expires: " . gmdate( "D, d M Y H:i:s", time() + $this->mCacheDuration ) . " GMT" );
-				header ( "Cache-Control: s-maxage={$this->mCacheDuration},public,max-age={$this->mCacheDuration}" );
+				header ( "Cache-Control: s-maxage={$this->mCacheDuration}," .
+					"public,max-age={$this->mCacheDuration}" );
 			}
 
 		} else {
@@ -138,31 +208,28 @@ class AjaxResponse {
 
 	/**
 	 * checkLastModified tells the client to use the client-cached response if
-	 * possible. If sucessful, the AjaxResponse is disabled so that
-	 * any future call to AjaxResponse::printText() have no effect. The method
-	 * returns true iff the response code was set to 304 Not Modified.
+	 * possible. If successful, the AjaxResponse is disabled so that
+	 * any future call to AjaxResponse::printText() have no effect.
+	 *
+	 * @param string $timestamp
+	 * @return bool Returns true if the response code was set to 304 Not Modified.
 	 */
-	function checkLastModified ( $timestamp ) {
+	function checkLastModified( $timestamp ) {
 		global $wgCachePages, $wgCacheEpoch, $wgUser;
 		$fname = 'AjaxResponse::checkLastModified';
 
 		if ( !$timestamp || $timestamp == '19700101000000' ) {
-			wfDebug( "$fname: CACHE DISABLED, NO TIMESTAMP\n" );
-			return;
+			wfDebug( "$fname: CACHE DISABLED, NO TIMESTAMP\n", 'log' );
+			return false;
 		}
 
 		if ( !$wgCachePages ) {
-			wfDebug( "$fname: CACHE DISABLED\n", false );
-			return;
-		}
-
-		if ( $wgUser->getOption( 'nocache' ) ) {
-			wfDebug( "$fname: USER DISABLED CACHE\n", false );
-			return;
+			wfDebug( "$fname: CACHE DISABLED\n", 'log' );
+			return false;
 		}
 
 		$timestamp = wfTimestamp( TS_MW, $timestamp );
-		$lastmod = wfTimestamp( TS_RFC2822, max( $timestamp, $wgUser->mTouched, $wgCacheEpoch ) );
+		$lastmod = wfTimestamp( TS_RFC2822, max( $timestamp, $wgUser->getTouched(), $wgCacheEpoch ) );
 
 		if ( !empty( $_SERVER['HTTP_IF_MODIFIED_SINCE'] ) ) {
 			# IE sends sizes after the date like this:
@@ -171,28 +238,39 @@ class AjaxResponse {
 			$modsince = preg_replace( '/;.*$/', '', $_SERVER["HTTP_IF_MODIFIED_SINCE"] );
 			$modsinceTime = strtotime( $modsince );
 			$ismodsince = wfTimestamp( TS_MW, $modsinceTime ? $modsinceTime : 1 );
-			wfDebug( "$fname: -- client send If-Modified-Since: " . $modsince . "\n", false );
-			wfDebug( "$fname: --  we might send Last-Modified : $lastmod\n", false );
+			wfDebug( "$fname: -- client send If-Modified-Since: " . $modsince . "\n", 'log' );
+			wfDebug( "$fname: --  we might send Last-Modified : $lastmod\n", 'log' );
 
-			if ( ( $ismodsince >= $timestamp ) && $wgUser->validateCache( $ismodsince ) && $ismodsince >= $wgCacheEpoch ) {
+			if ( ( $ismodsince >= $timestamp )
+				&& $wgUser->validateCache( $ismodsince ) &&
+				$ismodsince >= $wgCacheEpoch
+			) {
 				ini_set( 'zlib.output_compression', 0 );
 				$this->setResponseCode( "304 Not Modified" );
 				$this->disable();
 				$this->mLastModified = $lastmod;
 
-				wfDebug( "$fname: CACHED client: $ismodsince ; user: $wgUser->mTouched ; page: $timestamp ; site $wgCacheEpoch\n", false );
+				wfDebug( "$fname: CACHED client: $ismodsince ; user: {$wgUser->getTouched()} ; " .
+					"page: $timestamp ; site $wgCacheEpoch\n", 'log' );
 
 				return true;
 			} else {
-				wfDebug( "$fname: READY  client: $ismodsince ; user: $wgUser->mTouched ; page: $timestamp ; site $wgCacheEpoch\n", false );
+				wfDebug( "$fname: READY  client: $ismodsince ; user: {$wgUser->getTouched()} ; " .
+					"page: $timestamp ; site $wgCacheEpoch\n", 'log' );
 				$this->mLastModified = $lastmod;
 			}
 		} else {
-			wfDebug( "$fname: client did not send If-Modified-Since header\n", false );
+			wfDebug( "$fname: client did not send If-Modified-Since header\n", 'log' );
 			$this->mLastModified = $lastmod;
 		}
+		return false;
 	}
 
+	/**
+	 * @param string $mckey
+	 * @param int $touched
+	 * @return bool
+	 */
 	function loadFromMemcached( $mckey, $touched ) {
 		global $wgMemc;
 
@@ -216,6 +294,11 @@ class AjaxResponse {
 		return false;
 	}
 
+	/**
+	 * @param string $mckey
+	 * @param int $expiry
+	 * @return bool
+	 */
 	function storeInMemcached( $mckey, $expiry = 86400 ) {
 		global $wgMemc;
 

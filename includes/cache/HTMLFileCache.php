@@ -1,249 +1,230 @@
 <?php
 /**
- * Contain the HTMLFileCache class
+ * Page view caching in the file system.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
  * @file
  * @ingroup Cache
  */
 
 /**
- * Handles talking to the file cache, putting stuff in and taking it back out.
- * Mostly called from Article.php for the emergency abort/fallback to cache.
- *
- * Global options that affect this module:
- * - $wgCachePages
- * - $wgCacheEpoch
- * - $wgUseFileCache
- * - $wgCacheDirectory
- * - $wgFileCacheDirectory
- * - $wgUseGzip
+ * Page view caching in the file system.
+ * The only cacheable actions are "view" and "history". Also special pages
+ * will not be cached.
  *
  * @ingroup Cache
  */
-class HTMLFileCache {
+class HTMLFileCache extends FileCacheBase {
+	/**
+	 * Construct an ObjectFileCache from a Title and an action
+	 * @param Title|string $title Title object or prefixed DB key string
+	 * @param string $action
+	 * @throws MWException
+	 * @return HTMLFileCache
+	 *
+	 * @deprecated Since 1.24, instantiate this class directly
+	 */
+	public static function newFromTitle( $title, $action ) {
+		return new self( $title, $action );
+	}
 
 	/**
-	 * @var Title
+	 * @param Title|string $title Title object or prefixed DB key string
+	 * @param string $action
+	 * @throws MWException
 	 */
-	var $mTitle;
-	var $mFileCache, $mType;
-
-	public function __construct( $title, $type = 'view' ) {
-		$this->mTitle = $title;
-		$this->mType = ($type == 'raw' || $type == 'view' ) ? $type : false;
-		$this->fileCacheName(); // init name
-	}
-
-	public function fileCacheName() {
-		if( !$this->mFileCache ) {
-			global $wgCacheDirectory, $wgFileCacheDirectory, $wgFileCacheDepth;
-
-			if ( $wgFileCacheDirectory ) {
-				$dir = $wgFileCacheDirectory;
-			} elseif ( $wgCacheDirectory ) {
-				$dir = "$wgCacheDirectory/html";
-			} else {
-				throw new MWException( 'Please set $wgCacheDirectory in LocalSettings.php if you wish to use the HTML file cache' );
-			}
-
-			# Store raw pages (like CSS hits) elsewhere
-			$subdir = ($this->mType === 'raw') ? 'raw/' : '';
-
-			$key = $this->mTitle->getPrefixedDbkey();
-			if ( $wgFileCacheDepth > 0 ) {
-				$hash = md5( $key );
-				for ( $i = 1; $i <= $wgFileCacheDepth; $i++ ) {
-					$subdir .= substr( $hash, 0, $i ) . '/';
-				}
-			}
-			# Avoid extension confusion
-			$key = str_replace( '.', '%2E', urlencode( $key ) );
-			$this->mFileCache = "{$dir}/{$subdir}{$key}.html";
-
-			if( $this->useGzip() ) {
-				$this->mFileCache .= '.gz';
-			}
-
-			wfDebug( __METHOD__ . ": {$this->mFileCache}\n" );
+	public function __construct( $title, $action ) {
+		$allowedTypes = self::cacheablePageActions();
+		if ( !in_array( $action, $allowedTypes ) ) {
+			throw new MWException( 'Invalid file cache type given.' );
 		}
-		return $this->mFileCache;
+		$this->mKey = ( $title instanceof Title )
+			? $title->getPrefixedDBkey()
+			: (string)$title;
+		$this->mType = (string)$action;
+		$this->mExt = 'html';
 	}
 
-	public function isFileCached() {
-		if( $this->mType === false ) {
-			return false;
+	/**
+	 * Cacheable actions
+	 * @return array
+	 */
+	protected static function cacheablePageActions() {
+		return array( 'view', 'history' );
+	}
+
+	/**
+	 * Get the base file cache directory
+	 * @return string
+	 */
+	protected function cacheDirectory() {
+		return $this->baseCacheDirectory(); // no subdir for b/c with old cache files
+	}
+
+	/**
+	 * Get the cache type subdirectory (with the trailing slash) or the empty string
+	 * Alter the type -> directory mapping to put action=view cache at the root.
+	 *
+	 * @return string
+	 */
+	protected function typeSubdirectory() {
+		if ( $this->mType === 'view' ) {
+			return ''; //  b/c to not skip existing cache
+		} else {
+			return $this->mType . '/';
 		}
-		return file_exists( $this->fileCacheName() );
-	}
-
-	public function fileCacheTime() {
-		return wfTimestamp( TS_MW, filemtime( $this->fileCacheName() ) );
 	}
 
 	/**
 	 * Check if pages can be cached for this request/user
+	 * @param IContextSource $context
 	 * @return bool
 	 */
-	public static function useFileCache() {
-		global $wgUser, $wgUseFileCache, $wgShowIPinHeader, $wgRequest, $wgLang, $wgContLang;
-		if( !$wgUseFileCache ) {
+	public static function useFileCache( IContextSource $context ) {
+		global $wgUseFileCache, $wgShowIPinHeader, $wgDebugToolbar, $wgContLang;
+		if ( !$wgUseFileCache ) {
 			return false;
 		}
+		if ( $wgShowIPinHeader || $wgDebugToolbar ) {
+			wfDebug( "HTML file cache skipped. Either \$wgShowIPinHeader and/or \$wgDebugToolbar on\n" );
+
+			return false;
+		}
+
 		// Get all query values
-		$queryVals = $wgRequest->getValues();
-		foreach( $queryVals as $query => $val ) {
-			if( $query == 'title' || $query == 'curid' ) {
-				continue;
+		$queryVals = $context->getRequest()->getValues();
+		foreach ( $queryVals as $query => $val ) {
+			if ( $query === 'title' || $query === 'curid' ) {
+				continue; // note: curid sets title
 			// Normal page view in query form can have action=view.
-			// Raw hits for pages also stored, like .css pages for example.
-			} elseif( $query == 'action' && $val == 'view' ) {
-				continue;
-			} elseif( $query == 'usemsgcache' && $val == 'yes' ) {
+			} elseif ( $query === 'action' && in_array( $val, self::cacheablePageActions() ) ) {
 				continue;
 			// Below are header setting params
-			} elseif( $query == 'maxage' || $query == 'smaxage' || $query == 'ctype' || $query == 'gen' ) {
+			} elseif ( $query === 'maxage' || $query === 'smaxage' ) {
 				continue;
-			} else {
-				return false;
 			}
+
+			return false;
 		}
+		$user = $context->getUser();
 		// Check for non-standard user language; this covers uselang,
 		// and extensions for auto-detecting user language.
-		$ulang = $wgLang->getCode();
+		$ulang = $context->getLanguage()->getCode();
 		$clang = $wgContLang->getCode();
+
 		// Check that there are no other sources of variation
-		return !$wgShowIPinHeader && !$wgUser->getId() && !$wgUser->getNewtalk() && $ulang == $clang;
+		if ( $user->getId() || $user->getNewtalk() || $ulang != $clang ) {
+			return false;
+		}
+		// Allow extensions to disable caching
+		return wfRunHooks( 'HTMLFileCache::useFileCache', array( $context ) );
 	}
 
 	/**
-	 * Check if up to date cache file exists
-	 * @param $timestamp string
-	 *
-	 * @return bool
+	 * Read from cache to context output
+	 * @param IContextSource $context
+	 * @return void
 	 */
-	public function isFileCacheGood( $timestamp = '' ) {
-		global $wgCacheEpoch;
+	public function loadFromFileCache( IContextSource $context ) {
+		global $wgMimeType, $wgLanguageCode;
 
-		if( !$this->isFileCached() ) {
-			return false;
-		}
+		wfDebug( __METHOD__ . "()\n" );
+		$filename = $this->cachePath();
 
-		$cachetime = $this->fileCacheTime();
-		$good = $timestamp <= $cachetime && $wgCacheEpoch <= $cachetime;
-
-		wfDebug( __METHOD__ . ": cachetime $cachetime, touched '{$timestamp}' epoch {$wgCacheEpoch}, good $good\n");
-		return $good;
-	}
-
-	public function useGzip() {
-		global $wgUseGzip;
-		return $wgUseGzip;
-	}
-
-	/* In handy string packages */
-	public function fetchRawText() {
-		return file_get_contents( $this->fileCacheName() );
-	}
-
-	public function fetchPageText() {
-		if( $this->useGzip() ) {
-			/* Why is there no gzfile_get_contents() or gzdecode()? */
-			return implode( '', gzfile( $this->fileCacheName() ) );
-		} else {
-			return $this->fetchRawText();
-		}
-	}
-
-	/* Working directory to/from output */
-	public function loadFromFileCache() {
-		global $wgOut, $wgMimeType, $wgLanguageCode;
-		wfDebug( __METHOD__ . "()\n");
-		$filename = $this->fileCacheName();
-		// Raw pages should handle cache control on their own,
-		// even when using file cache. This reduces hits from clients.
-		if( $this->mType !== 'raw' ) {
-			$wgOut->sendCacheControl();
-			header( "Content-Type: $wgMimeType; charset=UTF-8" );
-			header( "Content-Language: $wgLanguageCode" );
-		}
-
-		if( $this->useGzip() ) {
-			if( wfClientAcceptsGzip() ) {
+		$context->getOutput()->sendCacheControl();
+		header( "Content-Type: $wgMimeType; charset=UTF-8" );
+		header( "Content-Language: $wgLanguageCode" );
+		if ( $this->useGzip() ) {
+			if ( wfClientAcceptsGzip() ) {
 				header( 'Content-Encoding: gzip' );
+				readfile( $filename );
 			} else {
 				/* Send uncompressed */
+				wfDebug( __METHOD__ . " uncompressing cache file and sending it\n" );
 				readgzfile( $filename );
-				return;
 			}
+		} else {
+			readfile( $filename );
 		}
-		readfile( $filename );
-		$wgOut->disable(); // tell $wgOut that output is taken care of
+		$context->getOutput()->disable(); // tell $wgOut that output is taken care of
 	}
 
-	protected function checkCacheDirs() {
-		$filename = $this->fileCacheName();
-		$mydir2 = substr($filename,0,strrpos($filename,'/')); # subdirectory level 2
-		$mydir1 = substr($mydir2,0,strrpos($mydir2,'/')); # subdirectory level 1
-
-		wfMkdirParents( $mydir1 );
-		wfMkdirParents( $mydir2 );
-	}
-
+	/**
+	 * Save this cache object with the given text.
+	 * Use this as an ob_start() handler.
+	 * @param string $text
+	 * @return bool Whether $wgUseFileCache is enabled
+	 */
 	public function saveToFileCache( $text ) {
 		global $wgUseFileCache;
-		if( !$wgUseFileCache || strlen( $text ) < 512 ) {
+
+		if ( !$wgUseFileCache || strlen( $text ) < 512 ) {
 			// Disabled or empty/broken output (OOM and PHP errors)
 			return $text;
 		}
 
-		wfDebug( __METHOD__ . "()\n", false);
+		wfDebug( __METHOD__ . "()\n", 'log' );
 
-		$this->checkCacheDirs();
+		$now = wfTimestampNow();
+		if ( $this->useGzip() ) {
+			$text = str_replace(
+				'</html>', '<!-- Cached/compressed ' . $now . " -->\n</html>", $text );
+		} else {
+			$text = str_replace(
+				'</html>', '<!-- Cached ' . $now . " -->\n</html>", $text );
+		}
 
-		$f = fopen( $this->fileCacheName(), 'w' );
-		if($f) {
-			$now = wfTimestampNow();
-			if( $this->useGzip() ) {
-				$rawtext = str_replace( '</html>',
-					'<!-- Cached/compressed '.$now." -->\n</html>",
-					$text );
-				$text = gzencode( $rawtext );
-			} else {
-				$text = str_replace( '</html>',
-					'<!-- Cached '.$now." -->\n</html>",
-					$text );
-			}
-			fwrite( $f, $text );
-			fclose( $f );
-			if( $this->useGzip() ) {
-				if( wfClientAcceptsGzip() ) {
-					header( 'Content-Encoding: gzip' );
-					return $text;
-				} else {
-					return $rawtext;
-				}
+		// Store text to FS...
+		$compressed = $this->saveText( $text );
+		if ( $compressed === false ) {
+			return $text; // error
+		}
+
+		// gzip output to buffer as needed and set headers...
+		if ( $this->useGzip() ) {
+			// @todo Ugly wfClientAcceptsGzip() function - use context!
+			if ( wfClientAcceptsGzip() ) {
+				header( 'Content-Encoding: gzip' );
+
+				return $compressed;
 			} else {
 				return $text;
 			}
+		} else {
+			return $text;
 		}
-		return $text;
 	}
 
-	public static function clearFileCache( $title ) {
+	/**
+	 * Clear the file caches for a page for all actions
+	 * @param Title $title
+	 * @return bool Whether $wgUseFileCache is enabled
+	 */
+	public static function clearFileCache( Title $title ) {
 		global $wgUseFileCache;
 
 		if ( !$wgUseFileCache ) {
 			return false;
 		}
 
-		wfSuppressWarnings();
-
-		$fc = new self( $title, 'view' );
-		unlink( $fc->fileCacheName() );
-
-		$fc = new self( $title, 'raw' );
-		unlink( $fc->fileCacheName() );
-
-		wfRestoreWarnings();
+		foreach ( self::cacheablePageActions() as $type ) {
+			$fc = new self( $title, $type );
+			$fc->clearCache();
+		}
 
 		return true;
 	}

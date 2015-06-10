@@ -17,13 +17,20 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
+ * @file
  * @ingroup Maintenance
  * @author Rob Church <robchur@gmail.com>
  * @licence GNU General Public Licence 2.0 or later
  */
 
-require_once( dirname( __FILE__ ) . '/Maintenance.php' );
+require_once __DIR__ . '/Maintenance.php';
 
+/**
+ * Maintenance script that reassigns edits from a user or IP address
+ * to another user.
+ *
+ * @ingroup Maintenance
+ */
 class ReassignEdits extends Maintenance {
 	public function __construct() {
 		parent::__construct();
@@ -39,7 +46,7 @@ class ReassignEdits extends Maintenance {
 		if ( $this->hasArg( 0 ) && $this->hasArg( 1 ) ) {
 			# Set up the users involved
 			$from = $this->initialiseUser( $this->getArg( 0 ) );
-			$to   = $this->initialiseUser( $this->getArg( 1 ) );
+			$to = $this->initialiseUser( $this->getArg( 1 ) );
 
 			# If the target doesn't exist, and --force is not set, stop here
 			if ( $to->getId() || $this->hasOption( 'force' ) ) {
@@ -60,25 +67,35 @@ class ReassignEdits extends Maintenance {
 	/**
 	 * Reassign edits from one user to another
 	 *
-	 * @param $from User to take edits from
-	 * @param $to User to assign edits to
-	 * @param $rc Update the recent changes table
-	 * @param $report Don't change things; just echo numbers
-	 * @return integer Number of entries changed, or that would be changed
+	 * @param User $from User to take edits from
+	 * @param User $to User to assign edits to
+	 * @param bool $rc Update the recent changes table
+	 * @param bool $report Don't change things; just echo numbers
+	 * @return int Number of entries changed, or that would be changed
 	 */
 	private function doReassignEdits( &$from, &$to, $rc = false, $report = false ) {
 		$dbw = wfGetDB( DB_MASTER );
-		$dbw->begin();
+		$dbw->begin( __METHOD__ );
 
 		# Count things
 		$this->output( "Checking current edits..." );
-		$res = $dbw->select( 'revision', 'COUNT(*) AS count', $this->userConditions( $from, 'rev_user', 'rev_user_text' ), __METHOD__ );
+		$res = $dbw->select(
+			'revision',
+			'COUNT(*) AS count',
+			$this->userConditions( $from, 'rev_user', 'rev_user_text' ),
+			__METHOD__
+		);
 		$row = $dbw->fetchObject( $res );
 		$cur = $row->count;
 		$this->output( "found {$cur}.\n" );
 
 		$this->output( "Checking deleted edits..." );
-		$res = $dbw->select( 'archive', 'COUNT(*) AS count', $this->userConditions( $from, 'ar_user', 'ar_user_text' ), __METHOD__ );
+		$res = $dbw->select(
+			'archive',
+			'COUNT(*) AS count',
+			$this->userConditions( $from, 'ar_user', 'ar_user_text' ),
+			__METHOD__
+		);
 		$row = $dbw->fetchObject( $res );
 		$del = $row->count;
 		$this->output( "found {$del}.\n" );
@@ -86,7 +103,12 @@ class ReassignEdits extends Maintenance {
 		# Don't count recent changes if we're not supposed to
 		if ( $rc ) {
 			$this->output( "Checking recent changes..." );
-			$res = $dbw->select( 'recentchanges', 'COUNT(*) AS count', $this->userConditions( $from, 'rc_user', 'rc_user_text' ), __METHOD__ );
+			$res = $dbw->select(
+				'recentchanges',
+				'COUNT(*) AS count',
+				$this->userConditions( $from, 'rc_user', 'rc_user_text' ),
+				__METHOD__
+			);
 			$row = $dbw->fetchObject( $res );
 			$rec = $row->count;
 			$this->output( "found {$rec}.\n" );
@@ -117,7 +139,8 @@ class ReassignEdits extends Maintenance {
 			}
 		}
 
-		$dbw->commit();
+		$dbw->commit( __METHOD__ );
+
 		return (int)$total;
 	}
 
@@ -125,22 +148,24 @@ class ReassignEdits extends Maintenance {
 	 * Return the most efficient set of user conditions
 	 * i.e. a user => id mapping, or a user_text => text mapping
 	 *
-	 * @param $user User for the condition
-	 * @param $idfield string Field name containing the identifier
-	 * @param $utfield string Field name containing the user text
+	 * @param User $user User for the condition
+	 * @param string $idfield Field name containing the identifier
+	 * @param string $utfield Field name containing the user text
 	 * @return array
 	 */
 	private function userConditions( &$user, $idfield, $utfield ) {
-		return $user->getId() ? array( $idfield => $user->getId() ) : array( $utfield => $user->getName() );
+		return $user->getId()
+			? array( $idfield => $user->getId() )
+			: array( $utfield => $user->getName() );
 	}
 
 	/**
 	 * Return user specifications
 	 * i.e. user => id, user_text => text
 	 *
-	 * @param $user User for the spec
-	 * @param $idfield Field name containing the identifier
-	 * @param $utfield Field name containing the user text
+	 * @param User $user User for the spec
+	 * @param string $idfield Field name containing the identifier
+	 * @param string $utfield Field name containing the user text
 	 * @return array
 	 */
 	private function userSpecification( &$user, $idfield, $utfield ) {
@@ -150,7 +175,7 @@ class ReassignEdits extends Maintenance {
 	/**
 	 * Initialise the user object
 	 *
-	 * @param $username Username or IP address
+	 * @param string $username Username or IP address
 	 * @return User
 	 */
 	private function initialiseUser( $username ) {
@@ -160,14 +185,15 @@ class ReassignEdits extends Maintenance {
 			$user->setName( $username );
 		} else {
 			$user = User::newFromName( $username );
+			if ( !$user ) {
+				$this->error( "Invalid username", true );
+			}
 		}
 		$user->load();
+
 		return $user;
 	}
-
-
 }
 
 $maintClass = "ReassignEdits";
-require_once( RUN_MAINTENANCE_IF_MAIN );
-
+require_once RUN_MAINTENANCE_IF_MAIN;
