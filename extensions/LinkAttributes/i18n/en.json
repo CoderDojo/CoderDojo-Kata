@@ -1,0 +1,8 @@
+{
+    "@metadata": {
+        "authors": [
+            "Dennis Roczek"
+        ]
+    },
+  "linkattributes-desc": "Allows for easy modification of rel/rev/class on <a> elements"
+}

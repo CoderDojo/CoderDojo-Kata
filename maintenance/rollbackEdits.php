@@ -18,16 +18,29 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
+ * @file
  * @ingroup Maintenance
  */
 
-require_once( dirname( __FILE__ ) . '/Maintenance.php' );
+require_once __DIR__ . '/Maintenance.php';
 
+/**
+ * Maintenance script to rollback all edits by a given user or IP provided
+ * they're the most recent edit.
+ *
+ * @ingroup Maintenance
+ */
 class RollbackEdits extends Maintenance {
 	public function __construct() {
 		parent::__construct();
-		$this->mDescription = "Rollback all edits by a given user or IP provided they're the most recent edit";
-		$this->addOption( 'titles', 'A list of titles, none means all titles where the given user is the most recent', false, true );
+		$this->mDescription =
+			"Rollback all edits by a given user or IP provided they're the most recent edit";
+		$this->addOption(
+			'titles',
+			'A list of titles, none means all titles where the given user is the most recent',
+			false,
+			true
+		);
 		$this->addOption( 'user', 'A user or IP to rollback all edits for', true, true );
 		$this->addOption( 'summary', 'Edit summary to use', false, true );
 		$this->addOption( 'bot', 'Mark the edits as bot' );
@@ -59,13 +72,16 @@ class RollbackEdits extends Maintenance {
 
 		if ( !$titles ) {
 			$this->output( 'No suitable titles to be rolled back' );
+
 			return;
 		}
 
+		$doer = User::newFromName( 'Maintenance script' );
+
 		foreach ( $titles as $t ) {
-			$a = new Article( $t );
-			$this->output( 'Processing ' . $t->getPrefixedText() . '...' );
-			if ( !$a->commitRollback( $user, $summary, $bot, $results ) ) {
+			$page = WikiPage::factory( $t );
+			$this->output( 'Processing ' . $t->getPrefixedText() . '... ' );
+			if ( !$page->commitRollback( $user, $summary, $bot, $results, $doer ) ) {
 				$this->output( "done\n" );
 			} else {
 				$this->output( "failed\n" );
@@ -75,7 +91,8 @@ class RollbackEdits extends Maintenance {
 
 	/**
 	 * Get all pages that should be rolled back for a given user
-	 * @param $user String a name to check against rev_user_text
+	 * @param string $user A name to check against rev_user_text
+	 * @return array
 	 */
 	private function getRollbackTitles( $user ) {
 		$dbr = wfGetDB( DB_SLAVE );
@@ -89,9 +106,10 @@ class RollbackEdits extends Maintenance {
 		foreach ( $results as $row ) {
 			$titles[] = Title::makeTitle( $row->page_namespace, $row->page_title );
 		}
+
 		return $titles;
 	}
 }
 
 $maintClass = 'RollbackEdits';
-require_once( RUN_MAINTENANCE_IF_MAIN );
+require_once RUN_MAINTENANCE_IF_MAIN;

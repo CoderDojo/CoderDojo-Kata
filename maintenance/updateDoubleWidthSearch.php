@@ -1,6 +1,6 @@
 <?php
 /**
- * Script to normalize double-byte latin UTF-8 characters
+ * Normalize double-byte latin UTF-8 characters
  *
  * Usage: php updateDoubleWidthSearch.php
  *
@@ -23,15 +23,25 @@
  * @ingroup Maintenance
  */
 
-require_once( dirname( __FILE__ ) . '/Maintenance.php' );
+require_once __DIR__ . '/Maintenance.php';
 
+/**
+ * Maintenance script to normalize double-byte latin UTF-8 characters.
+ *
+ * @ingroup Maintenance
+ */
 class UpdateDoubleWidthSearch extends Maintenance {
 
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Script to normalize double-byte latin UTF-8 characters";
 		$this->addOption( 'q', 'quiet', false, true );
-		$this->addOption( 'l', 'How long the searchindex and revision tables will be locked for', false, true );
+		$this->addOption(
+			'l',
+			'How long the searchindex and revision tables will be locked for',
+			false,
+			true
+		);
 	}
 
 	public function getDbType() {
@@ -62,9 +72,10 @@ class UpdateDoubleWidthSearch extends Maintenance {
 		$sql = "SELECT si_page FROM $searchindex
 				 WHERE ( si_text RLIKE '$regexp' )
 					OR ( si_title RLIKE '$regexp' )";
+
 		return $dbw->query( $sql, __METHOD__ );
 	}
 }
 
 $maintClass = "UpdateDoubleWidthSearch";
-require_once( RUN_MAINTENANCE_IF_MAIN );
+require_once RUN_MAINTENANCE_IF_MAIN;

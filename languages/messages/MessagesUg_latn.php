@@ -1,5 +1,5 @@
 <?php
-/** Uyghur (Latin script) (Uyghurche‎)
+/** Uyghur (Latin script) (Uyghurche)
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
@@ -11,8 +11,6 @@
  * @author M.erdem
  * @author לערי ריינהארט
  */
-
-$rtl = true;
 
 $messages = array(
 # Dates
@@ -215,9 +213,6 @@ $messages = array(
 
 # Special:NewFiles
 'ilsubmit' => 'Izdash',
-
-# Trackbacks
-'trackbackremove' => '([$1 Yukhutush])',
 
 # action=purge
 'confirm_purge_button' => 'Maqul',

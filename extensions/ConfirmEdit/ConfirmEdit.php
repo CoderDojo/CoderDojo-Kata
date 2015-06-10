@@ -34,15 +34,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit;
 }
 
-global $wgExtensionFunctions, $wgGroupPermissions;
-
 $wgExtensionFunctions[] = 'confirmEditSetup';
-$wgExtensionCredits['other'][] = array(
+$wgExtensionCredits['antispam'][] = array(
 	'path' => __FILE__,
 	'name' => 'ConfirmEdit',
 	'author' => array( 'Brion Vibber', '...' ),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ConfirmEdit',
-	'version' => '1.0',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:ConfirmEdit',
+	'version' => '1.3',
 	'descriptionmsg' => 'captcha-desc',
 );
 
@@ -71,7 +69,6 @@ $wgAvailableRights[] = 'skipcaptcha';
  */
 $wgCaptchaWhitelistIP = false;
 
-global $wgCaptcha, $wgCaptchaClass, $wgCaptchaTriggers;
 $wgCaptcha = null;
 $wgCaptchaClass = 'SimpleCaptcha';
 
@@ -91,7 +88,7 @@ $wgCaptchaClass = 'SimpleCaptcha';
  */
 $wgCaptchaTriggers = array();
 $wgCaptchaTriggers['edit']          = false; // Would check on every edit
-$wgCaptchaTriggers['create']		= false; // Check on page creation.
+$wgCaptchaTriggers['create']        = false; // Check on page creation.
 $wgCaptchaTriggers['sendemail']     = false; // Special:Emailuser
 $wgCaptchaTriggers['addurl']        = true;  // Check on edits that add URLs
 $wgCaptchaTriggers['createaccount'] = true;  // Special:Userlogin&type=signup
@@ -121,7 +118,6 @@ $wgCaptchaTriggersOnNamespace = array();
  * 'CaptchaCacheStore' uses $wgMemc, which avoids the cookie dependency
  * but may be fragile depending on cache configuration.
  */
-global $wgCaptchaStorageClass;
 $wgCaptchaStorageClass = 'CaptchaSessionStore';
 
 /**
@@ -130,7 +126,6 @@ $wgCaptchaStorageClass = 'CaptchaSessionStore';
  *
  * Default is a half hour.
  */
-global $wgCaptchaSessionExpiration;
 $wgCaptchaSessionExpiration = 30 * 60;
 
 /**
@@ -142,21 +137,18 @@ $wgCaptchaSessionExpiration = 30 * 60;
  *
  * Default is five minutes.
  */
-global $wgCaptchaBadLoginExpiration;
 $wgCaptchaBadLoginExpiration = 5 * 60;
 
 /**
- * Allow users who have confirmed their e-mail addresses to post
+ * Allow users who have confirmed their email addresses to post
  * URL links without being harassed by the captcha.
  */
-global $ceAllowConfirmedEmail;
 $ceAllowConfirmedEmail = false;
 
 /**
  * Number of bad login attempts before triggering the captcha.  0 means the
  * captcha is presented on the first login.
  */
-global $wgCaptchaBadLoginAttempts;
 $wgCaptchaBadLoginAttempts = 3;
 
 /**
@@ -181,15 +173,12 @@ $wgCaptchaRegexes = array();
 /** Register special page */
 $wgSpecialPages['Captcha'] = 'CaptchaSpecialPage';
 
-$wgConfirmEditIP = dirname( __FILE__ );
+$wgConfirmEditIP = __DIR__;
+$wgMessagesDirs['ConfirmEdit'] = __DIR__ . '/i18n/core';
 $wgExtensionMessagesFiles['ConfirmEdit'] = "$wgConfirmEditIP/ConfirmEdit.i18n.php";
-$wgExtensionAliasesFiles['ConfirmEdit'] = "$wgConfirmEditIP/ConfirmEdit.alias.php";
+$wgExtensionMessagesFiles['ConfirmEditAlias'] = "$wgConfirmEditIP/ConfirmEdit.alias.php";
 
-if ( defined( 'MW_SUPPORTS_EDITFILTERMERGED' ) ) {
-	$wgHooks['EditFilterMerged'][] = 'ConfirmEditHooks::confirmEditMerged';
-} else {
-	$wgHooks['EditFilter'][] = 'ConfirmEditHooks::confirmEdit';
-}
+$wgHooks['EditFilterMerged'][] = 'ConfirmEditHooks::confirmEditMerged';
 $wgHooks['UserCreateForm'][] = 'ConfirmEditHooks::injectUserCreate';
 $wgHooks['AbortNewAccount'][] = 'ConfirmEditHooks::confirmUserCreate';
 $wgHooks['LoginAuthenticateAudit'][] = 'ConfirmEditHooks::triggerUserLogin';
@@ -199,15 +188,17 @@ $wgHooks['EmailUserForm'][] = 'ConfirmEditHooks::injectEmailUser';
 $wgHooks['EmailUser'][] = 'ConfirmEditHooks::confirmEmailUser';
 # Register API hook
 $wgHooks['APIEditBeforeSave'][] = 'ConfirmEditHooks::confirmEditAPI';
+$wgHooks['APIGetAllowedParams'][] = 'ConfirmEditHooks::APIGetAllowedParams';
+$wgHooks['APIGetParamDescription'][] = 'ConfirmEditHooks::APIGetParamDescription';
+$wgHooks['AddNewAccountApiForm'][] = 'ConfirmEditHooks::addNewAccountApiForm';
+$wgHooks['AddNewAccountApiResult'][] = 'ConfirmEditHooks::addNewAccountApiResult';
 
 $wgAutoloadClasses['ConfirmEditHooks'] = "$wgConfirmEditIP/ConfirmEditHooks.php";
-$wgAutoloadClasses['Captcha']= "$wgConfirmEditIP/Captcha.php";
-$wgAutoloadClasses['SimpleCaptcha']= "$wgConfirmEditIP/Captcha.php";
-$wgAutoloadClasses['CaptchaStore']= "$wgConfirmEditIP/CaptchaStore.php";
-$wgAutoloadClasses['CaptchaSessionStore']= "$wgConfirmEditIP/CaptchaStore.php";
-$wgAutoloadClasses['CaptchaCacheStore']= "$wgConfirmEditIP/CaptchaStore.php";
+$wgAutoloadClasses['SimpleCaptcha'] = "$wgConfirmEditIP/Captcha.php";
+$wgAutoloadClasses['CaptchaStore'] = "$wgConfirmEditIP/CaptchaStore.php";
+$wgAutoloadClasses['CaptchaSessionStore'] = "$wgConfirmEditIP/CaptchaStore.php";
+$wgAutoloadClasses['CaptchaCacheStore'] = "$wgConfirmEditIP/CaptchaStore.php";
 $wgAutoloadClasses['CaptchaSpecialPage'] = "$wgConfirmEditIP/ConfirmEditHooks.php";
-$wgAutoloadClasses['HTMLCaptchaField']= "$wgConfirmEditIP/HTMLCaptchaField.php";
 
 /**
  * Set up $wgWhitelistRead

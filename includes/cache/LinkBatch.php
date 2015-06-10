@@ -1,4 +1,25 @@
 <?php
+/**
+ * Batch query to determine page existence.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ * @ingroup Cache
+ */
 
 /**
  * Class representing a list of titles
@@ -10,7 +31,7 @@ class LinkBatch {
 	/**
 	 * 2-d array, first index namespace, second index dbkey, value arbitrary
 	 */
-	var $data = array();
+	public $data = array();
 
 	/**
 	 * For debugging which method is using this class.
@@ -18,7 +39,7 @@ class LinkBatch {
 	protected $caller;
 
 	function __construct( $arr = array() ) {
-		foreach( $arr as $item ) {
+		foreach ( $arr as $item ) {
 			$this->addObj( $item );
 		}
 	}
@@ -28,14 +49,14 @@ class LinkBatch {
 	 * class. Only used in debugging output.
 	 * @since 1.17
 	 *
-	 * @param $caller
+	 * @param string $caller
 	 */
 	public function setCaller( $caller ) {
 		$this->caller = $caller;
 	}
 
 	/**
-	 * @param $title Title
+	 * @param Title $title
 	 */
 	public function addObj( $title ) {
 		if ( is_object( $title ) ) {
@@ -45,6 +66,10 @@ class LinkBatch {
 		}
 	}
 
+	/**
+	 * @param int $ns
+	 * @param string $dbkey
+	 */
 	public function add( $ns, $dbkey ) {
 		if ( $ns < 0 ) {
 			return;
@@ -60,7 +85,7 @@ class LinkBatch {
 	 * Set the link list to a given 2-d array
 	 * First key is the namespace, second is the DB key, value arbitrary
 	 *
-	 * @param $array array
+	 * @param array $array
 	 */
 	public function setArray( $array ) {
 		$this->data = $array;
@@ -72,7 +97,7 @@ class LinkBatch {
 	 * @return bool
 	 */
 	public function isEmpty() {
-		return ($this->getSize() == 0);
+		return $this->getSize() == 0;
 	}
 
 	/**
@@ -86,23 +111,29 @@ class LinkBatch {
 
 	/**
 	 * Do the query and add the results to the LinkCache object
-	 * Return an array mapping PDBK to ID
+	 *
+	 * @return array Mapping PDBK to ID
 	 */
 	public function execute() {
 		$linkCache = LinkCache::singleton();
+
 		return $this->executeInto( $linkCache );
 	}
 
 	/**
 	 * Do the query and add the results to a given LinkCache object
 	 * Return an array mapping PDBK to ID
+	 *
+	 * @param LinkCache $cache
+	 * @return array Remaining IDs
 	 */
 	protected function executeInto( &$cache ) {
 		wfProfileIn( __METHOD__ );
 		$res = $this->doQuery();
-		$ids = $this->addResultToCache( $cache, $res );
 		$this->doGenderQuery();
+		$ids = $this->addResultToCache( $cache, $res );
 		wfProfileOut( __METHOD__ );
+
 		return $ids;
 	}
 
@@ -112,8 +143,9 @@ class LinkBatch {
 	 * This function *also* stores extra fields of the title used for link
 	 * parsing to avoid extra DB queries.
 	 *
-	 * @param $cache
-	 * @param $res
+	 * @param LinkCache $cache
+	 * @param ResultWrapper $res
+	 * @return array Array of remaining titles
 	 */
 	public function addResultToCache( $cache, $res ) {
 		if ( !$res ) {
@@ -126,7 +158,7 @@ class LinkBatch {
 		$remaining = $this->data;
 		foreach ( $res as $row ) {
 			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
-			$cache->addGoodLinkObj( $row->page_id, $title, $row->page_len, $row->page_is_redirect, $row->page_latest );
+			$cache->addGoodLinkObjFromRow( $title, $row );
 			$ids[$title->getPrefixedDBkey()] = $row->page_id;
 			unset( $remaining[$row->page_namespace][$row->page_title] );
 		}
@@ -139,13 +171,17 @@ class LinkBatch {
 				$ids[$title->getPrefixedDBkey()] = 0;
 			}
 		}
+
 		return $ids;
 	}
 
 	/**
 	 * Perform the existence test query, return a ResultWrapper with page_id fields
+	 * @return bool|ResultWrapper
 	 */
 	public function doQuery() {
+		global $wgContentHandlerUseDB;
+
 		if ( $this->isEmpty() ) {
 			return false;
 		}
@@ -156,6 +192,11 @@ class LinkBatch {
 		$table = 'page';
 		$fields = array( 'page_id', 'page_namespace', 'page_title', 'page_len',
 			'page_is_redirect', 'page_latest' );
+
+		if ( $wgContentHandlerUseDB ) {
+			$fields[] = 'page_content_model';
+		}
+
 		$conds = $this->constructSet( 'page', $dbr );
 
 		// Do query
@@ -165,9 +206,15 @@ class LinkBatch {
 		}
 		$res = $dbr->select( $table, $fields, $conds, $caller );
 		wfProfileOut( __METHOD__ );
+
 		return $res;
 	}
 
+	/**
+	 * Do (and cache) {{GENDER:...}} information for userpages in this LinkBatch
+	 *
+	 * @return bool Whether the query was successful
+	 */
 	public function doGenderQuery() {
 		if ( $this->isEmpty() ) {
 			return false;
@@ -179,15 +226,17 @@ class LinkBatch {
 		}
 
 		$genderCache = GenderCache::singleton();
-		$genderCache->dolinkBatch( $this->data, $this->caller );
+		$genderCache->doLinkBatch( $this->data, $this->caller );
+
+		return true;
 	}
 
 	/**
 	 * Construct a WHERE clause which will match all the given titles.
 	 *
-	 * @param $prefix String: the appropriate table's field name prefix ('page', 'pl', etc)
-	 * @param $db DatabaseBase object to use
-	 * @return mixed string with SQL where clause fragment, or false if no items.
+	 * @param string $prefix The appropriate table's field name prefix ('page', 'pl', etc)
+	 * @param DatabaseBase $db DatabaseBase object to use
+	 * @return string|bool String with SQL where clause fragment, or false if no items.
 	 */
 	public function constructSet( $prefix, $db ) {
 		return $db->makeWhereFrom2d( $this->data, "{$prefix}_namespace", "{$prefix}_title" );

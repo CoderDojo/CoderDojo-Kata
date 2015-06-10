@@ -1,8 +1,6 @@
 <?php
 /**
- * Formats credits for articles
- *
- * Copyright 2004, Evan Prodromou <evan@wikitravel.org>.
+ * User-requested page cache purging.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,19 +18,22 @@
  *
  * @file
  * @ingroup Actions
- * @author <evan@wikitravel.org>
  */
 
+/**
+ * User-requested page cache purging.
+ *
+ * For users with 'purge', this will directly trigger the cache purging and
+ * for users without that right, it will show a confirmation form.
+ *
+ * @ingroup Actions
+ */
 class PurgeAction extends FormAction {
 
 	private $redirectParams;
 
 	public function getName() {
 		return 'purge';
-	}
-
-	public function getRestriction() {
-		return null;
 	}
 
 	public function requiresUnblock() {
@@ -52,8 +53,7 @@ class PurgeAction extends FormAction {
 	}
 
 	public function onSubmit( $data ) {
-		$this->page->doPurge();
-		return true;
+		return $this->page->doPurge();
 	}
 
 	/**
@@ -67,12 +67,13 @@ class PurgeAction extends FormAction {
 		$this->checkCanExecute( $this->getUser() );
 
 		if ( $this->getUser()->isAllowed( 'purge' ) ) {
-			$this->redirectParams = wfArrayToCGI( array_diff_key(
+			$this->redirectParams = wfArrayToCgi( array_diff_key(
 				$this->getRequest()->getQueryValues(),
 				array( 'title' => null, 'action' => null )
 			) );
-			$this->onSubmit( array() );
-			$this->onSuccess();
+			if ( $this->onSubmit( array() ) ) {
+				$this->onSuccess();
+			}
 		} else {
 			$this->redirectParams = $this->getRequest()->getVal( 'redirectparams', '' );
 			$form = $this->getForm();
@@ -83,18 +84,18 @@ class PurgeAction extends FormAction {
 	}
 
 	protected function alterForm( HTMLForm $form ) {
-		$form->setSubmitText( wfMsg( 'confirm_purge_button' ) );
+		$form->setSubmitTextMsg( 'confirm_purge_button' );
 	}
 
 	protected function preText() {
-		return wfMessage( 'confirm-purge-top' )->parse();
+		return $this->msg( 'confirm-purge-top' )->parse();
 	}
 
 	protected function postText() {
-		return wfMessage( 'confirm-purge-bottom' )->parse();
+		return $this->msg( 'confirm-purge-bottom' )->parse();
 	}
 
 	public function onSuccess() {
-		$this->getOutput()->redirect( $this->getTitle()->getFullUrl( $this->redirectParams ) );
+		$this->getOutput()->redirect( $this->getTitle()->getFullURL( $this->redirectParams ) );
 	}
 }

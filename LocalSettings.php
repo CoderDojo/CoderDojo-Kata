@@ -18,24 +18,28 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 ## Uncomment this to disable output compression
 # $wgDisableOutputCompression = true;
 
-$wgSitename      = "CoderDojo";
+$wgSitename      = "CoderDojo Kata";
 
 ## The URL base path to the directory containing the wiki;
 ## defaults for all runtime URL paths are based off of this.
 ## For more information on customizing the URLs please see:
 ## http://www.mediawiki.org/wiki/Manual:Short_URL
-$wgScriptPath       = "";
+$wgScriptPath       = "/newkata";
 $wgScriptExtension  = ".php";
+$wgArticlePath = "/newkata/index.php/wiki/$1";
+$wgUsePathInfo = true;
+
 
 ## The protocol and server name to use in fully-qualified URLs
-$wgServer           = "http://kata.coderdojo.com";
+$wgServer           = "http://172.16.2.90";
 
 ## The relative URL path to the skins directory
 $wgStylePath        = "$wgScriptPath/skins";
 
 ## The relative URL path to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
-$wgLogo             = "$wgStylePath/common/images/wiki.png";
+$wgLogo             = "/images/logo.png";
+#$wgFavicon = "$wgStylePath/common/images/favicon.ico";
 
 ## UPO means: this is also a user preference option
 
@@ -46,15 +50,15 @@ $wgEmergencyContact = "apache@kata.coderdojo.com";
 $wgPasswordSender   = "apache@kata.coderdojo.com";
 
 $wgEnotifUserTalk      = false; # UPO
-$wgEnotifWatchlist     = false; # UPO
+$wgEnotifWatchlist     = true; # UPO
 $wgEmailAuthentication = true;
 
 ## Database settings
 $wgDBtype           = "mysql";
 $wgDBserver         = "localhost";
-$wgDBname           = "wiki";
-$wgDBuser           = "root";
-$wgDBpassword       = "root";
+$wgDBname           = "newkata";
+$wgDBuser           = "ursula";
+$wgDBpassword       = "password";
 
 # MySQL specific settings
 $wgDBprefix         = "";
@@ -72,8 +76,8 @@ $wgMemCachedServers = array();
 ## To enable image uploads, make sure the 'images' directory
 ## is writable, then set this to true:
 $wgEnableUploads  = true;
-$wgUseImageMagick = true;
-$wgImageMagickConvertCommand = "/usr/bin/convert";
+#$wgUseImageMagick = true;
+#$wgImageMagickConvertCommand = "/usr/bin/convert";
 
 # InstantCommons allows wiki to use images from http://commons.wikimedia.org
 $wgUseInstantCommons  = false;
@@ -97,15 +101,15 @@ $wgShellLocale = "en_US.utf8";
 # Site language code, should be one of the list in ./languages/Names.php
 $wgLanguageCode = "en";
 
-$wgSecretKey = "x";
+$wgSecretKey = "df7615c31303eb502c4ff82fa4580f23c747870f067e9b917d25cda88a464481";
 
 # Site upgrade key. Must be set to a string (default provided) to turn on the
 # web installer while LocalSettings.php is in place
-$wgUpgradeKey = "x";
+$wgUpgradeKey = "f4d2873b385a5d7d";
 
 ## Default skin: you can change the default skin. Use the internal symbolic
 ## names, ie 'standard', 'nostalgia', 'cologneblue', 'monobook', 'vector':
-$wgDefaultSkin = "vector";
+$wgDefaultSkin = "CoderDojoKata";
 
 ## For attaching licensing metadata to pages, and displaying an
 ## appropriate copyright notice / icon. GNU Free Documentation
@@ -125,8 +129,39 @@ $wgDiff3 = "/usr/bin/diff3";
 # that value)
 $wgResourceLoaderMaxQueryLength = -1;
 
-
-
 # End of automatically generated settings.
 # Add more configuration options below.
+
+
+// Disallow editing and uploading from anons and registered users
+$wgGroupPermissions['*']['edit'] = false;
+$wgGroupPermissions['user']['edit'] = false;
+
+// New user group: approved users
+$wgGroupPermissions['approved']['edit'] = true;
+
+// Allow admins to approve (and unapprove) users via Special:UserRights
+$wgAddGroups['sysop']['approved'] = true;
+$wgRemoveGroups['sysop']['approved'] = true;
+
+// Allow more file extensions to be uploaded
+$wgFileExtensions = array('png','gif','jpg','jpeg','doc','xls','mpp','pdf','ppt','bmp','docx', 'xlsx', 'pptx','ps','odt','ods','odp','odg');
+
+require_once "$IP/skins/Vector/Vector.php";
+require_once "$IP/skins/MonoBook/MonoBook.php";
+require_once "$IP/skins/CoderDojoKata/CoderDojoKata.php";
+
+// Add the captcha
+require_once( "$IP/extensions/ConfirmEdit/ConfirmEdit.php" );
+require_once("$IP/extensions/ConfirmEdit/ReCaptcha.php"); 
+require_once "$IP/extensions/linkAttributes/linkAttributes.php";
+
+$wgCaptchaClass = 'ReCaptcha';
+$wgReCaptchaPublicKey = '6LdV4gcTAAAAAMy8iRIx2rNNeRL0Ka8VR3IeK7YS';
+$wgReCaptchaPrivateKey = '6LdV4gcTAAAAALzMJ9bInk_IQdv9iAcK8TPCAz4a';
+
+//error_reporting( -1 );
+//ini_set( 'display_errors', 1 );
+
+error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 

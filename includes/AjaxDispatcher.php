@@ -1,10 +1,28 @@
 <?php
 /**
- * @defgroup Ajax Ajax
+ * Handle ajax requests and send them to the proper handler.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
  *
  * @file
  * @ingroup Ajax
- * Handle ajax requests and send them to the proper handler.
+ */
+
+/**
+ * @defgroup Ajax Ajax
  */
 
 /**
@@ -12,22 +30,39 @@
  * @ingroup Ajax
  */
 class AjaxDispatcher {
-	/** The way the request was made, either a 'get' or a 'post' */
+	/**
+	 * The way the request was made, either a 'get' or a 'post'
+	 * @var string $mode
+	 */
 	private $mode;
 
-	/** Name of the requested handler */
+	/**
+	 * Name of the requested handler
+	 * @var string $func_name
+	 */
 	private $func_name;
 
-	/** Arguments passed */
+	/** Arguments passed
+	 * @var array $args
+	 */
 	private $args;
 
-	/** Load up our object with user supplied data */
-	function __construct() {
+	/**
+	 * @var Config
+	 */
+	private $config;
+
+	/**
+	 * Load up our object with user supplied data
+	 */
+	function __construct( Config $config ) {
 		wfProfileIn( __METHOD__ );
+
+		$this->config = $config;
 
 		$this->mode = "";
 
-		if ( ! empty( $_GET["rs"] ) ) {
+		if ( !empty( $_GET["rs"] ) ) {
 			$this->mode = "get";
 		}
 
@@ -35,10 +70,10 @@ class AjaxDispatcher {
 			$this->mode = "post";
 		}
 
-		switch( $this->mode ) {
+		switch ( $this->mode ) {
 			case 'get':
 				$this->func_name = isset( $_GET["rs"] ) ? $_GET["rs"] : '';
-				if ( ! empty( $_GET["rsargs"] ) ) {
+				if ( !empty( $_GET["rsargs"] ) ) {
 					$this->args = $_GET["rsargs"];
 				} else {
 					$this->args = array();
@@ -46,7 +81,7 @@ class AjaxDispatcher {
 				break;
 			case 'post':
 				$this->func_name = isset( $_POST["rs"] ) ? $_POST["rs"] : '';
-				if ( ! empty( $_POST["rsargs"] ) ) {
+				if ( !empty( $_POST["rsargs"] ) ) {
 					$this->args = $_POST["rsargs"];
 				} else {
 					$this->args = array();
@@ -62,39 +97,39 @@ class AjaxDispatcher {
 		wfProfileOut( __METHOD__ );
 	}
 
-	/** Pass the request to our internal function.
+	/**
+	 * Pass the request to our internal function.
 	 * BEWARE! Data are passed as they have been supplied by the user,
 	 * they should be carefully handled in the function processing the
 	 * request.
+	 *
+	 * @param User $user
 	 */
-	function performAction() {
-		global $wgAjaxExportList, $wgOut;
-
+	function performAction( User $user ) {
 		if ( empty( $this->mode ) ) {
 			return;
 		}
 
 		wfProfileIn( __METHOD__ );
 
-		if ( ! in_array( $this->func_name, $wgAjaxExportList ) ) {
+		if ( !in_array( $this->func_name, $this->config->get( 'AjaxExportList' ) ) ) {
 			wfDebug( __METHOD__ . ' Bad Request for unknown function ' . $this->func_name . "\n" );
 
 			wfHttpError(
 				400,
 				'Bad Request',
-				"unknown function " . (string) $this->func_name
+				"unknown function " . $this->func_name
 			);
+		} elseif ( !User::isEveryoneAllowed( 'read' ) && !$user->isAllowed( 'read' ) ) {
+			wfHttpError(
+				403,
+				'Forbidden',
+				'You are not allowed to view pages.' );
 		} else {
 			wfDebug( __METHOD__ . ' dispatching ' . $this->func_name . "\n" );
 
-			if ( strpos( $this->func_name, '::' ) !== false ) {
-				$func = explode( '::', $this->func_name, 2 );
-			} else {
-				$func = $this->func_name;
-			}
-
 			try {
-				$result = call_user_func_array( $func, $this->args );
+				$result = call_user_func_array( $this->func_name, $this->args );
 
 				if ( $result === false || $result === null ) {
 					wfDebug( __METHOD__ . ' ERROR while dispatching '
@@ -127,7 +162,6 @@ class AjaxDispatcher {
 			}
 		}
 
-		$wgOut = null;
 		wfProfileOut( __METHOD__ );
 	}
 }

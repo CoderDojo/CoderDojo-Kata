@@ -23,18 +23,20 @@
  */
 
 $optionsWithArgs = RecompressTracked::getOptionsWithArgs();
-require( dirname( __FILE__ ) . '/../commandLine.inc' );
+require __DIR__ . '/../commandLine.inc';
 
 if ( count( $args ) < 1 ) {
 	echo "Usage: php recompressTracked.php [options] <cluster> [... <cluster>...]
-Moves blobs indexed by trackBlobs.php to a specified list of destination clusters, and recompresses them in the process. Restartable.
+Moves blobs indexed by trackBlobs.php to a specified list of destination clusters,
+and recompresses them in the process. Restartable.
 
 Options:
-	--procs <procs>         Set the number of child processes (default 1)
-	--copy-only             Copy only, do not update the text table. Restart without this option to complete.
-	--debug-log <file>      Log debugging data to the specified file
-	--info-log <file>       Log progress messages to the specified file
-	--critical-log <file>   Log error messages to the specified file
+	--procs <procs>       Set the number of child processes (default 1)
+	--copy-only           Copy only, do not update the text table. Restart
+	                      without this option to complete.
+	--debug-log <file>    Log debugging data to the specified file
+	--info-log <file>     Log progress messages to the specified file
+	--critical-log <file> Log error messages to the specified file
 ";
 	exit( 1 );
 }
@@ -42,23 +44,36 @@ Options:
 $job = RecompressTracked::newFromCommandLine( $args, $options );
 $job->execute();
 
+/**
+ * Maintenance script that moves blobs indexed by trackBlobs.php to a specified
+ * list of destination clusters, and recompresses them in the process.
+ *
+ * @ingroup Maintenance ExternalStorage
+ */
 class RecompressTracked {
-	var $destClusters;
-	var $batchSize = 1000;
-	var $orphanBatchSize = 1000;
-	var $reportingInterval = 10;
-	var $numProcs = 1;
-	var $useDiff, $pageBlobClass, $orphanBlobClass;
-	var $slavePipes, $slaveProcs, $prevSlaveId;
-	var $copyOnly = false;
-	var $isChild = false;
-	var $slaveId = false;
-	var $noCount = false;
-	var $debugLog, $infoLog, $criticalLog;
-	var $store;
+	public $destClusters;
+	public $batchSize = 1000;
+	public $orphanBatchSize = 1000;
+	public $reportingInterval = 10;
+	public $numProcs = 1;
+	public $useDiff, $pageBlobClass, $orphanBlobClass;
+	public $slavePipes, $slaveProcs, $prevSlaveId;
+	public $copyOnly = false;
+	public $isChild = false;
+	public $slaveId = false;
+	public $noCount = false;
+	public $debugLog, $infoLog, $criticalLog;
+	public $store;
 
-	static $optionsWithArgs = array( 'procs', 'slave-id', 'debug-log', 'info-log', 'critical-log' );
-	static $cmdLineOptionMap = array(
+	private static $optionsWithArgs = array(
+		'procs',
+		'slave-id',
+		'debug-log',
+		'info-log',
+		'critical-log'
+	);
+
+	private static $cmdLineOptionMap = array(
 		'no-count' => 'noCount',
 		'procs' => 'numProcs',
 		'copy-only' => 'copyOnly',
@@ -80,6 +95,7 @@ class RecompressTracked {
 				$jobOptions[$classOption] = $options[$cmdOption];
 			}
 		}
+
 		return new self( $jobOptions );
 	}
 
@@ -103,7 +119,6 @@ class RecompressTracked {
 		if ( $this->debugLog ) {
 			$this->logToFile( $msg, $this->debugLog );
 		}
-
 	}
 
 	function info( $msg ) {
@@ -169,18 +184,22 @@ class RecompressTracked {
 
 	/**
 	 * Make sure the tracking table exists and isn't empty
+	 * @return bool
 	 */
 	function checkTrackingTable() {
 		$dbr = wfGetDB( DB_SLAVE );
 		if ( !$dbr->tableExists( 'blob_tracking' ) ) {
 			$this->critical( "Error: blob_tracking table does not exist" );
+
 			return false;
 		}
 		$row = $dbr->selectRow( 'blob_tracking', '*', false, __METHOD__ );
 		if ( !$row ) {
 			$this->info( "Warning: blob_tracking table contains no rows, skipping this wiki." );
+
 			return false;
 		}
+
 		return true;
 	}
 
@@ -260,6 +279,7 @@ class RecompressTracked {
 			if ( isset( $pipes[$slaveId] ) ) {
 				$this->prevSlaveId = $slaveId;
 				$this->dispatchToSlave( $slaveId, $args );
+
 				return;
 			}
 		}
@@ -269,10 +289,12 @@ class RecompressTracked {
 
 	/**
 	 * Dispatch a command to a specified slave
+	 * @param int $slaveId
+	 * @param array|string $args
 	 */
 	function dispatchToSlave( $slaveId, $args ) {
 		$args = (array)$args;
-		$cmd = implode( ' ',  $args );
+		$cmd = implode( ' ', $args );
 		fwrite( $this->slavePipes[$slaveId], "$cmd\n" );
 	}
 
@@ -332,6 +354,9 @@ class RecompressTracked {
 
 	/**
 	 * Display a progress report
+	 * @param string $label
+	 * @param int $current
+	 * @param int $end
 	 */
 	function report( $label, $current, $end ) {
 		$this->numBatches++;
@@ -427,14 +452,14 @@ class RecompressTracked {
 			$args = explode( ' ', $line );
 			$cmd = array_shift( $args );
 			switch ( $cmd ) {
-			case 'doPage':
-				$this->doPage( intval( $args[0] ) );
-				break;
-			case 'doOrphanList':
-				$this->doOrphanList( array_map( 'intval', $args ) );
-				break;
-			case 'quit':
-				return;
+				case 'doPage':
+					$this->doPage( intval( $args[0] ) );
+					break;
+				case 'doOrphanList':
+					$this->doOrphanList( array_map( 'intval', $args ) );
+					break;
+				case 'quit':
+					return;
 			}
 			$this->waitForSlaves();
 		}
@@ -442,6 +467,8 @@ class RecompressTracked {
 
 	/**
 	 * Move tracked text in a given page
+	 *
+	 * @param int $pageId
 	 */
 	function doPage( $pageId ) {
 		$title = Title::newFromId( $pageId );
@@ -516,10 +543,13 @@ class RecompressTracked {
 	 *
 	 * Write the new URL to the text table and set the bt_moved flag.
 	 *
-	 * This is done in a single transaction to provide restartable behaviour
+	 * This is done in a single transaction to provide restartable behavior
 	 * without data loss.
 	 *
 	 * The transaction is kept short to reduce locking.
+	 *
+	 * @param int $textId
+	 * @param string $url
 	 */
 	function moveTextRow( $textId, $url ) {
 		if ( $this->copyOnly ) {
@@ -527,7 +557,7 @@ class RecompressTracked {
 			exit( 1 );
 		}
 		$dbw = wfGetDB( DB_MASTER );
-		$dbw->begin();
+		$dbw->begin( __METHOD__ );
 		$dbw->update( 'text',
 			array( // set
 				'old_text' => $url,
@@ -543,7 +573,7 @@ class RecompressTracked {
 			array( 'bt_text_id' => $textId ),
 			__METHOD__
 		);
-		$dbw->commit();
+		$dbw->commit( __METHOD__ );
 	}
 
 	/**
@@ -553,6 +583,8 @@ class RecompressTracked {
 	 *
 	 * This function completes any moves that only have done bt_new_url. This
 	 * can happen when the script is interrupted, or when --copy-only is used.
+	 *
+	 * @param array $conds
 	 */
 	function finishIncompleteMoves( $conds ) {
 		$dbr = wfGetDB( DB_SLAVE );
@@ -588,25 +620,32 @@ class RecompressTracked {
 
 	/**
 	 * Returns the name of the next target cluster
+	 * @return string
 	 */
 	function getTargetCluster() {
 		$cluster = next( $this->destClusters );
 		if ( $cluster === false ) {
 			$cluster = reset( $this->destClusters );
 		}
+
 		return $cluster;
 	}
 
 	/**
 	 * Gets a DB master connection for the given external cluster name
+	 * @param string $cluster
+	 * @return DatabaseBase
 	 */
 	function getExtDB( $cluster ) {
 		$lb = wfGetLBFactory()->getExternalLB( $cluster );
+
 		return $lb->getConnection( DB_MASTER );
 	}
 
 	/**
 	 * Move an orphan text_id to the new cluster
+	 *
+	 * @param array $textIds
 	 */
 	function doOrphanList( $textIds ) {
 		// Finish incomplete moves
@@ -666,13 +705,15 @@ class RecompressTracked {
  * Class to represent a recompression operation for a single CGZ blob
  */
 class CgzCopyTransaction {
-	var $parent;
-	var $blobClass;
-	var $cgz;
-	var $referrers;
+	public $parent;
+	public $blobClass;
+	public $cgz;
+	public $referrers;
 
 	/**
 	 * Create a transaction from a RecompressTracked object
+	 * @param RecompressTracked $parent
+	 * @param string $blobClass
 	 */
 	function __construct( $parent, $blobClass ) {
 		$this->blobClass = $blobClass;
@@ -684,6 +725,9 @@ class CgzCopyTransaction {
 	/**
 	 * Add text.
 	 * Returns false if it's ready to commit.
+	 * @param string $text
+	 * @param int $textId
+	 * @return bool
 	 */
 	function addItem( $text, $textId ) {
 		if ( !$this->cgz ) {
@@ -693,6 +737,7 @@ class CgzCopyTransaction {
 		$hash = $this->cgz->addItem( $text );
 		$this->referrers[$textId] = $hash;
 		$this->texts[$textId] = $text;
+
 		return $this->cgz->isHappy();
 	}
 
@@ -732,7 +777,7 @@ class CgzCopyTransaction {
 		//
 		// We do a locking read to prevent closer-run race conditions.
 		$dbw = wfGetDB( DB_MASTER );
-		$dbw->begin();
+		$dbw->begin( __METHOD__ );
 		$res = $dbw->select( 'blob_tracking',
 			array( 'bt_text_id', 'bt_moved' ),
 			array( 'bt_text_id' => array_keys( $this->referrers ) ),
@@ -756,6 +801,7 @@ class CgzCopyTransaction {
 					$this->critical( "Warning: concurrent operation detected, are there two conflicting " .
 						"processes running, doing the same job?" );
 				}
+
 				return;
 			}
 			$this->recompress();
@@ -766,7 +812,7 @@ class CgzCopyTransaction {
 		$store = $this->parent->store;
 		$targetDB = $store->getMaster( $targetCluster );
 		$targetDB->clearFlag( DBO_TRX ); // we manage the transactions
-		$targetDB->begin();
+		$targetDB->begin( __METHOD__ );
 		$baseUrl = $this->parent->store->store( $targetCluster, serialize( $this->cgz ) );
 
 		// Write the new URLs to the blob_tracking table
@@ -782,10 +828,10 @@ class CgzCopyTransaction {
 			);
 		}
 
-		$targetDB->commit();
+		$targetDB->commit( __METHOD__ );
 		// Critical section here: interruption at this point causes blob duplication
 		// Reversing the order of the commits would cause data loss instead
-		$dbw->commit();
+		$dbw->commit( __METHOD__ );
 
 		// Write the new URLs to the text table and set the moved flag
 		if ( !$this->parent->copyOnly ) {
@@ -796,4 +842,3 @@ class CgzCopyTransaction {
 		}
 	}
 }
-

@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"googleanalytics-desc": "Вметнува скрипта од Google Analytics (ga.js) во МедијаВики страници за следење",
+	"right-noanalytics": "Изземеност од следење на Google Аналитика"
+}

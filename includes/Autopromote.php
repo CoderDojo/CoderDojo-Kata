@@ -1,14 +1,35 @@
 <?php
 /**
+ * Automatic user rights promotion based on conditions specified
+ * in $wgAutopromote.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ */
+
+/**
  * This class checks if user can get extra rights
  * because of conditions specified in $wgAutopromote
  */
-
 class Autopromote {
 	/**
 	 * Get the groups for the given user based on $wgAutopromote.
 	 *
-	 * @param $user User The user to get the groups for
+	 * @param User $user The user to get the groups for
 	 * @return array Array of groups to promote to.
 	 */
 	public static function getAutopromoteGroups( User $user ) {
@@ -32,8 +53,8 @@ class Autopromote {
 	 *
 	 * Does not return groups the user already belongs to or has once belonged.
 	 *
-	 * @param $user The user to get the groups for
-	 * @param $event String key in $wgAutopromoteOnce (each one has groups/criteria)
+	 * @param User $user The user to get the groups for
+	 * @param string $event Key in $wgAutopromoteOnce (each one has groups/criteria)
 	 *
 	 * @return array Groups the user should be promoted to.
 	 *
@@ -78,8 +99,8 @@ class Autopromote {
 	 * This function evaluates the former type recursively, and passes off to
 	 * self::checkCondition for evaluation of the latter type.
 	 *
-	 * @param $cond Mixed: a condition, possibly containing other conditions
-	 * @param $user User The user to check the conditions against
+	 * @param mixed $cond A condition, possibly containing other conditions
+	 * @param User $user The user to check the conditions against
 	 * @return bool Whether the condition is true
 	 */
 	private static function recCheckCondition( $cond, User $user ) {
@@ -105,7 +126,8 @@ class Autopromote {
 				return false;
 			} elseif ( $cond[0] == '^' ) { // XOR (exactly one cond passes)
 				if ( count( $cond ) > 3 ) {
-					wfWarn( 'recCheckCondition() given XOR ("^") condition on three or more conditions. Check your $wgAutopromote and $wgAutopromoteOnce settings.' );
+					wfWarn( 'recCheckCondition() given XOR ("^") condition on three or more conditions.' .
+						' Check your $wgAutopromote and $wgAutopromoteOnce settings.' );
 				}
 				return self::recCheckCondition( $cond[1], $user )
 					xor self::recCheckCondition( $cond[2], $user );
@@ -119,8 +141,8 @@ class Autopromote {
 				return true;
 			}
 		}
-		# If we got here, the array presumably does not contain other condi-
-		# tions; it's not recursive.  Pass it off to self::checkCondition.
+		// If we got here, the array presumably does not contain other conditions;
+		// it's not recursive.  Pass it off to self::checkCondition.
 		if ( !is_array( $cond ) ) {
 			$cond = array( $cond );
 		}
@@ -131,11 +153,11 @@ class Autopromote {
 	/**
 	 * As recCheckCondition, but *not* recursive.  The only valid conditions
 	 * are those whose first element is APCOND_EMAILCONFIRMED/APCOND_EDITCOUNT/
-	 * APCOND_AGE.  Other types will throw an exception if no extension evalu-
-	 * ates them.
+	 * APCOND_AGE.  Other types will throw an exception if no extension evaluates them.
 	 *
-	 * @param $cond Array: A condition, which must not contain other conditions
-	 * @param $user User The user to check the condition against
+	 * @param array $cond A condition, which must not contain other conditions
+	 * @param User $user The user to check the condition against
+	 * @throws MWException
 	 * @return bool Whether the condition is true for the user
 	 */
 	private static function checkCondition( $cond, User $user ) {
@@ -144,7 +166,7 @@ class Autopromote {
 			return false;
 		}
 
-		switch( $cond[0] ) {
+		switch ( $cond[0] ) {
 			case APCOND_EMAILCONFIRMED:
 				if ( Sanitizer::validateEmail( $user->getEmail() ) ) {
 					if ( $wgEmailAuthentication ) {
@@ -166,16 +188,17 @@ class Autopromote {
 				$groups = array_slice( $cond, 1 );
 				return count( array_intersect( $groups, $user->getGroups() ) ) == count( $groups );
 			case APCOND_ISIP:
-				return $cond[1] == wfGetIP();
+				return $cond[1] == $user->getRequest()->getIP();
 			case APCOND_IPINRANGE:
-				return IP::isInRange( wfGetIP(), $cond[1] );
+				return IP::isInRange( $user->getRequest()->getIP(), $cond[1] );
 			case APCOND_BLOCKED:
 				return $user->isBlocked();
 			case APCOND_ISBOT:
 				return in_array( 'bot', User::getGroupPermissions( $user->getGroups() ) );
 			default:
 				$result = null;
-				wfRunHooks( 'AutopromoteCondition', array( $cond[0], array_slice( $cond, 1 ), $user, &$result ) );
+				wfRunHooks( 'AutopromoteCondition', array( $cond[0],
+					array_slice( $cond, 1 ), $user, &$result ) );
 				if ( $result === null ) {
 					throw new MWException( "Unrecognized condition {$cond[0]} for autopromotion!" );
 				}

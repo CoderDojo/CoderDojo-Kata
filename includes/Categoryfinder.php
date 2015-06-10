@@ -29,6 +29,10 @@ class Categoryfinder {
 	var $targets = array(); # Array of DBKEY category names
 	var $name2id = array();
 	var $mode; # "AND" or "OR"
+
+	/**
+	 * @var DatabaseBase
+	 */
 	var $dbr; # Read-DB slave
 
 	/**
@@ -202,4 +206,59 @@ class Categoryfinder {
 		}
 	}
 
+}
+>next
+		$layer = array();
+		$res = $this->dbr->select(
+			/* FROM   */ 'categorylinks',
+			/* SELECT */ '*',
+			/* WHERE  */ array( 'cl_from' => $this->next ),
+			__METHOD__ . '-1'
+		);
+		foreach ( $res as $o ) {
+			$k = $o->cl_to;
+
+			# Update parent tree
+			if ( !isset( $this->parents[$o->cl_from] ) ) {
+				$this->parents[$o->cl_from] = array();
+			}
+			$this->parents[$o->cl_from][$k] = $o;
+
+			# Ignore those we already have
+			if ( in_array( $k, $this->deadend ) ) {
+				continue;
+			}
+
+			if ( isset( $this->name2id[$k] ) ) {
+				continue;
+			}
+
+			# Hey, new category!
+			$layer[$k] = $k;
+		}
+
+		$this->next = array();
+
+		# Find the IDs of all category pages in $layer, if they exist
+		if ( count( $layer ) > 0 ) {
+			$res = $this->dbr->select(
+				/* FROM   */ 'page',
+				/* SELECT */ array( 'page_id', 'page_title' ),
+				/* WHERE  */ array( 'page_namespace' => NS_CATEGORY, 'page_title' => $layer ),
+				__METHOD__ . '-2'
+			);
+			foreach ( $res as $o ) {
+				$id = $o->page_id;
+				$name = $o->page_title;
+				$this->name2id[$name] = $id;
+				$this->next[] = $id;
+				unset( $layer[$name] );
+			}
+		}
+
+		# Mark dead ends
+		foreach ( $layer as $v ) {
+			$this->deadend[$v] = $v;
+		}
+	}
 }

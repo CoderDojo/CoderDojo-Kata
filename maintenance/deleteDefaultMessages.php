@@ -18,22 +18,27 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
+ * @file
  * @ingroup Maintenance
  */
 
-require_once( dirname( __FILE__ ) . '/Maintenance.php' );
+require_once __DIR__ . '/Maintenance.php';
 
+/**
+ * Maintenance script that deletes all pages in the MediaWiki namespace
+ * which were last edited by "MediaWiki default".
+ *
+ * @ingroup Maintenance
+ */
 class DeleteDefaultMessages extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Deletes all pages in the MediaWiki namespace" .
-								" which were last edited by \"MediaWiki default\"";
+			" which were last edited by \"MediaWiki default\"";
 	}
 
 	public function execute() {
-
-		$user = 'MediaWiki default';
-		$reason = 'No longer required';
+		global $wgUser;
 
 		$this->output( "Checking existence of old default messages..." );
 		$dbr = wfGetDB( DB_SLAVE );
@@ -46,17 +51,21 @@ class DeleteDefaultMessages extends Maintenance {
 			)
 		);
 
-		if( $dbr->numRows( $res ) == 0 ) {
+		if ( $dbr->numRows( $res ) == 0 ) {
 			# No more messages left
 			$this->output( "done.\n" );
+
 			return;
 		}
 
 		# Deletions will be made by $user temporarly added to the bot group
 		# in order to hide it in RecentChanges.
-		global $wgUser;
-		$wgUser = User::newFromName( $user );
-		$wgUser->addGroup( 'bot' );
+		$user = User::newFromName( 'MediaWiki default' );
+		if ( !$user ) {
+			$this->error( "Invalid username", true );
+		}
+		$user->addGroup( 'bot' );
+		$wgUser = $user;
 
 		# Handle deletion
 		$this->output( "\n...deleting old default messages (this may take a long time!)...", 'msg' );
@@ -66,15 +75,16 @@ class DeleteDefaultMessages extends Maintenance {
 			wfWaitForSlaves();
 			$dbw->ping();
 			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
-			$article = new Article( $title );
-			$dbw->begin();
-			$article->doDeleteArticle( $reason );
-			$dbw->commit();
+			$page = WikiPage::factory( $title );
+			$dbw->begin( __METHOD__ );
+			$error = ''; // Passed by ref
+			$page->doDeleteArticle( 'No longer required', false, 0, false, $error, $user );
+			$dbw->commit( __METHOD__ );
 		}
 
-		$this->output( 'done!', 'msg' );
+		$this->output( "done!\n", 'msg' );
 	}
 }
 
 $maintClass = "DeleteDefaultMessages";
-require_once( RUN_MAINTENANCE_IF_MAIN );
+require_once RUN_MAINTENANCE_IF_MAIN;

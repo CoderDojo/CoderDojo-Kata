@@ -26,11 +26,6 @@
  * @file
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	// Eclipse helper - will be ignored in production
-	require_once( 'ApiQueryBase.php' );
-}
-
 /**
  * Query module to enumerate all available pages.
  *
@@ -249,14 +244,16 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 		) );
 	}
 
-	protected function getExamples() {
+	public function getExamples() {
 		return array(
-			'Simple Use',
-			' Show a list of images starting at the letter "B"',
-			'  api.php?action=query&list=allimages&aifrom=B',
-			'Using as Generator',
-			' Show info about 4 images starting at the letter "T"',
-			'  api.php?action=query&generator=allimages&gailimit=4&gaifrom=T&prop=imageinfo',
+			'api.php?action=query&list=allimages&aifrom=B' => array(
+				'Simple Use',
+				'Show a list of images starting at the letter "B"',
+			),
+			'api.php?action=query&generator=allimages&gailimit=4&gaifrom=T&prop=imageinfo' => array(
+				'Using as Generator',
+				'Show info about 4 images starting at the letter "T"',
+			),
 		);
 	}
 
@@ -265,6 +262,150 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryAllimages.php 104449 2011-11-28 15:52:04Z reedy $';
+		return __CLASS__ . ': $Id$';
+	}
+}
+
+
+				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $info );
+				if ( !$fit ) {
+					if ( $params['sort'] == 'name' ) {
+						$this->setContinueEnumParameter( 'continue', $row->img_name );
+					} else {
+						$this->setContinueEnumParameter( 'continue', "$row->img_timestamp|$row->img_name" );
+					}
+					break;
+				}
+			} else {
+				$titles[] = Title::makeTitle( NS_FILE, $row->img_name );
+			}
+		}
+
+		if ( is_null( $resultPageSet ) ) {
+			$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'img' );
+		} else {
+			$resultPageSet->populateFromTitles( $titles );
+		}
+	}
+
+	public function getAllowedParams() {
+		return array(
+			'sort' => array(
+				ApiBase::PARAM_DFLT => 'name',
+				ApiBase::PARAM_TYPE => array(
+					'name',
+					'timestamp'
+				)
+			),
+			'dir' => array(
+				ApiBase::PARAM_DFLT => 'ascending',
+				ApiBase::PARAM_TYPE => array(
+					// sort=name
+					'ascending',
+					'descending',
+					// sort=timestamp
+					'newer',
+					'older'
+				)
+			),
+			'from' => null,
+			'to' => null,
+			'continue' => null,
+			'start' => array(
+				ApiBase::PARAM_TYPE => 'timestamp'
+			),
+			'end' => array(
+				ApiBase::PARAM_TYPE => 'timestamp'
+			),
+			'prop' => array(
+				ApiBase::PARAM_TYPE => ApiQueryImageInfo::getPropertyNames( $this->propertyFilter ),
+				ApiBase::PARAM_DFLT => 'timestamp|url',
+				ApiBase::PARAM_ISMULTI => true
+			),
+			'prefix' => null,
+			'minsize' => array(
+				ApiBase::PARAM_TYPE => 'integer',
+			),
+			'maxsize' => array(
+				ApiBase::PARAM_TYPE => 'integer',
+			),
+			'sha1' => null,
+			'sha1base36' => null,
+			'user' => array(
+				ApiBase::PARAM_TYPE => 'user'
+			),
+			'filterbots' => array(
+				ApiBase::PARAM_DFLT => 'all',
+				ApiBase::PARAM_TYPE => array(
+					'all',
+					'bots',
+					'nobots'
+				)
+			),
+			'mime' => null,
+			'limit' => array(
+				ApiBase::PARAM_DFLT => 10,
+				ApiBase::PARAM_TYPE => 'limit',
+				ApiBase::PARAM_MIN => 1,
+				ApiBase::PARAM_MAX => ApiBase::LIMIT_BIG1,
+				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
+			),
+		);
+	}
+
+	public function getParamDescription() {
+		$p = $this->getModulePrefix();
+
+		return array(
+			'sort' => 'Property to sort by',
+			'dir' => 'The direction in which to list',
+			'from' => "The image title to start enumerating from. Can only be used with {$p}sort=name",
+			'to' => "The image title to stop enumerating at. Can only be used with {$p}sort=name",
+			'continue' => 'When more results are available, use this to continue',
+			'start' => "The timestamp to start enumerating from. Can only be used with {$p}sort=timestamp",
+			'end' => "The timestamp to end enumerating. Can only be used with {$p}sort=timestamp",
+			'prop' => ApiQueryImageInfo::getPropertyDescriptions( $this->propertyFilter ),
+			'prefix' => "Search for all image titles that begin with this " .
+				"value. Can only be used with {$p}sort=name",
+			'minsize' => 'Limit to images with at least this many bytes',
+			'maxsize' => 'Limit to images with at most this many bytes',
+			'sha1' => "SHA1 hash of image. Overrides {$p}sha1base36",
+			'sha1base36' => 'SHA1 hash of image in base 36 (used in MediaWiki)',
+			'user' => "Only return files uploaded by this user. Can only be used " .
+				"with {$p}sort=timestamp. Cannot be used together with {$p}filterbots",
+			'filterbots' => "How to filter files uploaded by bots. Can only be " .
+				"used with {$p}sort=timestamp. Cannot be used together with {$p}user",
+			'mime' => 'What MIME type to search for. e.g. image/jpeg. Disabled in Miser Mode',
+			'limit' => 'How many images in total to return',
+		);
+	}
+
+	private $propertyFilter = array( 'archivename', 'thumbmime', 'uploadwarning' );
+
+	public function getDescription() {
+		return 'Enumerate all images sequentially.';
+	}
+
+	public function getExamples() {
+		return array(
+			'api.php?action=query&list=allimages&aifrom=B' => array(
+				'Simple Use',
+				'Show a list of files starting at the letter "B"',
+			),
+			'api.php?action=query&list=allimages&aiprop=user|timestamp|url&' .
+				'aisort=timestamp&aidir=older' => array(
+				'Simple Use',
+				'Show a list of recently uploaded files similar to Special:NewFiles',
+			),
+			'api.php?action=query&generator=allimages&gailimit=4&' .
+				'gaifrom=T&prop=imageinfo' => array(
+				'Using as Generator',
+				'Show info about 4 files starting at the letter "T"',
+			),
+		);
+	}
+
+	public function getHelpUrls() {
+		return 'https://www.mediawiki.org/wiki/API:Allimages';
 	}
 }

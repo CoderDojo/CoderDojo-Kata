@@ -3,7 +3,7 @@ design.txt
 This is a brief overview of the new design.
 
 More thorough and up-to-date information is available on the documentation
-wiki at http://www.mediawiki.org/
+wiki at https://www.mediawiki.org/
 
 Primary classes:
 
@@ -88,10 +88,6 @@ Naming/coding conventions:
     updated in a manner that enforces this at some time in the near future, and
     things will break. New code should use the standard method of setting
     visibilities as normal.
-
-  - Member variables are generally "mXxx" to distinguish them. This should make
-    it easier to spot errors of forgetting the required "$this->", which PHP
-    will happily accept by creating a new local variable rather than complaining.
 
   - Globals are particularly evil in PHP; it sets a lot of them automatically
     from cookies, query strings, and such, leading to namespace conflicts; when

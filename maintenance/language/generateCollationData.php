@@ -1,36 +1,59 @@
 <?php
+/**
+ * Maintenance script to generate first letter data files for Collation.php.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ * @ingroup MaintenanceLanguage
+ */
 
-require_once( dirname( __FILE__ ) .'/../Maintenance.php' );
+require_once __DIR__ . '/../Maintenance.php';
 
 /**
  * Generate first letter data files for Collation.php
+ *
+ * @ingroup MaintenanceLanguage
  */
 class GenerateCollationData extends Maintenance {
 	/** The directory with source data files in it */
-	var $dataDir;
+	public $dataDir;
 
 	/** The primary weights, indexed by codepoint */
-	var $weights;
+	public $weights;
 
-	/** 
+	/**
 	 * A hashtable keyed by codepoint, where presence indicates that a character
 	 * has a decomposition mapping. This makes it non-preferred for group header
 	 * selection.
 	 */
-	var $mappedChars;
+	public $mappedChars;
 
-	var $debugOutFile;
+	public $debugOutFile;
 
 	/**
 	 * Important tertiary weights from UTS #10 section 7.2
 	 */
 	const NORMAL_UPPERCASE = 0x08;
-	const NORMAL_HIRAGANA = 0X0E;
+	const NORMAL_HIRAGANA = 0x0E;
 
 	public function __construct() {
 		parent::__construct();
 		$this->addOption( 'data-dir', 'A directory on the local filesystem ' .
-			'containing allkeys.txt and ucd.all.grouped.xml from unicode.org', 
+			'containing allkeys.txt and ucd.all.grouped.xml from unicode.org',
 			false, true );
 		$this->addOption( 'debug-output', 'Filename for sending debug output to',
 			false, true );
@@ -38,18 +61,80 @@ class GenerateCollationData extends Maintenance {
 
 	public function execute() {
 		$this->dataDir = $this->getOption( 'data-dir', '.' );
-		if ( !file_exists( "{$this->dataDir}/allkeys.txt" ) ) {
-			$this->error( "Unable to find allkeys.txt. Please download it from " .
-				"http://www.unicode.org/Public/UCA/latest/allkeys.txt and specify " .
-				"its location with --data-dir=<DIR>" );
+
+		$allkeysPresent = file_exists( "{$this->dataDir}/allkeys.txt" );
+		$ucdallPresent = file_exists( "{$this->dataDir}/ucd.all.grouped.xml" );
+
+		// As of January 2013, these links work for all versions of Unicode
+		// between 5.1 and 6.2, inclusive.
+		$allkeysURL = "http://www.unicode.org/Public/UCA/<Unicode version>/allkeys.txt";
+		$ucdallURL = "http://www.unicode.org/Public/<Unicode version>/ucdxml/ucd.all.grouped.zip";
+
+		if ( !$allkeysPresent || !$ucdallPresent ) {
+			$icuVersion = IcuCollation::getICUVersion();
+			$unicodeVersion = IcuCollation::getUnicodeVersionForICU();
+
+			$error = "";
+
+			if ( !$allkeysPresent ) {
+				$error .= "Unable to find allkeys.txt. "
+					. "Download it and specify its location with --data-dir=<DIR>. "
+					. "\n\n";
+			}
+			if ( !$ucdallPresent ) {
+				$error .= "Unable to find ucd.all.grouped.xml. "
+					. "Download it, unzip, and specify its location with --data-dir=<DIR>. "
+					. "\n\n";
+			}
+
+			$versionKnown = false;
+			if ( !$icuVersion ) {
+				// Unknown version - either very old intl,
+				// or PHP < 5.3.7 which does not expose this information
+				$error .= "As MediaWiki could not determine the version of ICU library used by your PHP's "
+					. "intl extension it can't suggest which file version to download. "
+					. "This can be caused by running a very old version of intl or PHP < 5.3.7. "
+					. "If you are sure everything is all right, find out the ICU version "
+					. "by running phpinfo(), check what is the Unicode version it is using "
+					. "at http://site.icu-project.org/download, then try finding appropriate data file(s) at:";
+			} elseif ( version_compare( $icuVersion, "4.0", "<" ) ) {
+				// Extra old version
+				$error .= "You are using outdated version of ICU ($icuVersion), intended for "
+					. ( $unicodeVersion ? "Unicode $unicodeVersion" : "an unknown version of Unicode" )
+					. "; this file might not be avalaible for it, and it's not supported by MediaWiki. "
+					. " You are on your own; consider upgrading PHP's intl extension or try "
+					. "one of the files available at:";
+			} elseif ( version_compare( $icuVersion, "51.0", ">=" ) ) {
+				// Extra recent version
+				$error .= "You are using ICU $icuVersion, released after this script was last updated. "
+					. "Check what is the Unicode version it is using at http://site.icu-project.org/download . "
+					. "It can't be guaranteed everything will work, but appropriate file(s) should "
+					. "be available at:";
+			} else {
+				// ICU 4.0 to 50.x
+				$versionKnown = true;
+				$error .= "You are using ICU $icuVersion, intended for "
+					. ( $unicodeVersion ? "Unicode $unicodeVersion" : "an unknown version of Unicode" )
+					. ". Appropriate file(s) should be available at:";
+			}
+			$error .= "\n";
+
+			if ( $versionKnown && $unicodeVersion ) {
+				$allkeysURL = str_replace( "<Unicode version>", "$unicodeVersion.0", $allkeysURL );
+				$ucdallURL = str_replace( "<Unicode version>", "$unicodeVersion.0", $ucdallURL );
+			}
+
+			if ( !$allkeysPresent ) {
+				$error .= "* $allkeysURL\n";
+			}
+			if ( !$ucdallPresent ) {
+				$error .= "* $ucdallURL\n";
+			}
+
+			$this->error( $error );
 			exit( 1 );
 		}
-		if ( !file_exists( "{$this->dataDir}/ucd.all.grouped.xml" ) ) {
-			$this->error( "Unable to find ucd.all.grouped.xml. Please download it " .
-				"from http://www.unicode.org/Public/6.0.0/ucdxml/ucd.all.grouped.zip " .
-				"and specify its location with --data-dir=<DIR>" );
-			exit( 1 );
-		}
+
 		$debugOutFileName = $this->getOption( 'debug-output' );
 		if ( $debugOutFileName ) {
 			$this->debugOutFile = fopen( $debugOutFileName, 'w' );
@@ -72,8 +157,9 @@ class GenerateCollationData extends Maintenance {
 		// but do not skip a normal space (U+0020) since
 		// people like to use that as a fake no header symbol.
 		$category = substr( $data['gc'], 0, 1 );
-		if ( strpos( 'LNPS', $category ) === false 
-			&& $data['cp'] !== '0020' ) {
+		if ( strpos( 'LNPS', $category ) === false
+			&& $data['cp'] !== '0020'
+		) {
 			return;
 		}
 		$cp = hexdec( $data['cp'] );
@@ -84,7 +170,7 @@ class GenerateCollationData extends Maintenance {
 			return;
 		}
 
-		// Skip the composed Hangul syllables, we will use the bare Jamo 
+		// Skip the composed Hangul syllables, we will use the bare Jamo
 		// as first letters
 		if ( $data['block'] == 'Hangul Syllables' ) {
 			return;
@@ -93,8 +179,8 @@ class GenerateCollationData extends Maintenance {
 		// Calculate implicit weight per UTS #10 v6.0.0, sec 7.1.3
 		if ( $data['UIdeo'] === 'Y' ) {
 			if ( $data['block'] == 'CJK Unified Ideographs'
-				|| $data['block'] == 'CJK Compatibility Ideographs' )
-			{
+				|| $data['block'] == 'CJK Compatibility Ideographs'
+			) {
 				$base = 0xFB40;
 			} else {
 				$base = 0xFB80;
@@ -163,8 +249,8 @@ class GenerateCollationData extends Maintenance {
 			}
 			$this->weights[$cp] = $primary;
 			if ( $tertiary === '.0008'
-				|| $tertiary === '.000E' ) 
-			{
+				|| $tertiary === '.000E'
+			) {
 				$goodTertiaryChars[$cp] = true;
 			}
 		}
@@ -192,8 +278,8 @@ class GenerateCollationData extends Maintenance {
 		}
 
 		// If one character has a given primary weight sequence, and a second
-		// character has a longer primary weight sequence with an initial 
-		// portion equal to the first character, then remove the second 
+		// character has a longer primary weight sequence with an initial
+		// portion equal to the first character, then remove the second
 		// character. This avoids having characters like U+A732 (double A)
 		// polluting the basic latin sort area.
 
@@ -240,7 +326,7 @@ class GenerateCollationData extends Maintenance {
 			$char = codepointToUtf8( $cp );
 			$headerChars[] = $char;
 			if ( $primaryCollator->compare( $char, $prevChar ) <= 0 ) {
-				$numOutOfOrder ++;
+				$numOutOfOrder++;
 				/*
 				printf( "Out of order: U+%05X > U+%05X\n",
 					utf8ToCodepoint( $prevChar ),
@@ -262,12 +348,12 @@ class GenerateCollationData extends Maintenance {
 }
 
 class UcdXmlReader {
-	var $fileName;
-	var $callback;
-	var $groupAttrs;
-	var $xml;
-	var $blocks = array();
-	var $currentBlock;
+	public $fileName;
+	public $callback;
+	public $groupAttrs;
+	public $xml;
+	public $blocks = array();
+	public $currentBlock;
 
 	function __construct( $fileName ) {
 		$this->fileName = $fileName;
@@ -301,22 +387,25 @@ class UcdXmlReader {
 		$this->xml = new XMLReader;
 		$this->xml->open( $this->fileName );
 		if ( !$this->xml ) {
-			throw new MWException( __METHOD__.": unable to open {$this->fileName}" );
+			throw new MWException( __METHOD__ . ": unable to open {$this->fileName}" );
 		}
 		while ( $this->xml->name !== 'ucd' && $this->xml->read() );
 		$this->xml->read();
+
 		return $this->xml;
-	}	
+	}
 
 	/**
-	 * Read the attributes of the current element node and return them 
+	 * Read the attributes of the current element node and return them
 	 * as an array
+	 * @return array
 	 */
 	protected function readAttributes() {
 		$attrs = array();
 		while ( $this->xml->moveToNextAttribute() ) {
 			$attrs[$this->xml->name] = $this->xml->value;
 		}
+
 		return $attrs;
 	}
 
@@ -374,11 +463,10 @@ class UcdXmlReader {
 			}
 		}
 		$xml->close();
+
 		return $this->blocks;
 	}
-
 }
 
 $maintClass = 'GenerateCollationData';
-require_once( RUN_MAINTENANCE_IF_MAIN );
-
+require_once RUN_MAINTENANCE_IF_MAIN;

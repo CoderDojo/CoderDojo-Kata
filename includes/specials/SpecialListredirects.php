@@ -29,28 +29,36 @@
  * @ingroup SpecialPage
  */
 class ListredirectsPage extends QueryPage {
-
 	function __construct( $name = 'Listredirects' ) {
 		parent::__construct( $name );
 	}
 
-	function isExpensive() { return true; }
-	function isSyndicated() { return false; }
-	function sortDescending() { return false; }
+	function isExpensive() {
+		return true;
+	}
+
+	function isSyndicated() {
+		return false;
+	}
+
+	function sortDescending() {
+		return false;
+	}
 
 	function getQueryInfo() {
 		return array(
 			'tables' => array( 'p1' => 'page', 'redirect', 'p2' => 'page' ),
-			'fields' => array( 'p1.page_namespace AS namespace',
-					'p1.page_title AS title',
-					'rd_namespace',
-					'rd_title',
-					'rd_fragment',
-					'rd_interwiki',
-					'p2.page_id AS redirid' ),
+			'fields' => array( 'namespace' => 'p1.page_namespace',
+				'title' => 'p1.page_title',
+				'value' => 'p1.page_title',
+				'rd_namespace',
+				'rd_title',
+				'rd_fragment',
+				'rd_interwiki',
+				'redirid' => 'p2.page_id' ),
 			'conds' => array( 'p1.page_is_redirect' => 1 ),
 			'join_conds' => array( 'redirect' => array(
-					'LEFT JOIN', 'rd_from=p1.page_id' ),
+				'LEFT JOIN', 'rd_from=p1.page_id' ),
 				'p2' => array( 'LEFT JOIN', array(
 					'p2.page_namespace=rd_namespace',
 					'p2.page_title=rd_title' ) ) )
@@ -58,16 +66,20 @@ class ListredirectsPage extends QueryPage {
 	}
 
 	function getOrderFields() {
-		return array ( 'p1.page_namespace', 'p1.page_title' );
+		return array( 'p1.page_namespace', 'p1.page_title' );
 	}
 
 	/**
 	 * Cache page existence for performance
 	 *
-	 * @param $db DatabaseBase
-	 * @param $res ResultWrapper
+	 * @param DatabaseBase $db
+	 * @param ResultWrapper $res
 	 */
 	function preprocessResults( $db, $res ) {
+		if ( !$res->numRows() ) {
+			return;
+		}
+
 		$batch = new LinkBatch;
 		foreach ( $res as $row ) {
 			$batch->add( $row->namespace, $row->title );
@@ -76,10 +88,7 @@ class ListredirectsPage extends QueryPage {
 		$batch->execute();
 
 		// Back to start for display
-		if ( $db->numRows( $res ) > 0 ) {
-			// If there are no rows we get an error seeking.
-			$db->dataSeek( $res, 0 );
-		}
+		$res->seek( 0 );
 	}
 
 	protected function getRedirectTarget( $row ) {
@@ -90,15 +99,21 @@ class ListredirectsPage extends QueryPage {
 			);
 		} else {
 			$title = Title::makeTitle( $row->namespace, $row->title );
-			$article = new Article( $title );
+			$article = WikiPage::factory( $title );
+
 			return $article->getRedirectTarget();
 		}
 	}
 
+	/**
+	 * @param Skin $skin
+	 * @param object $result Result row
+	 * @return string
+	 */
 	function formatResult( $skin, $result ) {
 		# Make a link to the redirect itself
 		$rd_title = Title::makeTitle( $result->namespace, $result->title );
-		$rd_link = $skin->link(
+		$rd_link = Linker::link(
 			$rd_title,
 			null,
 			array(),
@@ -107,14 +122,19 @@ class ListredirectsPage extends QueryPage {
 
 		# Find out where the redirect leads
 		$target = $this->getRedirectTarget( $result );
-		if( $target ) {
-			global $wgLang;
+		if ( $target ) {
 			# Make a link to the destination page
-			$arr = $wgLang->getArrow() . $wgLang->getDirMark();
-			$targetLink = $skin->link( $target );
+			$lang = $this->getLanguage();
+			$arr = $lang->getArrow() . $lang->getDirMark();
+			$targetLink = Linker::link( $target );
+
 			return "$rd_link $arr $targetLink";
 		} else {
 			return "<del>$rd_link</del>";
 		}
+	}
+
+	protected function getGroupName() {
+		return 'pages';
 	}
 }

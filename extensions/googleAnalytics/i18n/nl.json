@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"SPQRobin",
+			"Siebrand"
+		]
+	},
+	"googleanalytics-desc": "Voegt het script voor Google Analytics (ga.js) toe in MediaWiki-pagina's voor volgen van gebruikershandelingen",
+	"right-noanalytics": "Vrijgesteld van volgen via Google Analytics"
+}

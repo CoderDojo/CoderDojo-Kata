@@ -1,7 +1,7 @@
 <?php
 /**
- * Script to convert history stubs that point to an external row to direct
- * external pointers.
+ * Convert history stubs that point to an external row to direct external
+ * pointers.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ define( 'REPORTING_INTERVAL', 100 );
 if ( !defined( 'MEDIAWIKI' ) ) {
 	$optionsWithArgs = array( 'm' );
 
-	require_once( dirname( __FILE__ ) . '/../commandLine.inc' );
+	require_once __DIR__ . '/../commandLine.inc';
 
 	resolveStubs();
 }
@@ -65,6 +65,9 @@ function resolveStubs() {
 
 /**
  * Resolve a history stub
+ * @param int $id
+ * @param string $stubText
+ * @param string $flags
  */
 function resolveStub( $id, $stubText, $flags ) {
 	$fname = 'resolveStub';
@@ -77,12 +80,18 @@ function resolveStub( $id, $stubText, $flags ) {
 
 	if ( strtolower( get_class( $stub ) ) !== 'historyblobstub' ) {
 		print "Error found object of class " . get_class( $stub ) . ", expecting historyblobstub\n";
+
 		return;
 	}
 
 	# Get the (maybe) external row
-	$externalRow = $dbr->selectRow( 'text', array( 'old_text' ),
-		array( 'old_id' => $stub->mOldId, 'old_flags' . $dbr->buildLike( $dbr->anyString(), 'external', $dbr->anyString() ) ),
+	$externalRow = $dbr->selectRow(
+		'text',
+		array( 'old_text' ),
+		array(
+			'old_id' => $stub->mOldId,
+			'old_flags' . $dbr->buildLike( $dbr->anyString(), 'external', $dbr->anyString() )
+		),
 		$fname
 	);
 
@@ -110,4 +119,3 @@ function resolveStub( $id, $stubText, $flags ) {
 		), $fname
 	);
 }
-

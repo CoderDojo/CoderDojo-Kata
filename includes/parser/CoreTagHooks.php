@@ -2,7 +2,23 @@
 /**
  * Tag hooks provided by MediaWiki core
  *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
  * @file
+ * @ingroup Parser
  */
 
 /**
@@ -11,10 +27,10 @@
  */
 class CoreTagHooks {
 	/**
-	 * @param $parser Parser
+	 * @param Parser $parser
 	 * @return void
 	 */
-	static function register( $parser ) {
+	public static function register( $parser ) {
 		global $wgRawHtml;
 		$parser->setHook( 'pre', array( __CLASS__, 'pre' ) );
 		$parser->setHook( 'nowiki', array( __CLASS__, 'nowiki' ) );
@@ -34,7 +50,7 @@ class CoreTagHooks {
 	 * @param Parser $parser
 	 * @return string HTML
 	 */
-	static function pre( $text, $attribs, $parser ) {
+	public static function pre( $text, $attribs, $parser ) {
 		// Backwards-compatibility hack
 		$content = StringUtils::delimiterReplace( '<nowiki>', '</nowiki>', '$1', $text, 'i' );
 
@@ -53,14 +69,15 @@ class CoreTagHooks {
 	 *
 	 * Uses undocumented extended tag hook return values, introduced in r61913.
 	 *
-	 * @param $content string
-	 * @param $attributes array
-	 * @param $parser Parser
+	 * @param string $content
+	 * @param array $attributes
+	 * @param Parser $parser
+	 * @throws MWException
 	 * @return array
 	 */
-	static function html( $content, $attributes, $parser ) {
+	public static function html( $content, $attributes, $parser ) {
 		global $wgRawHtml;
-		if( $wgRawHtml ) {
+		if ( $wgRawHtml ) {
 			return array( $content, 'markerType' => 'nowiki' );
 		} else {
 			throw new MWException( '<html> extension tag encountered unexpectedly' );
@@ -74,12 +91,12 @@ class CoreTagHooks {
 	 *
 	 * Uses undocumented extended tag hook return values, introduced in r61913.
 	 *
-	 * @param $content string
-	 * @param $attributes array
-	 * @param $parser Parser
+	 * @param string $content
+	 * @param array $attributes
+	 * @param Parser $parser
 	 * @return array
 	 */
-	static function nowiki( $content, $attributes, $parser ) {
+	public static function nowiki( $content, $attributes, $parser ) {
 		$content = strtr( $content, array( '-{' => '-&#123;', '}-' => '&#125;-' ) );
 		return array( Xml::escapeTagsOnly( $content ), 'markerType' => 'nowiki' );
 	}
@@ -90,7 +107,7 @@ class CoreTagHooks {
 	 * Renders a thumbnail list of the given images, with optional captions.
 	 * Full syntax documented on the wiki:
 	 *
-	 *   http://www.mediawiki.org/wiki/Help:Images#Gallery_syntax
+	 *   https://www.mediawiki.org/wiki/Help:Images#Gallery_syntax
 	 *
 	 * @todo break Parser::renderImageGallery out here too.
 	 *
@@ -99,7 +116,7 @@ class CoreTagHooks {
 	 * @param Parser $parser
 	 * @return string HTML
 	 */
-	static function gallery( $content, $attributes, $parser ) {
+	public static function gallery( $content, $attributes, $parser ) {
 		return $parser->renderImageGallery( $content, $attributes );
 	}
 }
