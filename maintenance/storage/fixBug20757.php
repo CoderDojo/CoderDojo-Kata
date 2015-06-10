@@ -21,13 +21,18 @@
  * @ingroup Maintenance ExternalStorage
  */
 
-require_once( dirname( __FILE__ ) . '/../Maintenance.php' );
+require_once __DIR__ . '/../Maintenance.php';
 
+/**
+ * Maintenance script to fix bug 20757.
+ *
+ * @ingroup Maintenance ExternalStorage
+ */
 class FixBug20757 extends Maintenance {
-	var $batchSize = 10000;
-	var $mapCache = array();
-	var $mapCacheSize = 0;
-	var $maxMapCacheSize = 1000000;
+	public $batchSize = 10000;
+	public $mapCache = array();
+	public $mapCacheSize = 0;
+	public $maxMapCacheSize = 1000000;
 
 	function __construct() {
 		parent::__construct();
@@ -52,14 +57,9 @@ class FixBug20757 extends Maintenance {
 
 		$totalRevs = $dbr->selectField( 'text', 'MAX(old_id)', false, __METHOD__ );
 
-		if ( $dbr->getType() == 'mysql'
-			&& version_compare( $dbr->getServerVersion(), '4.1.0', '>=' ) )
-		{
+		if ( $dbr->getType() == 'mysql' ) {
 			// In MySQL 4.1+, the binary field old_text has a non-working LOWER() function
 			$lowerLeft = 'LOWER(CONVERT(LEFT(old_text,22) USING latin1))';
-		} else {
-			// No CONVERT() in MySQL 4.0
-			$lowerLeft = 'LOWER(LEFT(old_text,22))';
 		}
 
 		while ( true ) {
@@ -213,7 +213,7 @@ class FixBug20757 extends Maintenance {
 
 				if ( !$dryRun ) {
 					// Reset the text row to point to the original copy
-					$dbw->begin();
+					$dbw->begin( __METHOD__ );
 					$dbw->update(
 						'text',
 						// SET
@@ -241,7 +241,7 @@ class FixBug20757 extends Maintenance {
 						),
 						__METHOD__
 					);
-					$dbw->commit();
+					$dbw->commit( __METHOD__ );
 					$this->waitForSlaves();
 				}
 
@@ -296,19 +296,26 @@ class FixBug20757 extends Maintenance {
 			$this->mapCache[$pageId] = $map;
 			$this->mapCacheSize += count( $map );
 		}
+
 		return $this->mapCache[$pageId];
 	}
 
 	/**
 	 * This is based on part of HistoryBlobStub::getText().
 	 * Determine if the text can be retrieved from the row in the normal way.
+	 * @param array $stub
+	 * @param stdClass $secondaryRow
+	 * @return bool
 	 */
 	function isUnbrokenStub( $stub, $secondaryRow ) {
 		$flags = explode( ',', $secondaryRow->old_flags );
 		$text = $secondaryRow->old_text;
 		if ( in_array( 'external', $flags ) ) {
 			$url = $text;
-			@list( /* $proto */ , $path ) = explode( '://', $url, 2 );
+			wfSuppressWarnings();
+			list( /* $proto */, $path ) = explode( '://', $url, 2 );
+			wfRestoreWarnings();
+
 			if ( $path == "" ) {
 				return false;
 			}
@@ -335,10 +342,10 @@ class FixBug20757 extends Maintenance {
 
 		$obj->uncompress();
 		$text = $obj->getItem( $stub['hash'] );
+
 		return $text !== false;
 	}
 }
 
 $maintClass = 'FixBug20757';
-require_once( RUN_MAINTENANCE_IF_MAIN );
-
+require_once RUN_MAINTENANCE_IF_MAIN;

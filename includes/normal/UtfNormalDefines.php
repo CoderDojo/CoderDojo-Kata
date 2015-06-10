@@ -2,16 +2,31 @@
 /**
  * Some constant definitions for the unicode normalization module.
  *
- * Note: these constants must all be resolvable at compile time by HipHop, 
+ * Note: these constants must all be resolvable at compile time by HipHop,
  * since this file will not be executed during request startup for a compiled
  * MediaWiki.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
  *
  * @file
  * @ingroup UtfNormal
  */
 
 define( 'UNICODE_HANGUL_FIRST', 0xac00 );
-define( 'UNICODE_HANGUL_LAST',  0xd7a3 );
+define( 'UNICODE_HANGUL_LAST', 0xd7a3 );
 
 define( 'UNICODE_HANGUL_LBASE', 0x1100 );
 define( 'UNICODE_HANGUL_VBASE', 0x1161 );
@@ -30,7 +45,6 @@ define( 'UNICODE_SURROGATE_FIRST', 0xd800 );
 define( 'UNICODE_SURROGATE_LAST', 0xdfff );
 define( 'UNICODE_MAX', 0x10ffff );
 define( 'UNICODE_REPLACEMENT', 0xfffd );
-
 
 define( 'UTF8_HANGUL_FIRST', "\xea\xb0\x80" /*codepointToUtf8( UNICODE_HANGUL_FIRST )*/ );
 define( 'UTF8_HANGUL_LAST', "\xed\x9e\xa3" /*codepointToUtf8( UNICODE_HANGUL_LAST )*/ );

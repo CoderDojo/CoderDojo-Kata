@@ -2,6 +2,21 @@
 /**
  * Output handler for the web installer.
  *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
  * @file
  * @ingroup Deployment
  */
@@ -18,6 +33,7 @@
  * @since 1.17
  */
 class WebInstallerOutput {
+
 	/**
 	 * The WebInstaller object this WebInstallerOutput is used by.
 	 *
@@ -27,7 +43,7 @@ class WebInstallerOutput {
 
 	/**
 	 * Buffered contents that haven't been output yet
-	 * @var String
+	 * @var string
 	 */
 	private $contents = '';
 
@@ -37,6 +53,9 @@ class WebInstallerOutput {
 	 */
 	private $headerDone = false;
 
+	/**
+	 * @var string
+	 */
 	public $redirectTarget;
 
 	/**
@@ -54,27 +73,39 @@ class WebInstallerOutput {
 	private $useShortHeader = false;
 
 	/**
-	 * Constructor.
-	 *
-	 * @param $parent WebInstaller
+	 * @param WebInstaller $parent
 	 */
 	public function __construct( WebInstaller $parent ) {
 		$this->parent = $parent;
 	}
 
+	/**
+	 * @param string $html
+	 */
 	public function addHTML( $html ) {
 		$this->contents .= $html;
 		$this->flush();
 	}
 
+	/**
+	 * @param string $text
+	 */
 	public function addWikiText( $text ) {
 		$this->addHTML( $this->parent->parse( $text ) );
 	}
 
+	/**
+	 * @param string $html
+	 */
 	public function addHTMLNoFlush( $html ) {
 		$this->contents .= $html;
 	}
 
+	/**
+	 * @param string $url
+	 *
+	 * @throws MWException
+	 */
 	public function redirect( $url ) {
 		if ( $this->headerDone ) {
 			throw new MWException( __METHOD__ . ' called after sending headers' );
@@ -88,36 +119,69 @@ class WebInstallerOutput {
 	}
 
 	/**
-	 * Get the raw vector CSS, flipping if needed
-	 * @param $dir String 'ltr' or 'rtl'
-	 * @return String
+	 * Get the stylesheet of the MediaWiki skin.
+	 *
+	 * @return string
 	 */
-	public function getCSS( $dir ) {
-		$skinDir = dirname( dirname( dirname( __FILE__ ) ) ) . '/skins';
-		$vectorCssFile = "$skinDir/vector/screen.css";
-		$configCssFile = "$skinDir/common/config.css";
-		$css = '';
-		wfSuppressWarnings();
-		$vectorCss = file_get_contents( $vectorCssFile );
-		$configCss = file_get_contents( $configCssFile );
-		wfRestoreWarnings();
-		if( !$vectorCss || !$configCss ) {
-			$css = "/** Your webserver cannot read $vectorCssFile or $configCssFile, please check file permissions */";
+	public function getCSS() {
+		global $wgStyleDirectory;
+
+		$moduleNames = array(
+			// See SkinTemplate::setupSkinUserCss
+			'mediawiki.legacy.shared',
+			// See Vector::setupSkinUserCss
+			'mediawiki.skinning.interface',
+		);
+
+		if ( file_exists( "$wgStyleDirectory/Vector/Vector.php" ) ) {
+			// Force loading Vector skin if available as a fallback skin
+			// for whatever ResourceLoader wants to have as the default.
+
+			// Include instead of require, as this will work without it, it will just look bad.
+			// We need the 'global' statement for $wgResourceModules because the Vector skin adds the
+			// definitions for its RL modules there that we use implicitly below.
+
+			// @codingStandardsIgnoreStart
+			global $wgResourceModules; // This is NOT UNUSED!
+			// @codingStandardsIgnoreEnd
+
+			include_once "$wgStyleDirectory/Vector/Vector.php";
+
+			$moduleNames[] = 'skins.vector.styles';
 		}
 
-		$css .= str_replace( 'images/', '../skins/vector/images/', $vectorCss ) . "\n" . str_replace( 'images/', '../skins/common/images/', $configCss );
-		if( $dir == 'rtl' ) {
-			$css = CSSJanus::transform( $css, true );
+		$moduleNames[] = 'mediawiki.legacy.config';
+
+		$resourceLoader = new ResourceLoader();
+		$rlContext = new ResourceLoaderContext( $resourceLoader, new FauxRequest( array(
+				'debug' => 'true',
+				'lang' => $this->getLanguageCode(),
+				'only' => 'styles',
+		) ) );
+
+		$styles = array();
+		foreach ( $moduleNames as $moduleName ) {
+			/** @var ResourceLoaderFileModule $module */
+			$module = $resourceLoader->getModule( $moduleName );
+
+			// Based on: ResourceLoaderFileModule::getStyles (without the DB query)
+			$styles = array_merge( $styles, ResourceLoader::makeCombinedStyles(
+				$module->readStyleFiles(
+					$module->getStyleFiles( $rlContext ),
+					$module->getFlip( $rlContext )
+			) ) );
 		}
-		return $css;
+
+		return implode( "\n", $styles );
 	}
 
 	/**
-	 * <link> to index.php?css=foobar for the <head>
-	 * @return String
+	 * "<link>" to index.php?css=1 for the "<head>"
+	 *
+	 * @return string
 	 */
-	private function getCssUrl( ) {
-		return Html::linkedStyle( $_SERVER['PHP_SELF'] . '?css=' . $this->getDir() );
+	private function getCssUrl() {
+		return Html::linkedStyle( $_SERVER['PHP_SELF'] . '?css=1' );
 	}
 
 	public function useShortHeader( $use = true ) {
@@ -144,11 +208,8 @@ class WebInstallerOutput {
 	 */
 	public function getDir() {
 		global $wgLang;
-		if( !is_object( $wgLang ) || !$wgLang->isRtl() ) {
-			return 'ltr';
-		} else {
-			return 'rtl';
-		}
+
+		return is_object( $wgLang ) ? $wgLang->getDir() : 'ltr';
 	}
 
 	/**
@@ -156,15 +217,12 @@ class WebInstallerOutput {
 	 */
 	public function getLanguageCode() {
 		global $wgLang;
-		if( !is_object( $wgLang ) ) {
-			return 'en';
-		} else {
-			return $wgLang->getCode();
-		}
+
+		return is_object( $wgLang ) ? $wgLang->getCode() : 'en';
 	}
 
 	/**
-	 * @return array
+	 * @return string[]
 	 */
 	public function getHeadAttribs() {
 		return array(
@@ -175,6 +233,7 @@ class WebInstallerOutput {
 
 	/**
 	 * Get whether the header has been output
+	 *
 	 * @return bool
 	 */
 	public function headerDone() {
@@ -183,40 +242,39 @@ class WebInstallerOutput {
 
 	public function outputHeader() {
 		$this->headerDone = true;
-		$dbTypes = $this->parent->getDBTypes();
-
 		$this->parent->request->response()->header( 'Content-Type: text/html; charset=utf-8' );
-		if (!$this->allowFrames) {
+
+		if ( !$this->allowFrames ) {
 			$this->parent->request->response()->header( 'X-Frame-Options: DENY' );
 		}
+
 		if ( $this->redirectTarget ) {
-			$this->parent->request->response()->header( 'Location: '.$this->redirectTarget );
+			$this->parent->request->response()->header( 'Location: ' . $this->redirectTarget );
+
 			return;
 		}
 
 		if ( $this->useShortHeader ) {
 			$this->outputShortHeader();
+
 			return;
 		}
-
 ?>
 <?php echo Html::htmlHeader( $this->getHeadAttribs() ); ?>
 <head>
 	<meta name="robots" content="noindex, nofollow" />
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<title><?php $this->outputTitle(); ?></title>
-	<?php echo Html::linkedStyle( '../skins/common/shared.css' ) . "\n"; ?>
 	<?php echo $this->getCssUrl() . "\n"; ?>
-	<?php echo Html::inlineScript(  "var dbTypes = " . Xml::encodeJsVar( $dbTypes ) ) . "\n"; ?>
 	<?php echo $this->getJQuery() . "\n"; ?>
-	<?php echo Html::linkedScript( '../skins/common/config.js' ) . "\n"; ?>
+	<?php echo Html::linkedScript( 'config.js' ) . "\n"; ?>
 </head>
 
 <?php echo Html::openElement( 'body', array( 'class' => $this->getDir() ) ) . "\n"; ?>
 <div id="mw-page-base"></div>
 <div id="mw-head-base"></div>
-<div id="content">
-<div id="bodyContent">
+<div id="content" class="mw-body">
+<div id="bodyContent" class="mw-body-content">
 
 <h1><?php $this->outputTitle(); ?></h1>
 <?php
@@ -224,33 +282,29 @@ class WebInstallerOutput {
 
 	public function outputFooter() {
 		if ( $this->useShortHeader ) {
-?>
-</body></html>
-<?php
+			echo Html::closeElement( 'body' ) . Html::closeElement( 'html' );
+
 			return;
 		}
 ?>
 
 </div></div>
 
-
 <div id="mw-panel">
 	<div class="portal" id="p-logo">
-	  <a style="background-image: url(../skins/common/images/mediawiki.png);"
-		href="http://www.mediawiki.org/"
+	  <a style="background-image: url(images/installer-logo.png);"
+		href="https://www.mediawiki.org/"
 		title="Main Page"></a>
 	</div>
-	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
 	<div class="portal"><div class="body">
 <?php
-	echo $this->parent->parse( wfMsgNoTrans( 'config-sidebar' ), true );
+	echo $this->parent->parse( wfMessage( 'config-sidebar' )->plain(), true );
 ?>
 	</div></div>
 </div>
 
-</body>
-</html>
 <?php
+		echo Html::closeElement( 'body' ) . Html::closeElement( 'html' );
 	}
 
 	public function outputShortHeader() {
@@ -262,7 +316,7 @@ class WebInstallerOutput {
 	<title><?php $this->outputTitle(); ?></title>
 	<?php echo $this->getCssUrl() . "\n"; ?>
 	<?php echo $this->getJQuery(); ?>
-	<?php echo Html::linkedScript( '../skins/common/config.js' ); ?>
+	<?php echo Html::linkedScript( 'config.js' ); ?>
 </head>
 
 <body style="background-image: none">
@@ -271,10 +325,14 @@ class WebInstallerOutput {
 
 	public function outputTitle() {
 		global $wgVersion;
-		echo htmlspecialchars( wfMsg( 'config-title', $wgVersion ) );
+		echo wfMessage( 'config-title', $wgVersion )->escaped();
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getJQuery() {
-		return Html::linkedScript( "../resources/jquery/jquery.js" );
+		return Html::linkedScript( "../resources/lib/jquery/jquery.js" );
 	}
+
 }

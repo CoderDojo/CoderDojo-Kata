@@ -34,7 +34,7 @@ if ( !defined( 'RUN_MAINTENANCE_IF_MAIN' ) ) {
 // Wasn't included from the file scope, halt execution (probably wanted the class)
 // If a class is using commandLine.inc (old school maintenance), they definitely
 // cannot be included and will proceed with execution
-if( !Maintenance::shouldExecute() && $maintClass != 'CommandLineInc' ) {
+if ( !Maintenance::shouldExecute() && $maintClass != 'CommandLineInc' ) {
 	return;
 }
 
@@ -44,6 +44,7 @@ if ( !$maintClass || !class_exists( $maintClass ) ) {
 }
 
 // Get an object to start us off
+/** @var Maintenance $maintenance */
 $maintenance = new $maintClass();
 
 // Basic sanity checks and such
@@ -53,52 +54,47 @@ $maintenance->setup();
 // to $maintenance->mSelf. Keep that here for b/c
 $self = $maintenance->getName();
 
-// Detect compiled mode
-if ( isset( $_SERVER['MW_COMPILED'] ) ) {
-	define( 'MW_COMPILED', 1 );
-} else {
-	# Get the MWInit class
-	require_once( "$IP/includes/Init.php" );
-	require_once( "$IP/includes/AutoLoader.php" );
-}
-
+# Start the autoloader, so that extensions can derive classes from core files
+require_once "$IP/includes/AutoLoader.php";
 # Stub the profiler
-require_once( MWInit::compiledPath( 'includes/profiler/Profiler.php' ) );
+require_once "$IP/includes/profiler/Profiler.php";
+
+# Start the profiler
+$wgProfiler = array();
+if ( file_exists( "$IP/StartProfiler.php" ) ) {
+	require "$IP/StartProfiler.php";
+}
 
 // Some other requires
-if ( !defined( 'MW_COMPILED' ) ) {
-	require_once( "$IP/includes/Defines.php" );
+require_once "$IP/includes/Defines.php";
+require_once "$IP/includes/DefaultSettings.php";
+
+# Load composer's autoloader if present
+if ( is_readable( "$IP/vendor/autoload.php" ) ) {
+	require_once "$IP/vendor/autoload.php";
 }
-require_once( MWInit::compiledPath( 'includes/DefaultSettings.php' ) );
 
 if ( defined( 'MW_CONFIG_CALLBACK' ) ) {
 	# Use a callback function to configure MediaWiki
-	MWFunction::call( MW_CONFIG_CALLBACK );
-} elseif ( file_exists( "$IP/../wmf-config/wikimedia-mode" ) ) {
-	// Load settings, using wikimedia-mode if needed
-	// @todo FIXME: Replace this hack with general farm-friendly code
-	# @todo FIXME: Wikimedia-specific stuff needs to go away to an ext
-	# Maybe a hook?
-	global $cluster;
-	$cluster = 'pmtpa';
-	require( MWInit::interpretedPath( '../wmf-config/wgConf.php' ) );
-	$maintenance->loadWikimediaSettings();
-	require( MWInit::interpretedPath( '../wmf-config/CommonSettings.php' ) );
+	call_user_func( MW_CONFIG_CALLBACK );
 } else {
-	require_once( $maintenance->loadSettings() );
+	// Require the configuration (probably LocalSettings.php)
+	require $maintenance->loadSettings();
 }
 
-if ( $maintenance->getDbType() === Maintenance::DB_ADMIN &&
-	is_readable( "$IP/AdminSettings.php" ) )
-{
-	require( MWInit::interpretedPath( 'AdminSettings.php' ) );
+if ( $maintenance->getDbType() === Maintenance::DB_NONE ) {
+	if ( $wgLocalisationCacheConf['storeClass'] === false
+		&& ( $wgLocalisationCacheConf['store'] == 'db'
+			|| ( $wgLocalisationCacheConf['store'] == 'detect' && !$wgCacheDirectory ) )
+	) {
+		$wgLocalisationCacheConf['storeClass'] = 'LCStoreNull';
+	}
 }
+
+$maintenance->setConfig( ConfigFactory::getDefaultInstance()->makeConfig( 'main' ) );
 $maintenance->finalSetup();
 // Some last includes
-require_once( MWInit::compiledPath( 'includes/Setup.php' ) );
-
-// Much much faster startup than creating a title object
-$wgTitle = null;
+require_once "$IP/includes/Setup.php";
 
 // Do the work
 try {
@@ -106,8 +102,18 @@ try {
 
 	// Potentially debug globals
 	$maintenance->globals();
+
+	// Perform deferred updates.
+	DeferredUpdates::doUpdates( 'commit' );
+
+	// log profiling info
+	wfLogProfilingData();
+
+	// Commit and close up!
+	$factory = wfGetLBFactory();
+	$factory->commitMasterChanges();
+	$factory->shutdown();
 } catch ( MWException $mwe ) {
-	echo( $mwe->getText() );
+	echo $mwe->getText();
 	exit( 1 );
 }
-

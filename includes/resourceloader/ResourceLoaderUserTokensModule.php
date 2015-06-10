@@ -1,5 +1,7 @@
 <?php
 /**
+ * Resource loader module for user tokens.
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -28,30 +30,41 @@ class ResourceLoaderUserTokensModule extends ResourceLoaderModule {
 
 	protected $origin = self::ORIGIN_CORE_INDIVIDUAL;
 
+	protected $targets = array( 'desktop', 'mobile' );
+
 	/* Methods */
 
 	/**
 	 * Fetch the tokens for the current user.
-	 * 
-	 * @param $context ResourceLoaderContext: Context object
-	 * @return Array: List of tokens keyed by token type
+	 *
+	 * @return array List of tokens keyed by token type
 	 */
-	protected function contextUserTokens( ResourceLoaderContext $context ) {
+	protected function contextUserTokens() {
 		global $wgUser;
 
 		return array(
-			'editToken' => $wgUser->edittoken(),
-			'watchToken' => ApiQueryInfo::getWatchToken(null, null),
+			'editToken' => $wgUser->getEditToken(),
+			'patrolToken' => $wgUser->getEditToken( 'patrol' ),
+			'watchToken' => $wgUser->getEditToken( 'watch' ),
 		);
 	}
 
 	/**
-	 * @param $context ResourceLoaderContext
+	 * @param ResourceLoaderContext $context
 	 * @return string
 	 */
 	public function getScript( ResourceLoaderContext $context ) {
-		return Xml::encodeJsCall( 'mw.user.tokens.set', 
-			array( $this->contextUserTokens( $context ) ) );
+		return Xml::encodeJsCall( 'mw.user.tokens.set',
+			array( $this->contextUserTokens() ),
+			ResourceLoader::inDebugMode()
+		);
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function supportsURLLoading() {
+		return false;
 	}
 
 	/**

@@ -21,45 +21,46 @@
  * @ingroup Maintenance
  */
 
-require( dirname( __FILE__ ) . '/Maintenance.php' );
+require_once __DIR__ . '/Maintenance.php';
 
+// @codingStandardsIgnoreStart MediaWiki.NamingConventions.ValidGlobalName.wgPrefix
 global $optionsWithArgs;
+// @codingStandardsIgnoreEnd
 if ( !isset( $optionsWithArgs ) ) {
 	$optionsWithArgs = array();
 }
 
 class CommandLineInc extends Maintenance {
 	public function __construct() {
+		// @codingStandardsIgnoreStart MediaWiki.NamingConventions.ValidGlobalName.wgPrefix
 		global $optionsWithArgs;
+		// @codingStandardsIgnoreEnd
 		parent::__construct();
 		foreach ( $optionsWithArgs as $name ) {
 			$this->addOption( $name, '', false, true );
 		}
 	}
 
-	public function getDbType() {
-		global $wgUseNormalUser;
-
-		return ( isset( $wgUseNormalUser ) && $wgUseNormalUser ) ?
-			Maintenance::DB_STD : Maintenance::DB_ADMIN;
-	}
-
 	/**
 	 * No help, it would just be misleading since it misses custom options
+	 * @param bool $force
 	 */
 	protected function maybeHelp( $force = false ) {
-		if ( !$force )
+		if ( !$force ) {
 			return;
+		}
 		parent::maybeHelp( true );
 	}
 
 	public function execute() {
+		// @codingStandardsIgnoreStart MediaWiki.NamingConventions.ValidGlobalName.wgPrefix
 		global $args, $options;
+		// @codingStandardsIgnoreEnd
 		$args = $this->mArgs;
 		$options = $this->mOptions;
 	}
 }
 
 $maintClass = 'CommandLineInc';
-require( RUN_MAINTENANCE_IF_MAIN );
+require RUN_MAINTENANCE_IF_MAIN;
 

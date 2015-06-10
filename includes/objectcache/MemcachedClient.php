@@ -1,5 +1,8 @@
 <?php
+// @codingStandardsIgnoreFile It's an external lib and it isn't. Let's not bother.
 /**
+ * Memcached client for PHP.
+ *
  * +---------------------------------------------------------------------------+
  * | memcached client, PHP                                                     |
  * +---------------------------------------------------------------------------+
@@ -53,9 +56,9 @@
  *              'compress_threshold' => 10240,
  *              'persistent' => true));
  *
- * $mc->add('key', array('some', 'array'));
- * $mc->replace('key', 'some random string');
- * $val = $mc->get('key');
+ * $mc->add( 'key', array( 'some', 'array' ) );
+ * $mc->replace( 'key', 'some random string' );
+ * $val = $mc->get( 'key' );
  *
  * @author  Ryan T. Dean <rtdean@cytherianage.net>
  * @version 0.1.2
@@ -97,14 +100,13 @@ class MWMemcached {
 
 	// }}}
 
-
 	/**
 	 * Command statistics
 	 *
-	 * @var     array
-	 * @access  public
+	 * @var array
+	 * @access public
 	 */
-	var $stats;
+	public $stats;
 
 	// }}}
 	// {{{ private
@@ -112,124 +114,124 @@ class MWMemcached {
 	/**
 	 * Cached Sockets that are connected
 	 *
-	 * @var     array
-	 * @access  private
+	 * @var array
+	 * @access private
 	 */
-	var $_cache_sock;
+	public $_cache_sock;
 
 	/**
 	 * Current debug status; 0 - none to 9 - profiling
 	 *
-	 * @var     boolean
-	 * @access  private
+	 * @var bool
+	 * @access private
 	 */
-	var $_debug;
+	public $_debug;
 
 	/**
 	 * Dead hosts, assoc array, 'host'=>'unixtime when ok to check again'
 	 *
-	 * @var     array
-	 * @access  private
+	 * @var array
+	 * @access private
 	 */
-	var $_host_dead;
+	public $_host_dead;
 
 	/**
 	 * Is compression available?
 	 *
-	 * @var     boolean
-	 * @access  private
+	 * @var bool
+	 * @access private
 	 */
-	var $_have_zlib;
+	public $_have_zlib;
 
 	/**
 	 * Do we want to use compression?
 	 *
-	 * @var     boolean
-	 * @access  private
+	 * @var bool
+	 * @access private
 	 */
-	var $_compress_enable;
+	public $_compress_enable;
 
 	/**
 	 * At how many bytes should we compress?
 	 *
-	 * @var     integer
-	 * @access  private
+	 * @var int
+	 * @access private
 	 */
-	var $_compress_threshold;
+	public $_compress_threshold;
 
 	/**
 	 * Are we using persistent links?
 	 *
-	 * @var     boolean
-	 * @access  private
+	 * @var bool
+	 * @access private
 	 */
-	var $_persistent;
+	public $_persistent;
 
 	/**
 	 * If only using one server; contains ip:port to connect to
 	 *
-	 * @var     string
-	 * @access  private
+	 * @var string
+	 * @access private
 	 */
-	var $_single_sock;
+	public $_single_sock;
 
 	/**
 	 * Array containing ip:port or array(ip:port, weight)
 	 *
-	 * @var     array
-	 * @access  private
+	 * @var array
+	 * @access private
 	 */
-	var $_servers;
+	public $_servers;
 
 	/**
 	 * Our bit buckets
 	 *
-	 * @var     array
-	 * @access  private
+	 * @var array
+	 * @access private
 	 */
-	var $_buckets;
+	public $_buckets;
 
 	/**
 	 * Total # of bit buckets we have
 	 *
-	 * @var     integer
-	 * @access  private
+	 * @var int
+	 * @access private
 	 */
-	var $_bucketcount;
+	public $_bucketcount;
 
 	/**
 	 * # of total servers we have
 	 *
-	 * @var     integer
-	 * @access  private
+	 * @var int
+	 * @access private
 	 */
-	var $_active;
+	public $_active;
 
 	/**
 	 * Stream timeout in seconds. Applies for example to fread()
 	 *
-	 * @var     integer
-	 * @access  private
+	 * @var int
+	 * @access private
 	 */
-	var $_timeout_seconds;
+	public $_timeout_seconds;
 
 	/**
 	 * Stream timeout in microseconds
 	 *
-	 * @var     integer
-	 * @access  private
+	 * @var int
+	 * @access private
 	 */
-	var $_timeout_microseconds;
+	public $_timeout_microseconds;
 
 	/**
 	 * Connect timeout in seconds
 	 */
-	var $_connect_timeout;
+	public $_connect_timeout;
 
 	/**
 	 * Number of connection attempts for each server
 	 */
-	var $_connect_attempts;
+	public $_connect_attempts;
 
 	// }}}
 	// }}}
@@ -240,9 +242,9 @@ class MWMemcached {
 	/**
 	 * Memcache initializer
 	 *
-	 * @param $args Array Associative array of settings
+	 * @param array $args Associative array of settings
 	 *
-	 * @return  mixed
+	 * @return mixed
 	 */
 	public function __construct( $args ) {
 		$this->set_servers( isset( $args['servers'] ) ? $args['servers'] : array() );
@@ -257,7 +259,7 @@ class MWMemcached {
 		$this->_host_dead = array();
 
 		$this->_timeout_seconds = 0;
-		$this->_timeout_microseconds = isset( $args['timeout'] ) ? $args['timeout'] : 100000;
+		$this->_timeout_microseconds = isset( $args['timeout'] ) ? $args['timeout'] : 500000;
 
 		$this->_connect_timeout = isset( $args['connect_timeout'] ) ? $args['connect_timeout'] : 0.1;
 		$this->_connect_attempts = 2;
@@ -270,15 +272,15 @@ class MWMemcached {
 	 * Adds a key/value to the memcache server if one isn't already set with
 	 * that key
 	 *
-	 * @param $key String: key to set with data
-	 * @param $val Mixed: value to store
-	 * @param $exp Integer: (optional) Expiration time. This can be a number of seconds
+	 * @param string $key Key to set with data
+	 * @param mixed $val Value to store
+	 * @param int $exp (optional) Expiration time. This can be a number of seconds
 	 * to cache for (up to 30 days inclusive).  Any timespans of 30 days + 1 second or
 	 * longer must be the timestamp of the time at which the mapping should expire. It
-	 * is safe to use timestamps in all cases, regardless of exipration
+	 * is safe to use timestamps in all cases, regardless of expiration
 	 * eg: strtotime("+3 hour")
 	 *
-	 * @return Boolean
+	 * @return bool
 	 */
 	public function add( $key, $val, $exp = 0 ) {
 		return $this->_set( 'add', $key, $val, $exp );
@@ -290,10 +292,10 @@ class MWMemcached {
 	/**
 	 * Decrease a value stored on the memcache server
 	 *
-	 * @param $key String: key to decrease
-	 * @param $amt Integer: (optional) amount to decrease
+	 * @param string $key Key to decrease
+	 * @param int $amt (optional) amount to decrease
 	 *
-	 * @return Mixed: FALSE on failure, value on success
+	 * @return mixed False on failure, value on success
 	 */
 	public function decr( $key, $amt = 1 ) {
 		return $this->_incrdecr( 'decr', $key, $amt );
@@ -305,10 +307,10 @@ class MWMemcached {
 	/**
 	 * Deletes a key from the server, optionally after $time
 	 *
-	 * @param $key String: key to delete
-	 * @param $time Integer: (optional) how long to wait before deleting
+	 * @param string $key Key to delete
+	 * @param int $time (optional) how long to wait before deleting
 	 *
-	 * @return Boolean: TRUE on success, FALSE on failure
+	 * @return bool True on success, false on failure
 	 */
 	public function delete( $key, $time = 0 ) {
 		if ( !$this->_active ) {
@@ -328,27 +330,36 @@ class MWMemcached {
 			$this->stats['delete'] = 1;
 		}
 		$cmd = "delete $key $time\r\n";
-		if( !$this->_safe_fwrite( $sock, $cmd, strlen( $cmd ) ) ) {
-			$this->_dead_sock( $sock );
+		if ( !$this->_fwrite( $sock, $cmd ) ) {
 			return false;
 		}
-		$res = trim( fgets( $sock ) );
+		$res = $this->_fgets( $sock );
 
 		if ( $this->_debug ) {
 			$this->_debugprint( sprintf( "MemCache: delete %s (%s)\n", $key, $res ) );
 		}
 
-		if ( $res == "DELETED" ) {
+		if ( $res == "DELETED" || $res == "NOT_FOUND" ) {
 			return true;
 		}
+
 		return false;
 	}
 
+	/**
+	 * @param string $key
+	 * @param int $timeout
+	 * @return bool
+	 */
 	public function lock( $key, $timeout = 0 ) {
 		/* stub */
 		return true;
 	}
 
+	/**
+	 * @param string $key
+	 * @return bool
+	 */
 	public function unlock( $key ) {
 		/* stub */
 		return true;
@@ -374,7 +385,7 @@ class MWMemcached {
 	/**
 	 * Enable / Disable compression
 	 *
-	 * @param $enable Boolean: TRUE to enable, FALSE to disable
+	 * @param bool $enable True to enable, false to disable
 	 */
 	public function enable_compress( $enable ) {
 		$this->_compress_enable = $enable;
@@ -396,15 +407,22 @@ class MWMemcached {
 	/**
 	 * Retrieves the value associated with the key from the memcache server
 	 *
-	 * @param $key Mixed: key to retrieve
+	 * @param array|string $key key to retrieve
+	 * @param float $casToken [optional]
 	 *
-	 * @return Mixed
+	 * @return mixed
 	 */
-	public function get( $key ) {
+	public function get( $key, &$casToken = null ) {
 		wfProfileIn( __METHOD__ );
 
 		if ( $this->_debug ) {
 			$this->_debugprint( "get($key)\n" );
+		}
+
+		if ( !is_array( $key ) && strval( $key ) === '' ) {
+			$this->_debugprint( "Skipping key which equals to an empty string" );
+			wfProfileOut( __METHOD__ );
+			return false;
 		}
 
 		if ( !$this->_active ) {
@@ -419,21 +437,21 @@ class MWMemcached {
 			return false;
 		}
 
+		$key = is_array( $key ) ? $key[1] : $key;
 		if ( isset( $this->stats['get'] ) ) {
 			$this->stats['get']++;
 		} else {
 			$this->stats['get'] = 1;
 		}
 
-		$cmd = "get $key\r\n";
-		if ( !$this->_safe_fwrite( $sock, $cmd, strlen( $cmd ) ) ) {
-			$this->_dead_sock( $sock );
+		$cmd = "gets $key\r\n";
+		if ( !$this->_fwrite( $sock, $cmd ) ) {
 			wfProfileOut( __METHOD__ );
 			return false;
 		}
 
 		$val = array();
-		$this->_load_items( $sock, $val );
+		$this->_load_items( $sock, $val, $casToken );
 
 		if ( $this->_debug ) {
 			foreach ( $val as $k => $v ) {
@@ -455,9 +473,9 @@ class MWMemcached {
 	/**
 	 * Get multiple keys from the server(s)
 	 *
-	 * @param $keys Array: keys to retrieve
+	 * @param array $keys Keys to retrieve
 	 *
-	 * @return Array
+	 * @return array
 	 */
 	public function get_multi( $keys ) {
 		if ( !$this->_active ) {
@@ -470,7 +488,7 @@ class MWMemcached {
 			$this->stats['get_multi'] = 1;
 		}
 		$sock_keys = array();
-
+		$socks = array();
 		foreach ( $keys as $key ) {
 			$sock = $this->get_sock( $key );
 			if ( !is_resource( $sock ) ) {
@@ -478,31 +496,30 @@ class MWMemcached {
 			}
 			$key = is_array( $key ) ? $key[1] : $key;
 			if ( !isset( $sock_keys[$sock] ) ) {
-				$sock_keys[$sock] = array();
+				$sock_keys[intval( $sock )] = array();
 				$socks[] = $sock;
 			}
-			$sock_keys[$sock][] = $key;
+			$sock_keys[intval( $sock )][] = $key;
 		}
 
+		$gather = array();
 		// Send out the requests
 		foreach ( $socks as $sock ) {
-			$cmd = 'get';
-			foreach ( $sock_keys[$sock] as $key ) {
+			$cmd = 'gets';
+			foreach ( $sock_keys[intval( $sock )] as $key ) {
 				$cmd .= ' ' . $key;
 			}
 			$cmd .= "\r\n";
 
-			if ( $this->_safe_fwrite( $sock, $cmd, strlen( $cmd ) ) ) {
+			if ( $this->_fwrite( $sock, $cmd ) ) {
 				$gather[] = $sock;
-			} else {
-				$this->_dead_sock( $sock );
 			}
 		}
 
 		// Parse responses
 		$val = array();
 		foreach ( $gather as $sock ) {
-			$this->_load_items( $sock, $val );
+			$this->_load_items( $sock, $val, $casToken );
 		}
 
 		if ( $this->_debug ) {
@@ -520,10 +537,10 @@ class MWMemcached {
 	/**
 	 * Increments $key (optionally) by $amt
 	 *
-	 * @param $key String: key to increment
-	 * @param $amt Integer: (optional) amount to increment
+	 * @param string $key Key to increment
+	 * @param int $amt (optional) amount to increment
 	 *
-	 * @return Integer: null if the key does not exist yet (this does NOT
+	 * @return int|null Null if the key does not exist yet (this does NOT
 	 * create new mappings if the key does not exist). If the key does
 	 * exist, this returns the new value for that key.
 	 */
@@ -537,15 +554,15 @@ class MWMemcached {
 	/**
 	 * Overwrites an existing value for key; only works if key is already set
 	 *
-	 * @param $key String: key to set value as
-	 * @param $value Mixed: value to store
-	 * @param $exp Integer: (optional) Expiration time. This can be a number of seconds
+	 * @param string $key Key to set value as
+	 * @param mixed $value Value to store
+	 * @param int $exp (optional) Expiration time. This can be a number of seconds
 	 * to cache for (up to 30 days inclusive).  Any timespans of 30 days + 1 second or
 	 * longer must be the timestamp of the time at which the mapping should expire. It
 	 * is safe to use timestamps in all cases, regardless of exipration
 	 * eg: strtotime("+3 hour")
 	 *
-	 * @return Boolean
+	 * @return bool
 	 */
 	public function replace( $key, $value, $exp = 0 ) {
 		return $this->_set( 'replace', $key, $value, $exp );
@@ -558,28 +575,23 @@ class MWMemcached {
 	 * Passes through $cmd to the memcache server connected by $sock; returns
 	 * output as an array (null array if no output)
 	 *
-	 * NOTE: due to a possible bug in how PHP reads while using fgets(), each
-	 *       line may not be terminated by a \r\n.  More specifically, my testing
-	 *       has shown that, on FreeBSD at least, each line is terminated only
-	 *       with a \n.  This is with the PHP flag auto_detect_line_endings set
-	 *       to falase (the default).
+	 * @param Resource $sock Socket to send command on
+	 * @param string $cmd Command to run
 	 *
-	 * @param $sock Resource: socket to send command on
-	 * @param $cmd String: command to run
-	 *
-	 * @return Array: output array
+	 * @return array Output array
 	 */
 	public function run_command( $sock, $cmd ) {
 		if ( !is_resource( $sock ) ) {
 			return array();
 		}
 
-		if ( !$this->_safe_fwrite( $sock, $cmd, strlen( $cmd ) ) ) {
+		if ( !$this->_fwrite( $sock, $cmd ) ) {
 			return array();
 		}
 
+		$ret = array();
 		while ( true ) {
-			$res = fgets( $sock );
+			$res = $this->_fgets( $sock );
 			$ret[] = $res;
 			if ( preg_match( '/^END/', $res ) ) {
 				break;
@@ -598,18 +610,40 @@ class MWMemcached {
 	 * Unconditionally sets a key to a given value in the memcache.  Returns true
 	 * if set successfully.
 	 *
-	 * @param $key String: key to set value as
-	 * @param $value Mixed: value to set
-	 * @param $exp Integer: (optional) Expiration time. This can be a number of seconds
+	 * @param string $key Key to set value as
+	 * @param mixed $value Value to set
+	 * @param int $exp (optional) Expiration time. This can be a number of seconds
 	 * to cache for (up to 30 days inclusive).  Any timespans of 30 days + 1 second or
 	 * longer must be the timestamp of the time at which the mapping should expire. It
 	 * is safe to use timestamps in all cases, regardless of exipration
 	 * eg: strtotime("+3 hour")
 	 *
-	 * @return Boolean: TRUE on success
+	 * @return bool True on success
 	 */
 	public function set( $key, $value, $exp = 0 ) {
 		return $this->_set( 'set', $key, $value, $exp );
+	}
+
+	// }}}
+	// {{{ cas()
+
+	/**
+	 * Sets a key to a given value in the memcache if the current value still corresponds
+	 * to a known, given value.  Returns true if set successfully.
+	 *
+	 * @param float $casToken Current known value
+	 * @param string $key Key to set value as
+	 * @param mixed $value Value to set
+	 * @param int $exp (optional) Expiration time. This can be a number of seconds
+	 * to cache for (up to 30 days inclusive).  Any timespans of 30 days + 1 second or
+	 * longer must be the timestamp of the time at which the mapping should expire. It
+	 * is safe to use timestamps in all cases, regardless of exipration
+	 * eg: strtotime("+3 hour")
+	 *
+	 * @return bool True on success
+	 */
+	public function cas( $casToken, $key, $value, $exp = 0 ) {
+		return $this->_set( 'cas', $key, $value, $exp, $casToken );
 	}
 
 	// }}}
@@ -618,7 +652,7 @@ class MWMemcached {
 	/**
 	 * Sets the compression threshold
 	 *
-	 * @param $thresh Integer: threshold to compress if larger than
+	 * @param int $thresh Threshold to compress if larger than
 	 */
 	public function set_compress_threshold( $thresh ) {
 		$this->_compress_threshold = $thresh;
@@ -630,9 +664,9 @@ class MWMemcached {
 	/**
 	 * Sets the debug flag
 	 *
-	 * @param $dbg Boolean: TRUE for debugging, FALSE otherwise
+	 * @param bool $dbg True for debugging, false otherwise
 	 *
-	 * @see     MWMemcached::__construct
+	 * @see MWMemcached::__construct
 	 */
 	public function set_debug( $dbg ) {
 		$this->_debug = $dbg;
@@ -644,9 +678,9 @@ class MWMemcached {
 	/**
 	 * Sets the server list to distribute key gets and puts between
 	 *
-	 * @param $list Array of servers to connect to
+	 * @param array $list Array of servers to connect to
 	 *
-	 * @see     MWMemcached::__construct()
+	 * @see MWMemcached::__construct()
 	 */
 	public function set_servers( $list ) {
 		$this->_servers = $list;
@@ -663,8 +697,8 @@ class MWMemcached {
 	/**
 	 * Sets the timeout for new connections
 	 *
-	 * @param $seconds Integer: number of seconds
-	 * @param $microseconds Integer: number of microseconds
+	 * @param int $seconds Number of seconds
+	 * @param int $microseconds Number of microseconds
 	 */
 	public function set_timeout( $seconds, $microseconds ) {
 		$this->_timeout_seconds = $seconds;
@@ -679,9 +713,9 @@ class MWMemcached {
 	/**
 	 * Close the specified socket
 	 *
-	 * @param $sock String: socket to close
+	 * @param string $sock Socket to close
 	 *
-	 * @access  private
+	 * @access private
 	 */
 	function _close_sock( $sock ) {
 		$host = array_search( $sock, $this->_cache_sock );
@@ -695,18 +729,18 @@ class MWMemcached {
 	/**
 	 * Connects $sock to $host, timing out after $timeout
 	 *
-	 * @param $sock Integer: socket to connect
-	 * @param $host String: Host:IP to connect to
+	 * @param int $sock Socket to connect
+	 * @param string $host Host:IP to connect to
 	 *
-	 * @return  boolean
-	 * @access  private
+	 * @return bool
+	 * @access private
 	 */
 	function _connect_sock( &$sock, $host ) {
-		list( $ip, $port ) = explode( ':', $host );
+		list( $ip, $port ) = preg_split( '/:(?=\d)/', $host );
 		$sock = false;
 		$timeout = $this->_connect_timeout;
 		$errno = $errstr = null;
-		for( $i = 0; !$sock && $i < $this->_connect_attempts; $i++ ) {
+		for ( $i = 0; !$sock && $i < $this->_connect_attempts; $i++ ) {
 			wfSuppressWarnings();
 			if ( $this->_persistent == 1 ) {
 				$sock = pfsockopen( $ip, $port, $errno, $errstr, $timeout );
@@ -716,15 +750,19 @@ class MWMemcached {
 			wfRestoreWarnings();
 		}
 		if ( !$sock ) {
-			if ( $this->_debug ) {
-				$this->_debugprint( "Error connecting to $host: $errstr\n" );
-			}
+			$this->_error_log( "Error connecting to $host: $errstr\n" );
+			$this->_dead_host( $host );
 			return false;
 		}
 
 		// Initialise timeout
 		stream_set_timeout( $sock, $this->_timeout_seconds, $this->_timeout_microseconds );
 
+		// If the connection was persistent, flush the read buffer in case there
+		// was a previous incomplete request on this connection
+		if ( $this->_persistent ) {
+			$this->_flush_read_buffer( $sock );
+		}
 		return true;
 	}
 
@@ -734,15 +772,18 @@ class MWMemcached {
 	/**
 	 * Marks a host as dead until 30-40 seconds in the future
 	 *
-	 * @param $sock String: socket to mark as dead
+	 * @param string $sock Socket to mark as dead
 	 *
-	 * @access  private
+	 * @access private
 	 */
 	function _dead_sock( $sock ) {
 		$host = array_search( $sock, $this->_cache_sock );
 		$this->_dead_host( $host );
 	}
 
+	/**
+	 * @param string $host
+	 */
 	function _dead_host( $host ) {
 		$parts = explode( ':', $host );
 		$ip = $parts[0];
@@ -757,9 +798,9 @@ class MWMemcached {
 	/**
 	 * get_sock
 	 *
-	 * @param $key String: key to retrieve value for;
+	 * @param string $key Key to retrieve value for;
 	 *
-	 * @return Mixed: resource on success, false on failure
+	 * @return Resource|bool Resource on success, false on failure
 	 * @access private
 	 */
 	function get_sock( $key ) {
@@ -768,16 +809,15 @@ class MWMemcached {
 		}
 
 		if ( $this->_single_sock !== null ) {
-			$this->_flush_read_buffer( $this->_single_sock );
 			return $this->sock_to_host( $this->_single_sock );
 		}
 
 		$hv = is_array( $key ) ? intval( $key[0] ) : $this->_hashfunc( $key );
-
 		if ( $this->_buckets === null ) {
+			$bu = array();
 			foreach ( $this->_servers as $v ) {
 				if ( is_array( $v ) ) {
-					for( $i = 0; $i < $v[1]; $i++ ) {
+					for ( $i = 0; $i < $v[1]; $i++ ) {
 						$bu[] = $v[0];
 					}
 				} else {
@@ -789,11 +829,10 @@ class MWMemcached {
 		}
 
 		$realkey = is_array( $key ) ? $key[1] : $key;
-		for( $tries = 0; $tries < 20; $tries++ ) {
+		for ( $tries = 0; $tries < 20; $tries++ ) {
 			$host = $this->_buckets[$hv % $this->_bucketcount];
 			$sock = $this->sock_to_host( $host );
 			if ( is_resource( $sock ) ) {
-				$this->_flush_read_buffer( $sock );
 				return $sock;
 			}
 			$hv = $this->_hashfunc( $hv . $realkey );
@@ -808,13 +847,13 @@ class MWMemcached {
 	/**
 	 * Creates a hash integer based on the $key
 	 *
-	 * @param $key String: key to hash
+	 * @param string $key Key to hash
 	 *
-	 * @return Integer: hash value
+	 * @return int Hash value
 	 * @access private
 	 */
 	function _hashfunc( $key ) {
-		# Hash function must on [0,0x7ffffff]
+		# Hash function must be in [0,0x7ffffff]
 		# We take the first 31 bits of the MD5 hash, which unlike the hash
 		# function used in a previous version of this client, works
 		return hexdec( substr( md5( $key ), 0, 8 ) ) & 0x7fffffff;
@@ -826,11 +865,11 @@ class MWMemcached {
 	/**
 	 * Perform increment/decriment on $key
 	 *
-	 * @param $cmd String: command to perform
-	 * @param $key String: key to perform it on
-	 * @param $amt Integer: amount to adjust
+	 * @param string $cmd Command to perform
+	 * @param string|array $key Key to perform it on
+	 * @param int $amt Amount to adjust
 	 *
-	 * @return Integer: new value of $key
+	 * @return int New value of $key
 	 * @access private
 	 */
 	function _incrdecr( $cmd, $key, $amt = 1 ) {
@@ -849,11 +888,11 @@ class MWMemcached {
 		} else {
 			$this->stats[$cmd] = 1;
 		}
-		if ( !$this->_safe_fwrite( $sock, "$cmd $key $amt\r\n" ) ) {
-			return $this->_dead_sock( $sock );
+		if ( !$this->_fwrite( $sock, "$cmd $key $amt\r\n" ) ) {
+			return null;
 		}
 
-		$line = fgets( $sock );
+		$line = $this->_fgets( $sock );
 		$match = array();
 		if ( !preg_match( '/^(\d+)/', $line, $match ) ) {
 			return null;
@@ -867,60 +906,82 @@ class MWMemcached {
 	/**
 	 * Load items into $ret from $sock
 	 *
-	 * @param $sock Resource: socket to read from
-	 * @param $ret Array: returned values
+	 * @param Resource $sock Socket to read from
+	 * @param array $ret returned values
+	 * @param float $casToken [optional]
+	 * @return bool True for success, false for failure
 	 *
 	 * @access private
 	 */
-	function _load_items( $sock, &$ret ) {
+	function _load_items( $sock, &$ret, &$casToken = null ) {
+		$results = array();
+
 		while ( 1 ) {
-			$decl = fgets( $sock );
-			if ( $decl == "END\r\n" ) {
-				return true;
-			} elseif ( preg_match( '/^VALUE (\S+) (\d+) (\d+)\r\n$/', $decl, $match ) ) {
-				list( $rkey, $flags, $len ) = array( $match[1], $match[2], $match[3] );
-				$bneed = $len + 2;
-				$offset = 0;
+			$decl = $this->_fgets( $sock );
 
-				while ( $bneed > 0 ) {
-					$data = fread( $sock, $bneed );
-					$n = strlen( $data );
-					if ( $n == 0 ) {
-						break;
-					}
-					$offset += $n;
-					$bneed -= $n;
-					if ( isset( $ret[$rkey] ) ) {
-						$ret[$rkey] .= $data;
-					} else {
-						$ret[$rkey] = $data;
-					}
-				}
-
-				if ( $offset != $len + 2 ) {
-					// Something is borked!
-					if ( $this->_debug ) {
-						$this->_debugprint( sprintf( "Something is borked!  key %s expecting %d got %d length\n", $rkey, $len + 2, $offset ) );
-					}
-
-					unset( $ret[$rkey] );
-					$this->_close_sock( $sock );
+			if ( $decl === false ) {
+				/*
+				 * If nothing can be read, something is wrong because we know exactly when
+				 * to stop reading (right after "END") and we return right after that.
+				 */
+				return false;
+			} elseif ( preg_match( '/^VALUE (\S+) (\d+) (\d+) (\d+)$/', $decl, $match ) ) {
+				/*
+				 * Read all data returned. This can be either one or multiple values.
+				 * Save all that data (in an array) to be processed later: we'll first
+				 * want to continue reading until "END" before doing anything else,
+				 * to make sure that we don't leave our client in a state where it's
+				 * output is not yet fully read.
+				 */
+				$results[] = array(
+					$match[1], // rkey
+					$match[2], // flags
+					$match[3], // len
+					$match[4], // casToken
+					$this->_fread( $sock, $match[3] + 2 ), // data
+				);
+			} elseif ( $decl == "END" ) {
+				if ( count( $results ) == 0 ) {
 					return false;
 				}
 
-				if ( $this->_have_zlib && $flags & self::COMPRESSED ) {
-					$ret[$rkey] = gzuncompress( $ret[$rkey] );
+				/**
+				 * All data has been read, time to process the data and build
+				 * meaningful return values.
+				 */
+				foreach ( $results as $vars ) {
+					list( $rkey, $flags, $len, $casToken, $data ) = $vars;
+
+					if ( $data === false || substr( $data, -2 ) !== "\r\n" ) {
+						$this->_handle_error( $sock,
+							'line ending missing from data block from $1' );
+						return false;
+					}
+					$data = substr( $data, 0, -2 );
+					$ret[$rkey] = $data;
+
+					if ( $this->_have_zlib && $flags & self::COMPRESSED ) {
+						$ret[$rkey] = gzuncompress( $ret[$rkey] );
+					}
+
+					/*
+					 * This unserialize is the exact reason that we only want to
+					 * process data after having read until "END" (instead of doing
+					 * this right away): "unserialize" can trigger outside code:
+					 * in the event that $ret[$rkey] is a serialized object,
+					 * unserializing it will trigger __wakeup() if present. If that
+					 * function attempted to read from memcached (while we did not
+					 * yet read "END"), these 2 calls would collide.
+					 */
+					if ( $flags & self::SERIALIZED ) {
+						$ret[$rkey] = unserialize( $ret[$rkey] );
+					}
 				}
 
-				$ret[$rkey] = rtrim( $ret[$rkey] );
-
-				if ( $flags & self::SERIALIZED ) {
-					$ret[$rkey] = unserialize( $ret[$rkey] );
-				}
-
+				return true;
 			} else {
-				$this->_debugprint( "Error parsing memcached response\n" );
-				return 0;
+				$this->_handle_error( $sock, 'Error parsing response from $1' );
+				return false;
 			}
 		}
 	}
@@ -931,19 +992,20 @@ class MWMemcached {
 	/**
 	 * Performs the requested storage operation to the memcache server
 	 *
-	 * @param $cmd String: command to perform
-	 * @param $key String: key to act on
-	 * @param $val Mixed: what we need to store
-	 * @param $exp Integer: (optional) Expiration time. This can be a number of seconds
+	 * @param string $cmd Command to perform
+	 * @param string $key Key to act on
+	 * @param mixed $val What we need to store
+	 * @param int $exp (optional) Expiration time. This can be a number of seconds
 	 * to cache for (up to 30 days inclusive).  Any timespans of 30 days + 1 second or
 	 * longer must be the timestamp of the time at which the mapping should expire. It
 	 * is safe to use timestamps in all cases, regardless of exipration
 	 * eg: strtotime("+3 hour")
+	 * @param float $casToken [optional]
 	 *
-	 * @return Boolean
+	 * @return bool
 	 * @access private
 	 */
-	function _set( $cmd, $key, $val, $exp ) {
+	function _set( $cmd, $key, $val, $exp, $casToken = null ) {
 		if ( !$this->_active ) {
 			return false;
 		}
@@ -958,12 +1020,6 @@ class MWMemcached {
 		} else {
 			$this->stats[$cmd] = 1;
 		}
-		
-		// Memcached doesn't seem to handle very high TTL values very well,
-		// so clamp them at 30 days
-		if ( $exp > 2592000 ) {
-			$exp = 2592000;
-		}
 
 		$flags = 0;
 
@@ -977,9 +1033,9 @@ class MWMemcached {
 
 		$len = strlen( $val );
 
-		if ( $this->_have_zlib && $this->_compress_enable &&
-			 $this->_compress_threshold && $len >= $this->_compress_threshold )
-		{
+		if ( $this->_have_zlib && $this->_compress_enable
+			&& $this->_compress_threshold && $len >= $this->_compress_threshold
+		) {
 			$c_val = gzcompress( $val, 9 );
 			$c_len = strlen( $c_val );
 
@@ -992,11 +1048,17 @@ class MWMemcached {
 				$flags |= self::COMPRESSED;
 			}
 		}
-		if ( !$this->_safe_fwrite( $sock, "$cmd $key $flags $exp $len\r\n$val\r\n" ) ) {
-			return $this->_dead_sock( $sock );
+
+		$command = "$cmd $key $flags $exp $len";
+		if ( $casToken ) {
+			$command .= " $casToken";
 		}
 
-		$line = trim( fgets( $sock ) );
+		if ( !$this->_fwrite( $sock, "$command\r\n$val\r\n" ) ) {
+			return false;
+		}
+
+		$line = $this->_fgets( $sock );
 
 		if ( $this->_debug ) {
 			$this->_debugprint( sprintf( "%s %s (%s)\n", $cmd, $key, $line ) );
@@ -1013,9 +1075,9 @@ class MWMemcached {
 	/**
 	 * Returns the socket for the host
 	 *
-	 * @param $host String: Host:IP to get socket for
+	 * @param string $host Host:IP to get socket for
 	 *
-	 * @return Mixed: IO Stream or false
+	 * @return Resource|bool IO Stream or false
 	 * @access private
 	 */
 	function sock_to_host( $host ) {
@@ -1033,7 +1095,7 @@ class MWMemcached {
 		}
 
 		if ( !$this->_connect_sock( $sock, $host ) ) {
-			return $this->_dead_host( $host );
+			return null;
 		}
 
 		// Do not buffer writes
@@ -1044,58 +1106,149 @@ class MWMemcached {
 		return $this->_cache_sock[$host];
 	}
 
-	function _debugprint( $str ) {
-		print( $str );
+	/**
+	 * @param string $text
+	 */
+	function _debugprint( $text ) {
+		wfDebugLog( 'memcached', $text );
 	}
 
 	/**
-	 * Write to a stream, timing out after the correct amount of time
-	 *
-	 * @return Boolean: false on failure, true on success
+	 * @param string $text
 	 */
-	/*
-	function _safe_fwrite( $f, $buf, $len = false ) {
-		stream_set_blocking( $f, 0 );
-
-		if ( $len === false ) {
-			wfDebug( "Writing " . strlen( $buf ) . " bytes\n" );
-			$bytesWritten = fwrite( $f, $buf );
-		} else {
-			wfDebug( "Writing $len bytes\n" );
-			$bytesWritten = fwrite( $f, $buf, $len );
-		}
-		$n = stream_select( $r = null, $w = array( $f ), $e = null, 10, 0 );
-		#   $this->_timeout_seconds, $this->_timeout_microseconds );
-
-		wfDebug( "stream_select returned $n\n" );
-		stream_set_blocking( $f, 1 );
-		return $n == 1;
-		return $bytesWritten;
-	}*/
+	function _error_log( $text ) {
+		wfDebugLog( 'memcached-serious', "Memcached error: $text" );
+	}
 
 	/**
-	 * Original behaviour
+	 * Write to a stream. If there is an error, mark the socket dead.
+	 *
+	 * @param Resource $sock The socket
+	 * @param string $buf The string to write
+	 * @return bool True on success, false on failure
 	 */
-	function _safe_fwrite( $f, $buf, $len = false ) {
-		if ( $len === false ) {
-			$bytesWritten = fwrite( $f, $buf );
-		} else {
-			$bytesWritten = fwrite( $f, $buf, $len );
+	function _fwrite( $sock, $buf ) {
+		$bytesWritten = 0;
+		$bufSize = strlen( $buf );
+		while ( $bytesWritten < $bufSize ) {
+			$result = fwrite( $sock, $buf );
+			$data = stream_get_meta_data( $sock );
+			if ( $data['timed_out'] ) {
+				$this->_handle_error( $sock, 'timeout writing to $1' );
+				return false;
+			}
+			// Contrary to the documentation, fwrite() returns zero on error in PHP 5.3.
+			if ( $result === false || $result === 0 ) {
+				$this->_handle_error( $sock, 'error writing to $1' );
+				return false;
+			}
+			$bytesWritten += $result;
 		}
-		return $bytesWritten;
+
+		return true;
+	}
+
+	/**
+	 * Handle an I/O error. Mark the socket dead and log an error.
+	 *
+	 * @param Resource $sock
+	 * @param string $msg
+	 */
+	function _handle_error( $sock, $msg ) {
+		$peer = stream_socket_get_name( $sock, true /** remote **/ );
+		if ( strval( $peer ) === '' ) {
+			$peer = array_search( $sock, $this->_cache_sock );
+			if ( $peer === false ) {
+				$peer = '[unknown host]';
+			}
+		}
+		$msg = str_replace( '$1', $peer, $msg );
+		$this->_error_log( "$msg\n" );
+		$this->_dead_sock( $sock );
+	}
+
+	/**
+	 * Read the specified number of bytes from a stream. If there is an error,
+	 * mark the socket dead.
+	 *
+	 * @param Resource $sock The socket
+	 * @param int $len The number of bytes to read
+	 * @return string|bool The string on success, false on failure.
+	 */
+	function _fread( $sock, $len ) {
+		$buf = '';
+		while ( $len > 0 ) {
+			$result = fread( $sock, $len );
+			$data = stream_get_meta_data( $sock );
+			if ( $data['timed_out'] ) {
+				$this->_handle_error( $sock, 'timeout reading from $1' );
+				return false;
+			}
+			if ( $result === false ) {
+				$this->_handle_error( $sock, 'error reading buffer from $1' );
+				return false;
+			}
+			if ( $result === '' ) {
+				// This will happen if the remote end of the socket is shut down
+				$this->_handle_error( $sock, 'unexpected end of file reading from $1' );
+				return false;
+			}
+			$len -= strlen( $result );
+			$buf .= $result;
+		}
+		return $buf;
+	}
+
+	/**
+	 * Read a line from a stream. If there is an error, mark the socket dead.
+	 * The \r\n line ending is stripped from the response.
+	 *
+	 * @param Resource $sock The socket
+	 * @return string|bool The string on success, false on failure
+	 */
+	function _fgets( $sock ) {
+		$result = fgets( $sock );
+		// fgets() may return a partial line if there is a select timeout after
+		// a successful recv(), so we have to check for a timeout even if we
+		// got a string response.
+		$data = stream_get_meta_data( $sock );
+		if ( $data['timed_out'] ) {
+			$this->_handle_error( $sock, 'timeout reading line from $1' );
+			return false;
+		}
+		if ( $result === false ) {
+			$this->_handle_error( $sock, 'error reading line from $1' );
+			return false;
+		}
+		if ( substr( $result, -2 ) === "\r\n" ) {
+			$result = substr( $result, 0, -2 );
+		} elseif ( substr( $result, -1 ) === "\n" ) {
+			$result = substr( $result, 0, -1 );
+		} else {
+			$this->_handle_error( $sock, 'line ending missing in response from $1' );
+			return false;
+		}
+		return $result;
 	}
 
 	/**
 	 * Flush the read buffer of a stream
+	 * @param Resource $f
 	 */
 	function _flush_read_buffer( $f ) {
 		if ( !is_resource( $f ) ) {
 			return;
 		}
-		$n = stream_select( $r = array( $f ), $w = null, $e = null, 0, 0 );
+		$r = array( $f );
+		$w = null;
+		$e = null;
+		$n = stream_select( $r, $w, $e, 0, 0 );
 		while ( $n == 1 && !feof( $f ) ) {
 			fread( $f, 1024 );
-			$n = stream_select( $r = array( $f ), $w = null, $e = null, 0, 0 );
+			$r = array( $f );
+			$w = null;
+			$e = null;
+			$n = stream_select( $r, $w, $e, 0, 0 );
 		}
 	}
 
@@ -1104,12 +1257,7 @@ class MWMemcached {
 	// }}}
 }
 
-// vim: sts=3 sw=3 et
-
 // }}}
 
 class MemCachedClientforWiki extends MWMemcached {
-	function _debugprint( $text ) {
-		wfDebug( "memcached: $text" );
-	}
 }

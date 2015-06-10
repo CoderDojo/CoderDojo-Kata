@@ -30,29 +30,38 @@
  * @ingroup SpecialPage
  */
 class MostimagesPage extends ImageQueryPage {
-
 	function __construct( $name = 'Mostimages' ) {
 		parent::__construct( $name );
 	}
 
-	function isExpensive() { return true; }
-	function isSyndicated() { return false; }
+	function isExpensive() {
+		return true;
+	}
+
+	function isSyndicated() {
+		return false;
+	}
 
 	function getQueryInfo() {
-		return array (
-			'tables' => array ( 'imagelinks' ),
-			'fields' => array ( "'" . NS_FILE . "' AS namespace",
-					'il_to AS title',
-					'COUNT(*) AS value' ),
-			'options' => array ( 'GROUP BY' => 'il_to',
-					'HAVING' => 'COUNT(*) > 1' )
+		return array(
+			'tables' => array( 'imagelinks' ),
+			'fields' => array(
+				'namespace' => NS_FILE,
+				'title' => 'il_to',
+				'value' => 'COUNT(*)'
+			),
+			'options' => array(
+				'GROUP BY' => 'il_to',
+				'HAVING' => 'COUNT(*) > 1'
+			)
 		);
 	}
 
 	function getCellHtml( $row ) {
-		global $wgLang;
-		return wfMsgExt( 'nimagelinks',  array( 'parsemag', 'escape' ),
-			$wgLang->formatNum( $row->value ) ) . '<br />';
+		return $this->msg( 'nimagelinks' )->numParams( $row->value )->escaped() . '<br />';
 	}
 
+	protected function getGroupName() {
+		return 'highuse';
+	}
 }

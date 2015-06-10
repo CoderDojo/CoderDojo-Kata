@@ -3,7 +3,7 @@
  * Base classes for database dumpers
  *
  * Copyright © 2005 Brion Vibber <brion@pobox.com>
- * http://www.mediawiki.org/
+ * https://www.mediawiki.org/
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@
  * @ingroup Dump Maintenance
  */
 class DumpDBZip2Output extends DumpPipeOutput {
-	function DumpDBZip2Output( $file ) {
+	function __construct( $file ) {
 		parent::__construct( "dbzip2", $file );
 	}
 }
@@ -37,26 +37,47 @@ class DumpDBZip2Output extends DumpPipeOutput {
  * @ingroup Dump Maintenance
  */
 class BackupDumper {
-	var $reportingInterval = 100;
-	var $reporting = true;
-	var $pageCount = 0;
-	var $revCount  = 0;
-	var $server    = null; // use default
-	var $pages     = null; // all pages
-	var $skipHeader = false; // don't output <mediawiki> and <siteinfo>
-	var $skipFooter = false; // don't output </mediawiki>
-	var $startId    = 0;
-	var $endId      = 0;
-	var $sink       = null; // Output filters
-	var $stubText   = false; // include rev_text_id instead of text; for 2-pass dump
-	var $dumpUploads = false;
-	var $dumpUploadFileContents = false;
-	var $lastTime = 0;
-	var $pageCountLast = 0;
-	var $revCountLast = 0;
-	var $ID = 0;
+	public $reporting = true;
+	public $pages = null; // all pages
+	public $skipHeader = false; // don't output <mediawiki> and <siteinfo>
+	public $skipFooter = false; // don't output </mediawiki>
+	public $startId = 0;
+	public $endId = 0;
+	public $revStartId = 0;
+	public $revEndId = 0;
+	public $dumpUploads = false;
+	public $dumpUploadFileContents = false;
 
-	function BackupDumper( $args ) {
+	protected $reportingInterval = 100;
+	protected $pageCount = 0;
+	protected $revCount = 0;
+	protected $server = null; // use default
+	protected $sink = null; // Output filters
+	protected $lastTime = 0;
+	protected $pageCountLast = 0;
+	protected $revCountLast = 0;
+
+	protected $outputTypes = array();
+	protected $filterTypes = array();
+
+	protected $ID = 0;
+
+	/**
+	 * The dependency-injected database to use.
+	 *
+	 * @var DatabaseBase|null
+	 *
+	 * @see self::setDb
+	 */
+	protected $forcedDb = null;
+
+	/** @var LoadBalancer */
+	protected $lb;
+
+	// @todo Unused?
+	private $stubText = false; // include rev_text_id instead of text; for 2-pass dump
+
+	function __construct( $args ) {
 		$this->stderr = fopen( "php://stderr", "wt" );
 
 		// Built-in output and filter plugins
@@ -74,16 +95,16 @@ class BackupDumper {
 	}
 
 	/**
-	 * @param $name String
-	 * @param $class String: name of output filter plugin class
+	 * @param string $name
+	 * @param string $class Name of output filter plugin class
 	 */
 	function registerOutput( $name, $class ) {
 		$this->outputTypes[$name] = $class;
 	}
 
 	/**
-	 * @param $name String
-	 * @param $class String: name of filter plugin class
+	 * @param string $name
+	 * @param string $class Name of filter plugin class
 	 */
 	function registerFilter( $name, $class ) {
 		$this->filterTypes[$name] = $class;
@@ -92,21 +113,21 @@ class BackupDumper {
 	/**
 	 * Load a plugin and register it
 	 *
-	 * @param $class String: name of plugin class; must have a static 'register'
-	 *               method that takes a BackupDumper as a parameter.
-	 * @param $file String: full or relative path to the PHP file to load, or empty
+	 * @param string $class Name of plugin class; must have a static 'register'
+	 *   method that takes a BackupDumper as a parameter.
+	 * @param string $file Full or relative path to the PHP file to load, or empty
 	 */
 	function loadPlugin( $class, $file ) {
 		if ( $file != '' ) {
-			require_once( $file );
+			require_once $file;
 		}
 		$register = array( $class, 'register' );
 		call_user_func_array( $register, array( &$this ) );
 	}
 
 	/**
-	 * @param $args Array
-	 * @return Array
+	 * @param array $args
+	 * @return array
 	 */
 	function processArgs( $args ) {
 		$sink = null;
@@ -114,53 +135,53 @@ class BackupDumper {
 		foreach ( $args as $arg ) {
 			$matches = array();
 			if ( preg_match( '/^--(.+?)(?:=(.+?)(?::(.+?))?)?$/', $arg, $matches ) ) {
-				@list( /* $full */ , $opt, $val, $param ) = $matches;
-				switch( $opt ) {
-				case "plugin":
-					$this->loadPlugin( $val, $param );
-					break;
-				case "output":
-					if ( !is_null( $sink ) ) {
-						$sinks[] = $sink;
-					}
-					if ( !isset( $this->outputTypes[$val] ) ) {
-						$this->fatalError( "Unrecognized output sink type '$val'" );
-					}
-					$type = $this->outputTypes[$val];
-					$sink = new $type( $param );
-					break;
-				case "filter":
-					if ( is_null( $sink ) ) {
-						$sink = new DumpOutput();
-					}
-					if ( !isset( $this->filterTypes[$val] ) ) {
-						$this->fatalError( "Unrecognized filter type '$val'" );
-					}
-					$type = $this->filterTypes[$val];
-					$filter = new $type( $sink, $param );
+				wfSuppressWarnings();
+				list( /* $full */, $opt, $val, $param ) = $matches;
+				wfRestoreWarnings();
 
-					// references are lame in php...
-					unset( $sink );
-					$sink = $filter;
+				switch ( $opt ) {
+					case "plugin":
+						$this->loadPlugin( $val, $param );
+						break;
+					case "output":
+						if ( !is_null( $sink ) ) {
+							$sinks[] = $sink;
+						}
+						if ( !isset( $this->outputTypes[$val] ) ) {
+							$this->fatalError( "Unrecognized output sink type '$val'" );
+						}
+						$type = $this->outputTypes[$val];
+						$sink = new $type( $param );
+						break;
+					case "filter":
+						if ( is_null( $sink ) ) {
+							$sink = new DumpOutput();
+						}
+						if ( !isset( $this->filterTypes[$val] ) ) {
+							$this->fatalError( "Unrecognized filter type '$val'" );
+						}
+						$type = $this->filterTypes[$val];
+						$filter = new $type( $sink, $param );
 
-					break;
-				case "report":
-					$this->reportingInterval = intval( $val );
-					break;
-				case "server":
-					$this->server = $val;
-					break;
-				case "force-normal":
-					if ( !function_exists( 'utf8_normalize' ) ) {
-						wfDl( "php_utfnormal.so" );
+						// references are lame in php...
+						unset( $sink );
+						$sink = $filter;
+
+						break;
+					case "report":
+						$this->reportingInterval = intval( $val );
+						break;
+					case "server":
+						$this->server = $val;
+						break;
+					case "force-normal":
 						if ( !function_exists( 'utf8_normalize' ) ) {
-							$this->fatalError( "Failed to load UTF-8 normalization extension. " .
+							$this->fatalError( "UTF-8 normalization extension not loaded. " .
 								"Install or remove --force-normal parameter to use slower code." );
 						}
-					}
-					break;
-				default:
-					$this->processOption( $opt, $val, $param );
+						break;
+					default:
+						$this->processOption( $opt, $val, $param );
 				}
 			}
 		}
@@ -184,8 +205,9 @@ class BackupDumper {
 	function dump( $history, $text = WikiExporter::TEXT ) {
 		# Notice messages will foul up your XML output even if they're
 		# relatively harmless.
-		if ( ini_get( 'display_errors' ) )
+		if ( ini_get( 'display_errors' ) ) {
 			ini_set( 'display_errors', 'stderr' );
+		}
 
 		$this->initProgress( $history );
 
@@ -197,8 +219,9 @@ class BackupDumper {
 		$wrapper = new ExportProgressFilter( $this->sink, $this );
 		$exporter->setOutputSink( $wrapper );
 
-		if ( !$this->skipHeader )
+		if ( !$this->skipHeader ) {
 			$exporter->openStream();
+		}
 		# Log item dumps: all or by range
 		if ( $history & WikiExporter::LOGS ) {
 			if ( $this->startId || $this->endId ) {
@@ -206,8 +229,8 @@ class BackupDumper {
 			} else {
 				$exporter->allLogs();
 			}
-		# Page dumps: all or by page ID range
-		} else if ( is_null( $this->pages ) ) {
+		} elseif ( is_null( $this->pages ) ) {
+			# Page dumps: all or by page ID range
 			if ( $this->startId || $this->endId ) {
 				$exporter->pagesByRange( $this->startId, $this->endId );
 			} elseif ( $this->revStartId || $this->revEndId ) {
@@ -215,13 +238,14 @@ class BackupDumper {
 			} else {
 				$exporter->allPages();
 			}
-		# Dump of specific pages
 		} else {
+			# Dump of specific pages
 			$exporter->pagesByName( $this->pages );
 		}
 
-		if ( !$this->skipFooter )
+		if ( !$this->skipFooter ) {
 			$exporter->closeStream();
+		}
 
 		$this->report( true );
 	}
@@ -230,15 +254,18 @@ class BackupDumper {
 	 * Initialise starting time and maximum revision count.
 	 * We'll make ETA calculations based an progress, assuming relatively
 	 * constant per-revision rate.
-	 * @param $history Integer: WikiExporter::CURRENT or WikiExporter::FULL
+	 * @param int $history WikiExporter::CURRENT or WikiExporter::FULL
 	 */
 	function initProgress( $history = WikiExporter::FULL ) {
 		$table = ( $history == WikiExporter::CURRENT ) ? 'page' : 'revision';
 		$field = ( $history == WikiExporter::CURRENT ) ? 'page_id' : 'rev_id';
 
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = $this->forcedDb;
+		if ( $this->forcedDb === null ) {
+			$dbr = wfGetDB( DB_SLAVE );
+		}
 		$this->maxCount = $dbr->selectField( $table, "MAX($field)", '', __METHOD__ );
-		$this->startTime = wfTime();
+		$this->startTime = microtime( true );
 		$this->lastTime = $this->startTime;
 		$this->ID = getmypid();
 	}
@@ -247,16 +274,32 @@ class BackupDumper {
 	 * @todo Fixme: the --server parameter is currently not respected, as it
 	 * doesn't seem terribly easy to ask the load balancer for a particular
 	 * connection by name.
+	 * @return DatabaseBase
 	 */
 	function backupDb() {
+		if ( $this->forcedDb !== null ) {
+			return $this->forcedDb;
+		}
+
 		$this->lb = wfGetLBFactory()->newMainLB();
-		$db = $this->lb->getConnection( DB_SLAVE, 'backup' );
+		$db = $this->lb->getConnection( DB_SLAVE, 'dump' );
 
 		// Discourage the server from disconnecting us if it takes a long time
 		// to read out the big ol' batch query.
-		$db->setTimeout( 3600 * 24 );
+		$db->setSessionOptions( array( 'connTimeout' => 3600 * 24 ) );
 
 		return $db;
+	}
+
+	/**
+	 * Force the dump to use the provided database connection for database
+	 * operations, wherever possible.
+	 *
+	 * @param DatabaseBase|null $db (Optional) the database connection to use. If null, resort to
+	 *   use the globally provided ways to get database connections.
+	 */
+	function setDb( DatabaseBase $db = null ) {
+		$this->forcedDb = $db;
 	}
 
 	function __destruct() {
@@ -267,6 +310,7 @@ class BackupDumper {
 
 	function backupServer() {
 		global $wgDBserver;
+
 		return $this->server
 			? $this->server
 			: $wgDBserver;
@@ -290,9 +334,9 @@ class BackupDumper {
 	function showReport() {
 		if ( $this->reporting ) {
 			$now = wfTimestamp( TS_DB );
-			$nowts = wfTime();
-			$deltaAll = wfTime() - $this->startTime;
-			$deltaPart = wfTime() - $this->lastTime;
+			$nowts = microtime( true );
+			$deltaAll = $nowts - $this->startTime;
+			$deltaPart = $nowts - $this->lastTime;
 			$this->pageCountPart = $this->pageCount - $this->pageCountLast;
 			$this->revCountPart = $this->revCount - $this->revCountLast;
 
@@ -314,8 +358,13 @@ class BackupDumper {
 				$pageRatePart = '-';
 				$revRatePart = '-';
 			}
-			$this->progress( sprintf( "%s: %s (ID %d) %d pages (%0.1f|%0.1f/sec all|curr), %d revs (%0.1f|%0.1f/sec all|curr), ETA %s [max %d]",
-					$now, wfWikiID(), $this->ID, $this->pageCount, $pageRate, $pageRatePart, $this->revCount, $revRate, $revRatePart, $etats, $this->maxCount ) );
+			$this->progress( sprintf(
+				"%s: %s (ID %d) %d pages (%0.1f|%0.1f/sec all|curr), "
+					. "%d revs (%0.1f|%0.1f/sec all|curr), ETA %s [max %d]",
+				$now, wfWikiID(), $this->ID, $this->pageCount, $pageRate,
+				$pageRatePart, $this->revCount, $revRate, $revRatePart, $etats,
+				$this->maxCount
+			) );
 			$this->lastTime = $nowts;
 			$this->revCountLast = $this->revCount;
 		}
@@ -327,12 +376,12 @@ class BackupDumper {
 
 	function fatalError( $msg ) {
 		$this->progress( "$msg\n" );
-		die(1);
+		die( 1 );
 	}
 }
 
 class ExportProgressFilter extends DumpFilter {
-	function ExportProgressFilter( &$sink, &$progress ) {
+	function __construct( &$sink, &$progress ) {
 		parent::__construct( $sink );
 		$this->progress = $progress;
 	}

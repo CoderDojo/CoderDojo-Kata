@@ -22,8 +22,7 @@
  * @see wfWaitForSlaves()
  */
 
-require( dirname( __FILE__ ) . '/../commandLine.inc' );
-
+require __DIR__ . '/../commandLine.inc';
 
 if ( count( $args ) < 1 ) {
 	echo "Usage: php trackBlobs.php <cluster> [... <cluster>]\n";
@@ -37,12 +36,12 @@ $tracker->run();
 echo "All done.\n";
 
 class TrackBlobs {
-	var $clusters, $textClause;
-	var $doBlobOrphans;
-	var $trackedBlobs = array();
+	public $clusters, $textClause;
+	public $doBlobOrphans;
+	public $trackedBlobs = array();
 
-	var $batchSize = 1000;
-	var $reportingInterval = 10;
+	public $batchSize = 1000;
+	public $reportingInterval = 10;
 
 	function __construct( $clusters ) {
 		$this->clusters = $clusters;
@@ -113,7 +112,7 @@ class TrackBlobs {
 			$dbw->query( 'DROP TABLE ' . $dbw->tableName( 'blob_tracking' ) );
 			$dbw->query( 'DROP TABLE ' . $dbw->tableName( 'blob_orphans' ) );
 		}
-		$dbw->sourceFile( dirname( __FILE__ ) . '/blob_tracking.sql' );
+		$dbw->sourceFile( __DIR__ . '/blob_tracking.sql' );
 	}
 
 	function getTextClause() {
@@ -127,6 +126,7 @@ class TrackBlobs {
 				$this->textClause .= 'old_text' . $dbr->buildLike( "DB://$cluster/", $dbr->anyString() );
 			}
 		}
+
 		return $this->textClause;
 	}
 
@@ -134,6 +134,7 @@ class TrackBlobs {
 		if ( !preg_match( '!^DB://(\w+)/(\d+)(?:/([0-9a-fA-F]+)|)$!', $text, $m ) ) {
 			return false;
 		}
+
 		return array(
 			'cluster' => $m[1],
 			'id' => intval( $m[2] ),
@@ -306,6 +307,7 @@ class TrackBlobs {
 	function findOrphanBlobs() {
 		if ( !extension_loaded( 'gmp' ) ) {
 			echo "Can't find orphan blobs, need bitfield support provided by GMP.\n";
+
 			return;
 		}
 

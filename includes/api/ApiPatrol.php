@@ -24,33 +24,39 @@
  * @file
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	require_once ( 'ApiBase.php' );
-}
-
 /**
  * Allows user to patrol pages
  * @ingroup API
  */
 class ApiPatrol extends ApiBase {
 
-	public function __construct( $main, $action ) {
-		parent::__construct( $main, $action );
-	}
-
 	/**
 	 * Patrols the article or provides the reason the patrol failed.
 	 */
 	public function execute() {
-		global $wgUser;
-
 		$params = $this->extractRequestParams();
+		$this->requireOnlyOneParameter( $params, 'rcid', 'revid' );
 
-		$rc = RecentChange::newFromID( $params['rcid'] );
-		if ( !$rc instanceof RecentChange ) {
-			$this->dieUsageMsg( array( 'nosuchrcid', $params['rcid'] ) );
+		if ( isset( $params['rcid'] ) ) {
+			$rc = RecentChange::newFromID( $params['rcid'] );
+			if ( !$rc ) {
+				$this->dieUsageMsg( array( 'nosuchrcid', $params['rcid'] ) );
+			}
+		} else {
+			$rev = Revision::newFromId( $params['revid'] );
+			if ( !$rev ) {
+				$this->dieUsageMsg( array( 'nosuchrevid', $params['revid'] ) );
+			}
+			$rc = $rev->getRecentChange();
+			if ( !$rc ) {
+				$this->dieUsage(
+					'The revision ' . $params['revid'] . " can't be patrolled as it's too old",
+					'notpatrollable'
+				);
+			}
 		}
-		$retval = $rc->doMarkPatrolled( $wgUser );
+
+		$retval = $rc->doMarkPatrolled( $this->getUser() );
 
 		if ( $retval ) {
 			$this->dieUsageMsg( reset( $retval ) );
@@ -71,50 +77,38 @@ class ApiPatrol extends ApiBase {
 
 	public function getAllowedParams() {
 		return array(
-			'token' => null,
 			'rcid' => array(
-				ApiBase::PARAM_TYPE => 'integer',
-				ApiBase::PARAM_REQUIRED => true
+				ApiBase::PARAM_TYPE => 'integer'
+			),
+			'revid' => array(
+				ApiBase::PARAM_TYPE => 'integer'
 			),
 		);
 	}
 
 	public function getParamDescription() {
 		return array(
-			'token' => 'Patrol token obtained from list=recentchanges',
 			'rcid' => 'Recentchanges ID to patrol',
+			'revid' => 'Revision ID to patrol',
 		);
 	}
 
 	public function getDescription() {
-		return 'Patrol a page or revision';
-	}
-
-	public function getPossibleErrors() {
-		return array_merge( parent::getPossibleErrors(), array(
-			array( 'nosuchrcid', 'rcid' ),
-		) );
+		return 'Patrol a page or revision.';
 	}
 
 	public function needsToken() {
-		return true;
-	}
-
-	public function getTokenSalt() {
 		return 'patrol';
 	}
 
-	protected function getExamples() {
+	public function getExamples() {
 		return array(
-			'api.php?action=patrol&token=123abc&rcid=230672766'
+			'api.php?action=patrol&token=123ABC&rcid=230672766',
+			'api.php?action=patrol&token=123ABC&revid=230672766'
 		);
 	}
 
 	public function getHelpUrls() {
 		return 'https://www.mediawiki.org/wiki/API:Patrol';
-	}
-
-	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiPatrol.php 104449 2011-11-28 15:52:04Z reedy $';
 	}
 }

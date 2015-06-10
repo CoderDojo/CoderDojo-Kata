@@ -1,7 +1,7 @@
 <?php
 /**
- * Maintenance script to provide a better count of the number of articles
- * and update the site statistics table, if desired
+ * Provide a better count of the number of articles
+ * and update the site statistics table, if desired.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,8 +23,14 @@
  * @author Rob Church <robchur@gmail.com>
  */
 
-require_once( dirname( __FILE__ ) . '/Maintenance.php' );
+require_once __DIR__ . '/Maintenance.php';
 
+/**
+ * Maintenance script to provide a better count of the number of articles
+ * and update the site statistics table, if desired.
+ *
+ * @ingroup Maintenance
+ */
 class UpdateArticleCount extends Maintenance {
 
 	public function __construct() {
@@ -43,13 +49,19 @@ class UpdateArticleCount extends Maintenance {
 		if ( $this->hasOption( 'update' ) ) {
 			$this->output( "Updating site statistics table... " );
 			$dbw = wfGetDB( DB_MASTER );
-			$dbw->update( 'site_stats', array( 'ss_good_articles' => $result ), array( 'ss_row_id' => 1 ), __METHOD__ );
+			$dbw->update(
+				'site_stats',
+				array( 'ss_good_articles' => $result ),
+				array( 'ss_row_id' => 1 ),
+				__METHOD__
+			);
 			$this->output( "done.\n" );
 		} else {
-			$this->output( "To update the site statistics table, run the script with the --update option.\n" );
+			$this->output( "To update the site statistics table, run the script "
+				. "with the --update option.\n" );
 		}
 	}
 }
 
 $maintClass = "UpdateArticleCount";
-require_once( RUN_MAINTENANCE_IF_MAIN );
+require_once RUN_MAINTENANCE_IF_MAIN;

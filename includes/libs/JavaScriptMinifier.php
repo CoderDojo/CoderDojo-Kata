@@ -1,18 +1,21 @@
 <?php
+// @codingStandardsIgnoreFile File external to MediaWiki. Ignore coding conventions checks.
 /**
  * JavaScript Minifier
  *
+ * @file
+ * @author Paul Copperman <paul.copperman@gmail.com>
+ * @license Choose any of Apache, MIT, GPL, LGPL
+ */
+
+/**
  * This class is meant to safely minify javascript code, while leaving syntactically correct
  * programs intact. Other libraries, such as JSMin require a certain coding style to work
  * correctly. OTOH, libraries like jsminplus, that do parse the code correctly are rather
  * slow, because they construct a complete parse tree before outputting the code minified.
  * So this class is meant to allow arbitrary (but syntactically correct) input, while being
  * fast enough to be used for on-the-fly minifying.
- *
- * Author: Paul Copperman <paul.copperman@gmail.com>
- * License: choose any of Apache, MIT, GPL, LGPL
  */
-
 class JavaScriptMinifier {
 
 	/* Class constants */
@@ -57,7 +60,7 @@ class JavaScriptMinifier {
 	const TYPE_DO          = 15; // keywords: case, var, finally, else, do, try
 	const TYPE_FUNC        = 16; // keywords: function
 	const TYPE_LITERAL     = 17; // all literals, identifiers and unrecognised tokens
-	
+
 	// Sanity limit to avoid excessive memory usage
 	const STACK_LIMIT = 1000;
 
@@ -70,9 +73,9 @@ class JavaScriptMinifier {
 	 *       literals (e.g. quoted strings) longer than $maxLineLength are encountered
 	 *       or when required to guard against semicolon insertion.
 	 *
-	 * @param $s String JavaScript code to minify
-	 * @param $statementsOnOwnLine Bool Whether to put each statement on its own line
-	 * @param $maxLineLength Int Maximum length of a single line, or -1 for no maximum.
+	 * @param string $s JavaScript code to minify
+	 * @param bool $statementsOnOwnLine Whether to put each statement on its own line
+	 * @param int $maxLineLength Maximum length of a single line, or -1 for no maximum.
 	 * @return String Minified code
 	 */
 	public static function minify( $s, $statementsOnOwnLine = false, $maxLineLength = 1000 ) {
@@ -383,7 +386,7 @@ class JavaScriptMinifier {
 				self::TYPE_LITERAL    => true
 			)
 		);
-		
+
 		// Rules for when newlines should be inserted if
 		// $statementsOnOwnLine is enabled.
 		// $newlineBefore is checked before switching state,
@@ -484,22 +487,42 @@ class JavaScriptMinifier {
 					$end++;
 				}
 			} elseif(
+				$ch === '0'
+				&& ($pos + 1 < $length) && ($s[$pos + 1] === 'x' || $s[$pos + 1] === 'X' )
+			) {
+				// Hex numeric literal
+				$end++; // x or X
+				$len = strspn( $s, '0123456789ABCDEFabcdef', $end );
+				if ( !$len ) {
+					return self::parseError($s, $pos, 'Expected a hexadecimal number but found ' . substr( $s, $pos, 5 ) . '...' );
+				}
+				$end += $len;
+			} elseif(
 				ctype_digit( $ch )
 				|| ( $ch === '.' && $pos + 1 < $length && ctype_digit( $s[$pos + 1] ) )
 			) {
-				// Numeric literal. Search for the end of it, but don't care about [+-]exponent
-				// at the end, as the results of "numeric [+-] numeric" and "numeric" are
-				// identical to our state machine.
-				$end += strspn( $s, '0123456789ABCDEFabcdefXx.', $end );
-				while( $s[$end - 1] === '.' ) {
-					// Special case: When a numeric ends with a dot, we have to check the 
-					// literal for proper syntax
-					$decimal = strspn( $s, '0123456789', $pos, $end - $pos - 1 );
-					if( $decimal === $end - $pos - 1 ) {
-						break;
-					} else {
-						$end--;
+				$end += strspn( $s, '0123456789', $end );
+				$decimal = strspn( $s, '.', $end );
+				if ($decimal) {
+					if ( $decimal > 2 ) {
+						return self::parseError($s, $end, 'The number has too many decimal points' );
 					}
+					$end += strspn( $s, '0123456789', $end + 1 ) + $decimal;
+				}
+				$exponent = strspn( $s, 'eE', $end );
+				if( $exponent ) {
+					if ( $exponent > 1 ) {
+						return self::parseError($s, $end, 'Number with several E' );
+					}
+					$end++;
+
+					// + sign is optional; - sign is required.
+					$end += strspn( $s, '-+', $end );
+					$len = strspn( $s, '0123456789', $end );
+					if ( !$len ) {
+						return self::parseError($s, $pos, 'No decimal digits after e, how many zeroes should be added?' );
+					}
+					$end += $len;
 				}
 			} elseif( isset( $opChars[$ch] ) ) {
 				// Punctuation character. Search for the longest matching operator.
@@ -542,13 +565,13 @@ class JavaScriptMinifier {
 				$out .= ' ';
 				$lineLength++;
 			}
-			
+
 			$out .= $token;
 			$lineLength += $end - $pos; // += strlen( $token )
 			$last = $s[$end - 1];
 			$pos = $end;
 			$newlineFound = false;
-			
+
 			// Output a newline after the token if required
 			// This is checked before AND after switching state
 			$newlineAdded = false;
@@ -567,7 +590,7 @@ class JavaScriptMinifier {
 			} elseif( isset( $goto[$state][$type] ) ) {
 				$state = $goto[$state][$type];
 			}
-			
+
 			// Check for newline insertion again
 			if ( $statementsOnOwnLine && !$newlineAdded && isset( $newlineAfter[$state][$type] ) ) {
 				$out .= "\n";
@@ -575,5 +598,10 @@ class JavaScriptMinifier {
 			}
 		}
 		return $out;
+	}
+
+	static function parseError($fullJavascript, $position, $errorMsg) {
+		// TODO: Handle the error: trigger_error, throw exception, return false...
+		return false;
 	}
 }

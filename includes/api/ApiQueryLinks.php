@@ -4,7 +4,7 @@
  *
  * Created on May 12, 2007
  *
- * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
+ * Copyright © 2006 Yuri Astrakhan "<Firstname><Lastname>@gmail.com"
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,11 +24,6 @@
  * @file
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	// Eclipse helper - will be ignored in production
-	require_once( "ApiQueryBase.php" );
-}
-
 /**
  * A query module to list all wiki links on a given set of pages.
  *
@@ -41,13 +36,15 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 
 	private $table, $prefix, $description, $helpUrl;
 
-	public function __construct( $query, $moduleName ) {
+	public function __construct( ApiQuery $query, $moduleName ) {
 		switch ( $moduleName ) {
 			case self::LINKS:
 				$this->table = 'pagelinks';
 				$this->prefix = 'pl';
 				$this->description = 'link';
 				$this->titlesParam = 'titles';
+				$this->titlesParamDescription = 'Only list links to these titles. Useful ' .
+					'for checking whether a certain page links to a certain title.';
 				$this->helpUrl = 'https://www.mediawiki.org/wiki/API:Properties#links_.2F_pl';
 				break;
 			case self::TEMPLATES:
@@ -55,6 +52,8 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 				$this->prefix = 'tl';
 				$this->description = 'template';
 				$this->titlesParam = 'templates';
+				$this->titlesParamDescription = 'Only list these templates. Useful ' .
+					'for checking whether a certain page uses a certain template.';
 				$this->helpUrl = 'https://www.mediawiki.org/wiki/API:Properties#templates_.2F_tl';
 				break;
 			default:
@@ -77,20 +76,19 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 	}
 
 	/**
-	 * @param $resultPageSet ApiPageSet
-	 * @return
+	 * @param ApiPageSet $resultPageSet
 	 */
 	private function run( $resultPageSet = null ) {
 		if ( $this->getPageSet()->getGoodTitleCount() == 0 ) {
-			return;	// nothing to do
+			return; // nothing to do
 		}
 
 		$params = $this->extractRequestParams();
 
 		$this->addFields( array(
-			$this->prefix . '_from AS pl_from',
-			$this->prefix . '_namespace AS pl_namespace',
-			$this->prefix . '_title AS pl_title'
+			'pl_from' => $this->prefix . '_from',
+			'pl_namespace' => $this->prefix . '_namespace',
+			'pl_title' => $this->prefix . '_title'
 		) );
 
 		$this->addTables( $this->table );
@@ -102,7 +100,7 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 			foreach ( $params[$this->titlesParam] as $t ) {
 				$title = Title::newFromText( $t );
 				if ( !$title ) {
-					$this->setWarning( "``$t'' is not a valid title" );
+					$this->setWarning( "\"$t\" is not a valid title" );
 				} else {
 					$lb->addObj( $title );
 				}
@@ -115,22 +113,21 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 
 		if ( !is_null( $params['continue'] ) ) {
 			$cont = explode( '|', $params['continue'] );
-			if ( count( $cont ) != 3 ) {
-				$this->dieUsage( 'Invalid continue param. You should pass the ' .
-					'original value returned by the previous query', '_badcontinue' );
-			}
+			$this->dieContinueUsageIf( count( $cont ) != 3 );
+			$op = $params['dir'] == 'descending' ? '<' : '>';
 			$plfrom = intval( $cont[0] );
 			$plns = intval( $cont[1] );
-			$pltitle = $this->getDB()->strencode( $this->titleToKey( $cont[2] ) );
+			$pltitle = $this->getDB()->addQuotes( $cont[2] );
 			$this->addWhere(
-				"{$this->prefix}_from > $plfrom OR " .
+				"{$this->prefix}_from $op $plfrom OR " .
 				"({$this->prefix}_from = $plfrom AND " .
-				"({$this->prefix}_namespace > $plns OR " .
+				"({$this->prefix}_namespace $op $plns OR " .
 				"({$this->prefix}_namespace = $plns AND " .
-				"{$this->prefix}_title >= '$pltitle')))"
+				"{$this->prefix}_title $op= $pltitle)))"
 			);
 		}
 
+		$sort = ( $params['dir'] == 'descending' ? ' DESC' : '' );
 		// Here's some MySQL craziness going on: if you use WHERE foo='bar'
 		// and later ORDER BY foo MySQL doesn't notice the ORDER BY is pointless
 		// but instead goes and filesorts, because the index for foo was used
@@ -138,15 +135,15 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 		// clause from the ORDER BY clause
 		$order = array();
 		if ( count( $this->getPageSet()->getGoodTitles() ) != 1 ) {
-			$order[] = "{$this->prefix}_from";
+			$order[] = $this->prefix . '_from' . $sort;
 		}
 		if ( count( $params['namespace'] ) != 1 ) {
-			$order[] = "{$this->prefix}_namespace";
+			$order[] = $this->prefix . '_namespace' . $sort;
 		}
 
-		$order[] = "{$this->prefix}_title";
-		$this->addOption( 'ORDER BY', implode( ', ', $order ) );
-		$this->addOption( 'USE INDEX', "{$this->prefix}_from" );
+		$order[] = $this->prefix . '_title' . $sort;
+		$this->addOption( 'ORDER BY', $order );
+		$this->addOption( 'USE INDEX', $this->prefix . '_from' );
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 
 		$res = $this->select( __METHOD__ );
@@ -158,8 +155,7 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 					// We've reached the one extra which shows that
 					// there are additional pages to be had. Stop here...
 					$this->setContinueEnumParameter( 'continue',
-						"{$row->pl_from}|{$row->pl_namespace}|" .
-						$this->keyToTitle( $row->pl_title ) );
+						"{$row->pl_from}|{$row->pl_namespace}|{$row->pl_title}" );
 					break;
 				}
 				$vals = array();
@@ -167,8 +163,7 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 				$fit = $this->addPageSubItem( $row->pl_from, $vals );
 				if ( !$fit ) {
 					$this->setContinueEnumParameter( 'continue',
-						"{$row->pl_from}|{$row->pl_namespace}|" .
-						$this->keyToTitle( $row->pl_title ) );
+						"{$row->pl_from}|{$row->pl_namespace}|{$row->pl_title}" );
 					break;
 				}
 			}
@@ -180,8 +175,7 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 					// We've reached the one extra which shows that
 					// there are additional pages to be had. Stop here...
 					$this->setContinueEnumParameter( 'continue',
-						"{$row->pl_from}|{$row->pl_namespace}|" .
-						$this->keyToTitle( $row->pl_title ) );
+						"{$row->pl_from}|{$row->pl_namespace}|{$row->pl_title}" );
 					break;
 				}
 				$titles[] = Title::makeTitle( $row->pl_namespace, $row->pl_title );
@@ -207,44 +201,46 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 			$this->titlesParam => array(
 				ApiBase::PARAM_ISMULTI => true,
 			),
+			'dir' => array(
+				ApiBase::PARAM_DFLT => 'ascending',
+				ApiBase::PARAM_TYPE => array(
+					'ascending',
+					'descending'
+				)
+			),
 		);
 	}
 
 	public function getParamDescription() {
 		$desc = $this->description;
-		$arr = array(
+
+		return array(
 			'namespace' => "Show {$desc}s in this namespace(s) only",
 			'limit' => "How many {$desc}s to return",
 			'continue' => 'When more results are available, use this to continue',
+			$this->titlesParam => $this->titlesParamDescription,
+			'dir' => 'The direction in which to list',
 		);
-		if ( $this->getModuleName() == self::LINKS ) {
-			$arr[$this->titlesParam] = 'Only list links to these titles. Useful for checking whether a certain page links to a certain title.';
-		} elseif ( $this->getModuleName() == self::TEMPLATES ) {
-			$arr[$this->titlesParam] = 'Only list these templates. Useful for checking whether a certain page uses a certain template.';
-		}
-		return $arr;
 	}
 
 	public function getDescription() {
-		return "Returns all {$this->description}s from the given page(s)";
+		return "Returns all {$this->description}s from the given page(s).";
 	}
 
-	protected function getExamples() {
+	public function getExamples() {
+		$desc = $this->description;
+		$name = $this->getModuleName();
+
 		return array(
-			"Get {$this->description}s from the [[Main Page]]:",
-			"  api.php?action=query&prop={$this->getModuleName()}&titles=Main%20Page",
-			"Get information about the {$this->description} pages in the [[Main Page]]:",
-			"  api.php?action=query&generator={$this->getModuleName()}&titles=Main%20Page&prop=info",
-			"Get {$this->description}s from the Main Page in the User and Template namespaces:",
-			"  api.php?action=query&prop={$this->getModuleName()}&titles=Main%20Page&{$this->prefix}namespace=2|10"
+			"api.php?action=query&prop={$name}&titles=Main%20Page" => "Get {$desc}s from the [[Main Page]]",
+			"api.php?action=query&generator={$name}&titles=Main%20Page&prop=info"
+				=> "Get information about the {$desc} pages in the [[Main Page]]",
+			"api.php?action=query&prop={$name}&titles=Main%20Page&{$this->prefix}namespace=2|10"
+				=> "Get {$desc}s from the Main Page in the User and Template namespaces",
 		);
 	}
 
 	public function getHelpUrls() {
 		return $this->helpUrl;
-	}
-
-	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryLinks.php 104449 2011-11-28 15:52:04Z reedy $';
 	}
 }

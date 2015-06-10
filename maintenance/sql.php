@@ -18,48 +18,130 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
+ * @file
  * @ingroup Maintenance
  */
 
-require_once( dirname( __FILE__ ) . '/Maintenance.php' );
+require_once __DIR__ . '/Maintenance.php';
 
+/**
+ * Maintenance script that sends SQL queries from the specified file to the database.
+ *
+ * @ingroup Maintenance
+ */
 class MwSql extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Send SQL queries to a MediaWiki database";
+		$this->addOption( 'cluster', 'Use an external cluster by name', false, true );
+		$this->addOption( 'wikidb', 'The database wiki ID to use if not the current one', false, true );
+		$this->addOption( 'slave', 'Use a slave server (either "any" or by name)', false, true );
 	}
 
 	public function execute() {
-		if ( $this->hasArg() ) {
-			$fileName = $this->getArg();
-			$file = fopen( $fileName, 'r' );
-			$promptCallback = false;
+		$wiki = $this->getOption( 'wikidb' ) ?: false;
+		// Get the appropriate load balancer (for this wiki)
+		if ( $this->hasOption( 'cluster' ) ) {
+			$lb = wfGetLBFactory()->getExternalLB( $this->getOption( 'cluster' ), $wiki );
 		} else {
-			$file = $this->getStdin();
-			$promptObject = new SqlPromptPrinter( "> " );
-			$promptCallback = $promptObject->cb();
+			$lb = wfGetLB( $wiki );
+		}
+		// Figure out which server to use
+		if ( $this->hasOption( 'slave' ) ) {
+			$server = $this->getOption( 'slave' );
+			if ( $server === 'any' ) {
+				$index = DB_SLAVE;
+			} else {
+				$index = null;
+				$serverCount = $lb->getServerCount();
+				for ( $i = 0; $i < $serverCount; ++$i ) {
+					if ( $lb->getServerName( $i ) === $server ) {
+						$index = $i;
+						break;
+					}
+				}
+				if ( $index === null ) {
+					$this->error( "No slave server configured with the name '$server'.", 1 );
+				}
+			}
+		} else {
+			$index = DB_MASTER;
+		}
+		// Get a DB handle (with this wiki's DB selected) from the appropriate load balancer
+		$db = $lb->getConnection( $index, array(), $wiki );
+		if ( $this->hasOption( 'slave' ) && $db->getLBInfo( 'master' ) !== null ) {
+			$this->error( "The server selected ({$db->getServer()}) is not a slave.", 1 );
 		}
 
-		if ( !$file )
-			$this->error( "Unable to open input file", true );
+		if ( $this->hasArg( 0 ) ) {
+			$file = fopen( $this->getArg( 0 ), 'r' );
+			if ( !$file ) {
+				$this->error( "Unable to open input file", true );
+			}
 
-		$dbw = wfGetDB( DB_MASTER );
-		$error = $dbw->sourceStream( $file, $promptCallback, array( $this, 'sqlPrintResult' ) );
-		if ( $error !== true ) {
-			$this->error( $error, true );
-		} else {
-			exit( 0 );
+			$error = $db->sourceStream( $file, false, array( $this, 'sqlPrintResult' ) );
+			if ( $error !== true ) {
+				$this->error( $error, true );
+			} else {
+				exit( 0 );
+			}
 		}
+
+		$useReadline = function_exists( 'readline_add_history' )
+			&& Maintenance::posix_isatty( 0 /*STDIN*/ );
+
+		if ( $useReadline ) {
+			global $IP;
+			$historyFile = isset( $_ENV['HOME'] ) ?
+				"{$_ENV['HOME']}/.mwsql_history" : "$IP/maintenance/.mwsql_history";
+			readline_read_history( $historyFile );
+		}
+
+		$wholeLine = '';
+		$newPrompt = '> ';
+		$prompt = $newPrompt;
+		while ( ( $line = Maintenance::readconsole( $prompt ) ) !== false ) {
+			if ( !$line ) {
+				# User simply pressed return key
+				continue;
+			}
+			$done = $db->streamStatementEnd( $wholeLine, $line );
+
+			$wholeLine .= $line;
+
+			if ( !$done ) {
+				$wholeLine .= ' ';
+				$prompt = '    -> ';
+				continue;
+			}
+			if ( $useReadline ) {
+				# Delimiter is eated by streamStatementEnd, we add it
+				# up in the history (bug 37020)
+				readline_add_history( $wholeLine . $db->getDelimiter() );
+				readline_write_history( $historyFile );
+			}
+			try {
+				$res = $db->query( $wholeLine );
+				$this->sqlPrintResult( $res, $db );
+				$prompt = $newPrompt;
+				$wholeLine = '';
+			} catch ( DBQueryError $e ) {
+				$doDie = !Maintenance::posix_isatty( 0 );
+				$this->error( $e, $doDie );
+			}
+		}
+		wfWaitForSlaves();
 	}
 
 	/**
 	 * Print the results, callback for $db->sourceStream()
-	 * @param $res The results object
-	 * @param $db Database object
+	 * @param ResultWrapper $res The results object
+	 * @param DatabaseBase $db
 	 */
 	public function sqlPrintResult( $res, $db ) {
 		if ( !$res ) {
 			// Do nothing
+			return;
 		} elseif ( is_object( $res ) && $res->numRows() ) {
 			foreach ( $res as $row ) {
 				$this->output( print_r( $row, true ) );
@@ -70,24 +152,13 @@ class MwSql extends Maintenance {
 		}
 	}
 
+	/**
+	 * @return int DB_TYPE constant
+	 */
 	public function getDbType() {
 		return Maintenance::DB_ADMIN;
 	}
 }
 
-class SqlPromptPrinter {
-	function __construct( $prompt ) {
-		$this->prompt = $prompt;
-	}
-
-	function cb() {
-		return array( $this, 'printPrompt' );
-	}
-
-	function printPrompt() {
-		echo $this->prompt;
-	}
-}
-
 $maintClass = "MwSql";
-require_once( RUN_MAINTENANCE_IF_MAIN );
+require_once RUN_MAINTENANCE_IF_MAIN;

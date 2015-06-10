@@ -2,7 +2,6 @@
 /**
  * Gadgets extension - lets users select custom javascript gadgets
  *
- *
  * For more info see http://mediawiki.org/wiki/Extension:Gadgets
  *
  * @file
@@ -12,194 +11,6 @@
  * @license GNU General Public Licence 2.0 or later
  */
 
-class GadgetHooks {
-
-	/**
-	 * ArticleSaveComplete hook handler.
-	 *
-	 * @param $article Article
-	 * @param $user User
-	 * @param $text String: New page text
-	 */
-	public static function articleSaveComplete( $article, $user, $text ) {
-		//update cache if MediaWiki:Gadgets-definition was edited
-		$title = $article->mTitle;
-		if( $title->getNamespace() == NS_MEDIAWIKI && $title->getText() == 'Gadgets-definition' ) {
-			Gadget::loadStructuredList( $text );
-		}
-		return true;
-	}
-
-	/**
-	 * UserGetDefaultOptions hook handler
-	 * @param $defaultOptions Array of default preference keys and values
-	 */
-	public static function userGetDefaultOptions( &$defaultOptions ) {
-		$gadgets = Gadget::loadStructuredList();
-		if (!$gadgets) return true;
-
-		foreach( $gadgets as $section => $thisSection ) {
-			foreach( $thisSection as $gadgetId => $gadget ) {
-				if ( $gadget->isOnByDefault() ) {
-					$defaultOptions['gadget-' . $gadgetId] = 1;
-				}
-			}
-		}
-		return true;
-	}
-
-	/**
-	 * GetPreferences hook handler.
-	 * @param $user User
-	 * @param $preferences Array: Preference descriptions
-	 */
-	public static function getPreferences( $user, &$preferences ) {
-		$gadgets = Gadget::loadStructuredList();
-		if (!$gadgets) return true;
-
-		$options = array();
-		$default = array();
-		foreach( $gadgets as $section => $thisSection ) {
-			$available = array();
-			foreach( $thisSection as $gadget ) {
-				if ( $gadget->isAllowed( $user ) ) {
-					$gname = $gadget->getName();
-					$available[$gadget->getDescription()] = $gname;
-					if ( $gadget->isEnabled( $user ) ) {
-						$default[] = $gname;
-					}
-				}
-			}
-			if ( $section !== '' ) {
-				$section = wfMsgExt( "gadget-section-$section", 'parseinline' );
-				if ( count ( $available ) ) {
-					$options[$section] = $available;
-				}
-			} else {
-				$options = array_merge( $options, $available );
-			}
-		}
-
-		$preferences['gadgets-intro'] =
-			array(
-				'type' => 'info',
-				'label' => '&#160;',
-				'default' => Xml::tags( 'tr', array(),
-					Xml::tags( 'td', array( 'colspan' => 2 ),
-						wfMsgExt( 'gadgets-prefstext', 'parse' ) ) ),
-				'section' => 'gadgets',
-				'raw' => 1,
-				'rawrow' => 1,
-			);
-
-		$preferences['gadgets'] =
-			array(
-				'type' => 'multiselect',
-				'options' => $options,
-				'section' => 'gadgets',
-				'label' => '&#160;',
-				'prefix' => 'gadget-',
-				'default' => $default,
-			);
-
-		return true;
-	}
-
-	/**
-	 * ResourceLoaderRegisterModules hook handler.
-	 * @param $resourceLoader ResourceLoader
-	 */
-	public static function registerModules( &$resourceLoader ) {
-		$gadgets = Gadget::loadList();
-		if ( !$gadgets ) {
-			return true;
-		}
-		foreach ( $gadgets as $g ) {
-			$module = $g->getModule();
-			if ( $module ) {
-				$resourceLoader->register( $g->getModuleName(), $module );
-			}
-		}
-		return true;
-	}
-
-	/**
-	 * BeforePageDisplay hook handler.
-	 * @param $out OutputPage
-	 */
-	public static function beforePageDisplay( $out ) {
-		global $wgUser;
-
-		wfProfileIn( __METHOD__ );
-
-		$gadgets = Gadget::loadList();
-		if ( !$gadgets ) {
-			wfProfileOut( __METHOD__ );
-			return true;
-		}
-
-		$lb = new LinkBatch();
-		$lb->setCaller( __METHOD__ );
-		$pages = array();
-
-		foreach ( $gadgets as $gadget ) {
-			if ( $gadget->isEnabled( $wgUser ) && $gadget->isAllowed( $wgUser ) ) {
-				if ( $gadget->hasModule() ) {
-					$out->addModules( $gadget->getModuleName() );
-				}
-				foreach ( $gadget->getLegacyScripts() as $page ) {
-					$lb->add( NS_MEDIAWIKI, $page );
-					$pages[] = $page;
-				}
-			}
-		}
-
-		$lb->execute( __METHOD__ );
-
-		$done = array();
-		foreach ( $pages as $page ) {
-			if ( isset( $done[$page] ) ) continue;
-			$done[$page] = true;
-			self::applyScript( $page, $out );
-		}
-		wfProfileOut( __METHOD__ );
-
-		return true;
-	}
-
-	/**
-	 * Adds one legacy script to output.
-	 *
-	 * @param $page String: Unprefixed page title
-	 * @param $out OutputPage
-	 */
-	private static function applyScript( $page, $out ) {
-		global $wgJsMimeType;
-
-		# bug 22929: disable gadgets on sensitive pages.  Scripts loaded through the
-		# ResourceLoader handle this in OutputPage::getModules()
-		# TODO: make this extension load everything via RL, then we don't need to worry
-		# about any of this.
-		if( $out->getAllowedModules( ResourceLoaderModule::TYPE_SCRIPTS ) < ResourceLoaderModule::ORIGIN_USER_SITEWIDE ){
-			return;
-		}
-
-		$t = Title::makeTitleSafe( NS_MEDIAWIKI, $page );
-		if ( !$t ) return;
-
-		$u = $t->getLocalURL( 'action=raw&ctype=' . $wgJsMimeType );
-		$out->addScriptFile( $u, $t->getLatestRevID() );
-	}
-
-	/**
-	 * UnitTestsList hook handler
-	 * @param $files Array: List of extension test files
-	 */
-	public static function unitTestsList( $files ) {
-		$files[] = dirname( __FILE__ ) . '/Gadgets_tests.php';
-		return true;
-	}
-}
 
 /**
  * Wrapper for one gadget.
@@ -208,36 +19,44 @@ class Gadget {
 	/**
 	 * Increment this when changing class structure
 	 */
-	const GADGET_CLASS_VERSION = 5;
+	const GADGET_CLASS_VERSION = 7;
 
-	private $version = self::GADGET_CLASS_VERSION,
-	        $scripts = array(),
-	        $styles = array(),
+	private $scripts = array(),
+			$styles = array(),
 			$dependencies = array(),
-	        $name,
+			$name,
 			$definition,
 			$resourceLoaded = false,
 			$requiredRights = array(),
+			$requiredSkins = array(),
+			$targets = array( 'desktop' ),
 			$onByDefault = false,
+			$position = 'bottom',
 			$category;
 
 	/**
 	 * Creates an instance of this class from definition in MediaWiki:Gadgets-definition
 	 * @param $definition String: Gadget definition
-	 * @return Mixed: Instance of Gadget class or false if $definition is invalid
+	 * @return Gadget|bool Instance of Gadget class or false if $definition is invalid
 	 */
 	public static function newFromDefinition( $definition ) {
 		$m = array();
 		if ( !preg_match( '/^\*+ *([a-zA-Z](?:[-_:.\w\d ]*[a-zA-Z0-9])?)(\s*\[.*?\])?\s*((\|[^|]*)+)\s*$/', $definition, $m ) ) {
 			return false;
 		}
-		//NOTE: the gadget name is used as part of the name of a form field,
+		// NOTE: the gadget name is used as part of the name of a form field,
 		//      and must follow the rules defined in http://www.w3.org/TR/html4/types.html#type-cdata
 		//      Also, title-normalization applies.
 		$gadget = new Gadget();
-		$gadget->name = trim( str_replace(' ', '_', $m[1] ) );
+		$gadget->name = trim( str_replace( ' ', '_', $m[1] ) );
+		// If the name is too long, then RL will throw an MWException when
+		// we try to register the module
+		if ( !ResourceLoader::isValidModuleName( $gadget->getModuleName() ) ) {
+			return false;
+		}
 		$gadget->definition = $definition;
 		$options = trim( $m[2], ' []' );
+
 		foreach ( preg_split( '/\s*\|\s*/', $options, -1, PREG_SPLIT_NO_EMPTY ) as $option ) {
 			$arr  = preg_split( '/\s*=\s*/', $option, 2 );
 			$option = $arr[0];
@@ -247,6 +66,7 @@ class Gadget {
 			} else {
 				$params = array();
 			}
+
 			switch ( $option ) {
 				case 'ResourceLoader':
 					$gadget->resourceLoaded = true;
@@ -257,19 +77,31 @@ class Gadget {
 				case 'rights':
 					$gadget->requiredRights = $params;
 					break;
+				case 'skins':
+					$gadget->requiredSkins = $params;
+					break;
 				case 'default':
 					$gadget->onByDefault = true;
 					break;
+				case 'targets':
+					$gadget->targets = $params;
+					break;
+				case 'top':
+					$gadget->position = 'top';
+					break;
 			}
 		}
+
 		foreach ( preg_split( '/\s*\|\s*/', $m[3], -1, PREG_SPLIT_NO_EMPTY ) as $page ) {
 			$page = "Gadget-$page";
+
 			if ( preg_match( '/\.js/', $page ) ) {
 				$gadget->scripts[] = $page;
 			} elseif ( preg_match( '/\.css/', $page ) ) {
 				$gadget->styles[] = $page;
 			}
 		}
+
 		return $gadget;
 	}
 
@@ -309,14 +141,6 @@ class Gadget {
 	}
 
 	/**
-	 * Checks whether this is an instance of an older version of this class deserialized from cache
-	 * @return Boolean
-	 */
-	public function isOutdated() {
-		return $this->version != self::GADGET_CLASS_VERSION;
-	}
-
-	/**
 	 * Checks whether this gadget is enabled for given user
 	 *
 	 * @param $user User: user to check against
@@ -333,7 +157,8 @@ class Gadget {
 	 * @return Boolean
 	 */
 	public function isAllowed( $user ) {
-		return count( array_intersect( $this->requiredRights, $user->getRights() ) ) == count( $this->requiredRights );
+		return count( array_intersect( $this->requiredRights, $user->getRights() ) ) == count( $this->requiredRights )
+			&& ( !count( $this->requiredSkins ) || in_array( $user->getOption( 'skin' ), $this->requiredSkins ) );
 	}
 
 	/**
@@ -394,18 +219,22 @@ class Gadget {
 	 */
 	public function getModule() {
 		$pages = array();
-		foreach( $this->styles as $style ) {
+
+		foreach ( $this->styles as $style ) {
 			$pages['MediaWiki:' . $style] = array( 'type' => 'style' );
 		}
+
 		if ( $this->supportsResourceLoader() ) {
 			foreach ( $this->scripts as $script ) {
 				$pages['MediaWiki:' . $script] = array( 'type' => 'script' );
 			}
 		}
+
 		if ( !count( $pages ) ) {
 			return null;
 		}
-		return new GadgetResourceLoaderModule( $pages, $this->dependencies );
+
+		return new GadgetResourceLoaderModule( $pages, $this->dependencies, $this->targets, $this->position );
 	}
 
 	/**
@@ -436,16 +265,35 @@ class Gadget {
 	}
 
 	/**
+	 * Returns array of skins where this gadget works
+	 * @return Array
+	 */
+	public function getRequiredSkins() {
+		return $this->requiredSkins;
+	}
+
+	/**
+	 * Returns the position of this Gadget's ResourceLoader module
+	 * @return String: 'bottom' or 'top'
+	 */
+	public function getPosition() {
+		return $this->position;
+	}
+
+	/**
 	 * Loads and returns a list of all gadgets
 	 * @return Mixed: Array of gadgets or false
 	 */
 	public static function loadList() {
 		static $gadgets = null;
 
-		if ( $gadgets !== null ) return $gadgets;
+		if ( $gadgets !== null ) {
+			return $gadgets;
+		}
 
 		wfProfileIn( __METHOD__ );
 		$struct = self::loadStructuredList();
+
 		if ( !$struct ) {
 			$gadgets = $struct;
 			wfProfileOut( __METHOD__ );
@@ -453,7 +301,7 @@ class Gadget {
 		}
 
 		$gadgets = array();
-		foreach ( $struct as $section => $entries ) {
+		foreach ( $struct as $entries ) {
 			$gadgets = array_merge( $gadgets, $entries );
 		}
 		wfProfileOut( __METHOD__ );
@@ -463,47 +311,54 @@ class Gadget {
 
 	/**
 	 * Checks whether gadget list from cache can be used.
+	 * @param $gadgets array
 	 * @return Boolean
 	 */
 	private static function isValidList( $gadgets ) {
-		if ( !is_array( $gadgets ) ) return false;
-		// Check if we have 1) array of gadgets 2) the gadgets are up to date
+		if ( !is_array( $gadgets ) ) {
+			return false;
+		}
+		// Check if we have an array of gadgets
 		// One check is enough
-		foreach ( $gadgets as $section => $list ) {
+		/**
+		 * @var $g Gadget
+		 */
+		foreach ( $gadgets as $list ) {
 			foreach ( $list as $g ) {
-				if ( !( $g instanceof Gadget ) || $g->isOutdated() ) {
-					return false;
-				} else {
-					return true;
-				}
+				return $g instanceof Gadget;
 			}
 		}
+
 		return true; // empty array
 	}
 
 	/**
 	 * Loads list of gadgets and returns it as associative array of sections with gadgets
-	 * e.g. array( 'sectionnname1' => array( $gadget1, $gadget2),
+	 * e.g. array( 'sectionnname1' => array( $gadget1, $gadget2 ),
 	 *             'sectionnname2' => array( $gadget3 ) );
-	 * @param $forceNewText String: New text of MediaWiki:gadgets-sdefinition. If specified, will
+	 * @param $forceNewText String: New text of MediaWiki:gadgets-definition. If specified, will
 	 * 	      force a purge of cache and recreation of the gadget list.
 	 * @return Mixed: Array or false
 	 */
 	public static function loadStructuredList( $forceNewText = null ) {
-		global $wgMemc;
+		global $wgMemc, $wgGadgetsCaching;
 
 		static $gadgets = null;
-		if ( $gadgets !== null && $forceNewText === null ) return $gadgets;
+		if ( $gadgets !== null && $forceNewText === null ) {
+			return $gadgets;
+		}
 
 		wfProfileIn( __METHOD__ );
 		$key = wfMemcKey( 'gadgets-definition', self::GADGET_CLASS_VERSION );
 
 		if ( $forceNewText === null ) {
-			//cached?
-			$gadgets = $wgMemc->get( $key );
-			if ( self::isValidList( $gadgets ) ) {
-				wfProfileOut( __METHOD__ );
-				return $gadgets;
+			if ( $wgGadgetsCaching ) {
+				// cached?
+				$gadgets = $wgMemc->get( $key );
+				if ( self::isValidList( $gadgets ) ) {
+					wfProfileOut( __METHOD__ );
+					return $gadgets;
+				}
 			}
 
 			$g = wfMessage( "gadgets-definition" )->inContentLanguage();
@@ -517,18 +372,42 @@ class Gadget {
 			$g = $forceNewText;
 		}
 
-		$g = preg_replace( '/<!--.*-->/s', '', $g );
-		$g = preg_split( '/(\r\n|\r|\n)+/', $g );
+		$gadgets = self::listFromDefinition( $g );
+
+		if ( !count( $gadgets ) || !$wgGadgetsCaching ) {
+			// Don't cache in case we couldn't find any gadgets. Bug 37228
+			$gadgets = false;
+			wfProfileOut( __METHOD__ );
+			return $gadgets;
+		}
+
+		// cache for a while. gets purged automatically when MediaWiki:Gadgets-definition is edited
+		$wgMemc->set( $key, $gadgets, 60 * 60 * 24 );
+		$source = $forceNewText !== null ? 'input text' : 'MediaWiki:Gadgets-definition';
+		wfDebug( __METHOD__ . ": $source parsed, cache entry $key updated\n" );
+		wfProfileOut( __METHOD__ );
+
+		return $gadgets;
+	}
+
+	/**
+	 * Generates a structured list of Gadget objects from a definition
+	 *
+	 * @param $definition
+	 * @return array Array( category => Array( name => Gadget ) )
+	 */
+	private static function listFromDefinition( $definition ) {
+		$definition = preg_replace( '/<!--.*?-->/s', '', $definition );
+		$lines = preg_split( '/(\r\n|\r|\n)+/', $definition );
 
 		$gadgets = array();
 		$section = '';
 
-		foreach ( $g as $line ) {
+		foreach ( $lines as $line ) {
 			$m = array();
 			if ( preg_match( '/^==+ *([^*:\s|]+?)\s*==+\s*$/', $line, $m ) ) {
 				$section = $m[1];
-			}
-			else {
+			} else {
 				$gadget = self::newFromDefinition( $line );
 				if ( $gadget ) {
 					$gadgets[$section][$gadget->getName()] = $gadget;
@@ -536,13 +415,6 @@ class Gadget {
 				}
 			}
 		}
-
-		//cache for a while. gets purged automatically when MediaWiki:Gadgets-definition is edited
-		$wgMemc->set( $key, $gadgets, 60*60*24 );
-		$source = $forceNewText !== null ? 'input text' : 'MediaWiki:Gadgets-definition';
-		wfDebug( __METHOD__ . ": $source parsed, cache entry $key updated\n");
-		wfProfileOut( __METHOD__ );
-
 		return $gadgets;
 	}
 }
@@ -555,21 +427,27 @@ class GadgetResourceLoaderModule extends ResourceLoaderWikiModule {
 
 	/**
 	 * Creates an instance of this class
+	 *
 	 * @param $pages Array: Associative array of pages in ResourceLoaderWikiModule-compatible
 	 * format, for example:
 	 * array(
-	 * 		'MediaWiki:Gadget-foo.js'  => array( 'type' => 'script' ),
-	 * 		'MediaWiki:Gadget-foo.css' => array( 'type' => 'style' ),
+	 *        'MediaWiki:Gadget-foo.js'  => array( 'type' => 'script' ),
+	 *        'MediaWiki:Gadget-foo.css' => array( 'type' => 'style' ),
 	 * )
 	 * @param $dependencies Array: Names of resources this module depends on
+	 * @param $targets Array: List of targets this module support
+	 * @param $position String: 'bottom' or 'top'
 	 */
-	public function __construct( $pages, $dependencies ) {
+	public function __construct( $pages, $dependencies, $targets, $position ) {
 		$this->pages = $pages;
 		$this->dependencies = $dependencies;
+		$this->targets = $targets;
+		$this->position = $position;
 	}
 
 	/**
 	 * Overrides the abstract function from ResourceLoaderWikiModule class
+	 * @param $context ResourceLoaderContext
 	 * @return Array: $pages passed to __construct()
 	 */
 	protected function getPages( ResourceLoaderContext $context ) {
@@ -582,5 +460,13 @@ class GadgetResourceLoaderModule extends ResourceLoaderWikiModule {
 	 */
 	public function getDependencies() {
 		return $this->dependencies;
+	}
+
+	/**
+	 * Overrides ResourceLoaderModule::getPosition()
+	 * @return String: 'bottom' or 'top'
+	 */
+	public function getPosition() {
+		return $this->position;
 	}
 }

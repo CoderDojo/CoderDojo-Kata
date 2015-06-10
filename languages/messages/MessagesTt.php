@@ -1,19 +1,11 @@
 <?php
-/** Tatar (Татарча/Tatarça)
+/** Tatar (татарча/tatarça)
  *
- * See MessagesQqq.php for message documentation incl. usage of parameters
- * To improve a translation please visit http://translatewiki.net
+ * To improve a translation please visit https://translatewiki.net
  *
  * @ingroup Language
  * @file
  *
- * @author Timming
  */
 
-$fallback = 'tt-cyrl';
-
-$messages = array(
-# Delete
-'excontentauthor' => '',
-
-);
+$fallback = 'tt-cyrl, ru';

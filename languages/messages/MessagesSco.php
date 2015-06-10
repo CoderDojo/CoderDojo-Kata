@@ -345,20 +345,21 @@ Please lat an [[Special:ListUsers/sysop|administrator]] ken aboot this, makin no
 'cannotdelete'         => "Cuidna delete the page or eimage specifee'd. (It micht hae aareadies been delete bi some ither bodie.)",
 'badtitle'             => 'Bad teitle',
 'badtitletext'         => 'The requestit page teitle wis invalid, tuim, or a wranglie airtit inter-leid or inter-wiki teitle. It mibbe haes ane or mair chairacters that canna be uised in teitles.',
-'perfcached'           => 'The follaeing data is cached an michtna be richt up tae date:',
-'perfcachedts'         => 'The followin data is cached, an wis hindermaist chynged $1.',
+'perfcached'           => 'The follaeing data is cached an michtna be richt up tae date. A maximum of {{PLURAL:$1|one result is|$1 results are}} available in the cache.',
+'perfcachedts'         => 'The followin data is cached, an wis hindermaist chynged $1. A maximum of {{PLURAL:$4|one result is|$4 results are}} available in the cache.',
 'querypage-no-updates' => 'Updates for this page ar disablit at the meenit. Data here wilnae be refreshit at the meenit.',
 'wrong_wfQuery_params' => 'Wrang parameters tae wfQuery()<br />
 Exerce: $1<br />
 Aks: $2',
 'viewsource'           => 'View soorce',
-'viewsourcefor'        => 'for $1',
 'actionthrottled'      => 'Action devalit',
 'actionthrottledtext'  => 'As an anti-spam meisur, ye ar limitit frae daein this action ower mony times in a ower short tid, an ye hae exceedit this limit. Please try again in a wee.',
 'protectedpagetext'    => "Sairy, this page haes been '''lockit''' tae hinder vandalism.",
 'viewsourcetext'       => 'Ye can leuk at an copy the soorce o this page:',
 'protectedinterface'   => 'Sairy, but this page provides interface text for the saftware, an is lockit to hinder abuise.',
-'editinginterface'     => "'''Warnin:''' Ye'r editin a page that's uised tae provide interface text for the saftware. Chynges tae this page will affect the appearance o the uiser interface for ither uisers.",
+'editinginterface'     => "'''Warning:''' You are editing a page which is used to provide interface text for the software.
+Changes to this page will affect the appearance of the user interface for other users.
+For translations, please consider using [//translatewiki.net/wiki/Main_Page?setlang=en translatewiki.net], the MediaWiki localisation project.",
 'sqlhidden'            => '(SQL query hidden)',
 'cascadeprotected'     => 'This page haes been protectit fra editin, acause it is includit in the followin {{PLURAL:$1|page|pages}}, that are protectit wi the "cascading" option turnit on:
 $2',
@@ -528,9 +529,6 @@ registerit in yer [[Special:Preferences|uiser preferences]] an ye hinna been blo
 
 Yer block ID is $5. Please include this ID in ony argies ye mak.',
 'blockednoreason'                  => 'nae grunds put',
-'blockedoriginalsource'            => "The soorce o '''$1''' is shawn ablo:",
-'blockededitsource'                => "The text o '''your edits''' tae '''$1''' is shawn ablo:",
-'whitelistedittitle'               => 'Login needit tae edit',
 'whitelistedittext'                => 'Ye hae tae $1 tae edit pages.',
 'confirmedittext'                  => 'Ye maun confirm yer e-mail address afore editin pages. Please set an validate yer e-mail address throu yer [[Special:Preferences|uiser settins]].',
 'nosuchsectiontitle'               => 'There isnae a section wi that teetle',
@@ -681,15 +679,10 @@ there micht be parteeculars in the [{{fullurl:{{#Special:Log}}/suppress|page={{F
 'revdelete-nooldid-title'     => 'Nae target revision',
 'revdelete-radio-set'         => 'Yea',
 'revdelete-radio-unset'       => 'Nae',
-'revdelete-logentry'          => 'changed revision visibility of "[[$1]]"',
 'revdel-restore'              => 'change visibility',
 'revdel-restore-deleted'      => 'deletit revisions',
 'revdel-restore-visible'      => 'visible revisions',
 'pagehist'                    => 'Page history',
-'revdelete-content'           => 'content',
-'revdelete-uname'             => 'uisername',
-'revdelete-hid'               => 'hod $1',
-'revdelete-log-message'       => '$1 for $2 {{PLURAL:$2|revision|revisions}}',
 
 # History merging
 'mergehistory-from'   => 'Soorce page:',
@@ -901,7 +894,7 @@ Tae pit the eimage intae a page, uise an airtin i the form
 'illegalfilename'             => 'The filename "$1" haes characters that isna alloud in page teitles. Please rename the file an gie uplaidin it anither shot.',
 'badfilename'                 => 'Eimage name haes been chynged tae "$1".',
 'largefileserver'             => 'This file is bigger nor the server is confeigurt tae allou.',
-'fileexists'                  => "A file wi this name exists aareadies, please check '''<tt>[[:$1]]</tt>''' gin ye'r no siccar that ye want tae chynge it.
+'fileexists'                  => "A file wi this name exists aareadies, please check <strong>[[:$1]]</strong> gin ye'r no siccar that ye want tae chynge it.
 [[$1|thumb]]",
 'fileexists-forbidden'        => 'A file wi this name aareadies exists; please gang back an uplaid this file unner a new name. [[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'A file wi this name aareadies exists in the shared file depose; please gang back an uplaid this file unner a new name. [[File:$1|thumb|center|$1]]',
@@ -1071,8 +1064,7 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'listusers-blocked' => '(blockit)',
 
 # Special:Log/newusers
-'newuserlogpage'          => 'Uiser creation log',
-'newuserlog-create-entry' => 'New uiser accoont',
+'newuserlogpage' => 'Uiser creation log',
 
 # Special:ListGroupRights
 'listgrouprights-members' => '(leet o members)',
@@ -1131,7 +1123,6 @@ an that ye'r daein this in accord wi [[{{MediaWiki:Policy-url}}]].",
 'actioncomplete'        => 'Action duin',
 'actionfailed'          => 'Action failed',
 'deletedtext'           => '"$1" haes been delete. See $2 for a record o recent deletions.',
-'deletedarticle'        => 'deletit "[[$1]]"',
 'dellogpage'            => 'Deletion log',
 'dellogpagetext'        => 'Ablo is a leet o the maist recent deletions.',
 'deletionlog'           => 'deletion log',
@@ -1244,7 +1235,7 @@ afore it wis delete. The actual text o thir deletit reveisions is available tae 
 'badipaddress'                => 'That IP address is nae guid',
 'blockipsuccesssub'           => 'Block succeedit',
 'blockipsuccesstext'          => '[[Special:Contributions/$1|$1]] haes been blockit.
-<br />See [[Special:IPBlockList|IP block leet]] tae review blocks.',
+<br />See [[Special:BlockList|IP block leet]] tae review blocks.',
 'ipb-unblock-addr'            => 'Unblock $1',
 'unblockip'                   => 'Unblock uiser',
 'unblockiptext'               => 'Uise the form ablo tae restore screivin richts
@@ -1306,8 +1297,6 @@ please be siccar ye unnerstaun the consequences o this afore proceedin.",
 'talkexists'              => 'The page itsel wis flittit fine, but the collogue page cuidna be flittit sith ane aareadies exists at the new teitle. Please merge thaim manually.',
 'movedto'                 => 'flittit ti',
 'movetalk'                => 'Flit "collogue" page an aa, gin it\'s applicable.',
-'1movedto2'               => '[[$1]] flittit til [[$2]]',
-'1movedto2_redir'         => '[[$1]] flittit til [[$2]] ower reguidal',
 'movelogpage'             => 'Flit log',
 'movelogpagetext'         => "A leet o pages that's flitted is ablo.",
 'movereason'              => 'Raeson:',
@@ -1427,10 +1416,6 @@ You ken view its source',
 'markedaspatrolledtext' => 'The selectit reveision haes been merkit as patrolled.',
 'rcpatroldisabledtext'  => 'The Recent Changes Patrol feature is disabled the nou.',
 
-# Patrol log
-'patrol-log-line' => 'marked $1 of $2 patrolled $3',
-'patrol-log-diff' => 'revision $1',
-
 # Image deletion
 'deletedrevision' => 'Deletit auld revision $1.',
 
@@ -1442,7 +1427,7 @@ You ken view its source',
 'mediawarning'   => "'''Warnin''': This file micht haud mislushious code; bi executin it yer seestem micht be compromised.",
 'imagemaxsize'   => 'Limit eimages on eimage description pages tae:',
 'file-info-size' => '$1 × $2 pixels, file size: $3, MIME type: $4',
-'file-nohires'   => '<small>Na higher resolution available.</small>',
+'file-nohires'   => 'Na higher resolution available.',
 'svg-long-desc'  => 'SVG file, nominally $1 × $2 pixels, file size: $3',
 'show-big-image' => 'Full resolution',
 
