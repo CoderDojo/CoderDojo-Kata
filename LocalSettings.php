@@ -24,14 +24,14 @@ $wgSitename      = "CoderDojo Kata";
 ## defaults for all runtime URL paths are based off of this.
 ## For more information on customizing the URLs please see:
 ## http://www.mediawiki.org/wiki/Manual:Short_URL
-$wgScriptPath       = "/newkata";
+$wgScriptPath       = "";
 $wgScriptExtension  = ".php";
-$wgArticlePath = "/newkata/index.php/wiki/$1";
+$wgArticlePath = "/wiki/$1";
 $wgUsePathInfo = true;
 
 
 ## The protocol and server name to use in fully-qualified URLs
-$wgServer           = "http://172.16.2.90";
+$wgServer           = "http://localhost";
 
 ## The relative URL path to the skins directory
 $wgStylePath        = "$wgScriptPath/skins";
@@ -57,8 +57,8 @@ $wgEmailAuthentication = true;
 $wgDBtype           = "mysql";
 $wgDBserver         = "localhost";
 $wgDBname           = "newkata";
-$wgDBuser           = "ursula";
-$wgDBpassword       = "password";
+$wgDBuser           = "test";
+$wgDBpassword       = "test";
 
 # MySQL specific settings
 $wgDBprefix         = "";
