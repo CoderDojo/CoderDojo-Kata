@@ -43,6 +43,18 @@ EOD
 . ( $wgGoogleAnalyticsAnonymizeIP ? "  ga('set', 'anonymizeIp', true);\r\n" : "" ) . <<<EOD
   ga('send', 'pageview');
 
+	$(document).ready(function(){
+		$('.external').click(function(){
+			var action = $(this).attr('href');
+			_gaq.push(['_trackEvent', 'external_link', action]);
+		});
+
+		$('.internal').click(function(){
+			var action = $(this).attr('href');
+			_gaq.push(['_trackEvent', 'internal_link', action]);
+		});
+	});
+
 </script>
 
 EOD;
