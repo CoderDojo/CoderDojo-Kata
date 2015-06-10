@@ -18,7 +18,7 @@ $wgExtensionMessagesFiles['googleAnalytics'] = __DIR__ . '/googleAnalytics.i18n.
 /*** Default configuration ***/
 
 // Google Universal Analytics account id (e.g. "UA-12345678-1")
-$wgGoogleAnalyticsAccount = '';
+$wgGoogleAnalyticsAccount = 'UA-25136319-5';
 
 // Don't store last octet (or last 80 bits of IPv6 address) in Google Universal Analytics
 // For more info see https://support.google.com/analytics/answer/2763052?hl=en
