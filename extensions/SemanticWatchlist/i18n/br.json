@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno",
+			"Fulup",
+			"Y-M D"
+		]
+	},
+	"swl-group-name": "Anv ar strollad :",
+	"swl-group-legend": "Strollad",
+	"swl-properties-list": "Dispartiañ an anvioù gant |",
+	"swl-group-page-selection": "Pajennoù e",
+	"swl-group-save": "Enrollañ",
+	"swl-group-saved": "Enrollet",
+	"swl-group-saving": "Oc'h enrollañ",
+	"swl-group-category": "rummad",
+	"swl-group-namespace": "esaouenn anv",
+	"swl-group-concept": "meizad",
+	"swl-group-add-new-group": "Ouzhpennañ ur strollad nevez",
+	"swl-group-add-group": "Ouzhpennañ ur strollad",
+	"swl-watchlist-insertions": "Ouzhpennet :",
+	"swl-watchlist-deletions": "Kozh:",
+	"swl-watchlist-pagincontrol": "Gwelet ($1) ($2)",
+	"swl-watchlist-firstn": "Ar $1 kentañ",
+	"swl-watchlist-firstn-title": "Ar $1 {{PLURAL:$1|disoc'h kentañ|disoc'h kentañ}}",
+	"prefs-swlgroup": "Strolladoù da vezañ evezhiet",
+	"prefs-swlglobal": "Dibarzhioù hollek"
+}

@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jim-by",
+			"Renessaince"
+		]
+	},
+	"swl-group-save": "Захаваць",
+	"swl-group-saved": "Захаваны",
+	"swl-group-saving": "Захаваньне",
+	"swl-group-category": "катэгорыя",
+	"swl-group-namespace": "прастора назваў",
+	"swl-group-concept": "канцэпт",
+	"swl-group-add-new-group": "Дадаць новую групу",
+	"swl-group-add-group": "Дадаць групу",
+	"swl-watchlist-insertions": "Новая:",
+	"swl-watchlist-deletions": "Старая:",
+	"swl-watchlist-pagincontrol": "Прагляд ($1) ($2)",
+	"swl-watchlist-firstn": "першая $1",
+	"swl-watchlist-can-mod-groups": "Вы можаце [[$1|зьмяняць групы сьпісу назіраньня]].",
+	"prefs-swlgroup": "Групы для назіраньня"
+}

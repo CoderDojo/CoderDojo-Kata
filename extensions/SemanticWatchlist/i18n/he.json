@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80",
+			"Inkbug"
+		]
+	},
+	"semanticwatchlist-desc": "מאפשרת למשתמשים לקבל הודעה על שינויים מסוימים בנתונים של מדיה־ויקי סמנטית",
+	"right-semanticwatch": "שימוש ברשימת מעקב סמנטית",
+	"right-semanticwatchgroups": "[[Special:WatchlistConditions|שינוי]] קבוצות רשימת מעקב סמנטית",
+	"special-semanticwatchlist": "רשימת מעקב סמנטית",
+	"swl-group-save": "שמירה",
+	"swl-prefs-emailnofity": "לשלוח אליי דואר אלקטרוני כאשר יש שינוי במאפיינים במעקב שלי"
+}

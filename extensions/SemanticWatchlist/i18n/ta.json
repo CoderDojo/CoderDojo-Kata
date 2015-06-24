@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Karthi.dr",
+			"Shanmugamp7"
+		]
+	},
+	"swl-group-name": "குழுப் பெயர்:",
+	"swl-group-legend": "குழு",
+	"swl-group-properties": "இந்தக் குழுவின் கீழ் உள்ள உடமைகள்:",
+	"swl-group-save": "சேமி",
+	"swl-group-remove": "நீக்குக",
+	"swl-group-saved": "சேமிக்கப்பட்டது",
+	"swl-group-saving": "சேமிக்கப்படுகிறது",
+	"swl-group-category": "பகுப்பு",
+	"swl-group-namespace": "பெயர்வெளி",
+	"swl-group-concept": "கோட்பாடு",
+	"swl-group-add-new-group": "ஒரு புதிய குழுவைச் சேர்",
+	"swl-group-add-group": "குழுவைச் சேர்",
+	"swl-custom-legend": "தனிப்பயனாக்கப்பட்ட உரை",
+	"swl-custom-remove-property": "நீக்குக",
+	"swl-custom-text-add": "தனிப்பயனாக்கப்பட்ட உரையை சேர்க்கவும்",
+	"swl-watchlist-insertions": "புதிய:",
+	"swl-watchlist-deletions": "பழைய:",
+	"swl-watchlist-pagincontrol": "பார்வையிடு ($1) ($2)",
+	"swl-watchlist-firstn": "முதல்  $1",
+	"prefs-swlglobal": "பொதுவான விருப்பத் தேர்வுகள்"
+}

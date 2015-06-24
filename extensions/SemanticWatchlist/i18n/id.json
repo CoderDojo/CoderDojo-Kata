@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"IvanLanin",
+			"පසිඳු කාවින්ද"
+		]
+	},
+	"semanticwatchlist-desc": "Memungkinkan penetapan kelompok properti semantik untuk satu atau lebih kategori/ruang nama yang kemudian dapat dipantau perubahannya",
+	"right-semanticwatch": "Menggunakan daftar pantauan semantik",
+	"right-semanticwatchgroups": "[[Special:WatchlistConditions|Mengubah]] kelompok daftar pantauan semantik",
+	"special-semanticwatchlist": "Daftar Pantau Semantik",
+	"special-watchlistconditions": "Kriteria daftar pantau semantik",
+	"swl-group-name": "Nama kelompok:",
+	"swl-group-legend": "Kelompok",
+	"swl-group-properties": "Properti yang dicakup oleh kelompok ini:",
+	"swl-group-page-selection": "Halaman dalam",
+	"swl-group-save": "Simpan",
+	"swl-group-remove": "Hapus",
+	"swl-group-category": "kategori",
+	"swl-custom-remove-property": "Hapus",
+	"swl-watchlist-insertions": "Baru:",
+	"swl-watchlist-deletions": "Tua:"
+}

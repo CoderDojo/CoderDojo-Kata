@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"ChrisPtDe"
+		]
+	},
+	"right-semanticwatch": "Utilisar la lista de survelyence sèmantica",
+	"right-semanticwatchgroups": "[[Special:WatchlistConditions|Changiér]] les tropes de la lista de survelyence sèmantica",
+	"special-semanticwatchlist": "Lista de survelyence sèmantica",
+	"special-watchlistconditions": "Paramètres de la lista de survelyence sèmantica",
+	"swl-group-name": "Nom de la tropa :",
+	"swl-group-properties": "Propriètâts de ceta tropa :",
+	"swl-group-page-selection": "Pâges dens la",
+	"swl-group-save": "Encartar",
+	"swl-group-saved": "Encartâ",
+	"swl-group-saving": "Encartâjo en cors",
+	"swl-group-category": "catègorie",
+	"swl-group-namespace": "èspâço de noms",
+	"swl-group-concept": "concèpte",
+	"swl-group-add-new-group": "Apondre una tropa novèla",
+	"swl-group-add-group": "Apondre una tropa",
+	"swl-watchlist-position": "Fâre vêre '''$1''' des dèrriérs changements en comencient per '''#$2'''.",
+	"swl-watchlist-insertions": "Apondu :",
+	"swl-watchlist-deletions": "Viely :",
+	"swl-watchlist-pagincontrol": "Vêre ($1) ($2)",
+	"swl-watchlist-firstn": "$1 premiérs",
+	"swl-watchlist-firstn-title": "$1 {{PLURAL:$1|premiér rèsultat|premiérs rèsultats}}",
+	"swl-email-propschanged": "Les propriètâts ont changiês a $1",
+	"swl-email-changes": "Changements de propriètâts sur [$2 $1] :",
+	"prefs-swl": "Lista de survelyence sèmantica",
+	"prefs-swlgroup": "Tropes a siuvre",
+	"prefs-swlglobal": "Chouèx g·ènèrals",
+	"swl-prefs-category-label": "'''$1''' : propriètât{{PLURAL:$2||s}} $3 de la catègorie ''$4''",
+	"swl-prefs-namespace-label": "'''$1''' : propriètât{{PLURAL:$2||s}} $3 de l’èspâço de noms ''$4''",
+	"swl-prefs-concept-label": "'''$1''' : propriètât{{PLURAL:$2||s}} $3 du concèpte ''$4''"
+}

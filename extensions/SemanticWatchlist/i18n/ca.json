@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alvaro Vidal-Abarca",
+			"Pitort",
+			"Toniher"
+		]
+	},
+	"swl-group-name": "Nom del grup:",
+	"swl-group-save": "Desa",
+	"swl-group-saved": "S'ha desat la configuració.",
+	"swl-group-saving": "S'està desant",
+	"swl-group-category": "categoria",
+	"swl-group-namespace": "espai de noms",
+	"swl-group-concept": "concepte",
+	"swl-group-add-new-group": "Afegeix un grup nou",
+	"swl-group-add-group": "Afegeix un grup",
+	"swl-watchlist-insertions": "Nou:",
+	"swl-watchlist-deletions": "Antic:",
+	"swl-watchlist-firstn-title": "$1 {{PLURAL:$1|primer resultat|primers resultats}}",
+	"swl-email-propschanged": "Les propietats han canviat a $1",
+	"prefs-swlgroup": "Grups a vigilar",
+	"prefs-swlglobal": "Opcions generals",
+	"swl-prefs-emailnofity": "Envia'm un correu electrònic quan hi hagi canvis en les propietats que segueixo",
+	"swl-prefs-category-label": "'''$1''': {{PLURAL:$2|propietat|propietats}} $3 de la categoria ''$4''"
+}

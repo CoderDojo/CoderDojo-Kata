@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16",
+			"F. Cosoleto",
+			"පසිඳු කාවින්ද"
+		]
+	},
+	"swl-group-name": "Nome gruppo:",
+	"swl-group-legend": "Gruppo",
+	"swl-group-save": "Salva",
+	"swl-group-remove": "Rimuovi",
+	"swl-group-saved": "Le impostazioni sono state salvate.",
+	"swl-group-saving": "Salvataggio",
+	"swl-group-category": "categoria",
+	"swl-group-namespace": "namespace",
+	"swl-group-add-new-group": "Aggiungi un nuovo gruppo",
+	"swl-group-add-group": "Aggiungi gruppo",
+	"swl-custom-remove-property": "Rimuovi",
+	"swl-watchlist-insertions": "Nuovo:",
+	"swl-watchlist-deletions": "Vecchio:",
+	"swl-watchlist-pagincontrol": "Vedi ($1) ($2)",
+	"swl-watchlist-firstn": "primo $1",
+	"swl-watchlist-firstn-title": "Primi $1 {{PLURAL:$1|risultato|risultati}}",
+	"prefs-swlglobal": "Opzioni generali",
+	"swl-prefs-category-label": "'''$1''': {{PLURAL:$2|proprietà|proprietà}} $3 dalla categoria ''$4''",
+	"swl-prefs-namespace-label": "'''$1''': {{PLURAL:$2|proprietà|proprietà}} $3 dal namespace ''$4''"
+}
