@@ -21,8 +21,7 @@
 		"mediawiki/semantic-media-wiki":"~2.1",
 		"mediawiki/semantic-extra-special-properties":"~1.2",
 		"mediawiki/semantic-result-formats":"1.9.*",
-		"mediawiki/semantic-maps":"*",
-		"mediawiki/semantic-watchlist":"~1.0"
+		"mediawiki/semantic-maps":"*"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "*"
