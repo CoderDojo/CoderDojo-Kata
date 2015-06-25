@@ -137,16 +137,6 @@ $wgPFEnableStringFunctions = true;
 require_once "$IP/extensions/TemplateData/TemplateData.php";
 $wgTemplateDataUseGUI = true;
 
-//require_once "$IP/extensions/VisualEditor/VisualEditor.php";
-//$wgDefaultUserOptions['visualeditor-enable'] = 1;
-//$wgHiddenPrefs[] = 'visualeditor-enable';
-//$wgDefaultUserOptions['visualeditor-enable-experimental'] = 1;
-// Not using Parsoid this time around! // UC
-//$wgVisualEditorParsoidURL = 'http://srv01.lorenzocipriani.org:80';
-//$wgVisualEditorParsoidPrefix = 'kata';
-//$wgSessionsInObjectCache = true;
-//$wgVisualEditorParsoidForwardCookies = true;
-
 require_once "$IP/extensions/Babel/Babel.php";
  
 require_once "$IP/extensions/cldr/cldr.php";
@@ -172,7 +162,7 @@ $wgExtraLanguageNames['qqq'] = 'Message documentation'; # No linguistic content.
 require_once "$IP/extensions/UniversalLanguageSelector/UniversalLanguageSelector.php";
 
 require_once "$IP/extensions/SemanticMediaWiki/SemanticMediaWiki.php";
-enableSemantics( 'example.org' );
+enableSemantics($wgDomain);
 $wgIncludejQueryMigrate = true;
 require_once "$IP/extensions/SemanticForms/SemanticForms.php";
 require_once "$IP/extensions/SemanticFormsInputs/SemanticFormsInputs.php";
@@ -194,8 +184,6 @@ require_once "$IP/extensions/Widgets/Widgets.php";
 
 require_once "$IP/extensions/EmbedVideo/EmbedVideo.php";
 
-//require_once "$IP/extensions/Mpdf/Mpdf.php";
-
 /**
  * MEDIAWIKI SKINS
  */
@@ -216,8 +204,8 @@ $wgW4GRB_Settings['max-bars-per-page']=1;
 $wgW4GRB_Settings['max-items-per-list']=200;
 $wgW4GRB_Settings['default-items-per-list']=30;
 $wgW4GRB_Settings['max-lists-per-page']=5;
-$wgW4GRB_Settings['show-voter-names']=false;
-$wgW4GRB_Settings['anonymous-voting-enabled'] = true;
+ $wgW4GRB_Settings['show-voter-names']=false;
+ $wgW4GRB_Settings['anonymous-voting-enabled'] = true;
 
 /**
  * CUSTOM SKINS
