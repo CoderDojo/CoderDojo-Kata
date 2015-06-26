@@ -66,7 +66,7 @@ class SpecialKataCourse extends SpecialPage {
 		$this->isVideoEnabled = ($this->namespaceID == 3550) ? true : false;
 	}
 	
-	function execute($subPage = false) {
+	function execute() {
 		$this->out = $this->getOutput();
 		$this->initPage();
 		
