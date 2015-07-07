@@ -138,17 +138,17 @@ require_once "$IP/extensions/TemplateData/TemplateData.php";
 $wgTemplateDataUseGUI = true;
 
 require_once "$IP/extensions/Babel/Babel.php";
- 
+
 require_once "$IP/extensions/cldr/cldr.php";
- 
+
 require_once "$IP/extensions/CleanChanges/CleanChanges.php";
 $wgCCTrailerFilter = true;
 $wgCCUserFilter = false;
 $wgDefaultUserOptions['usenewrc'] = 1;
- 
+
 require_once "$IP/extensions/LocalisationUpdate/LocalisationUpdate.php";
 $wgLocalisationUpdateDirectory = "$IP/cache";
- 
+
 require_once "$IP/extensions/Translate/Translate.php";
 $wgGroupPermissions['user']['translate'] = true;
 $wgGroupPermissions['user']['translate-messagereview'] = true;
@@ -159,7 +159,7 @@ $wgGroupPermissions['sysop']['translate-manage'] = true;
 $wgTranslateDocumentationLanguageCode = 'qqq';
 $wgExtraLanguageNames['qqq'] = 'Message documentation'; # No linguistic content. Used for documenting messages
 
-require_once "$IP/extensions/UniversalLanguageSelector/UniversalLanguageSelector.php";
+//require_once "$IP/extensions/UniversalLanguageSelector/UniversalLanguageSelector.php";
 
 require_once "$IP/extensions/SemanticMediaWiki/SemanticMediaWiki.php";
 enableSemantics($wgDomain);
