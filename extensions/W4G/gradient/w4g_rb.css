@@ -1,0 +1,39 @@
+/*********************************************************************
+**
+** This file is part of the W4G Rating Bar extension for MediaWiki
+** Copyright (C)2010
+**                - David Dernoncourt <www.patheticcockroach.com>
+**                - Franck Dernoncourt <www.francky.me>
+**
+** Home Page : http://www.wiki4games.com/Wiki4Games:W4G Rating Bar
+**
+** This program is licensed under the Creative Commons
+** Attribution-Noncommercial-No Derivative Works 3.0 Unported license
+** <http://creativecommons.org/licenses/by-nc-nd/3.0/legalcode>
+**
+** This program is distributed in the hope that it will be useful,
+** but WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+**
+*********************************************************************/
+
+.rating_box {width:242px;height:14px;border:0px;margin:0px;padding:0px;background-color:#555555;} /* the box with bar and rating */
+.rating_target {width:202px;height:14px;border:1px solid #333333;margin:0px;padding:0px;background-color:#555555;position:absolute;float:left;} /* the bar only */
+.rating_text {width:40px;height:14px;border:1px solid #333333;
+	margin:0px;margin-left:202px;margin-bottom:2px;padding:0px;font-family:arial;font-size:10px;
+	background-color:#C9C9C9;position:absolute;float:left;} /* the rating only */
+.rating_text_text {margin:-4px 2px;padding:0px;position:absolute;float:left;z-index:1;} /* the text within the rating text box, so we can move it higher and make the box smaller */
+
+.w4g_rb_barblock {width:2px;height:12px;margin:0px;padding:0px;position:absolute;float:left;} /* a tiny block, for bar pixels*/
+.w4g_rb_nojs {margin:-4px 2px;font-family:arial;font-size:10px;color:#ff9999;} /* for the "must enable JS" message */
+.w4g_rb-error {font-weight: bold; color:#ff0000;} /* for error messages */
+.w4g_rb-rating-page-named {font-weight: bold;} /* for the small area displaying the title of the page being voted on when different from the page where the bar is displayed */
+
+.w4g_rb-ratinglist-table {margin:1em 1em 1em 0; background:#fff; border:1px #ccc solid; border-collapse:collapse;}
+.w4g_rb-ratinglist-table caption {font-weight:bold; text-align:left;}
+.w4g_rb-ratinglist-table th, .w4g_rb-ratinglist-table td {border:1px #ccc solid; padding:0.2em;}
+.w4g_rb-ratinglist-table th {background:#153e7e;font-weight: bold;  text-align:center; color:#eee;}
+
+.w4g_rb_starbox {width:150px;height:30px;margin:0px;padding:0px;background: url('stars.png') top left repeat-x;}
+.w4g_rb_star_unit {width:30px;height:30px;margin:0px;padding:0px;position:absolute;float:left;}
+.w4g_rb_star_hover {width:30px;height:30px;margin:0px;padding:0px;position:absolute;float:left;background: url('stars.png') left center;} 
