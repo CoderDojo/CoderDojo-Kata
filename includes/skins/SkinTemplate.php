@@ -732,20 +732,20 @@ class SkinTemplate extends Skin {
 
 			if ( $this->showIPinHeader() ) {
 				$href = &$this->userpageUrlDetails['href'];
-				$personal_urls['anonuserpage'] = array(
+				/*$personal_urls['anonuserpage'] = array(
 					'text' => $this->username,
 					'href' => $href,
 					'class' => $this->userpageUrlDetails['exists'] ? false : 'new',
 					'active' => ( $pageurl == $href )
-				);
+				);*/
 				$usertalkUrlDetails = $this->makeTalkUrlDetails( $this->userpage );
 				$href = &$usertalkUrlDetails['href'];
-				$personal_urls['anontalk'] = array(
+				/*$personal_urls['anontalk'] = array(
 					'text' => $this->msg( 'anontalk' )->text(),
 					'href' => $href,
 					'class' => $usertalkUrlDetails['exists'] ? false : 'new',
 					'active' => ( $pageurl == $href )
-				);
+				);*/
 			}
 
 			if ( $this->getUser()->isAllowed( 'createaccount' ) && !$useCombinedLoginLink ) {
