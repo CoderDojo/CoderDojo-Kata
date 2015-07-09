@@ -145,6 +145,7 @@ require_once "$IP/extensions/CleanChanges/CleanChanges.php";
 $wgCCTrailerFilter = true;
 $wgCCUserFilter = false;
 $wgDefaultUserOptions['usenewrc'] = 1;
+$wgDefaultUserOptions['usenavigabletoc'] = 0;
 
 require_once "$IP/extensions/LocalisationUpdate/LocalisationUpdate.php";
 $wgLocalisationUpdateDirectory = "$IP/cache";
@@ -211,3 +212,5 @@ $wgW4GRB_Settings['max-lists-per-page']=5;
  * CUSTOM SKINS
  */
 require_once "$IP/skins/CoderDojoKata/CoderDojoKata.php";
+
+$wgDisableAnonTalk = true;

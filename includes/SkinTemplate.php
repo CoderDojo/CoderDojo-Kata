@@ -564,12 +564,12 @@ class SkinTemplate extends Skin {
 				'active' => ( $this->userpageUrlDetails['href'] == $pageurl )
 			);
 			$usertalkUrlDetails = $this->makeTalkUrlDetails( $this->userpage );
-			$personal_urls['mytalk'] = array(
+			/*$personal_urls['mytalk'] = array(
 				'text' => $this->msg( 'mytalk' )->text(),
 				'href' => &$usertalkUrlDetails['href'],
 				'class' => $usertalkUrlDetails['exists'] ? false : 'new',
 				'active' => ( $usertalkUrlDetails['href'] == $pageurl )
-			);
+			);*/
 			$href = self::makeSpecialUrl( 'Preferences' );
 			$personal_urls['preferences'] = array(
 				'text' => $this->msg( 'mypreferences' )->text(),
@@ -658,14 +658,14 @@ class SkinTemplate extends Skin {
 					'class' => $this->userpageUrlDetails['exists'] ? false : 'new',
 					'active' => ( $pageurl == $href )
 				);
-				$usertalkUrlDetails = $this->makeTalkUrlDetails( $this->userpage );
+				/*$usertalkUrlDetails = $this->makeTalkUrlDetails( $this->userpage );
 				$href = &$usertalkUrlDetails['href'];
 				$personal_urls['anontalk'] = array(
 					'text' => $this->msg( 'anontalk' )->text(),
 					'href' => $href,
 					'class' => $usertalkUrlDetails['exists'] ? false : 'new',
 					'active' => ( $pageurl == $href )
-				);
+				);*/
 				$personal_urls['anonlogin'] = $login_url;
 			} else {
 				$personal_urls['login'] = $login_url;
@@ -815,10 +815,11 @@ class SkinTemplate extends Skin {
 		if( $title->canExist() ) {
 			// Gets page objects for the related namespaces
 			$subjectPage = $title->getSubjectPage();
-			$talkPage = $title->getTalkPage();
+			//$talkPage = $title->getTalkPage();
 
 			// Determines if this is a talk page
-			$isTalk = $title->isTalkPage();
+			//$isTalk = $title->isTalkPage();
+			$isTalk = false;
 
 			// Generates XML IDs from namespace names
 			$subjectId = $title->getNamespaceKey( '' );
@@ -878,7 +879,7 @@ class SkinTemplate extends Skin {
 						'href' => $title->getLocalURL( $this->editUrlOptions() ),
 						'primary' => true, // don't collapse this in vector
 					);
-					
+
 					// section link
 					if ( $showNewSection ) {
 						// Adds new section link
@@ -987,7 +988,7 @@ class SkinTemplate extends Skin {
 				// Checks that language conversion is enabled and variants exist
 				// And if it is not in the special namespace
 				if( count( $variants ) > 1 ) {
-					// Gets preferred variant (note that user preference is 
+					// Gets preferred variant (note that user preference is
 					// only possible for wiki content language variant)
 					$preferred = $pageLang->getPreferredVariant();
 					// Loops over each variant
@@ -1471,7 +1472,7 @@ abstract class BaseTemplate extends QuickTemplate {
 		if ( !isset( $sidebar['LANGUAGES'] ) ) {
 			$sidebar['LANGUAGES'] = true;
 		}
-		
+
 		if ( !isset( $options['search'] ) || $options['search'] !== true ) {
 			unset( $sidebar['SEARCH'] );
 		}
@@ -1481,7 +1482,7 @@ abstract class BaseTemplate extends QuickTemplate {
 		if ( isset( $options['languages'] ) && $options['languages'] === false ) {
 			unset( $sidebar['LANGUAGES'] );
 		}
-		
+
 		$boxes = array();
 		foreach ( $sidebar as $boxName => $content ) {
 			if ( $content === false ) {
@@ -1515,7 +1516,7 @@ abstract class BaseTemplate extends QuickTemplate {
 						'generated' => false,
 						'content'   => $this->data['language_urls'],
 					);
-				} 
+				}
 				break;
 			default:
 				$msgObj = $this->getMsg( $boxName );
@@ -1528,7 +1529,7 @@ abstract class BaseTemplate extends QuickTemplate {
 				break;
 			}
 		}
-		
+
 		// HACK: Compatibility with extensions still using SkinTemplateToolboxEnd
 		$hookContents = null;
 		if ( isset( $boxes['TOOLBOX'] ) ) {
@@ -1543,7 +1544,7 @@ abstract class BaseTemplate extends QuickTemplate {
 			}
 		}
 		// END hack
-		
+
 		if ( isset( $options['htmlOnly'] ) && $options['htmlOnly'] === true ) {
 			foreach ( $boxes as $boxName => $box ) {
 				if ( is_array( $box['content'] ) ) {
@@ -1553,7 +1554,7 @@ abstract class BaseTemplate extends QuickTemplate {
 					}
 					// HACK, shove the toolbox end onto the toolbox if we're rendering itself
 					if ( $hookContents ) {
-						$content .= "\n	$hookContents"; 
+						$content .= "\n	$hookContents";
 					}
 					// END hack
 					$content .= "\n</ul>\n";
@@ -1583,7 +1584,7 @@ abstract class BaseTemplate extends QuickTemplate {
 				// END hack
 			}
 		}
-		
+
 		return $boxes;
 	}
 
@@ -1868,4 +1869,3 @@ abstract class BaseTemplate extends QuickTemplate {
 	}
 
 }
-
