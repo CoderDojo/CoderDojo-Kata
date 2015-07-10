@@ -33,7 +33,7 @@
 		// Only add it if there is a complete TOC and it doesn't
 		// have a toggle added already
 		if ( $toc.length && $tocTitle.length && $tocList.length && !$tocToggleLink.length ) {
-			hideToc = $.cookie( 'mw_hidetoc' ) === '1';
+			hideToc = true;
 
 			$tocToggleLink = $( '<a href="#" id="togglelink"></a>' )
 				.text( hideToc ? mw.msg( 'showtoc' ) : mw.msg( 'hidetoc' ) )
