@@ -102,7 +102,7 @@
 							.prepend( '&nbsp;[' )
 							.append( ']&nbsp;' )
 				);
-console.log('check cookie');
+
 				if ( hideTocCookie === '1' ) {
 					util.toggleToc( $tocToggleLink );
 				}

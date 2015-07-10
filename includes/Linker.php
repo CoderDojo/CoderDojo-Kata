@@ -1071,12 +1071,12 @@ class Linker {
 	) {
 		global $wgTitle;
 
-		if(strpos($url, 'kata.coderdojo.com') === false) {
-			$class = "external";
+		$class = '';
+		if(strpos($url, 'kata.coderdojo.com') !== false) {
+			$class = "kata-internal-link ";
 		}
-		else {
-			$class = "";
-		}
+		$class .= "external ";
+
 		if ( $linktype ) {
 			$class .= " $linktype";
 		}

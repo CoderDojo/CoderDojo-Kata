@@ -77,12 +77,12 @@ function linkattr_InternalLink ($skin, $target, $options, &$text, &$attribs, &$r
 
 function linkattr_ExternalLink (&$url, &$text, &$link, &$attribs, $linktype)
 {
-  if(strpos($url, 'kata.coderdojo.com') === false) {
-    $class = 'external ';
+  $class = '';
+  if(strpos($url, 'kata.coderdojo.com') !== false) {
+    $class = "kata-internal-link ";
   }
-  else {
-    $class = '';
-  }
+  $class .= 'external ';
+
 	$attribsText = Html::expandAttributes( array( 'class' => $class.$linktype ) );
 	$mergedattribs = array_merge($attribs, Sanitizer::decodeTagAttributes($attribsText));
 
