@@ -1070,7 +1070,13 @@ class Linker {
 		$linktype = '', $attribs = array(), $title = null
 	) {
 		global $wgTitle;
-		$class = "external";
+
+		$class = '';
+		if(strpos($url, 'kata.coderdojo.com') !== false) {
+			$class = "kata-internal-link ";
+		}
+		$class .= "external ";
+
 		if ( $linktype ) {
 			$class .= " $linktype";
 		}
@@ -1088,9 +1094,9 @@ class Linker {
 		}
 		$attribs['rel'] = Parser::getExternalLinkRel( $url, $title );
 		$link = '';
-		
+
 		$success = wfRunHooks(
-			'LinkerMakeExternalLink', array( &$url, &$text, &$link, &$attribs, $linktype, $this ) 
+			'LinkerMakeExternalLink', array( &$url, &$text, &$link, &$attribs, $linktype, $this )
 		);
 
 		if ( !$success ) {
