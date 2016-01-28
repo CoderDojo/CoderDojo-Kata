@@ -44,7 +44,7 @@ function makeHTMLforPDF( $path, $argv ) {
 		$height = ( is_numeric( $argv['height'] ) ? $argv['height'] : 700 );
 	}
 
-	return '<object data="' . $path . '" width="' . $width . '" height="' .
+	return '<a href="' . $path . '">' . $path . '</a><br /><object data="' . $path . '" width="' . $width . '" height="' .
 		$height . '" type="application/pdf"></object>';
 }
 
